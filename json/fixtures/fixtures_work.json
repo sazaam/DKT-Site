@@ -1,0 +1,177 @@
+[
+    {
+        "id": 14,
+        "name": "about",
+        "template": {
+            "id": 5,
+            "name": "about",
+            "jade": ".abs.fullW.bottom0.left0.context.txtL\n\t.simple\n\t\t.BmarXXXLg.LmarXXXLg\n\t\t\th2.bold.pentoneE.sizeXLg BetweenJS / BTW"
+        },
+
+        "article": {
+            "id": 2,
+            "name": "about",
+            "title": "Who we are",
+            "description": "Idea, Technology, Creation",
+            "contents": ".txtC.unit.simple.simpleLeft.sizeXLg\n        .logo.whitelogo.context.typo.txtC.sizeXXXLg.VpadXXXLg.marginAuto\n            a.hexarmorname.link.block.fullW.fullH.bold.sizeLg(href=\"#/en/products/\")\n                span\n                    | HEXARMOR \n                    sup.sizeXXSm.rel.top4 TM\n\n    .txtC.lastUnit\n        .aboutbox.VpadXXXLg.HpadXXXLg.rel.txtL\n            .abouttitle.graybordered.sizeXXXLg.padXXXLg Idea, Technology, Creation\n\n            article\n                .desc.rel.graybordered\n                    p.sizeSm.dark.txtJ\n                        | As modernity imposes us new constraints and challenges, \n                        | while also constantly offering patterns and techniques, \n                        | we, maintaining R&D to Machinery production flows seek for innovative and adapted, durable materials.\n                    h6.TmarLg.sizeR.txtJ\n                        | NanoTech, at the service off Safety, Protection and Longevity.\n",
+            "section": 14,
+            "Edito": [
+                {
+                    "id": 3,
+                    "name": "logo",
+                    "jade": "span\n    | HEXARMOR \n    sup.sizeXXSm.rel.top4 TM",
+                    "media_main": []
+                }
+            ],
+            "main_media": [
+                {
+                    "id": 2,
+                    "name": "depositphotos_31066661-stock-photo-horizontal-hexa-fractal-on-the",
+                    "hash": "depositphotos_31066661_stock_photo_horizontal_hexa_fractal_on_the_f43d13fc6a",
+                    "ext": ".jpeg",
+                    "mime": "image/jpeg",
+                    "size": 70.71,
+                    "url": "/uploads/depositphotos_31066661_stock_photo_horizontal_hexa_fractal_on_the_f43d13fc6a.jpeg"
+                }
+            ]
+        },
+        
+        "position": 1,
+        "level": 1,
+        "children": [
+            {
+                "id": 16,
+                "name": "home",
+                "template": null,
+                "position": 1,
+                "level": 2,
+                "article": {
+                    "id": 3,
+                    "name": "about_intro",
+                    "title": "Introduction",
+                    "description": null,
+                    "contents": ".txtC.unit.simple.simpleLeft.context\n    .hidden Contents Here\n    .context.typo.txtC.HmarLg\n        a.link.block.fullW.fullH.sizeLg(href=\"#/en/products/\")\n            span\n                | Contact Us\n.txtC.unit.simple.floatR.simpleRight.context.black\n    .hidden Contents Here\n\n.txtC.lastUnit.context\n    .aboutbox.VpadXXXLg.HpadXXXLg.rel.txtL\n\n        article.desc.sizeSm.rel\n            | As modernity imposes us new constraints and challenges, \n            | while also constantly offering patterns and techniques, \n            | we, maintaining R&D to Machinery production flows seek for innovative and adapted, durable materials.\n\n.downzone.abs.top0.right0(style=\"width:15%\").context.txtC\n    .abouttext.padXXXLg.VpadLg\n        a.block.fullW.fullH(href=\"#/en/sales/\")\n            span Sales\n\n.aboutnext.arrowlink.up.abs.top0.right0.txtC\n    a.block.fullW.fullH(href=\"#/en/products/\") \n        span.hidden Back\n.aboutnext.arrowlink.inverted.right.abs.top50.right0.txtC\n    a.block.fullW.fullH(href=\"#\") \n        span.hidden Next\n\n",
+                    "section": 16
+                }
+            },
+            {
+                "id": 15,
+                "name": "clients",
+                "template": null,
+                "position": 2,
+                "level": 2,
+                "article": {
+                    "id": 4,
+                    "name": "about_clients",
+                    "title": "Clients",
+                    "description": "Our Clients",
+                    "contents": ".txtC.unit.simple.simpleLeft.sizeXLg\n    .logo.whitelogo.context.typo.txtC.sizeXXXLg.VpadXXXLg.marginAuto\n        a.hexarmorname.link.block.fullW.fullH.bold.sizeLg(href=\"#/en/products/\")\n            span\n                | HEXARMOR \n                sup.sizeXXSm.rel.top4 TM\n.txtC.unit.simple.floatR.simpleRight.white\n    .hidden aaaa\n\n\n.txtC.lastUnit\n    .aboutbox.VpadXXXLg.HpadXXXLg.rel.txtL\n        .abouttitle.graybordered.sizeXXXLg.padXXXLg Idea, Technology, Creation\n\n        article\n            .desc.rel.graybordered\n                p.sizeSm.dark.txtJ\n                    | As modernity imposes us new constraints and challenges, \n                    | while also constantly offering patterns and techniques, \n                    | we, maintaining R&D to Machinery production flows seek for innovative and adapted, durable materials.\n                h6.TmarLg.sizeR.txtJ\n                    | NanoTech, at the service off Safety, Protection and Longevity.",
+                    "section": 15
+                }
+            }
+            
+        ]
+    },
+    {
+        "id": 9,
+        "name": "news",
+        "template": {
+            "id": 2,
+            "name": "news",
+            "jade": ".abs.fullW.bottom0.left0.context.txtL\n\t.simple\n\t\t.BmarXXXLg.LmarXXXLg\n\t\t\th2.bold.pentoneE.sizeXLg BetweenJS / BTW"
+        },
+        "position": 2,
+        "level": 1,
+        "children": [
+            {
+                "id": 10,
+                "name": "hexarmor",
+                "article":{
+                    "name": "hexarmor",
+                    "title": "HEXARMOR LAUNCHING",
+                    "description": "As modernity imposes us new constraints and challenges, while also constantly offering patterns and techniques, we, maintaining R&D to Machinery.",
+                    "page":{
+
+                    }
+                },
+                "template": {
+                    "id": 2,
+                    "name": "news_new",
+                    "jade": "#viewport.viewport.abs.top50.left50.right50.bottom50.typo\n\t#examplepage.examplepage.floatL"
+                },
+                "position": 1,
+                "level": 2
+            },
+            {
+                "id": 20,
+                "name": "other",
+                "article":{
+                    "name": "other",
+                    "title": "Press Conference",
+                    "description": "As modernity imposes us new constraints and challenges, while also constantly offering patterns and techniques, we, maintaining R&D to Machinery."
+                },
+                "template":{
+                    "id": 2,
+                    "name": "news_new",
+                    "jade": "#viewport.viewport.abs.top50.left50.right50.bottom50.typo\n\t#examplepage.examplepage.floatL"
+                },
+                "position": 2,
+                "level": 2
+            }
+        ]
+    },
+    {
+        "id": 11,
+        "name": "products",
+        "template": {
+            "id": 4,
+            "name": "products",
+            "jade": "#viewport.viewport.abs.top50.left50.right50.bottom50.typo\n\t#examplepage.examplepage.floatL"
+        },
+        "position": 3,
+        "level": 1,
+        "children": [
+            {
+                "id": 12,
+                "name": "ppf",
+                "article":{
+                    "name": "ppf",
+                    "title": "PPF IS HERE"
+                },
+                "template": {
+                    "id": 2,
+                    "name": "news_new",
+                    "jade": "#viewport.viewport.abs.top50.left50.right50.bottom50.typo\n\t#examplepage.examplepage.floatL"
+                },
+                "position": 1,
+                "level": 2
+            },
+            {
+                "id": 32,
+                "name": "nanometablack",
+                "article":{
+                    "name": "nanometablack",
+                    "title": "NANOMETABLACK IS HERE"
+                },
+                "template": {
+                    "id": 2,
+                    "name": "news_new",
+                    "jade": "#viewport.viewport.abs.top50.left50.right50.bottom50.typo\n\t#examplepage.examplepage.floatL"
+                },
+                "position": 2,
+                "level": 2
+            }
+        ]
+    },
+    {
+        "id": 13,
+        "name": "sales",
+        "template": {
+            "id": 8,
+            "name": "sales",
+            "jade": "- var section = locals.section ;\n\n-  for(var i in section ){\n    p= i\n    b= section [i]\n\n- }"
+        },
+        "position": 4,
+        "level": 1
+    }
+]

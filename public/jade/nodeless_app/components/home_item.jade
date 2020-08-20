@@ -1,0 +1,66 @@
+.section_container.fullW.flowvisible.none(id='section_container_' + data_section.name)
+    //- LEFT ZONE
+    .simpleblock.left.abs.left0.top0.fullH.txtC.sizeR(style="width:50%;")
+        .autosized.dispTable
+            .centeredframe.dispCell.valignM
+                //- RIGHT ZONE CONTENT
+                .downlink.context.typo.sizeXXXLg.LmarXXXLg.VmarXXLg.txtL.rel.pad.rounded
+                    
+                    h2.floatL.rel.graybordered.rounded.link.bold.padXLg.lhSm
+                        !{ render(data_section.article.title, {data_section:data_section, render: render, renderFile: renderFile})}
+                        
+                        span.block.abs.bottom0.left0.foggy.sizeXSm.txtL.regular
+                            span.sizeSm.block.LmarLg.BmarXSm Publish Date : 
+                        span.block.abs.bottom0.right0.foggy.sizeXSm.txtL.regular
+                            span.sizeSm.block.RmarLg.BmarXSm May 12th 2020
+
+    //- CENTER / RIHT ZONE
+    .simpleblock.right_center.abs.top0.fullH.txtC.sizeR(style="width:50%;left:50%")
+        .autosized.dispTable.txtC
+            .centeredframe.dispCell.valignM
+                //- LEFT / CENTER ZONE CONTENT
+                .downlink.context.typo.sizeM.marXXLg.txtR.rel.pad
+                    p= data_section.article.desc
+            .abs.left0.right0.bottom0.context
+                a.block.sizeR.floatR.marXXXXLg.graybordered.rounded(href="") 
+                    span.block.widthauto.pad.HpadXLg Continue Reading
+
+
+
+
+    //- HIDDEN ARTICLE ZONE
+    .datas.none
+        .hello.txtC.fixback2
+            .flowpage
+                .item_top_nav.txtC
+                    a.block.arrowlink.up.marginAuto(href="#/") 
+                        span.hidden Back
+                    a.block.none(href="#/") Back
+                        span.hidden Next
+                h4.sizeXXXLg.TmarSm.BmarXXXLg #{data_section.name}
+
+                .contz.antBG
+                    .logoicPress.rounded.HmarSm(style="height:380px")
+                    .postinfos.pad.txtR May 12th 2020
+                    - for(var nn = 0 ; nn < 10 ; nn ++){
+                        - var s = nn % 2 == 0 ;
+                        - var v = nn % 3 == 1 ;
+                        - var align = s ? 'left' : 'right' ;
+                        - var aligncl = s ? 'txtL' : 'txtR' ;
+                        - var floatcl = s ? 'floatL Lmar' : 'floatR darkBG rounded white RmarXXXXLg' ;
+                        - if(v){
+                            article.context.BmarXXXLg(class=aligncl + ' ' + align)
+                                .Vmar.padXLg.context(class=floatcl)
+                                    .IMGCont.floatL
+                                        img.mar.block(style="width:450px;",src="./css/skin/2.png", alt="")
+                                    p.item_desc.sizeLg.foggy.marXLg
+                                        | A good artist website should showcase your art. Think of how art galleries are designed— they are functional and austere with plenty of whitespace on walls. They do this to get out of the way and <em>showcase</em> the art.
+                        - }
+                        article.context.BmarXXXLg(class=aligncl + ' ' + align)
+                            .Vmar.padXXXLg.size1of2(class=floatcl)
+
+                                p.item_desc.sizeLg.foggy
+                                    | A good artist website should showcase your art. Think of how art galleries are designed— they are functional and austere with plenty of whitespace on walls. They do this to get out of the way and <em>showcase</em> the art.
+                                p.item_preface.sizeSm.TmarXXLg.dark
+                                    | Remember, people didn't come to your website to look at an <em>artistic looking</em> website— they came to look at art: paintings, sculptures or photos. Don't make the mistake of trying to make the website it's own piece of art— that rarely goes well.
+                    - }

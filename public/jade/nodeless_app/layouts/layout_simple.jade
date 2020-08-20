@@ -1,0 +1,44 @@
+.origin.abs.fullW.fullH.txtC
+	
+	.viewport.abs.top0.left0.fullW.fullH(style="left:0%;")
+		
+		include ./image_zone
+
+		- var data_children = data_section.children ;
+		- if(!!data_children) (function(children, parent){
+			- for(var i = 0 ; i < children.length ; i ++){
+				- var data_section = children[i] ;
+				- if(!!data_section.article && !!data_section.article.variables){
+					- !!fix && fix(data_section.article, data_section.article.variables, 'variables') ;
+				- }
+				
+				include ./image_zone
+				
+			- }
+		- })(data_children, data_section) ;
+		
+		
+		block viewport
+		
+	.frame.abs.left0.right0.top0.bottom0.fullH.fullW
+		block frame
+		
+		block top
+		
+		//- INCLUDE CHILDREN SECTIONS BLOCKS
+		- var data_children = data_section.children ;
+		- console.log(data_section.name, !!data_children)
+		- if(!!data_children) (function(children, parent){
+			- for(var i = 0 ; i < children.length ; i ++){
+				- var data_section = children[i] ;
+				- if(!!data_section.article && !!data_section.article.variables){
+					- !!fix && fix(data_section.article, data_section.article.variables, 'variables') ;
+				- }
+				block children
+				
+			- }
+		- })(data_children, data_section) ;
+		
+	
+	block centered 
+	

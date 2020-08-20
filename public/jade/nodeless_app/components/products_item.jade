@@ -1,0 +1,63 @@
+.section_container.fullW.flowvisible.none(id='section_container_' + data_section.name)
+
+
+    
+    //- LEFT / RIGHT / CENTER ZONE FULL HEIGHT
+    .simpleblock.left_right_center.abs.top0.left0.bottom0.right0.fullW.fullH.txtC.sizeR
+        .autosized.dispTable
+            .centeredframe.dispCell.valignM
+                //- LEFT / CENTER ZONE CONTENT
+                .downlink.typo.sizeLg.padXLg.rel.fullH
+                    h2.floatL.rel.graybordered.link.bold.padXLg.lhSm
+                        !{ render(data_section.article.title, {data_section:data_section, render: render, renderFile: renderFile})}
+                    .abs.bottom0.left0.right0.txtL.rel.marXLg
+                        - var product = data_section.article.product ;
+                        ol.line.graybordered.rounded
+                            //- - var cl = str == 'desc' ? 'lastUnit pad txtR' : 'unit pad' ;
+                            - if(product.name)
+                                li.unit.pad.bold= product.name
+                            - if(product.number)
+                                li.unit.pad.italic.sizeSm.TmarSm= product.number
+                            - if(product.unit)
+                                li.unit.pad= product.unit
+                            - if(product.desc)
+                                li.lastUnit.pad.txtR.whiteopacBG= product.desc
+
+    .simpleblock.left.abs.top0.left0.bottom0.txtC.sizeR
+        .autosized.dispTable
+            .centeredframe.dispCell.valignM
+                .arrowlink.graybordered.left.LmarXXXLg
+                    a.block.fullW.fullH(href="#/en/products/ppf/") 
+                        span.hidden Prev
+    .simpleblock.left.abs.top0.right0.bottom0.txtC.sizeR
+        .autosized.dispTable
+            .centeredframe.dispCell.valignM
+                .arrowlink.graybordered.right.RmarXXXLg
+                    a.block.fullW.fullH(href="#/en/products/ppf/") 
+                        span.hidden Next        
+
+    .datas.none
+        .hello.txtC.fixback2
+            .flowpage
+                .item_top_nav.txtC
+                    a.block.arrowlink.up.marginAuto(href="#/") 
+                        span.hidden Back
+                    a.block.none(href="#/") Back
+                        span.hidden Next
+                h4.sizeXXXLg.TmarSm.BmarXXXLg #{data_section.name}
+
+                .contz.dark.antBG
+                    .logoic5.HmarSm.rounded(style="height:380px")
+                    - for(var nn = 0 ; nn < 10 ; nn ++){
+                        - var s = nn % 2 == 0 ;
+                        - var align = s ? 'left' : 'right' ;
+                        - var aligncl = s ? 'txtL' : 'txtR' ;
+                        - var floatcl = s ? 'floatL Lmar' : 'floatR darkBG white RmarXXXXLg rounded' ;
+                        article.context.BmarXXXLg(class=aligncl + ' ' + align)
+                            .Vmar.padXXXLg.size1of2(class=floatcl)
+                                p.item_desc.sizeLg
+                                    | A good artist website should showcase your art. Think of how art galleries are designed— they are functional and austere with plenty of whitespace on walls. They do this to get out of the way and <em>showcase</em> the art.
+                                p.item_preface.sizeSm.TmarXXLg
+                                    | Remember, people didn't come to your website to look at an <em>artistic looking</em> website— they came to look at art: paintings, sculptures or photos. Don't make the mistake of trying to make the website it's own piece of art— that rarely goes well.
+                    - }
+

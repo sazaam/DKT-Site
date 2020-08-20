@@ -1,0 +1,36 @@
+.section_container.fullW.flowvisible(id='section_container_' + data_section.name)
+    //- LEFT ZONE
+    .simpleblock.left.abs.top0.left0.fullH.txtC.sizeXLg(style="width:15%")
+        .autosized.dispTable
+            .centeredframe.dispCell.valignM
+                //- LEFT ZONE CONTENT
+                .typo.txtC.HmarLg
+                    a.link.block.fullW.fullH.sizeSm(href="#/en/products/")= data_section.article.desc
+
+    //- CENTER ZONE                           
+    .simpleblock.center.abs.top0.fullH.size3of4.txtC.sizeM(style="width:85%;left:15%")
+        .autosized.dispTable
+            .centeredframe.dispCell.valignM
+                //- CENTER ZONE CONTENT
+                .aboutbox.VpadXXXLg.HpadXXXLg.sizeM.rel.txtL
+                    article.desc.rel.sizeM= data_section.article.text
+
+    //- RIGHT ZONE
+    .simpleblock.left.abs.top0.fullH.txtC.sizeXLg(style="width:15%;left:85%")
+        .autosized.dispTable
+            .centeredframe.dispCell.valignM
+                //- RIGHT ZONE CONTENT
+                .aboutnext.hidden.arrowlink.inverted.right.floatR
+                    a.block.fullW.fullH(href="#/en/about/intro/") 
+                        span.hidden Next
+    //- NAV ELEMS
+    .sectionlink.abs.top0.left0.typo.txtL.sizeR.marLg.rounded.whiteopacBG
+        a.block.context.txtC(href="#/en/products/")
+            span.abs.top0.left0.block.arrowlink.small.up.LmarXSm
+                span.hidden Products
+            span.block.pad.LpadXXXLg.LmarXXXXLg.txtR Products
+
+
+
+
+

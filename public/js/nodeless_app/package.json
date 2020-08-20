@@ -1,0 +1,14 @@
+{
+	"name": "DKT_nodeless",
+	"version": "0.0.1",
+	"description": "Strawnode's DKT nodeless app",
+	"dependencies": [
+		"trace.js?debug=true",
+		"type.js",
+		"strawexpress.js",
+		"strawjade.js",
+		"betweenjs.js",
+		"strawnode_modules/jquery-1.8.1.min.js",
+		"strawnode_modules/jquery.ba-hashchange.min.js"
+	]
+}

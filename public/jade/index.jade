@@ -1,0 +1,34 @@
+extends ./layout
+block content
+	- var fix = locals.AppendNominatedVarsObject ;
+		//- THE MAIN NAV BLOCK
+		
+	nav.continent.abs.left0.right0.fullW.fullH.none
+		
+		- var l = data_sections.length ;
+		- for(var i = 0 ; i < data_sections.length ; i ++){
+			- var data_section = data_sections[i] ;
+
+			- if(!!data_section.article && !!data_section.article.variables){
+				- !!fix && fix(data_section.article, data_section.article.variables, 'variables') ;
+			- }
+			
+			- var name = data_section.name ;
+			
+			//- EACH MAIN SECTION BLOCK
+			
+			section.section.fullH(id=data_section.name, class= data_section.name)
+				//- STYLE OF DYNAMIC INCLUDING FOR THE WEIRDOES !!!!
+				!{ renderFile('./public/jade/nodeless_app/' + name + '.jade', {data_section:data_section, render: render, renderFile: renderFile}) }
+				.extra.rel.height50.zind30(id=data_section.name + "_about", class= data_section.name + "_about")
+					//- STYLE OF DYNAMIC INCLUDING FOR THE WEIRDOES !!!!
+					!{ renderFile('./public/jade/nodeless_app/layouts/' + 'home' + '_remind.jade', {data_section:data_section, render: render, renderFile: renderFile}) }
+				.extra.rel(id=data_section.name + "_extra", class= data_section.name + "_extra")
+					//- STYLE OF DYNAMIC INCLUDING FOR THE WEIRDOES !!!!
+					!{ renderFile('./public/jade/nodeless_app/layouts/' + 'home' + '_extra.jade', {data_section:data_section, render: render, renderFile: renderFile}) }
+				
+		- }
+		
+		
+		
+	script(type='text/javascript' src='./js/strawnode.js?starter=./nodeless_app/')

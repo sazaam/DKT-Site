@@ -1,0 +1,191 @@
+[
+
+    {
+        "id": 9,
+        "name": "home",
+        "article": {
+            "id": 2,
+            "name": "home",
+
+            "maincolor":"#000000",
+            
+            "title": "span.block HEXARMOR\n        sup.sizeXXSm.rel TM \n        .block",        
+            "desc":"home",
+
+            "template": ".txtC.unit.simple.simpleLeft.sizeXLg\n        .logo.whitelogo.context.typo.txtC.sizeXXXLg.VpadXXXLg.marginAuto\n            a.hexarmorname.link.block.fullW.fullH.bold.sizeLg(href=\"#/en/products/\")\n                span\n                    | HEXARMOR \n                    sup.sizeXXSm.rel.top4 TM\n\n    .txtC.lastUnit\n        .aboutbox.VpadXXXLg.HpadXXXLg.rel.txtL\n            .abouttitle.graybordered.sizeXXXLg.padXXXLg Idea, Technology, Creation\n\n            article\n                .desc.rel.graybordered\n                    p.sizeSm.dark.txtJ\n                        | As modernity imposes us new constraints and challenges, \n                        | while also constantly offering patterns and techniques, \n                        | we, maintaining R&D to Machinery production flows seek for innovative and adapted, durable materials.\n                    h6.TmarLg.sizeR.txtJ\n                        | NanoTech, at the service off Safety, Protection and Longevity.\n",
+            "section":9
+        },
+        "position": 2,
+        "level": 1
+    },
+    
+    {
+        "id": 11,
+        "name": "products",
+        "position": 3,
+        "level": 1,
+        
+        "article":{
+            "name": "products",
+
+            "mainimage":"css/skin/5.png",
+            
+            
+            "title": "span.block HEXARMOR\n        sup.sizeXXSm.rel TM \n        .block Products",
+            
+            
+            "template": ".txtC.unit.simple.simpleLeft.sizeXLg\n        .logo.whitelogo.context.typo.txtC.sizeXXXLg.VpadXXXLg.marginAuto\n            a.hexarmorname.link.block.fullW.fullH.bold.sizeLg(href=\"#/en/products/\")\n                span\n                    | HEXARMOR \n                    sup.sizeXXSm.rel.top4 TM\n\n    .txtC.lastUnit\n        .aboutbox.VpadXXXLg.HpadXXXLg.rel.txtL\n            .abouttitle.graybordered.sizeXXXLg.padXXXLg Idea, Technology, Creation\n\n            article\n                .desc.rel.graybordered\n                    p.sizeSm.dark.txtJ\n                        | As modernity imposes us new constraints and challenges, \n                        | while also constantly offering patterns and techniques, \n                        | we, maintaining R&D to Machinery production flows seek for innovative and adapted, durable materials.\n                    h6.TmarLg.sizeR.txtJ\n                        | NanoTech, at the service off Safety, Protection and Longevity.\n",
+            "section": 11
+        },
+        
+        
+        "children": [
+            {
+                "id": 12,
+                "name": "ppf",
+                
+                "position": 1,
+                "level": 2,
+                
+                "article":{
+                    "name": "ppf",
+                    
+                    "mainimage":"css/skin/7.png",
+                    
+                    "product":{
+                        "name":"PPF",
+                        "number":"46846-lhXSm",
+                        "unit":"510",
+                        "desc":"The Future of Protective Coating Film"
+                    },
+
+                    "title": "span.block HEXARMOR\n        sup.sizeXXSm.rel TM \n        | &nbsp;&nbsp;PPF",
+
+
+                    "template": ".txtC.unit.simple.simpleLeft.sizeXLg\n        .logo.whitelogo.context.typo.txtC.sizeXXXLg.VpadXXXLg.marginAuto\n            a.hexarmorname.link.block.fullW.fullH.bold.sizeLg(href=\"#/en/products/\")\n                span\n                    | HEXARMOR \n                    sup.sizeXXSm.rel.top4 TM\n\n    .txtC.lastUnit\n        .aboutbox.VpadXXXLg.HpadXXXLg.rel.txtL\n            .abouttitle.graybordered.sizeXXXLg.padXXXLg Idea, Technology, Creation\n\n            article\n                .desc.rel.graybordered\n                    p.sizeSm.dark.txtJ\n                        | As modernity imposes us new constraints and challenges, \n                        | while also constantly offering patterns and techniques, \n                        | we, maintaining R&D to Machinery production flows seek for innovative and adapted, durable materials.\n                    h6.TmarLg.sizeR.txtJ\n                        | NanoTech, at the service off Safety, Protection and Longevity.\n",
+                    "section": 12
+                }
+            },
+            {
+                "id": 32,
+                "name": "nanometablack",
+                
+                "position": 2,
+                "level": 2,
+                
+                "article":{
+                    "name": "nanometablack",
+ 
+                    "mainimage":"css/skin/4bis.png",
+                    
+
+                    
+                    "product":{
+                        "name":"PPF",
+                        "number":"46846-lhXSm",
+                        "unit":"510",
+                        "desc":"Sunrays and Heat Deflecting Film"
+                    },
+
+
+                    "title": "span.block HEXARMOR\n        sup.sizeXXSm.rel TM \n        | &nbsp;&nbsp;NANOMETABLACK",
+
+
+
+                    "template": ".txtC.unit.simple.simpleLeft.sizeXLg\n        .logo.whitelogo.context.typo.txtC.sizeXXXLg.VpadXXXLg.marginAuto\n            a.hexarmorname.link.block.fullW.fullH.bold.sizeLg(href=\"#/en/products/\")\n                span\n                    | HEXARMOR \n                    sup.sizeXXSm.rel.top4 TM\n\n    .txtC.lastUnit\n        .aboutbox.VpadXXXLg.HpadXXXLg.rel.txtL\n            .abouttitle.graybordered.sizeXXXLg.padXXXLg Idea, Technology, Creation\n\n            article\n                .desc.rel.graybordered\n                    p.sizeSm.dark.txtJ\n                        | As modernity imposes us new constraints and challenges, \n                        | while also constantly offering patterns and techniques, \n                        | we, maintaining R&D to Machinery production flows seek for innovative and adapted, durable materials.\n                    h6.TmarLg.sizeR.txtJ\n                        | NanoTech, at the service off Safety, Protection and Longevity.\n",
+                    "section": 12
+                }
+            }
+        ]
+    },
+    
+	{
+        "id": 14,
+        "name": "about",
+        "article": {
+            "id": 2,
+            "name": "about",
+            
+            "mainimage":"css/skin/anim/giphy_3.gif",
+            "maincolor":"#bbb",
+            
+            "title": "Who we are",
+            "desc":"span HEXARMOR\n   sup.sizeXXSm.rel.top4 TM",
+            "punchline":"Idea, Technology, Creation",
+            "intro_1":"As modernity imposes us new constraints and challenges, while also constantly offering patterns and techniques, we, maintaining R&D to Machinery production flows seek for innovative and adapted, durable materials.",
+            "intro_2":"NanoTech, at the service of Safety, Protection and Longevity.",
+            
+            
+            "template": ".txtC.unit.simple.simpleLeft.sizeXLg\n        .logo.whitelogo.context.typo.txtC.sizeXXXLg.VpadXXXLg.marginAuto\n            a.hexarmorname.link.block.fullW.fullH.bold.sizeLg(href=\"#/en/products/\")\n                span\n                    | HEXARMOR \n                    sup.sizeXXSm.rel.top4 TM\n\n    .txtC.lastUnit\n        .aboutbox.VpadXXXLg.HpadXXXLg.rel.txtL\n            .abouttitle.graybordered.sizeXXXLg.padXXXLg Idea, Technology, Creation\n\n            article\n                .desc.rel.graybordered\n                    p.sizeSm.dark.txtJ\n                        | As modernity imposes us new constraints and challenges, \n                        | while also constantly offering patterns and techniques, \n                        | we, maintaining R&D to Machinery production flows seek for innovative and adapted, durable materials.\n                    h6.TmarLg.sizeR.txtJ\n                        | NanoTech, at the service off Safety, Protection and Longevity.\n",
+            "section":9
+        },
+        
+        "position": 1,
+        "level": 1,
+        "children": [
+            {
+                "id": 16,
+                "name": "intro",
+                "template": null,
+                "position": 1,
+                "level": 2,
+                "article": {
+                    "id": 3,
+                    "name": "about_intro",
+                    
+                    "maincolor":"#222222",
+                    
+                    "title": "Introduction",
+                    "desc":"Who We Are",
+                    "text":"As modernity imposes us new constraints and challenges, while also constantly offering patterns and techniques, we, maintaining R&D to Machinery production flows seek for innovative and adapted, durable materials.",
+                    
+                    "template": ".txtC.unit.simple.simpleLeft.sizeXLg\n        .logo.whitelogo.context.typo.txtC.sizeXXXLg.VpadXXXLg.marginAuto\n            a.hexarmorname.link.block.fullW.fullH.bold.sizeLg(href=\"#/en/products/\")\n                span\n                    | HEXARMOR \n                    sup.sizeXXSm.rel.top4 TM\n\n    .txtC.lastUnit\n        .aboutbox.VpadXXXLg.HpadXXXLg.rel.txtL\n            .abouttitle.graybordered.sizeXXXLg.padXXXLg Idea, Technology, Creation\n\n            article\n                .desc.rel.graybordered\n                    p.sizeSm.dark.txtJ\n                        | As modernity imposes us new constraints and challenges, \n                        | while also constantly offering patterns and techniques, \n                        | we, maintaining R&D to Machinery production flows seek for innovative and adapted, durable materials.\n                    h6.TmarLg.sizeR.txtJ\n                        | NanoTech, at the service off Safety, Protection and Longevity.\n",
+                    "section": 16
+                }
+            },
+            {
+                "id": 15,
+                "name": "clients",
+                "template": null,
+                "position": 2,
+                "level": 2,
+                "article": {
+                    "id": 4,
+                    "name": "about_clients",
+                    "title": "Clients",
+                    
+                    "video":"css/skin/videos/vid.mp4", 
+                    "maincolor":"#000000",
+                    
+                    "desc":"Clients",
+                    "text":"Just say we have a lot of clients",
+
+                    "template": ".txtC.unit.simple.simpleLeft.sizeXLg\n        .logo.whitelogo.context.typo.txtC.sizeXXXLg.VpadXXXLg.marginAuto\n            a.hexarmorname.link.block.fullW.fullH.bold.sizeLg(href=\"#/en/products/\")\n                span\n                    | HEXARMOR \n                    sup.sizeXXSm.rel.top4 TM\n\n    .txtC.lastUnit\n        .aboutbox.VpadXXXLg.HpadXXXLg.rel.txtL\n            .abouttitle.graybordered.sizeXXXLg.padXXXLg Idea, Technology, Creation\n\n            article\n                .desc.rel.graybordered\n                    p.sizeSm.dark.txtJ\n                        | As modernity imposes us new constraints and challenges, \n                        | while also constantly offering patterns and techniques, \n                        | we, maintaining R&D to Machinery production flows seek for innovative and adapted, durable materials.\n                    h6.TmarLg.sizeR.txtJ\n                        | NanoTech, at the service off Safety, Protection and Longevity.\n",
+                    "section": 16
+                }
+            }
+            
+        ]
+    },
+	
+	{
+        "id": 13,
+        "name": "contact",
+        "position": 4,
+        "level": 1,
+
+        "article":{
+            "name": "products",
+            "title": "products Conference",
+            
+            "maincolor":"#8b5c5c",
+            
+            "desc":"Contact us",
+            "text":"As modernity imposes us new constraints and challenges, while also constantly offering patterns and techniques, we, maintaining R&D to Machinery production flows seek for innovative and adapted, durable materials.",
+                    
+
+            "template": ".txtC.unit.simple.simpleLeft.sizeXLg\n        .logo.whitelogo.context.typo.txtC.sizeXXXLg.VpadXXXLg.marginAuto\n            a.hexarmorname.link.block.fullW.fullH.bold.sizeLg(href=\"#/en/products/\")\n                span\n                    | HEXARMOR \n                    sup.sizeXXSm.rel.top4 TM\n\n    .txtC.lastUnit\n        .aboutbox.VpadXXXLg.HpadXXXLg.rel.txtL\n            .abouttitle.graybordered.sizeXXXLg.padXXXLg Idea, Technology, Creation\n\n            article\n                .desc.rel.graybordered\n                    p.sizeSm.dark.txtJ\n                        | As modernity imposes us new constraints and challenges, \n                        | while also constantly offering patterns and techniques, \n                        | we, maintaining R&D to Machinery production flows seek for innovative and adapted, durable materials.\n                    h6.TmarLg.sizeR.txtJ\n                        | NanoTech, at the service off Safety, Protection and Longevity.\n",
+            "section": 20
+        }
+    }
+]

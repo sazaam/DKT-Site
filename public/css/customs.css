@@ -1,0 +1,170 @@
+@import './customs/animate.css' ;
+@import './customs/bootstrap.css' ;
+@import './customs/custom.css' ;
+@import './customs/et-line-font.css' ;
+@import './customs/flexslider.css' ;
+@import './customs/magnific-popup.css' ;
+@import './customs/Mirai-Seu.css' ;
+@import './customs/simpletextrotator.css' ;
+@import './customs/slider.css' ;
+@import './customs/style.css' ;
+
+
+.inconsolata{
+	font-family:'Inconsolata';
+}
+.montserrat{
+	font-family:'montserrat';
+}
+
+
+.caption-content.bottom {
+	vertical-align: bottom;
+	text-align: center;
+	padding: 140px 0;
+}
+
+.btn.btn-border-slider-white {
+    background: white none repeat scroll 0 0;
+    opacity: 0.8;
+    border: 1px solid #000;
+    color: #000;
+}
+
+.btn.btn-border-slider-black {
+    background: black none repeat scroll 0 0;
+    opacity: 0.8;    
+    border: 1px solid #000;
+    color: #fff;
+
+}
+
+.fat-link {
+    font-weight: 800;
+}
+
+
+.list-intro {
+    margin-bottom: 0;
+}
+
+a.parentlink {
+    color: #fff;
+}
+
+/* 100 % */
+
+red {
+    color: #ff0000;
+    font-weight: 800;
+}
+
+.height50{height:50%;}
+
+
+
+.navbar li.home a{
+	width:100px;
+	height:100%;
+	background:url(./skin/dkt_white.png) no-repeat left top;
+	
+}
+
+.navbar li.home a span{
+	visibility:hidden;
+}
+
+
+.navbar{
+	border: 0 !important;
+}
+
+.navbar-fixed-top, .navbar-fixed-bottom{
+	position: fixed;
+	right: 0;
+	left: 0;
+}
+
+
+.navbar-fixed-top{
+	top: 0;
+}
+
+.zind30{z-index:300}
+
+.slides{
+	overflow:hidden;
+	
+}
+.btn{border-radius:0;}
+
+.round{
+	/* border-radius:6px; */
+}
+
+/* CSS TRANSITION EFFECTS */
+.slide-zoom{
+	transform:scale(1);
+	/* -webkit-transition: transform 10s ease; */
+	/* -moz-transition: transform 10s ease; */
+	/* -ms-transition: transform 10s ease; */
+	/* -o-transition: transform 10s ease; */
+	transition: transform 10s ease;
+}
+.inited .slide-zoom{
+	transform:scale(1.1);
+}
+.round.left{
+	border-radius:6px 0 0 0;
+}
+.round.right{
+	border-radius:0 0 6px 0;
+}
+.round.both{
+	border-radius:6px 0 6px 0;
+}
+.navbar{
+	color:white;
+	background:transparent;
+}
+
+.navbar a{
+	color:white;
+	transition: all 0.125s ease-in-out 0s;
+	font-size:13px;
+	letter-spacing:.1em;
+}
+
+.overnav{
+	background:#FFF;
+	padding-top:5px;
+	padding-bottom:5px;
+}
+
+
+.overnav a{
+	color:#888;
+}
+
+.cover{
+	-webkit-background-size: cover;
+	   -moz-background-size: cover;
+	     -o-background-size: cover;
+	        background-size: cover;
+}
+
+
+.biglogo{
+	height:100%;
+	background:url(/img/logo_big_red.png) no-repeat left top;
+	background-position:50% 50%;
+}
+
+
+.dkt{
+	color:#9d1639;
+}
+
+.dktBG{
+	background:#9d1639;
+}

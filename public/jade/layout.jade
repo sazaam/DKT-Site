@@ -1,5 +1,5 @@
 doctype html
-html.abs.fullW.fullH.context.whiteBG(lang="en", style="overflow-y: auto;")
+html.abs.fullW.fullH.context.whiteBG(lang=lang, style="overflow-y: auto;")
 	head
 		meta(http-equiv="Content-Type", content="text/html; charset=utf-8")
 		meta(http-equiv="X-UA-Compatible", content="IE=edge,chrome=1")
@@ -14,10 +14,10 @@ html.abs.fullW.fullH.context.whiteBG(lang="en", style="overflow-y: auto;")
 		link(rel="stylesheet", type="text/css", href="/css/all.css")
 		
 		- // FOR JADE PARSER SERVER FIRST JET
-		- var data_sections = JSON.parse(Data.sections.data) ;
+		- var data_sections = Data.sections.data ;
 		
-		- // LATER FOR IN-BROWSER PARSER SERVER FIRST JET
-		script.
+		//- LATER FOR IN-BROWSER PARSER SERVER FIRST JET
+		//- script.
 			(function(){
 				var prefix = 'data_' ;
 				var Data = !{JSON.stringify(Data)} ;
@@ -34,18 +34,37 @@ html.abs.fullW.fullH.context.whiteBG(lang="en", style="overflow-y: auto;")
 
 	body.abs.all.left0.right0.top0.bottom0
 		block content
-		
-		ol#globalnav.flowvisible.navbar.navbar-custom.navbar-fixed-top.RpadXXLg.LpadSm
-			- var ss = data_sections ;
-			- var l = ss.length ;
-			- for(var i = 0 ; i < l ; i ++){
-				- var s = ss[i] ;
-				- var name = s.name ;
-				- var href = '/#/en/' + name + '/' ;
-				
-				- var cl = name == 'home' ? 'floatL ' + name : 'floatR ' + name ;
-				//- EACH MAIN SECTION LINK
-				li(id= "gobal_" + name, class= cl)
-					a.block.pad.inconsolata(href= href)
-						span= name
-			- }
+		- var other = [].concat(data_sections) ;
+		- var home = other.shift() ;
+		- var href = '/#/' + lang + '/home/' ;
+		#topbar.topbar.navbar.navbar-custom.navbar-fixed-top.RpadXXLg.LpadSm
+			.home.floatL
+				a.block.pad.inconsolata(href= href)
+					span= t('DKT')
+			ol.flowvisible(style="margin-left:120px")
+				- var ss = other ;
+				- var l = ss.length ;
+				- for(var i = 0 ; i < l ; i ++){
+					- var s = ss[i] ;
+					- var name = s.name ;
+					- var href = '/#/' + lang + '/' + name + '/' ;
+					
+					//- EACH MAIN SECTION LINK
+					li.floatL(id= "gobal_" + name, class= "gobal_" + name)
+						a.block.pad.HpadXXXLg.inconsolata(href= href)
+							span= name
+				- }
+				ul#langnav.langnav.floatR
+					- var ss = ['en', 'ru'] ;
+					- var l = ss.length ;
+					- for(var i = 0 ; i < l ; i ++){
+						- var s = ss[i] ;
+						- var name = s ;
+						- var href = '/#/' + lang + '/' + name + '/' ;
+						- var cl = "lang lang_" + name + ' floatL' ;
+
+						//- EACH MAIN SECTION LINK
+						li(id= "lang_" + name, class= cl)
+							a.block.pad.inconsolata(href='?lng='+name, lang=name)
+								span= name
+					- }

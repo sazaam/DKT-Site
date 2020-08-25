@@ -1,14 +1,8 @@
 extends ./layouts/layout_simple
 
-block viewport
+block full
+	// include ./components/about_head
 
-block frame
-
-block top
-	include ./components/about_head
-
-block children
-	include ./components/about_item
-
-block centered
-	
+block flow
+	.extra.rel.context(style='height:30%;background:#8C8C8C;')
+		span.hidden Tadaa

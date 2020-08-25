@@ -1,0 +1,228 @@
+- var ch = products_section.children ;
+- var next = ch[ch.indexOf(product_section)+1] || ch[0] ;
+- var prev = ch[ch.indexOf(product_section)-1] || ch[ch.length - 1] ;
+
+
+.extra.context(style='height:75%;background:#8C8C8C url(' + product_section.article.mainimage + ') no-repeat 50% 50%;')
+	.hs-caption.container.rel(style='top: 0px; display: table;')
+		//- .caption-content.left(style='vertical-align:bottom;padding-bottom:7%')
+			.context.sizeR.txtL.round.both.dkt.dktBG.inlineblock.widthauto(style="margin-top:5em")
+				.sizeSm.font-inc.white.padXXLg.VpadXSm= t('prev')
+				h5.font-alt.m-b-20.context.txtL.whiteBG.pad.mar0(style="padding-right:5em !important")
+					span.block.dkt= t(prev.article.product.name)
+				.sizeSm.font-inc.dark.whiteBG.padXXLg= t(prev.article.product.desc)
+		//- .caption-content.right(style='vertical-align:bottom;padding-bottom:7%')
+			.context.sizeR.txtR.round.both.dkt.dktBG.inlineblock.widthauto(style="margin-top:5em")
+				.sizeSm.font-inc.white.padXXLg.VpadXSm= t('next')
+				h5.font-alt.m-b-20.context.txtR.whiteBG.pad.mar0(style="padding-left:5em !important")
+					span.block.dkt= t(next.article.product.name)
+				.sizeSm.font-inc.dark.whiteBG.padXXLg= t(next.article.product.desc)
+		.caption-content.center(style='vertical-align:middle;')
+			.context.sizeLg.round.both.dkt.inlineblock.widthauto.pad.BpadXXLg(style="margin-top:3em")
+				.hs-title-size-3.font-alt.m-b-20.context.txtL.white
+					span.block= t(product_section.article.product.name)
+				.hs-title-size-1.inlineblock.font-inc.LmarXXSm.BmarSm.white.dktBG.round.both
+					span.block.HmarXXLg= t(product_section.article.product.desc)
+section.page.zind3(style="top:5em")
+	
+
+	.container.TmarXXXLg
+		.txtR
+			.context.sizeLg.round.both.dkt.whiteBG.inlineblock.widthauto.pad.BpadXXLg(style="margin-top:3em")
+				.hs-title-size-3.font-alt.m-b-20.context.txtL.white
+					span.block.floatL.round.both.dkt= t(product_section.article.product.name)
+				.hs-title-size-1.font-inc.LmarXXSm.BmarSm.dark= t(product_section.article.product.desc)
+		.line
+			.size2of3.antBG.white.round.both.padXXXLg.floatL(style="margin-top:25em")
+				.work-details
+					h3.work-details-title.font-alt #{t('home.title')}
+					.font-inc
+						strong Data: 
+						a.fat-link(href='https://sketchfab.com/models/7a5e628e29d54a49993064d7e5ddd645')= toto
+						a.fat-link(href='https://sketchfab.com/models/6215e5e5adbb459e9a1051d83f1d32d4')= toto
+						a.fat-link(href='https://sketchfab.com/models/bcd72fd66c5e479a80ec182fa3fe2f7a')= toto
+					.font-inc
+						strong Contents: 
+						| starfighter asset made of 10 parts, substance and default materials, PBR textures; prefabs, 
+						strong BONUS
+						| : 
+						a(href='https://machin3.io/product-blueprint-01.html') Blueprint/SChematic Skybox 01 - 03 Twilight
+		.line
+			.size2of3.context.whiteBG.round.both.padXXXLg(style="margin-top:15em")
+				.work-details
+					.font-inc
+						strong Mesh Format: 
+						| .fbx
+					.font-inc
+						strong Polygon Count(Triangles): 
+						br
+						|  66K tris in total
+						br
+						|  21K just outside parts
+						br
+						|  3.5K just escape pod
+					.font-inc
+						strong Textures: 
+						| 10 Texturesets, 9 are 2048 x 2048, 1 is 1024 x 1024 
+						br
+						|  AlbedoTransparency 
+						br
+						|  MetallicSmoothness 
+						br
+						|  Normal 
+						br
+						|  Fluting (Normal) 
+						br
+						|  Emissive 
+						br
+						|  AO 
+						br
+						|  Curvature 
+						br
+						|  substance specific masks
+					.font-inc
+						strong Image Format: 
+						| .png
+					.font-inc
+						strong PBR: 
+						| Metall/Roughness
+					.font-inc
+						strong Customize: 
+						| substance materials, separate model parts
+						a(href='/img/projects/starfighter01.jpg')
+							img(src='/img/projects/starfighter01.jpg', width='100%')
+						a(href='/img/projects/starfighter05_main_gear.gif')
+							img(src='/img/projects/starfighter05_main_gear.gif', width='50%')
+						a(href='/img/projects/starfighter05_front_gear.gif')
+							img(src='/img/projects/starfighter05_front_gear.gif', width='49%')
+						a(href='/img/projects/starfighter05_wing_fold.gif')
+							img(src='/img/projects/starfighter05_wing_fold.gif', width='50%')
+						a(href='/img/projects/starfighter05_wing_flaps.gif')
+							img(src='/img/projects/starfighter05_wing_flaps.gif', width='49%')
+						a(href='/img/projects/starfighter02.jpg')
+							img(src='/img/projects/starfighter02.jpg', width='50%')
+						a(href='/img/projects/starfighter07.jpg')
+							img(src='/img/projects/starfighter07.jpg', width='49%')
+						a(href='/img/projects/starfighter04.jpg')
+							img(src='/img/projects/starfighter04.jpg', width='49%')
+						a(href='/img/projects/starfighter03.jpg')
+							img(src='/img/projects/starfighter03.jpg', width='50%')
+						a(href='/img/projects/starfighter08.gif')
+							img(src='/img/projects/starfighter08.gif', width='50%')
+						a(href='/img/projects/starfighter09.gif')
+							img(src='/img/projects/starfighter09.gif', width='49%')
+						a(href='/img/projects/starfighter05_escape_pod.gif')
+							img(src='/img/projects/starfighter05_escape_pod.gif', width='50%')
+						a(href='/img/projects/starfighter05_escape_pod2.gif')
+							img(src='/img/projects/starfighter05_escape_pod2.gif', width='49%')
+						a(href='/img/projects/starfighter05_escape_pod3.gif')
+							img(src='/img/projects/starfighter05_escape_pod3.gif', width='50%')
+						a(href='/img/projects/starfighter05_probe_release.gif')
+							img(src='/img/projects/starfighter05_probe_release.gif', width='49%')
+		.row
+			.col-sm-6.txtL
+				
+			.col-sm-6.txtR
+				p
+					| The Starfighter is a single-seat, multirole fighter, that excels at interception and escort missions.
+					| Advanced scouting and surveillance missions are possible, once outfitted with a probe in the designated socket in the fuselage.
+				p
+					| Capable of space and atmospheric flight, combined with vertical take off and landing abilities on most terrain, makes the Starfighter an extremely versatile light-weight and high performance craft.
+				p
+					| Both wings can be mounted with universal pylons and carry a variety of offensive and defensive weapons or equipment. (
+					strong NOT supplied with this asset!
+					| )
+					br
+					| Due to its folding wing configuration the Starfighter is suitable for carrier based operation with limited deck space.
+				p
+					| The SF's cockpit doubles as an escape pod and life boat. In case of emergency, it detaches completely and will be ejected from the rest of the ship.
+					| Being maneuverable on its own, the pod can be piloted using the same interface used for the Starfighter.
+				p
+					| This asset is 
+					strong quite detailed
+					|  and created with an eye towards current and next-generation needs in the gaming, VR and real-time film spaces.
+				p.list-intro
+					| While not specifically advertised as a modular asset, the Starfighter is built from and provided as 10 basic parts:
+				ul
+					li main
+					ul
+						li main interior(includes front-, back-, cockpit- and probe socket interiors)
+						li main landing gear
+					li front
+					ul
+						li front interior(includes front landing gear)
+					li back(engines)
+					ul
+						li back interior
+					li wings
+					ul
+						li interior
+					li escape pod
+				p
+					| Note, that for this asset many of the actual meshes have been kept separate, the above list entries, henceforth called "parts", represent the hierarchical structure and simplify managing the objects.
+					br
+					| Each of these 10 parts has its own texture-set and material.
+				p
+					| Having the asset structured like this, allows you to not render parts you don't need. This saves texture memory and avoids rendering unnecessary polygons.
+					br
+					| For instance, you likely won't need the interior parts in normal flight mode, but you will need some if you fold out the landing gears. Or alternatively, in a hangar-like scenario, you might choose to show the Starfighter in various states of disassembly - without the wings for instance.
+				p In short, it's giving you the flexibility to get more out of the asset.
+				p
+					| For us it means, we can maintain a high quality across the asset and opens up the possibility of future extension.
+					br
+					| In case you would be interested in extensions to this asset of any kind, we welcome your input and suggestions either 
+					a(href='mailto:support@machin3.io') via email
+					| .
+				p
+					| There's prefabs for The Starfighter in different assembly variations(with substance materials applied).
+				p
+					strong Animations
+				p
+					| The Starfighter comes with a variety of animation clips, most importantly the landing gear fold, landing gear dampening and wing folds. Furthermore, there are animations for wing flaps and fins, for escape pod elevators and rudder and finally for the escape pod release and probe release mechanisms.
+				p
+					| An animation controller sets up the animations and transitions using multiple layers. In cases where it applies, animations can be played as a unit or individually. For instance, the landing gear animation is masked accordingly, so you can only lower the front gear, or only the main left gear, etc instead of all of them at the same time.
+				p
+					strong Materials
+				p All materials are utilizing PBR.
+				p
+					| Materials for The Starfighter are provided in form of substance .sbsar files, which contain procedural materials allowing for significant customization.
+					br
+					| Default materials, set up using Unity's standard shader are also supplied.
+				p
+					strong Customization
+				ol
+					li 2 main, plain material choices - painted metal and plastics
+					li a mix of both, where the plastic parts act as accents to the painted metal parts
+					li a 4th camouflage material
+					li control emissive amount and color
+					li control cockpit color
+					li parametric dirt, with controlls for dirt level, conrast and grounge amount
+					li deferred decals the for placement of custom graphics
+				p
+				p
+					strong The Probe
+				table
+					tbody
+						tr
+							td(width='50%')
+								a(href='/img/projects/starfighter10.gif')
+									img(src='/img/projects/starfighter10.gif', width='283')
+							td(style='padding: 5px;', valign='top')
+								p
+									| The Starfighter has a socket on the underside for a previous of our assets, called '
+									strong
+										a(href='https://machin3.io/product-the-probe.html') The Probe
+									| '.
+								p
+									| Both assets can be used together. The Starfighter has an extra animation for the probe release mechanism.
+		.row(style="margin-top:150px;")
+			.col-sm-12
+				h3.work-details-title.font-alt Asset Stores
+			.col-sm-3
+				.font-inc.pull-left
+					strong Currently available on: 
+			.col-sm-6
+				.text-center
+					- var child = {path:linkpath} ;
+					include ../links
+			.col-sm-3

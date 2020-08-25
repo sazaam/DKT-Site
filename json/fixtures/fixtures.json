@@ -4,17 +4,20 @@
         "id": 9,
         "name": "home",
         "article": {
-            "id": 2,
-            "name": "home",
-
-            "maincolor":"#000000",
+            "name": "DKT",
+            "fullname": "Dynamic Korea Technology",
             
-            "title": "span.block HEXARMOR\n        sup.sizeXXSm.rel TM \n        .block",        
-            "desc":"home",
+            "mainimage":"/img/dkt_bg.png",
+                    
+            "product":{
+                "name":"Technology",
+                "desc":"PROVIDES"
+            }
 
-            "template": ".txtC.unit.simple.simpleLeft.sizeXLg\n        .logo.whitelogo.context.typo.txtC.sizeXXXLg.VpadXXXLg.marginAuto\n            a.hexarmorname.link.block.fullW.fullH.bold.sizeLg(href=\"#/en/products/\")\n                span\n                    | HEXARMOR \n                    sup.sizeXXSm.rel.top4 TM\n\n    .txtC.lastUnit\n        .aboutbox.VpadXXXLg.HpadXXXLg.rel.txtL\n            .abouttitle.graybordered.sizeXXXLg.padXXXLg Idea, Technology, Creation\n\n            article\n                .desc.rel.graybordered\n                    p.sizeSm.dark.txtJ\n                        | As modernity imposes us new constraints and challenges, \n                        | while also constantly offering patterns and techniques, \n                        | we, maintaining R&D to Machinery production flows seek for innovative and adapted, durable materials.\n                    h6.TmarLg.sizeR.txtJ\n                        | NanoTech, at the service off Safety, Protection and Longevity.\n",
-            "section":9
         },
+
+
+
         "position": 2,
         "level": 1
     },
@@ -28,72 +31,131 @@
         "article":{
             "name": "products",
 
-            "mainimage":"css/skin/5.png",
+            "mainimage":"/img/full_machine_002.png",
+                    
+            "product":{
+                "name":"Machinery",
+                "desc":"DKT Certificated Coating Professional"
+            }
             
-            
-            "title": "span.block HEXARMOR\n        sup.sizeXXSm.rel TM \n        .block Products",
-            
-            
-            "template": ".txtC.unit.simple.simpleLeft.sizeXLg\n        .logo.whitelogo.context.typo.txtC.sizeXXXLg.VpadXXXLg.marginAuto\n            a.hexarmorname.link.block.fullW.fullH.bold.sizeLg(href=\"#/en/products/\")\n                span\n                    | HEXARMOR \n                    sup.sizeXXSm.rel.top4 TM\n\n    .txtC.lastUnit\n        .aboutbox.VpadXXXLg.HpadXXXLg.rel.txtL\n            .abouttitle.graybordered.sizeXXXLg.padXXXLg Idea, Technology, Creation\n\n            article\n                .desc.rel.graybordered\n                    p.sizeSm.dark.txtJ\n                        | As modernity imposes us new constraints and challenges, \n                        | while also constantly offering patterns and techniques, \n                        | we, maintaining R&D to Machinery production flows seek for innovative and adapted, durable materials.\n                    h6.TmarLg.sizeR.txtJ\n                        | NanoTech, at the service off Safety, Protection and Longevity.\n",
-            "section": 11
         },
         
         
         "children": [
             {
                 "id": 12,
-                "name": "ppf",
+                "name": "sl_001",
                 
                 "position": 1,
                 "level": 2,
                 
                 "article":{
-                    "name": "ppf",
+                    "name": "sl 001 Series",
                     
-                    "mainimage":"css/skin/7.png",
+                    "mainimage":"/img/sl_001.png",
                     
                     "product":{
-                        "name":"PPF",
-                        "number":"46846-lhXSm",
-                        "unit":"510",
+                        "name":"SLATER 4201-S",
                         "desc":"The Future of Protective Coating Film"
                     },
 
-                    "title": "span.block HEXARMOR\n        sup.sizeXXSm.rel TM \n        | &nbsp;&nbsp;PPF",
-
-
-                    "template": ".txtC.unit.simple.simpleLeft.sizeXLg\n        .logo.whitelogo.context.typo.txtC.sizeXXXLg.VpadXXXLg.marginAuto\n            a.hexarmorname.link.block.fullW.fullH.bold.sizeLg(href=\"#/en/products/\")\n                span\n                    | HEXARMOR \n                    sup.sizeXXSm.rel.top4 TM\n\n    .txtC.lastUnit\n        .aboutbox.VpadXXXLg.HpadXXXLg.rel.txtL\n            .abouttitle.graybordered.sizeXXXLg.padXXXLg Idea, Technology, Creation\n\n            article\n                .desc.rel.graybordered\n                    p.sizeSm.dark.txtJ\n                        | As modernity imposes us new constraints and challenges, \n                        | while also constantly offering patterns and techniques, \n                        | we, maintaining R&D to Machinery production flows seek for innovative and adapted, durable materials.\n                    h6.TmarLg.sizeR.txtJ\n                        | NanoTech, at the service off Safety, Protection and Longevity.\n",
-                    "section": 12
+                    "body":{
+                        "id": 35,
+                        "name": "uw_001_desc",
+                        "vars":{
+                            "toto":"tata",
+                            "linkpath":"/contact/"
+                        },
+                        "tpl":["./components/tpl/uw_001_desc"]
+                    }
+                    
                 }
             },
             {
                 "id": 32,
-                "name": "nanometablack",
+                "name": "lm_001",
                 
-                "position": 2,
+                "position": 1,
                 "level": 2,
                 
                 "article":{
-                    "name": "nanometablack",
- 
-                    "mainimage":"css/skin/4bis.png",
+                    "name": "lm 001 Series",
                     
-
+                    "mainimage":"/img/lm_001.png",
                     
                     "product":{
-                        "name":"PPF",
-                        "number":"46846-lhXSm",
-                        "unit":"510",
-                        "desc":"Sunrays and Heat Deflecting Film"
+                        "name":"LAMINATOR 6001-S",
+                        "desc":"DKT Coating Machinery"
                     },
 
+                    "body":{
+                        "id": 35,
+                        "name": "uw_001_desc",
+                        "vars":{
+                            "toto":"tata",
+                            "linkpath":"/contact/"
+                        },
+                        "tpl":["./components/tpl/uw_001_desc"]
+                    }
 
-                    "title": "span.block HEXARMOR\n        sup.sizeXXSm.rel TM \n        | &nbsp;&nbsp;NANOMETABLACK",
+                }
+            },
+            {
+                "id": 35,
+                "name": "uw_001",
+                
+                "position": 1,
+                "level": 2,
+                
+                "article":{
+                    "name": "uw 001 Series",
+                    
+                    "mainimage":"/img/uw_001.png",
+                    
+                    "product":{
+                        "name":"Unwinder/Rewinder 9001-S",
+                        "desc":"DKT Coating Machinery"
+                    },
 
+                    "body":{
+                        "id": 35,
+                        "name": "uw_001_desc",
+                        "vars":{
+                            "toto":"tata",
+                            "linkpath":"/contact/"
+                        },
+                        "tpl":["./components/tpl/uw_001_desc"]
+                    }
 
+                }
+            },
+            {
+                "id": 35,
+                "name": "uv_001",
+                
+                "position": 1,
+                "level": 2,
+                
+                "article":{
+                    "name": "uv 001 Series",
+                    
+                    "mainimage":"/img/uv_001.png",
+                    
+                    "product":{
+                        "name":"UV Coater 12001-S",
+                        "desc":"DKT Coating Machinery"
+                    },
 
-                    "template": ".txtC.unit.simple.simpleLeft.sizeXLg\n        .logo.whitelogo.context.typo.txtC.sizeXXXLg.VpadXXXLg.marginAuto\n            a.hexarmorname.link.block.fullW.fullH.bold.sizeLg(href=\"#/en/products/\")\n                span\n                    | HEXARMOR \n                    sup.sizeXXSm.rel.top4 TM\n\n    .txtC.lastUnit\n        .aboutbox.VpadXXXLg.HpadXXXLg.rel.txtL\n            .abouttitle.graybordered.sizeXXXLg.padXXXLg Idea, Technology, Creation\n\n            article\n                .desc.rel.graybordered\n                    p.sizeSm.dark.txtJ\n                        | As modernity imposes us new constraints and challenges, \n                        | while also constantly offering patterns and techniques, \n                        | we, maintaining R&D to Machinery production flows seek for innovative and adapted, durable materials.\n                    h6.TmarLg.sizeR.txtJ\n                        | NanoTech, at the service off Safety, Protection and Longevity.\n",
-                    "section": 12
+                    "body":{
+                        "id": 35,
+                        "name": "uw_001_desc",
+                        "vars":{
+                            "toto":"tata",
+                            "linkpath":"/contact/"
+                        },
+                        "tpl":["./components/tpl/uw_001_desc"]
+                    }
+
                 }
             }
         ]
@@ -105,67 +167,18 @@
         "article": {
             "id": 2,
             "name": "about",
+
+            "mainimage":"/img/full_machine_001.png",
+                    
+            "product":{
+                "name":"Total Solution Provider",
+                "desc":"home.title"
+            }
             
-            "mainimage":"css/skin/anim/giphy_3.gif",
-            "maincolor":"#bbb",
-            
-            "title": "Who we are",
-            "desc":"span HEXARMOR\n   sup.sizeXXSm.rel.top4 TM",
-            "punchline":"Idea, Technology, Creation",
-            "intro_1":"As modernity imposes us new constraints and challenges, while also constantly offering patterns and techniques, we, maintaining R&D to Machinery production flows seek for innovative and adapted, durable materials.",
-            "intro_2":"NanoTech, at the service of Safety, Protection and Longevity.",
-            
-            
-            "template": ".txtC.unit.simple.simpleLeft.sizeXLg\n        .logo.whitelogo.context.typo.txtC.sizeXXXLg.VpadXXXLg.marginAuto\n            a.hexarmorname.link.block.fullW.fullH.bold.sizeLg(href=\"#/en/products/\")\n                span\n                    | HEXARMOR \n                    sup.sizeXXSm.rel.top4 TM\n\n    .txtC.lastUnit\n        .aboutbox.VpadXXXLg.HpadXXXLg.rel.txtL\n            .abouttitle.graybordered.sizeXXXLg.padXXXLg Idea, Technology, Creation\n\n            article\n                .desc.rel.graybordered\n                    p.sizeSm.dark.txtJ\n                        | As modernity imposes us new constraints and challenges, \n                        | while also constantly offering patterns and techniques, \n                        | we, maintaining R&D to Machinery production flows seek for innovative and adapted, durable materials.\n                    h6.TmarLg.sizeR.txtJ\n                        | NanoTech, at the service off Safety, Protection and Longevity.\n",
-            "section":9
         },
         
         "position": 1,
-        "level": 1,
-        "children": [
-            {
-                "id": 16,
-                "name": "intro",
-                "template": null,
-                "position": 1,
-                "level": 2,
-                "article": {
-                    "id": 3,
-                    "name": "about_intro",
-                    
-                    "maincolor":"#222222",
-                    
-                    "title": "Introduction",
-                    "desc":"Who We Are",
-                    "text":"As modernity imposes us new constraints and challenges, while also constantly offering patterns and techniques, we, maintaining R&D to Machinery production flows seek for innovative and adapted, durable materials.",
-                    
-                    "template": ".txtC.unit.simple.simpleLeft.sizeXLg\n        .logo.whitelogo.context.typo.txtC.sizeXXXLg.VpadXXXLg.marginAuto\n            a.hexarmorname.link.block.fullW.fullH.bold.sizeLg(href=\"#/en/products/\")\n                span\n                    | HEXARMOR \n                    sup.sizeXXSm.rel.top4 TM\n\n    .txtC.lastUnit\n        .aboutbox.VpadXXXLg.HpadXXXLg.rel.txtL\n            .abouttitle.graybordered.sizeXXXLg.padXXXLg Idea, Technology, Creation\n\n            article\n                .desc.rel.graybordered\n                    p.sizeSm.dark.txtJ\n                        | As modernity imposes us new constraints and challenges, \n                        | while also constantly offering patterns and techniques, \n                        | we, maintaining R&D to Machinery production flows seek for innovative and adapted, durable materials.\n                    h6.TmarLg.sizeR.txtJ\n                        | NanoTech, at the service off Safety, Protection and Longevity.\n",
-                    "section": 16
-                }
-            },
-            {
-                "id": 15,
-                "name": "clients",
-                "template": null,
-                "position": 2,
-                "level": 2,
-                "article": {
-                    "id": 4,
-                    "name": "about_clients",
-                    "title": "Clients",
-                    
-                    "video":"css/skin/videos/vid.mp4", 
-                    "maincolor":"#000000",
-                    
-                    "desc":"Clients",
-                    "text":"Just say we have a lot of clients",
-
-                    "template": ".txtC.unit.simple.simpleLeft.sizeXLg\n        .logo.whitelogo.context.typo.txtC.sizeXXXLg.VpadXXXLg.marginAuto\n            a.hexarmorname.link.block.fullW.fullH.bold.sizeLg(href=\"#/en/products/\")\n                span\n                    | HEXARMOR \n                    sup.sizeXXSm.rel.top4 TM\n\n    .txtC.lastUnit\n        .aboutbox.VpadXXXLg.HpadXXXLg.rel.txtL\n            .abouttitle.graybordered.sizeXXXLg.padXXXLg Idea, Technology, Creation\n\n            article\n                .desc.rel.graybordered\n                    p.sizeSm.dark.txtJ\n                        | As modernity imposes us new constraints and challenges, \n                        | while also constantly offering patterns and techniques, \n                        | we, maintaining R&D to Machinery production flows seek for innovative and adapted, durable materials.\n                    h6.TmarLg.sizeR.txtJ\n                        | NanoTech, at the service off Safety, Protection and Longevity.\n",
-                    "section": 16
-                }
-            }
-            
-        ]
+        "level": 1
     },
 	
 	{
@@ -175,17 +188,17 @@
         "level": 1,
 
         "article":{
-            "name": "products",
-            "title": "products Conference",
+            "name": "contact",
             
-            "maincolor":"#8b5c5c",
-            
-            "desc":"Contact us",
-            "text":"As modernity imposes us new constraints and challenges, while also constantly offering patterns and techniques, we, maintaining R&D to Machinery production flows seek for innovative and adapted, durable materials.",
+            "mainimage":"/img/uv_001.png",
                     
+            "product":{
+                "name":"contact",
+                "desc":"home.title"
 
-            "template": ".txtC.unit.simple.simpleLeft.sizeXLg\n        .logo.whitelogo.context.typo.txtC.sizeXXXLg.VpadXXXLg.marginAuto\n            a.hexarmorname.link.block.fullW.fullH.bold.sizeLg(href=\"#/en/products/\")\n                span\n                    | HEXARMOR \n                    sup.sizeXXSm.rel.top4 TM\n\n    .txtC.lastUnit\n        .aboutbox.VpadXXXLg.HpadXXXLg.rel.txtL\n            .abouttitle.graybordered.sizeXXXLg.padXXXLg Idea, Technology, Creation\n\n            article\n                .desc.rel.graybordered\n                    p.sizeSm.dark.txtJ\n                        | As modernity imposes us new constraints and challenges, \n                        | while also constantly offering patterns and techniques, \n                        | we, maintaining R&D to Machinery production flows seek for innovative and adapted, durable materials.\n                    h6.TmarLg.sizeR.txtJ\n                        | NanoTech, at the service off Safety, Protection and Longevity.\n",
-            "section": 20
+                
+            }
+
         }
     }
 ]

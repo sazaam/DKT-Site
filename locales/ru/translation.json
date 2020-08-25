@@ -1,0 +1,11 @@
+{
+    "home": {
+        "title": "Книжный магазин",
+        "sazaam":"Обновить в списке $t(home.title)",
+        "total": "Всего в списке {{counter}} книг",
+        "buttonText": "Обновить страницу",
+        "buttonHTML": "<button onClick='window.location.reload();'>$t(buttonText)</button>"
+    },
+    "Something for Nothing": "Кое что задаром",
+    "Harry Potter and the Philosopher's Stone": "Гарри Поттер и Философский камень"
+}

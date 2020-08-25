@@ -1,19 +1,57 @@
 
 var express = require('express') ;
 
-var path = require('path') ;
-var cookieParser = require('cookie-parser') ;
-var routes = require('./routes/') ;
-var routesHTML = require('./routes/html') ;
+var async  = require('express-async-await')
 var createError = require('http-errors') ;
+var cookieParser = require('cookie-parser') ;
+var fetch = require('node-fetch')
+
+var path = require('path') ;
+var routes = require('./routes/') ;
+
+//var routesHTML = require('./routes/html') ;
+
 var fs = require('fs') ;
+
 var jade = require('jade') ;
 
-var async  = require('express-async-await')
-var fetch = require('node-fetch')
+
+
+
+var i18next = require('i18next') ;
+var i18nextMiddleware = require('i18next-http-middleware') ;
+var Backend = require('i18next-node-fs-backend') ;
+
+
+
+i18next
+	.use(Backend)
+	.use(i18nextMiddleware.LanguageDetector)
+	.init({
+		// debug:true,
+		backend: {
+			loadPath:
+				__dirname + '/locales/{{lng}}/{{ns}}.json',
+		},
+		detection: {
+			order: ['querystring', 'cookie'],
+			caches: ['cookie']
+		},
+		saveMissing: true,
+		fallbackLng: 
+			['en'],
+		preload: 
+			['en', 'ru']
+	}) ;
 
 var app = express() ;
 
+app.use(
+    i18nextMiddleware.handle(i18next, {
+      ignoreRoutes: ["/foo"], // or function(req, res, options, i18next) { /* return true to ignore */ }
+      removeLngFromUrl: false
+    })
+  );
 
 // view engine setup to jade
 app.set('views', path.join(__dirname, 'public', 'jade')) ;
@@ -34,7 +72,6 @@ app.use('/html/', function(req, res, next) {
  */
 
 // const distantdatasurl = 'http://localhost:1337/sections/?_sort=position:ASC&level=1' ;
-
 
 
 // app.use('/json/', async(req, res, next) => {
@@ -62,9 +99,12 @@ app.use('/html/', function(req, res, next) {
   */
  
  // DYNAMIC VERSION (Node Express Jade)
- app.use('/', express.static(path.join(__dirname, 'public'))) ;
+ app.use(express.static(path.join(__dirname, 'public'))) ;
  
- const localdatasurl = './json/fixtures/fixtures.json' ;
+ 
+ 
+ 
+const localdatasurl = './json/fixtures/fixtures.json' ;
 
 
 
@@ -83,7 +123,51 @@ const AppendNominatedVarsObject = (article, obj, variablename) => {
   return o ;
 } */
 
+/* 
+app.use('/:lang/', async(req, res, next) => {
+  
+  console.log('YESSSS', req.params) ;
+  
+  
+  try {
+   
+    // console.log('REQUIRING ON ROOT : ', req.url, 'params : ' , req.params) ;
+    // res.render
+
+  } catch (err) {
+    console.log(err)
+  }
+  
+}) ;
+ */
+ 
+ 
+ 
+ 
+ 
+ 
+let formatHashes = (arr, parent) => {
+	
+	// console.log(typeof arr) ;
+	
+	parent = parent || '/' ;
+	
+	let l = arr.length ;
+	for(let i = 0 ; i < l ; i++){
+		let child = arr[i] ;
+		child.path = parent + child.name + '/' ;
+		if(!!child.children && !!child.children.length) formatHashes(child.children, child.path) ;
+	}
+	
+	
+	return arr ;
+
+}
+
 app.use('/', async(req, res, next) => {
+  
+  
+  
   
   try {
    
@@ -91,7 +175,7 @@ app.use('/', async(req, res, next) => {
     // let response = await fetch(distantdatasurl) ;
     // let sections = await response ;
 
-    let sections = fs.readFileSync(localdatasurl,'utf8') ;
+    let sections = formatHashes(JSON.parse(fs.readFileSync(localdatasurl,'utf8'))) ;
     
     let Data = {
       'sections':{
@@ -99,17 +183,18 @@ app.use('/', async(req, res, next) => {
         data:sections
       }
     } ;
+	// req.i18n.changeLanguage("ru");
+	let lang = req.i18n.language ;
     // console.log('App Started... ') ;
     console.log('REQUIRING ON ROOT : ', req.url, 'params : ' , req.params) ;
     // console.log('REQUIRING ON ROOT : ', req.url, 'params : ' , req.params) ;
-    res.render(path.join(__dirname, 'public/jade/index'), { title: 'DKT - Dynamic Korea Technology', Data:Data , render: jade.render, renderFile: jade.renderFile/* , AppendNominatedVarsObject: AppendNominatedVarsObject */}) ;
+    res.render(path.join(__dirname, 'public/jade/index'), {lang:req.language, t:req.t, title: 'DKT - Dynamic Korea Technology', Data:Data , render: jade.render, renderFile: jade.renderFile/* , AppendNominatedVarsObject: AppendNominatedVarsObject */}) ;
 
   } catch (err) {
     console.log(err)
   }
   
 }) ;
-
 
 
 

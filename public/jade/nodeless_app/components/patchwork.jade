@@ -1,0 +1,26 @@
+.fullH.whiteBG
+	.context.padXXXLg.Bpad0.sizeLg.txtR
+		.hs-title-size-3.font-alt.m-b-20.context.txtL.white
+			span.block.floatR.round.both.dkt= t("Products ")
+		.hs-title-size-1.font-inc.LmarXXSm.BmarXXLg.dark= t("Overview ")
+	.patchwork.context.txtC
+		- if(!!target_sections && target_sections.length){
+			ul.works-grid.works-grid-masonry.works-grid-2.works-hover-w
+				- var ch = target_sections ;
+				- var l = ch.length ;
+				- var cl = l < 3 ? "size1of2" : "size1of4" ;
+				- for(var  i = 0 ; i < l ; i++){
+					- var child = ch[i] ;
+					- var article = child.article ;
+					li.work-item.rel.context(class= cl)
+						a.data.none(href= "/" + lang + "/products/" + child.name + "/")
+						.work-image
+							img(src= article.mainimage, alt='')
+						.work-caption
+							//- .work-descr= child.path
+							.work-descr.ls1= t(article.product.desc) 
+							h3.work-title.uppercase.Bmar.ls1= t(article.product.name) 
+							
+							include ./links
+				- }
+		- }	

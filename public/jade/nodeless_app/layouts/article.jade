@@ -1,0 +1,13 @@
+- var params = {t:t, lang:lang, render: render, renderFile: renderFile,  data_sections:data_sections, data_section:data_section, product_section:product_section, products_section:products_section } ;
+- for(var s in product_section.article.body.vars){
+	- params[s] = product_section.article.body.vars[s] ;
+- }
+- var tpl = product_section.article.body.tpl ;
+- var url = './public/jade/nodeless_app/' + tpl + '.jade' ; 
+!{ renderFile(url, params) }
+	
+
+	
+	
+	
+	

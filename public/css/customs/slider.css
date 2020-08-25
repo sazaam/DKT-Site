@@ -67,12 +67,12 @@ General Styles
 	
 }
 
-.hero-slider {
+.slideshow {
 	position: relative;
 	overflow: hidden;
 }
 
-.hero-slider .slidebg {
+.slideshow .slidebg {
 	background-position: center;
 	position: absolute;
 	left: 0;
@@ -85,7 +85,7 @@ General Styles
 	        background-size: cover;
 }
 
-/* .hero-slider > .slides > li .slidebg.slide-zoom { */
+/* .slideshow > .slides > li .slidebg.slide-zoom { */
 	/* -webkit-transform: scale(1.1); */
 	   /* -moz-transform: scale(1.1); */
 	    /* -ms-transform: scale(1.1); */
@@ -93,7 +93,7 @@ General Styles
 	        /* transform: scale(1.1); */
 /* } */
 
-/* .hero-slider > .slides > li .slidebg { */
+/* .slideshow > .slides > li .slidebg { */
 	/* -webkit-transition: transform 10s ease; */
 	   /* -moz-transition: transform 10s ease; */
 	    /* -ms-transition: transform 10s ease; */
@@ -101,24 +101,24 @@ General Styles
 	        /* transition: transform 10s ease; */
 /* } */
 
-.hero-slider-dark .flex-direction-nav .flex-prev {
+.slideshow-dark .flex-direction-nav .flex-prev {
 	opacity: 0;
 	left: 0;
 	cursor: url(../images/prev-dark.png), e-resize;
 }
 
-.hero-slider-dark .flex-direction-nav .flex-next {
+.slideshow-dark .flex-direction-nav .flex-next {
 	opacity: 0;
 	right: 0;
 	cursor: url(../images/next-dark.png), e-resize;
 }
 
-.hero-slider-dark .flex-control-nav > li > a {
+.slideshow-dark .flex-control-nav > li > a {
 	border: 1px solid #000;
 }
 
-.hero-slider-dark .flex-control-nav > li > a:hover,
-.hero-slider-dark .flex-control-nav > li > a.flex-active {
+.slideshow-dark .flex-control-nav > li > a:hover,
+.slideshow-dark .flex-control-nav > li > a.flex-active {
 	background: #000;
 }
 
@@ -126,31 +126,31 @@ General Styles
 Hero Slider
 ------------------------------------------------------------------- */
 
-.hero-slider {
+.slideshow {
 	margin: 0!important;
 }
 
-.hero-slider .slides > li {
+.slideshow .slides > li {
 	display: none;
 	-webkit-backface-visibility: hidden;
 }
 
-.hero-slider,
-.hero-slider .flex-viewport {
+.slideshow,
+.slideshow .flex-viewport {
 	height: 100% !important;
 	width: 100%;
 	padding: 0;
 	margin: 0;
 }
 
-.hero-slider .slides {
+.slideshow .slides {
 	height: 100% !important;
 	-webkit-transition-delay: 1s;
 	   -moz-transition-delay: 1s;
 	        transition-delay: 1s;
 }
 
-.hero-slider .slides li.bg-dark {
+.slideshow .slides li.bg-dark {
 	background-position: center center;
 	background-repeat: no-repeat;
 	height: 100% !important;

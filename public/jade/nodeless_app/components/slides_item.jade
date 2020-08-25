@@ -1,0 +1,36 @@
+li.bg-dark(style='width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;')
+	.slidebg.slide-zoom(style='background-image:url(' + article.mainimage + ')')
+	- if(child.name == 'home'){
+		.hs-caption.container(style='top: 0px; display: table;')
+			.caption-content.center
+				h1.cover.biglogo.txtC
+					span.hidden= t(article.name)
+				span.block.uppercase.montserrat.dkt(style='margin-top: -25px; margin-left: 4px; font-size:15.5px;')= t(article.fullname)
+				.hs-title-size-3.font-alt.m-b-20
+					span.btn.round.left.dktBG= t(article.product.name)
+					span.btn.btn-border-slider-black.round.right= t(article.product.desc)
+	- }else if(child.name == 'products'){
+		.hs-caption.container(style='top: 0px; display: table;')
+			.caption-content.left.vmiddle
+				.hs-title-size-3.font-alt.m-b-20.context
+					span.whiteBG.block.HpadXSm.round.both.dkt= t(article.product.name)
+				.hs-title-size-1.font-inc.LmarXXSm.Vmar.white= t(article.product.desc)
+				include  ./links
+
+	- }else if(child.name == 'about'){
+		.hs-caption.container(style='top: 0px; display: table;')
+			.caption-content.right.vmiddle
+				.hs-title-size-3.font-alt.m-b-20.context
+					span.whiteBG.block.floatL.HpadXSm.round.both.dkt= t(article.product.name)
+				.hs-title-size-1.font-inc.LmarXXSm.Vmar.white= t(article.product.desc)
+				include  ./links
+	- }else{
+		- var even = i % 2 == 0 ;
+		- var cl = even ? 'right' : 'left' ;
+		.hs-caption.container(style='top: 0px; display: table;')
+			.caption-content(class=cl)
+				.hs-title-size-3.font-alt.m-b-20= t(article.product.name)
+				.hs-title-size-1.font-inc.Bmar= t(article.product.desc)
+
+				include  ./links
+	- }

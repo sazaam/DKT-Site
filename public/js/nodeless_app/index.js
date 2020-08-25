@@ -2,6 +2,7 @@
 (function(){
 	
 var express = require('Express') ;
+// var struct = require('./struct') ;
 var routes = require('./routes') ;
 
 var app = express() ;
@@ -16,35 +17,34 @@ app
 }) ;
 
 app
-.listen('load', function(e){
-	// PAGE LOAD
-	
-		app.discard('load', arguments.callee) ;
+	.listen('load', function(e){
+		// PAGE LOAD
 		
-		// WHEN ADDRESS SYSTEM REALLY STARTS
-		if(app.isReady()){
-			app
-			.createClient()
-			.get('/', routes)
-			.initJSAddress() ;
+			app.discard('load', arguments.callee) ;
 			
-		}
-		
-		else { // WHEN REAL DEEPLINK ARRIVES WITHOUT HASH, RELOAD W/ HASH
-		
-			app.createClient() ;
-		}
-		
-
+			// WHEN ADDRESS SYSTEM REALLY STARTS
+			if(app.isReady()){
+				app
+				.createClient()
+				.get('/', routes)
+				.initJSAddress() ;
+				
+			}
 			
-	})
-	.listen('unload', function(e){
-		
+			else { // WHEN REAL DEEPLINK ARRIVES WITHOUT HASH, RELOAD W/ HASH
+			
+				app.createClient() ;
+			}
+			
 
-		// PAGE UNLOAD
-		app.discard('unload',arguments.callee) ;
-		//app.destroy() ;
-	}) ;	
+				
+		})
+		.listen('unload', function(e){
+			
+			// PAGE UNLOAD
+			app.discard('unload',arguments.callee) ;
+			//app.destroy() ;
+		}) ;	
 	
 
 })()

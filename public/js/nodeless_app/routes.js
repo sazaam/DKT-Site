@@ -5,105 +5,13 @@
 // on toggle (both opening / closing) and focus events
 
 
-var makeTemplateFocus = function(func){
-
-	return function(e){
-		res = e.target ;
-		if(e.type == 'focusIn'){
-			func(e) ;
-		}else{
-			func(e) ;
-		}
-	}
-
-} ;
-
-var makeTemplateToggle = function(func){
-
-	return function(e){
-		
-		res = e.target ;
-
-		if(res.opening){
-
-			// IF NO LOADINGS ARE REQUIRED
-			if(!res.userData.urljade && !res.userData.urljson){
-				func(e) ;
-			}
-			
-			
-			if(!res.template){ // IF TEMPLATE IS NOT LOADED ALREADY
-				trace(res.userData.urljade)
-				// FETCHING DATA // (ASYNC) ONLY ONCE
-				res.render(
-					res.userData.urljade, 
-					// res.fetch(
-					// 	res.userData.urljson, 
-					// 	res.userData.parameters
-					// ), 
-					res.userData.parameters['sections'],
-					function(){
-						func(e) ;
-				})	
-			}
-		}else{
-			
-			func(e) ;
-
-		}
-	}
-
-} ;
-
 
 var graphics = require('./graphics/index.js') ;
+
 var focus = graphics.focus ;
 var toggle = graphics.toggle ;
 
 
-
-/* 
-var sects = [] ;
-
-
-var createSect = function(sec){
-	var name = sec.name ; 
-	var template = sec.template ;
-
-	var children = sec.children ;
-	var ch = [] ;
-	
-	if(!!children){
-		var l = children.length ;
-		for(i = 0 ; i < l ; i ++){
-			var child = children[i] ;
-			ch[i] = createSect(child) ;
-		}
-	}
-	trace(template.jade)
-
-	return ({
-		children:ch,
-		name:name,
-		'@jade':template.jade,
-		"@json": '/datas/' + name + '/',
-		"@focus":sec.level == 1 ? focus : inside_focus,
-		"@toggle":sec.level == 1 ? toggle : inside_toggle
-	})
-} ;
-
-for(var ss = 0 ; ss < data_sections.length ; ss ++) {
-	var sec = data_sections[ss] ;
-	
-	// REMOVE LATER...
-	sec.focus = focus ;
-	sec.toggle = toggle ;
-	
-
-	sects[ss] = createSect(sec) ;
-}
-trace('sects', sects)
- */
 var sects = [
 	{
 		name:'home',
@@ -120,36 +28,32 @@ var sects = [
 		"@toggle":toggle,
 		children:[
 			{
-				name:'ppf',
-				"@jade": '/jade/products_product',
+				name:'sl_001',
+				"@jade": '/jade/product',
 				"@json": '/products/{$1}',
 				"@focus":focus,
-				"@toggle":toggle,
-				children:[
-					{
-						name:'review',
-						"@jade": '/jade/products_product_closeup',
-						"@json": '/products/{$1}/article/',
-						"@focus":focus,
-						"@toggle":toggle
-					}
-				]
+				"@toggle":toggle
 			},
 			{
-				name:"nanometablack",
-				"@jade": '/jade/products_product',
+				name:'lm_001',
+				"@jade": '/jade/product',
 				"@json": '/products/{$1}',
 				"@focus":focus,
-				"@toggle":toggle,
-				children:[
-					{
-						name:'review',
-						"@jade": '/jade/products_product_closeup',
-						"@json": '/products/{$1}/article/',
-						"@focus":focus,
-						"@toggle":toggle
-					}
-				]
+				"@toggle":toggle
+			},
+			{
+				name:'uw_001',
+				"@jade": '/jade/product',
+				"@json": '/products/{$1}',
+				"@focus":focus,
+				"@toggle":toggle
+			},
+			{
+				name:'uv_001',
+				"@jade": '/jade/product',
+				"@json": '/products/{$1}',
+				"@focus":focus,
+				"@toggle":toggle
 			}
 		]
 	},

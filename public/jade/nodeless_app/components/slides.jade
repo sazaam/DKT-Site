@@ -1,0 +1,26 @@
+.slideshow.module-parallax.module-fade.module-full-height.fullH
+    - if(!!target_sections && target_sections.length){
+        ul.slides
+            - var ch = target_sections ;
+            - var l = ch.length ;
+            - for(var  i = 0 ; i < l ; i++){
+                - var child = ch[i] ;
+                - var article = child.article ;
+                
+                include ./slides_item
+            - }
+            
+
+        ol.flex-control-nav.flex-control-paging
+            - var ch = target_sections ;
+            - var l = ch.length ;
+            - for(var  i = 0 ; i < l ; i++){
+                li
+                    a= i + 1
+            - }
+        ul.flex-direction-nav
+            li
+                a.flex-prev(href='#')
+            li
+                a.flex-next(href='#')
+    - }

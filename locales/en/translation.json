@@ -1,0 +1,9 @@
+{
+    "home": {
+        "title": "Book shop",
+        "sazaam":"This is simple string that contains $t(home.title)",
+        "total": "There are {{counter}} books in the list",
+        "buttonText": "Refresh button",
+        "buttonHTML": "<button onClick='window.location.reload();'>$t(buttonText)</button>"
+    }
+}

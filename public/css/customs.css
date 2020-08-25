@@ -26,14 +26,12 @@
 
 .btn.btn-border-slider-white {
     background: white none repeat scroll 0 0;
-    opacity: 0.8;
     border: 1px solid #000;
     color: #000;
 }
 
 .btn.btn-border-slider-black {
     background: black none repeat scroll 0 0;
-    opacity: 0.8;    
     border: 1px solid #000;
     color: #fff;
 
@@ -59,18 +57,20 @@ red {
     font-weight: 800;
 }
 
+.slides{background:#8c8c8c;}
+
 .height50{height:50%;}
 
 
 
-.navbar li.home a{
+.navbar .home a{
 	width:100px;
 	height:100%;
-	background:url(./skin/dkt_white.png) no-repeat left top;
+	background:url(./skin/dkt_white.png) no-repeat left -50px;
 	
 }
 
-.navbar li.home a span{
+.navbar .home a span{
 	visibility:hidden;
 }
 
@@ -109,10 +109,11 @@ red {
 	/* -moz-transition: transform 10s ease; */
 	/* -ms-transition: transform 10s ease; */
 	/* -o-transition: transform 10s ease; */
-	transition: transform 10s ease;
+	
 }
 .inited .slide-zoom{
 	transform:scale(1.1);
+	transition: transform 10s ease;
 }
 .round.left{
 	border-radius:6px 0 0 0;
@@ -145,6 +146,9 @@ red {
 .overnav a{
 	color:#888;
 }
+.overnav .home a{
+	background-position:left top;
+}
 
 .cover{
 	-webkit-background-size: cover;
@@ -155,9 +159,8 @@ red {
 
 
 .biglogo{
-	height:100%;
-	background:url(/img/logo_big_red.png) no-repeat left top;
-	background-position:50% 50%;
+	height:100px;
+	background:url(/img/logo_big_red.png) no-repeat 50% 50%;
 }
 
 
@@ -168,3 +171,50 @@ red {
 .dktBG{
 	background:#9d1639;
 }
+.work-item{
+	cursor:pointer;
+	
+}
+.half .work-item{
+	/* width:25%; */
+	
+}
+.half .work-item *{font-size:90% !important;}
+
+.half .darkBG{
+	background:#8C8C8C !important;
+}
+.extra.height50 .caption-content{
+	padding:0 0 35px 0 !important;
+}
+
+.hs-title-size-3 span.whiteBG{
+	float:left;
+}
+
+.right .hs-title-size-3 span.whiteBG{
+	float:right;
+}
+.flex-control-nav .active a{
+	
+	background:white;
+	
+}
+
+.slideshow .caption-content.vmiddle{
+	vertical-align:middle !important;
+}
+
+.home_patchwork .work-item{
+	width:50% !important;
+}
+
+html:lang(ru) .lang_ru a, html:lang(en) .lang_en a{
+	color:#9d1639 !important;
+	background:white;
+}
+
+.page{
+	padding-bottom:150px;
+}
+

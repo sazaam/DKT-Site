@@ -3,226 +3,155 @@
 - var prev = ch[ch.indexOf(product_section)-1] || ch[ch.length - 1] ;
 
 
-.extra.context(style='height:75%;background:#8C8C8C url(' + product_section.article.mainimage + ') no-repeat 50% 50%;')
+.extra.context.rel(style='height:75%;background:#8C8C8C url(' + product_section.article.mainimage + ') no-repeat 50% 50%;')
 	.hs-caption.container.rel(style='top: 0px; display: table;')
-		//- .caption-content.left(style='vertical-align:bottom;padding-bottom:7%')
-			.context.sizeR.txtL.round.both.dkt.dktBG.inlineblock.widthauto(style="margin-top:5em")
-				.sizeSm.font-inc.white.padXXLg.VpadXSm= t('prev')
-				h5.font-alt.m-b-20.context.txtL.whiteBG.pad.mar0(style="padding-right:5em !important")
-					span.block.dkt= t(prev.article.product.name)
-				.sizeSm.font-inc.dark.whiteBG.padXXLg= t(prev.article.product.desc)
-		//- .caption-content.right(style='vertical-align:bottom;padding-bottom:7%')
-			.context.sizeR.txtR.round.both.dkt.dktBG.inlineblock.widthauto(style="margin-top:5em")
-				.sizeSm.font-inc.white.padXXLg.VpadXSm= t('next')
-				h5.font-alt.m-b-20.context.txtR.whiteBG.pad.mar0(style="padding-left:5em !important")
-					span.block.dkt= t(next.article.product.name)
-				.sizeSm.font-inc.dark.whiteBG.padXXLg= t(next.article.product.desc)
 		.caption-content.center(style='vertical-align:middle;')
-			.context.sizeLg.round.both.dkt.inlineblock.widthauto.pad.BpadXXLg(style="margin-top:3em")
-				.hs-title-size-3.font-alt.m-b-20.context.txtL.white
-					span.block= t(product_section.article.product.name)
-				.hs-title-size-1.inlineblock.font-inc.LmarXXSm.BmarSm.white.dktBG.round.both
-					span.block.HmarXXLg= t(product_section.article.product.desc)
-section.page.zind3(style="top:5em")
-	
+			.context.sizeLg.inlineblock.widthauto.pad.BpadXXLg(style="margin-top:3em")
+				.hs-title-size-3.font-alt.m-b-20.BmarXSm.context.txtC
+					span.inlineblock.round.both.padSm.VpadXSm.whiteBG.dkt= t(product_section.article.product.name)
+				.hs-title-size-1.inlineblock.font-inc.LmarXXSm.white.dktBG.round.both
+					span.block.HmarXXLg.padXSm= t(product_section.article.product.desc)
 
-	.container.TmarXXXLg
-		.txtR
-			.context.sizeLg.round.both.dkt.whiteBG.inlineblock.widthauto.pad.BpadXXLg(style="margin-top:3em")
-				.hs-title-size-3.font-alt.m-b-20.context.txtL.white
-					span.block.floatL.round.both.dkt= t(product_section.article.product.name)
+
+	.to_products.prev.abs.left0.top0.bottom0.context.sizeR.txtL.size1of4(style="margin-top:5em")
+		- var cur = prev ;
+		.cont.none.abs.bottom0.left0.marXXXLg.round.both.dkt.dktBG
+			.sizeSm.font-inc.white.padXXLg.VpadSm= t('prev')
+			include ../item_block
+		.linker.abs.bottom0.left0.marXXXLg.round.both.dkt.dktBG.inlineblock
+			.sizeSm.font-inc.white.padXXLg.VpadSm= t('prev')
+
+
+	.to_products.next.abs.right0.top0.bottom0.context.sizeR.txtR.size1of4(style="margin-top:5em")
+		- var cur = next ;
+		.cont.none.abs.bottom0.right0.marXXXLg.round.both.dkt.dktBG
+			.sizeSm.font-inc.white.padXXLg.VpadSm= t('next')
+			include ../item_block
+		.linker.abs.bottom0.right0.marXXXLg.round.both.dkt.dktBG.inlineblock
+			.sizeSm.font-inc.white.padXXLg.VpadSm= t('next')
+
+
+	.abs.left0.top0.right0.context.sizeR.txtC.TmarXXXLg
+		.linker.marXXXLg.round.both.dkt.dktBG.inlineblock
+			a.sizeSm.font-inc.white.padXXLg.VpadSm(href="/#/"+ lang + "/products/")= t('back to Products')
+
+
+section.page.zind3(style="top:5em")
+
+
+	.container(style="margin-top:1px")
+		.line.txtL
+			.unit.size2of5.floatR.txtR.context.sizeLg.round.both.dkt.whiteBG.pad.BpadXXLg(style="margin-top:2em")
+				.hs-title-size-3.font-alt.m-b-20.context.white
+					span.block.round.both.dkt= t(product_section.article.product.name)
 				.hs-title-size-1.font-inc.LmarXXSm.BmarSm.dark= t(product_section.article.product.desc)
-		.line
-			.size2of3.antBG.white.round.both.padXXXLg.floatL(style="margin-top:25em")
-				.work-details
-					h3.work-details-title.font-alt #{t('home.title')}
-					.font-inc
-						strong Data: 
-						a.fat-link(href='https://sketchfab.com/models/7a5e628e29d54a49993064d7e5ddd645')= toto
-						a.fat-link(href='https://sketchfab.com/models/6215e5e5adbb459e9a1051d83f1d32d4')= toto
-						a.fat-link(href='https://sketchfab.com/models/bcd72fd66c5e479a80ec182fa3fe2f7a')= toto
-					.font-inc
-						strong Contents: 
-						| starfighter asset made of 10 parts, substance and default materials, PBR textures; prefabs, 
-						strong BONUS
-						| : 
-						a(href='https://machin3.io/product-blueprint-01.html') Blueprint/SChematic Skybox 01 - 03 Twilight
-		.line
-			.size2of3.context.whiteBG.round.both.padXXXLg(style="margin-top:15em")
-				.work-details
-					.font-inc
-						strong Mesh Format: 
-						| .fbx
-					.font-inc
-						strong Polygon Count(Triangles): 
+
+			.unit.lastUnit.dark.round.right.padXXXLg.RmarXXXXLg(style="margin-top:0em")
+				.Tmar.RmarXXXLg.RpadXXXLg.txtL.sizeLg
+					p
+						| The 
+						strong.dkt UV Coater / Laminator 
+						| is generally used
 						br
-						|  66K tris in total
+						| to separate and final-coat various 
+						strong.dkt PET-destinated 
+						| films.
+
+	.line(style="height:400px;background:#8C8C8C")
+		ul.pics.line.fullH
+			- var l = pics.length ;
+			- for(var i = 0 ; i < l ; i ++){
+				li.floatL.cover(style='width:500px;height:100%;background:url(' + pics[i] + ') no-repeat 50% 50%;background-size:cover')
+					span.hidden BLAA
+			- }
+
+	.container(style="margin-top:0em")
+		.line(style="margin-top:2em")
+			.bold.txtR
+				h3.font-alt.Vpad0.Bmar0 #{t('Infos')}
+				.font-inc
+					strong Creation Year : 
+					span.fat-link.dkt #{t(year)}
+				.font-inc
+					strong Tags : 
+					span.fat-link.dkt #{t(tags)}
+				.font-inc 
+					strong Complete Description File : 
+					a.dkt(href='/pdf/' +  product_section.name + '.pdf' target="_blank") #{t(product_section.name) + '.pdf'}
+		.line(style="margin-top:2em")
+			.unit.floatR.size1of2.context.ivoryBG.white.round.both.rel(style="border:1px solid #9d1639")
+				.abs.top0.right0.left0.Hpad.VpadXSm.ocreBG
+					span.block.Hpad.dkt Specifications
+				.txtR.Bmar(style="margin-top:4em")
+					table.tables(row="4").font-inc.dark(style="width:100%")
+						tbody.lh2
+							tr
+								td.bold.dkt.size1of3.txtL.Lpad Web Materials 
+								td.txtL.Rpad PET film
+							tr
+								td.bold.dkt.size1of3.txtL.Lpad Web Thickness
+								td.txtL.Rpad 100 ~ 250 micron
+							tr
+								td.bold.dkt.size1of3.txtL.Lpad Web Width
+								td.txtL.Rpad 500 ~ 1,570 mm
+							tr
+								td.bold.dkt.size1of3.txtL.Lpad Machine Speed
+								td.txtL.Rpad Max. 30m/min
+							tr
+								td.bold.dkt.size1of3.txtL.Lpad Unwind Diameter
+								td.txtL.Rpad Max. 800mm
+							tr
+								td.bold.dkt.size1of3.txtL.Lpad Rewind Diameter
+								td.txtL.Rpad Max. 800mm
+							tr
+								td.bold.dkt.size1of3.txtL.Lpad Coating System
+								td.txtL.Rpad (Double Top) Roller Gap Adjusting System
+							tr
+								td.bold.dkt.size1of3.txtL.Lpad Dryer Diameter
+								td.txtL.Rpad Low/Middle/High Pressure UV system
+							tr
+								td.bold.dkt.size1of3.txtL.Lpad Inspection Room
+								td.txtL.Rpad Top Roller Gap Adjusting System
+							tr
+								td.bold.dkt.size1of3.txtL.Lpad Laminating System
+								td.txtL.Rpad by Sight
+							tr
+								td.bold.dkt.size1of3.txtL.Lpad Rewinding System
+								td.txtL.Rpad Center (Surface Turret) Winding System
+
+			.unit.size2of5
+				.TmarXXXLg.RmarXXXLg.RpadXXXLg.txtL
+					p
+						| Remove 
+						strong.dkt protective film 
+						| on the 
+						strong.dkt PET Base film 
+						| , use of 
+						strong.dkt Gap coating system 
+						| through the Soft Mold and UV Curing.
 						br
-						|  21K just outside parts
-						br
-						|  3.5K just escape pod
-					.font-inc
-						strong Textures: 
-						| 10 Texturesets, 9 are 2048 x 2048, 1 is 1024 x 1024 
-						br
-						|  AlbedoTransparency 
-						br
-						|  MetallicSmoothness 
-						br
-						|  Normal 
-						br
-						|  Fluting (Normal) 
-						br
-						|  Emissive 
-						br
-						|  AO 
-						br
-						|  Curvature 
-						br
-						|  substance specific masks
-					.font-inc
-						strong Image Format: 
-						| .png
-					.font-inc
-						strong PBR: 
-						| Metall/Roughness
-					.font-inc
-						strong Customize: 
-						| substance materials, separate model parts
-						a(href='/img/projects/starfighter01.jpg')
-							img(src='/img/projects/starfighter01.jpg', width='100%')
-						a(href='/img/projects/starfighter05_main_gear.gif')
-							img(src='/img/projects/starfighter05_main_gear.gif', width='50%')
-						a(href='/img/projects/starfighter05_front_gear.gif')
-							img(src='/img/projects/starfighter05_front_gear.gif', width='49%')
-						a(href='/img/projects/starfighter05_wing_fold.gif')
-							img(src='/img/projects/starfighter05_wing_fold.gif', width='50%')
-						a(href='/img/projects/starfighter05_wing_flaps.gif')
-							img(src='/img/projects/starfighter05_wing_flaps.gif', width='49%')
-						a(href='/img/projects/starfighter02.jpg')
-							img(src='/img/projects/starfighter02.jpg', width='50%')
-						a(href='/img/projects/starfighter07.jpg')
-							img(src='/img/projects/starfighter07.jpg', width='49%')
-						a(href='/img/projects/starfighter04.jpg')
-							img(src='/img/projects/starfighter04.jpg', width='49%')
-						a(href='/img/projects/starfighter03.jpg')
-							img(src='/img/projects/starfighter03.jpg', width='50%')
-						a(href='/img/projects/starfighter08.gif')
-							img(src='/img/projects/starfighter08.gif', width='50%')
-						a(href='/img/projects/starfighter09.gif')
-							img(src='/img/projects/starfighter09.gif', width='49%')
-						a(href='/img/projects/starfighter05_escape_pod.gif')
-							img(src='/img/projects/starfighter05_escape_pod.gif', width='50%')
-						a(href='/img/projects/starfighter05_escape_pod2.gif')
-							img(src='/img/projects/starfighter05_escape_pod2.gif', width='49%')
-						a(href='/img/projects/starfighter05_escape_pod3.gif')
-							img(src='/img/projects/starfighter05_escape_pod3.gif', width='50%')
-						a(href='/img/projects/starfighter05_probe_release.gif')
-							img(src='/img/projects/starfighter05_probe_release.gif', width='49%')
-		.row
-			.col-sm-6.txtL
-				
-			.col-sm-6.txtR
-				p
-					| The Starfighter is a single-seat, multirole fighter, that excels at interception and escort missions.
-					| Advanced scouting and surveillance missions are possible, once outfitted with a probe in the designated socket in the fuselage.
-				p
-					| Capable of space and atmospheric flight, combined with vertical take off and landing abilities on most terrain, makes the Starfighter an extremely versatile light-weight and high performance craft.
-				p
-					| Both wings can be mounted with universal pylons and carry a variety of offensive and defensive weapons or equipment. (
-					strong NOT supplied with this asset!
-					| )
-					br
-					| Due to its folding wing configuration the Starfighter is suitable for carrier based operation with limited deck space.
-				p
-					| The SF's cockpit doubles as an escape pod and life boat. In case of emergency, it detaches completely and will be ejected from the rest of the ship.
-					| Being maneuverable on its own, the pod can be piloted using the same interface used for the Starfighter.
+						| After 
+						strong.dkt UV Curing, laminating and rewinding.
+		.line(style="margin-top:5em;margin-bottom:5em")
+			.Tmar.RmarXXXLg.RpadXXXLg.txtL
 				p
 					| This asset is 
-					strong quite detailed
-					|  and created with an eye towards current and next-generation needs in the gaming, VR and real-time film spaces.
-				p.list-intro
-					| While not specifically advertised as a modular asset, the Starfighter is built from and provided as 10 basic parts:
-				ul
-					li main
-					ul
-						li main interior(includes front-, back-, cockpit- and probe socket interiors)
-						li main landing gear
-					li front
-					ul
-						li front interior(includes front landing gear)
-					li back(engines)
-					ul
-						li back interior
-					li wings
-					ul
-						li interior
-					li escape pod
-				p
-					| Note, that for this asset many of the actual meshes have been kept separate, the above list entries, henceforth called "parts", represent the hierarchical structure and simplify managing the objects.
-					br
-					| Each of these 10 parts has its own texture-set and material.
-				p
-					| Having the asset structured like this, allows you to not render parts you don't need. This saves texture memory and avoids rendering unnecessary polygons.
-					br
-					| For instance, you likely won't need the interior parts in normal flight mode, but you will need some if you fold out the landing gears. Or alternatively, in a hangar-like scenario, you might choose to show the Starfighter in various states of disassembly - without the wings for instance.
-				p In short, it's giving you the flexibility to get more out of the asset.
-				p
-					| For us it means, we can maintain a high quality across the asset and opens up the possibility of future extension.
-					br
-					| In case you would be interested in extensions to this asset of any kind, we welcome your input and suggestions either 
-					a(href='mailto:support@machin3.io') via email
-					| .
-				p
-					| There's prefabs for The Starfighter in different assembly variations(with substance materials applied).
-				p
-					strong Animations
-				p
-					| The Starfighter comes with a variety of animation clips, most importantly the landing gear fold, landing gear dampening and wing folds. Furthermore, there are animations for wing flaps and fins, for escape pod elevators and rudder and finally for the escape pod release and probe release mechanisms.
-				p
-					| An animation controller sets up the animations and transitions using multiple layers. In cases where it applies, animations can be played as a unit or individually. For instance, the landing gear animation is masked accordingly, so you can only lower the front gear, or only the main left gear, etc instead of all of them at the same time.
-				p
-					strong Materials
-				p All materials are utilizing PBR.
-				p
-					| Materials for The Starfighter are provided in form of substance .sbsar files, which contain procedural materials allowing for significant customization.
-					br
-					| Default materials, set up using Unity's standard shader are also supplied.
-				p
-					strong Customization
-				ol
-					li 2 main, plain material choices - painted metal and plastics
-					li a mix of both, where the plastic parts act as accents to the painted metal parts
-					li a 4th camouflage material
-					li control emissive amount and color
-					li control cockpit color
-					li parametric dirt, with controlls for dirt level, conrast and grounge amount
-					li deferred decals the for placement of custom graphics
-				p
-				p
-					strong The Probe
-				table
-					tbody
-						tr
-							td(width='50%')
-								a(href='/img/projects/starfighter10.gif')
-									img(src='/img/projects/starfighter10.gif', width='283')
-							td(style='padding: 5px;', valign='top')
-								p
-									| The Starfighter has a socket on the underside for a previous of our assets, called '
-									strong
-										a(href='https://machin3.io/product-the-probe.html') The Probe
-									| '.
-								p
-									| Both assets can be used together. The Starfighter has an extra animation for the probe release mechanism.
-		.row(style="margin-top:150px;")
-			.col-sm-12
-				h3.work-details-title.font-alt Asset Stores
-			.col-sm-3
-				.font-inc.pull-left
-					strong Currently available on: 
-			.col-sm-6
-				.text-center
+					strong.dkt quite detailed 
+					| and created with an eye towards current and next-generation needs in the modern industry and innovative technologies.
+section.page.zind3.ocreBG.footer.context(style="top:5em;")
+	.container.rel
+		.line(style="margin-top:5em")
+			.Tmar.txtC
+				.work-details.font-alt.sizeXXXLg.dkt #{t('contact Us')}
+			.fullW
+				.txtC
 					- var child = {path:linkpath} ;
 					include ../links
-			.col-sm-3
+	.container.rel
+		.line.txtR
+			.unit.endlogo.marXXLg
+				span.hidden DKT
+			.lastUnit.sizeLg
+				span.block.HpadXXXLg.pad.dkt Thank You
+	.container.rel(style="margin-bottom:10em")
+		include ../infos

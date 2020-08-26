@@ -7,7 +7,7 @@
             "name": "DKT",
             "fullname": "Dynamic Korea Technology",
             
-            "mainimage":"/img/dkt_bg.png",
+            "mainidmage":"/img/dkt_bg.png",
                     
             "product":{
                 "name":"Technology",
@@ -64,7 +64,8 @@
                         "name": "uw_001_desc",
                         "vars":{
                             "toto":"tata",
-                            "linkpath":"/contact/"
+                            "linkpath":"/contact/",
+                            "pics":["/img/sl_001.png", "/img/sl_002.png"]
                         },
                         "tpl":["./components/tpl/uw_001_desc"]
                     }
@@ -93,7 +94,8 @@
                         "name": "uw_001_desc",
                         "vars":{
                             "toto":"tata",
-                            "linkpath":"/contact/"
+                            "linkpath":"/contact/",
+                            "pics":["/img/lm_001.png", "/img/lm_002.png"]
                         },
                         "tpl":["./components/tpl/uw_001_desc"]
                     }
@@ -113,7 +115,7 @@
                     "mainimage":"/img/uw_001.png",
                     
                     "product":{
-                        "name":"Unwinder/Rewinder 9001-S",
+                        "name":"Unwinder / Rewinder 9001-S",
                         "desc":"DKT Coating Machinery"
                     },
 
@@ -122,7 +124,8 @@
                         "name": "uw_001_desc",
                         "vars":{
                             "toto":"tata",
-                            "linkpath":"/contact/"
+                            "linkpath":"/contact/",
+                            "pics":["/img/uw_001.png", "/img/uw_002.png"]
                         },
                         "tpl":["./components/tpl/uw_001_desc"]
                     }
@@ -150,8 +153,11 @@
                         "id": 35,
                         "name": "uw_001_desc",
                         "vars":{
-                            "toto":"tata",
-                            "linkpath":"/contact/"
+                            "year":2012,
+                            "tags":"#UVCoater #Coater #TPU #PET",
+                            "toto":"home.title",
+                            "linkpath":"/contact/",
+                            "pics":["/img/uv_001.png", "/img/uv_002.png"]
                         },
                         "tpl":["./components/tpl/uw_001_desc"]
                     }

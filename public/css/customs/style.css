@@ -513,6 +513,7 @@ blockquote {
 	font-family: "Inconsolata", sans-serif;
 	text-transform: uppercase;
 	letter-spacing: 0.1em;
+	line-height: 1.3em;
 }
 
 .font-serif {
@@ -657,24 +658,36 @@ Home Section
 			background-size: cover;
 }
 
+
+.cover{
+	-webkit-background-size: cover;
+	   -moz-background-size: cover;
+		 -o-background-size: cover;
+			background-size: cover;
+}
+
 .hs-title-size-1 {
 	letter-spacing: 0.1em;
 	font-size: 14px;
+	line-height:1.5em;
 }
 
 .hs-title-size-2 {
 	letter-spacing: 0.2em;
 	font-size: 18px;
+	line-height:1.4em;
 }
 
 .hs-title-size-3 {
 	letter-spacing: 0.1em;
 	font-size: 28px;
+	line-height:1.2em;
 }
 
 .hs-title-size-4 {
 	letter-spacing: 0.2em;
 	font-size: 36px;
+	line-height:1em;
 }
 
 /* Video */

@@ -748,13 +748,42 @@ a {
     letter-spacing: 2.5em;
 }
 
-.lh1 {
-    line-height: 1.5em;
-}
 
-.lh2 {
-    line-height: 2em;
-}
+
+.lh01 {line-height: 0.1em;}
+.lh02 {line-height: 0.2em;}
+.lh03 {line-height: 0.3em;}
+.lh04 {line-height: 0.4em;}
+.lh05 {line-height: 0.5em;}
+.lh06 {line-height: 0.6em;}
+.lh07 {line-height: 0.7em;}
+.lh08 {line-height: 0.8em;}
+.lh09 {line-height: 0.9em;}
+
+.lh10, .lh1 {line-height: 1.0em;}
+.lh11 {line-height: 1.1em;}
+.lh12 {line-height: 1.2em;}
+.lh13 {line-height: 1.3em;}
+.lh14 {line-height: 1.4em;}
+.lh15 {line-height: 1.5em;}
+.lh16 {line-height: 1.6em;}
+.lh17 {line-height: 1.7em;}
+.lh18 {line-height: 1.8em;}
+.lh19 {line-height: 1.9em;}
+
+.lh20, .lh2 {line-height: 2.0em;}
+.lh21 {line-height: 2.1em;}
+.lh22 {line-height: 2.2em;}
+.lh23 {line-height: 2.3em;}
+.lh24 {line-height: 2.4em;}
+.lh25 {line-height: 2.5em;}
+.lh26 {line-height: 2.6em;}
+.lh27 {line-height: 2.7em;}
+.lh28 {line-height: 2.8em;}
+.lh29 {line-height: 2.9em;}
+.lh30 {line-height: 3.0em;}
+
+
 .sizeXSm {
     font-size: 8px;
 }

@@ -3,81 +3,78 @@
 - var prev = ch[ch.indexOf(product_section)-1] || ch[ch.length - 1] ;
 
 
-.extra.context.rel(style='height:75%;background:#8C8C8C url(' + product_section.article.mainimage + ') no-repeat 50% 50%;')
-	.hs-caption.container.rel(style='top: 0px; display: table;')
-		.caption-content.center(style='vertical-align:middle;')
-			.context.sizeLg.inlineblock.widthauto.pad.BpadXXLg(style="margin-top:3em")
-				.hs-title-size-3.font-alt.m-b-20.BmarXSm.context.txtC
-					span.inlineblock.round.both.padSm.VpadXSm.whiteBG.dkt= t(product_section.article.product.name)
-				.hs-title-size-1.inlineblock.font-inc.LmarXXSm.white.dktBG.round.both
-					span.block.HmarXXLg.padXSm= t(product_section.article.product.desc)
+.extra.context.rel(style='height:50%;background:#222;')
+	.abs.top0.left0.bottom0.right0(style='opacity:.3;background:#222 url(' + product_section.article.mainimage + ') no-repeat 50% 50%;')
+		span.hidden Image
 
-
-	.to_products.prev.abs.left0.top0.bottom0.context.sizeR.txtL.size1of4(style="margin-top:5em")
+	.to_products.prev.abs.left0.bottom0.fullH.context.sizeR.txtL.size2of5
 		- var cur = prev ;
-		.cont.none.abs.bottom0.left0.marXXXLg.round.both.dkt.dktBG
+		.cont.none.abs.bottom0.left0.HmarXXXLg.round.both.dkt.dktBG
 			.sizeSm.font-inc.white.padXXLg.VpadSm= t('prev')
 			include ../item_block
-		.linker.abs.bottom0.left0.marXXXLg.round.both.dkt.dktBG.inlineblock
-			.sizeSm.font-inc.white.padXXLg.VpadSm= t('prev')
+		.linker.abs.bottom0.left0.right0.marXXXLg
+			a.inlineblock.sizeSm.font-inc.white.dktBG.round.both(href= "/#/" + lang + cur.path)
+				span.block.padXXLg.VpadSm= t('prev')
+			.sizeXXXXLg.TmarXXSm.context.clear
+				span.inlineblock.white.lh09= t(prev.article.product.name)
+				span.block.sizeXSm.HmarXXXSm.inconsolata.uppercase.white= t(prev.article.product.desc)
 
-
-	.to_products.next.abs.right0.top0.bottom0.context.sizeR.txtR.size1of4(style="margin-top:5em")
+	.to_products.next.abs.right0.bottom0.context.sizeR.txtR.size2of5
 		- var cur = next ;
-		.cont.none.abs.bottom0.right0.marXXXLg.round.both.dkt.dktBG
+		.cont.none.abs.bottom0.right0.HmarXXXLg.round.both.dkt.dktBG
 			.sizeSm.font-inc.white.padXXLg.VpadSm= t('next')
 			include ../item_block
-		.linker.abs.bottom0.right0.marXXXLg.round.both.dkt.dktBG.inlineblock
-			.sizeSm.font-inc.white.padXXLg.VpadSm= t('next')
+		.linker.abs.bottom0.left0.right0.marXXXLg
+			a.inlineblock.sizeSm.font-inc.white.dktBG.round.both(href= "/#/" + lang + cur.path)
+				span.block.padXXLg.VpadSm= t('next')
+			.sizeXXXXLg.TmarXXSm.context
+				span.inlineblock.white.lh09= t(next.article.product.name)
+				span.block.sizeXSm.HmarXXXSm.inconsolata.uppercase.white= t(next.article.product.desc)
 
 
-	.abs.left0.top0.right0.context.sizeR.txtC.TmarXXXLg
-		.linker.marXXXLg.round.both.dkt.dktBG.inlineblock
-			a.sizeSm.font-inc.white.padXXLg.VpadSm(href="/#/"+ lang + "/products/")= t('back to Products')
+	.abs.left0.top0.right0.context.sizeR.txtL.TmarXXXXLg.TpadXXLg
+		.linker.marXXXLg.round.both.dktBG.inlineblock
+			a.block.sizeSm.font-inc.white.padXXLg.VpadSm(href="/#/"+ lang + "/products/")= t('back to Products')
 
 
-section.page.zind3(style="top:5em")
+section.page.zind3(style="top:5em;background:#FFF;")
 
 
-	.container(style="margin-top:1px")
-		.line.txtL
-			.unit.size2of5.floatR.txtR.context.sizeLg.round.both.dkt.whiteBG.pad.BpadXXLg(style="margin-top:2em")
+	.container.rel
+		.line.txtL(style="margin-top:2em")
+			.unit.size1of2.floatR.txtR.context.sizeLg.dkt.pad.BpadXXLg
 				.hs-title-size-3.font-alt.m-b-20.context.white
 					span.block.round.both.dkt= t(product_section.article.product.name)
 				.hs-title-size-1.font-inc.LmarXXSm.BmarSm.dark= t(product_section.article.product.desc)
+			.unit.lastUnit.pad.BpadXXLg.txtL
+				.font-inc
+					strong #{t('Creation Year')} :
+					span.fat-link.dkt #{t(year)}
+				.font-inc
+					strong #{t('Tags')} : 
+					span.fat-link.dkt #{t(tags)}
+				.font-inc 
+					strong #{t('Description File')} : 
+					a.dkt(href='/pdf/' +  product_section.name + '.pdf' target="_blank") #{t(product_section.name) + '.pdf'}
+			
+					
 
-			.unit.lastUnit.dark.round.right.padXXXLg.RmarXXXXLg(style="margin-top:0em")
-				.Tmar.RmarXXXLg.RpadXXXLg.txtL.sizeLg
-					p
-						| The 
-						strong.dkt UV Coater / Laminator 
-						| is generally used
-						br
-						| to separate and final-coat various 
-						strong.dkt PET-destinated 
-						| films.
-
-	.line(style="height:400px;background:#8C8C8C")
+	.line.rel(style="height:400px;background:#222")
 		ul.pics.line.fullH
 			- var l = pics.length ;
 			- for(var i = 0 ; i < l ; i ++){
-				li.floatL.cover(style='width:500px;height:100%;background:url(' + pics[i] + ') no-repeat 50% 50%;background-size:cover')
-					span.hidden BLAA
+				li.floatL.cover.special(style='width:500px;height:100%;background:url(' + pics[i] + ') no-repeat 50% 50%;background-size:cover')
+					span.hidden Image
 			- }
-
+		
 	.container(style="margin-top:0em")
 		.line(style="margin-top:2em")
-			.bold.txtR
-				h3.font-alt.Vpad0.Bmar0 #{t('Infos')}
-				.font-inc
-					strong Creation Year : 
-					span.fat-link.dkt #{t(year)}
-				.font-inc
-					strong Tags : 
-					span.fat-link.dkt #{t(tags)}
-				.font-inc 
-					strong Complete Description File : 
-					a.dkt(href='/pdf/' +  product_section.name + '.pdf' target="_blank") #{t(product_section.name) + '.pdf'}
+			.unit.lastUnit.dark.round.right.padXXXLg.RmarXXXXLg(style="margin-top:0em")
+				.Tmar.RmarXXXLg.RpadXXXLg.txtL.sizeLg
+					- locals.context = product_section.name ;
+					!{ render(t(components.desc, locals), locals) }
+			
+		
 		.line(style="margin-top:2em")
 			.unit.floatR.size1of2.context.ivoryBG.white.round.both.rel(style="border:1px solid #9d1639")
 				.abs.top0.right0.left0.Hpad.VpadXSm.ocreBG
@@ -121,23 +118,46 @@ section.page.zind3(style="top:5em")
 
 			.unit.size2of5
 				.TmarXXXLg.RmarXXXLg.RpadXXXLg.txtL
-					p
-						| Remove 
-						strong.dkt protective film 
-						| on the 
-						strong.dkt PET Base film 
-						| , use of 
-						strong.dkt Gap coating system 
-						| through the Soft Mold and UV Curing.
-						br
-						| After 
-						strong.dkt UV Curing, laminating and rewinding.
+					!{ render(t(components.instr, locals), locals) }
+
 		.line(style="margin-top:5em;margin-bottom:5em")
 			.Tmar.RmarXXXLg.RpadXXXLg.txtL
-				p
-					| This asset is 
-					strong.dkt quite detailed 
-					| and created with an eye towards current and next-generation needs in the modern industry and innovative technologies.
+				!{ render(t(components.concl, locals), locals) }
+
+
+.extra.context.rel(style='height:21em;background:#222;')
+	.abs.top0.left0.bottom0.right0
+		span.hidden Image
+
+	.to_products.prev.abs.left0.bottom0.fullH.context.sizeR.txtL.size2of5
+		- var cur = prev ;
+		.cont.none.abs.bottom0.left0.HmarXXXLg.round.both.dkt.dktBG
+			.sizeSm.font-inc.white.padXXLg.VpadSm= t('prev')
+			include ../item_block
+		.linker.abs.bottom0.left0.right0.marXXXLg
+			a.inlineblock.sizeSm.font-inc.white.dktBG.round.both(href= "/#/" + lang + cur.path)
+				span.block.padXXLg.VpadSm= t('prev')
+			.sizeXXXXLg.TmarXXSm.context.clear
+				span.inlineblock.white.lh09= t(prev.article.product.name)
+				span.block.sizeXSm.HmarXXXSm.inconsolata.uppercase.white= t(prev.article.product.desc)
+
+	.to_products.next.abs.right0.bottom0.fullH.context.sizeR.txtR.size2of5
+		- var cur = next ;
+		.cont.none.abs.bottom0.right0.HmarXXXLg.round.both.dkt.dktBG
+			.sizeSm.font-inc.white.padXXLg.VpadSm= t('next')
+			include ../item_block
+		.linker.abs.bottom0.left0.right0.marXXXLg
+			a.inlineblock.sizeSm.font-inc.white.dktBG.round.both(href= "/#/" + lang + cur.path)
+				span.block.padXXLg.VpadSm= t('next')
+			.sizeXXXXLg.TmarXXSm.context
+				span.inlineblock.white.lh09= t(next.article.product.name)
+				span.block.sizeXSm.HmarXXXSm.inconsolata.uppercase.white= t(next.article.product.desc)
+
+
+	.abs.left0.top0.bottom.right0.context.sizeR.txtC
+		.linker.marXXXLg.round.both.dktBG.inlineblock
+			a.block.sizeSm.font-inc.white.padXXLg.VpadSm(href="/#/"+ lang + "/products/")= t('back to Products')
+
 section.page.zind3.ocreBG.footer.context(style="top:5em;")
 	.container.rel
 		.line(style="margin-top:5em")
@@ -146,6 +166,8 @@ section.page.zind3.ocreBG.footer.context(style="top:5em;")
 			.fullW
 				.txtC
 					- var child = {path:linkpath} ;
+					- var links_cl = "dkt" ;
+					- var links_name = "home.title" ;
 					include ../links
 	.container.rel
 		.line.txtR

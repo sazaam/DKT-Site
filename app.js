@@ -41,7 +41,7 @@ i18next
 		fallbackLng: 
 			['en'],
 		preload: 
-			['en', 'ru']
+			['en', 'ko']
 	}) ;
 
 var app = express() ;

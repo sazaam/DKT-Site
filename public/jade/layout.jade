@@ -54,17 +54,19 @@ html.abs.fullW.fullH.context.whiteBG(lang=lang, style="overflow-y: auto;")
 						a.block.pad.HpadXLg.inconsolata(href= href)
 							span= name
 				- }
-				ul#langnav.langnav.floatR
-					- var ss = ['en', 'ru'] ;
+				ul#langnav.langnav.context.floatR
+					- var ss = ['en', 'ko'] ;
 					- var l = ss.length ;
 					- for(var i = 0 ; i < l ; i ++){
 						- var s = ss[i] ;
 						- var name = s ;
 						- var href = '/#/' + lang + '/' + name + '/' ;
-						- var cl = "lang lang_" + name + ' floatL' ;
+						- var cl = "lang lang_" + name ;
 
 						//- EACH MAIN SECTION LINK
-						li(id= "lang_" + name, class= cl)
-							a.block.pad.inconsolata(href='?lng='+name, lang=name)
+						li.floatL(id= "lang_" + name, class= cl)
+							a.block.mar.HpadXSm.inconsolata.round.both(href='?lng='+name, lang=name)
 								span= name
 					- }
+			.test.fullW
+				textarea.fullW.dkt

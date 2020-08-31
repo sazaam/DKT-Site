@@ -7,7 +7,7 @@
             "name": "DKT",
             "fullname": "Dynamic Korea Technology",
             
-            "mainidmage":"/img/dkt_bg.png",
+            "mainimage":"/img/00.png",
                     
             "product":{
                 "name":"Technology",
@@ -34,7 +34,7 @@
             "mainimage":"/img/full_machine_002.png",
                     
             "product":{
-                "name":"Machinery",
+                "name":"High-End Machinery",
                 "desc":"DKT Certificated Coating Professional"
             }
             
@@ -55,17 +55,24 @@
                     "mainimage":"/img/sl_001.png",
                     
                     "product":{
-                        "name":"SLATER 4201-S",
-                        "desc":"The Future of Protective Coating Film"
+                        "name":"DKT__products.name_sl_001",
+                        "desc":"DKT Coating Machinery"
                     },
 
                     "body":{
                         "id": 35,
                         "name": "uw_001_desc",
                         "vars":{
-                            "toto":"tata",
+                            "toto":"home.title",
                             "linkpath":"/contact/",
-                            "pics":["/img/sl_001.png", "/img/sl_002.png"]
+                            "pics":["/img/sl_002.png"],
+                            "productname":"t(product_section.article.product.name)",
+
+                            "components":{
+                                "desc":"DKT__products.desc",
+                                "instr":"DKT__products.instr",
+                                "concl":"DKT__products.concl"
+                            }
                         },
                         "tpl":["./components/tpl/uw_001_desc"]
                     }
@@ -85,7 +92,7 @@
                     "mainimage":"/img/lm_001.png",
                     
                     "product":{
-                        "name":"LAMINATOR 6001-S",
+                        "name":"DKT__products.name_lm_001",
                         "desc":"DKT Coating Machinery"
                     },
 
@@ -95,7 +102,14 @@
                         "vars":{
                             "toto":"tata",
                             "linkpath":"/contact/",
-                            "pics":["/img/lm_001.png", "/img/lm_002.png"]
+                            "pics":["/img/lm_002.png"],
+                            "productname":"t(product_section.article.product.name)",
+
+                            "components":{
+                                "desc":"DKT__products.desc",
+                                "instr":"DKT__products.instr",
+                                "concl":"DKT__products.concl"
+                            }
                         },
                         "tpl":["./components/tpl/uw_001_desc"]
                     }
@@ -115,7 +129,7 @@
                     "mainimage":"/img/uw_001.png",
                     
                     "product":{
-                        "name":"Unwinder / Rewinder 9001-S",
+                        "name":"DKT__products.name_uw_001",
                         "desc":"DKT Coating Machinery"
                     },
 
@@ -125,8 +139,16 @@
                         "vars":{
                             "toto":"tata",
                             "linkpath":"/contact/",
-                            "pics":["/img/uw_001.png", "/img/uw_002.png"]
+                            "pics":["/img/uw_002.png"],
+                            "productname":"t(product_section.article.product.name)",
+
+                            "components":{
+                                "desc":"DKT__products.desc",
+                                "instr":"DKT__products.instr",
+                                "concl":"DKT__products.concl"
+                            }
                         },
+                       
                         "tpl":["./components/tpl/uw_001_desc"]
                     }
 
@@ -145,7 +167,7 @@
                     "mainimage":"/img/uv_001.png",
                     
                     "product":{
-                        "name":"UV Coater 12001-S",
+                        "name":"DKT__products.name_uv_001",
                         "desc":"DKT Coating Machinery"
                     },
 
@@ -153,11 +175,18 @@
                         "id": 35,
                         "name": "uw_001_desc",
                         "vars":{
-                            "year":2012,
+                            "year":2013,
                             "tags":"#UVCoater #Coater #TPU #PET",
                             "toto":"home.title",
                             "linkpath":"/contact/",
-                            "pics":["/img/uv_001.png", "/img/uv_002.png"]
+                            "pics":["/img/uv_002.png"],
+                            "productname":"t(product_section.article.product.name)",
+
+                            "components":{
+                                "desc":"DKT__products.desc",
+                                "instr":"DKT__products.instr",
+                                "concl":"DKT__products.concl"
+                            }
                         },
                         "tpl":["./components/tpl/uw_001_desc"]
                     }
@@ -174,11 +203,11 @@
             "id": 2,
             "name": "about",
 
-            "mainimage":"/img/full_machine_001.png",
+            "mainimage":"/img/dkt_house.png",
                     
             "product":{
                 "name":"Total Solution Provider",
-                "desc":"home.title"
+                "desc":"DKT full scale enterprise"
             }
             
         },

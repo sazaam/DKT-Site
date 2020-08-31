@@ -117,20 +117,143 @@ module.exports = {
 		
 		var slides = rt.find('.slides li.bg-dark') ;
 		
-		var next = rt.find('.flex-direction-nav .flex-next') ;
-		var prev = rt.find('.flex-direction-nav .flex-prev') ;
+		// var next = rt.find('.flex-direction-nav .flex-next').removeAttr('href') ;
+		// var prev = rt.find('.flex-direction-nav .flex-prev').removeAttr('href') ;
 		var slidesnav = rt.find('.flex-control-nav li a') ;
 		
-		
-		var commands = [] ;
-		var cy = new Cyclic(commands) ;
-		var currentEl = res.userData.currentEl ;
 		var launched = false ;
-		var TIME = 7000 ;
+		
+		var cy ;
 		
 		
-		var clear = function(){
+		if(!res.userData.cy){
 			
+			var commands = [] ;
+			cy = res.userData.cy = new Cyclic(commands) ;
+			var TIME = 7000 ;
+			
+			
+			
+			
+			var mm = res.userData.mm = function(e){
+				var li = $(e.currentTarget) ;
+				if(e.target.tagName == 'SPAN' || e.target.tagName == 'A'){
+					li.removeClass('slideprev')
+					li.removeClass('slidenext')
+					return ;
+				} else {
+					
+					var w = $(window).width()
+					var mw = w >> 1 ;
+					var screenX = window.screenX = e.screenX || window.screenX ;
+					if(screenX > mw){
+						li.addClass('slidenext')
+						li.removeClass('slideprev')
+					}else{
+						li.addClass('slideprev')
+						li.removeClass('slidenext')
+					}
+				}
+				
+			}
+			
+			var clk = res.userData.clk = function(e){
+				
+				if(e.target.tagName == 'SPAN' || e.target.tagName == 'A'){
+					
+					return ;
+				} else {
+					
+					var w = $(window).width() ;
+					var mw = w >> 1 ;
+					var screenX = window.screenX = e.screenX || window.screenX ;
+					if(screenX > mw){
+						halt() ;
+						trace(cy.index)
+						cy.next() ;
+					}else{
+						halt() ;
+						cy.prev() ;
+					}
+					
+				}
+				
+			}
+			var navgo = res.userData.navgo = function(e){
+				e.preventDefault() ;
+				e.stopPropagation() ;
+				
+				var a = $(e.currentTarget) ;
+				halt() ;
+				
+				cy.go(a.data('i')) ;
+			}
+			
+			slides.each(function(i, el){
+				
+				var li = $(el) ;
+				var a = $(slidesnav.get(i)) ;
+				a.attr({'href': '#'}) ;
+				a.data({'i': i}) ;
+				li.data('navitem', a) ;
+				
+				a.bind('click', navgo) ;
+				
+				
+				
+				cy.push(new Command(null, function(el, i){
+					var c = this ;
+					var li = $(el) ;
+					var a = li.data('navitem') ;
+					
+					clear() ;
+					
+					li.css({
+						'left':'0',
+						'z-index':'2'
+					}) ;
+					
+					
+					// trace(i)
+					
+					var tw = res.userData.tw = BetweenJS.parallel(
+						BetweenJS.create({
+							target:li,
+							to:{
+								'opacity':100
+							},
+							from:{
+								'opacity':0
+							},
+							time:.45,
+							ease:Expo.easeOut
+						})
+					) ;
+					li.trigger('mousemove') ;
+					
+					/* IMPORTANT HACK FOR CSS-ANIM TO WORK PROPERLY */
+					setTimeout(function(){
+						li.addClass('inited') ;	
+						rt.find('.flex-control-nav li').removeClass('active') ;
+						a.parent().addClass('active') ;
+					}, 15)
+					/* END IMPORTANT */
+					
+					tw.onComplete = function(){
+						c.dispatchComplete() ;
+					}
+					tw.play() ;
+					
+					return this ;
+				}, el, i))
+			})
+			
+		}
+		
+		cy = res.userData.cy ;
+		
+		var clear = res.userData.clear = res.userData.clear || function(){
+				
 			slides.css({
 				'z-index':'1',
 				'left':'-15000px',
@@ -140,86 +263,33 @@ module.exports = {
 			rt.find('.flex-control-nav li').removeClass('active') ;
 		}
 		
-		clear() ;
 		
 		
-		slides.each(function(i, el){
+		var enable = res.userData.enable = res.userData.enable || function(cond){
 			
-			var li = $(el) ;
-			var a = $(slidesnav.get(i)) ;
-			a.attr({'href': '#'}) ;
-			li.data('navitem', a) ;
-			
-			// trace(a)
-			a.bind('click', function(e){
-				e.preventDefault() ;
-				e.stopPropagation() ;
-				halt() ;
-				cy.go(i) ;
-			}) ;
-			
-			
-			cy.push(new Command(null, function(el){
-				var c = this ;
+			slides.each(function(i, el){
 				var li = $(el) ;
 				var a = li.data('navitem') ;
 				
-				clear() ;
-				
-				li.css({
-					'left':'0',
-					'z-index':'2'
-				}) ;
-				
-				var tw = res.userData.tw = BetweenJS.parallel(
-					BetweenJS.create({
-						target:li,
-						to:{
-							'opacity':100
-						},
-						from:{
-							'opacity':0
-						},
-						time:1,
-						ease:Circ.easeOut
-					})
-				)
-				
-				/* IMPORTANT HACK FOR CSS-ANIM TO WORK PROPERLY */
-				setTimeout(function(){
-					li.addClass('inited') ;	
-					rt.find('.flex-control-nav li').removeClass('active') ;
-					a.parent().addClass('active') ;
-				}, 15)
-				/* END IMPORTANT */
-				
-				
-				currentEl = res.userData.currentEl = li ;
-				
-				tw.onComplete = function(){
-					c.dispatchComplete() ;
+				if(cond){
+					
+					li.click(res.userData.clk) ;
+					li.mousemove(res.userData.mm) ;
+					
+					a.click(res.userData.navgo) ;
+				}else{
+					
+					li.off('click', clk) ;
+					li.off('mousemove', mm) ;
+					
+					a.off('click', navgo) ;
 				}
-				tw.play() ;
 				
-				return this ;
-			}, el))
-		})
-		
-		var nn = function(e){
-			e.preventDefault() ;
-			e.stopPropagation() ;
-			
-			halt() ;
-			
-			if($(e.target).hasClass('flex-next')){
-				cy.next() ;
-			}else{
-				cy.prev() ;
-			}
+			}) ;
 			
 		}
 		
-		var launch = function(){
+		var launch = res.userData.launch = res.userData.launch || function(){
 			clearTimeout(res.userData.UID) ;
 			cy.next() ;
 			
@@ -231,7 +301,7 @@ module.exports = {
 			launched = true ;
 		}
 		
-		var halt = function(){
+		var halt = res.userData.halt = res.userData.halt || function(){
 			
 			if(!!res.userData.tw) res.userData.tw.stop() ;
 			
@@ -239,20 +309,38 @@ module.exports = {
 			launched = res.userData.launched = false ;
 		}
 		
-		next.click(nn) ;
-		prev.click(nn) ;
+		// next.click(nn) ;
+		// prev.click(nn) ;
 		
 		
 		if(cond){
 			
 			trace('opening UID :', id) ;
 			
-			launch() ;
+			clear() ;
+			
+			enable(true) ;
+			
+			
+			// cy.index = -1 ;
+			
+			if(cy.index == -1) launch() ;
+			else{
+				cy.index -- ;
+				launch() ;
+				// halt() ;
+			}
 			
 		}else{
 			
-			trace('closing UID :', id)
+			trace('closing UID :', id) ;
+			
+			clear() ;
+			
+			enable(false) ;
+			
 			halt() ;
+			
 			
 		}
 		

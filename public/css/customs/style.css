@@ -84,11 +84,11 @@ a,
 .work-caption,
 .work-image > img,
 .work-image:after {
-	-webkit-transition: all 0.3s ease-in-out 0s;
-	   -moz-transition: all 0.3s ease-in-out 0s;
-		-ms-transition: all 0.3s ease-in-out 0s;
-		 -o-transition: all 0.3s ease-in-out 0s;
-			transition: all 0.3s ease-in-out 0s;
+	-webkit-transition: all 0.3s ease-out 0s;
+	   -moz-transition: all 0.3s ease-out 0s;
+		-ms-transition: all 0.3s ease-out 0s;
+		 -o-transition: all 0.3s ease-out 0s;
+			transition: all 0.3s ease-out 0s;
 }
 
 /* Reset border-radius */
@@ -493,7 +493,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 p, ol, ul, blockquote {
-	margin: 0 0 20px;
 }
 
 blockquote {

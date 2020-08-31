@@ -1,8 +1,24 @@
-.fullH.whiteBG
-	.context.padXXXLg.Bpad0.sizeLg.txtR
-		.hs-title-size-3.font-alt.m-b-20.context.txtL.white
-			span.block.floatR.round.both.dkt= t("Products ")
-		.hs-title-size-1.font-inc.LmarXXSm.BmarXXLg.dark= t("Overview ")
+.whiteBG
+	.container.rel
+		.context.HpadXXXLg.Bpad0.sizeLg.txtR(style="margin-top:3em;")
+			.hs-title-size-3.font-alt.m-b-20.context.txtL.white
+				span.block.floatR.round.both.dkt= t("Products ")
+			.hs-title-size-1.font-inc.LmarXXSm.BmarXXLg.dark= t("Overview ")
+	.container.rel.Tmar(style="margin-bottom:5em;")
+		.line
+			.unit.size1of3
+				p.txtJ.marXXXXLg.padXSm It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. 
+			.unit.size1of3
+				p.txtJ.marXXXXLg.padXSm The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text.
+			.unit.lastUnit
+				p.txtJ.marXXXXLg.padXSm And a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+		
+		.line.txtR.RmarXXXLg.Rpad
+			- var link_url = '/products/' ;
+			- var links_cl = 'dkt' ;
+			- var links_name = "All Products" ;
+			
+			include ./links
 	.patchwork.context.txtC
 		- if(!!target_sections && target_sections.length){
 			ul.works-grid.works-grid-masonry.works-grid-2.works-hover-w
@@ -21,6 +37,44 @@
 							.work-descr.ls1= t(article.product.desc) 
 							h3.work-title.uppercase.Bmar.ls1= t(article.product.name) 
 							- var link_url = child.path ;
+							- var links_name = "Product" ;
 							include ./links
 				- }
-		- }	
+		- }
+	.container.context
+		.line.TmarXXXLg.BpadXXXLg(style="margin-bottom:10em;")
+			.unit.fullW
+				.sizeLg.marXXXLg.txtL
+					p.sizeLg.txtL.dark
+						| Our 
+						span.dkt products  
+						| have all obtained licensing and certification from 
+						strong.dkt ISO-4501-8888.
+					p.sizR.txtL.dark.size2of3
+						| They are under constant check and control as we speak. Numerous consecutive tests puts them at a hard training, through the whole process of multiple building-unbuilding preface, until full-and-functional delivery. 
+					p.sizeR.txtL.dark.Tmar.size2of3
+						| They then are shipped under cimilarily checkable controls, by partner and certified shipper, until they become part of client's property, which falls under, again various of our insurances policies.
+						
+					
+
+
+
+					p.sizeLg.txtL.dark(style="margin-top:5em;")
+						span.dkt Need  
+						| an information on any of our 
+						strong.dkt products ?
+					p.sizeR.txtL.dark.BmarXLg
+						| Feel free to contact our 
+						strong.dkt professionals
+						| , that are ready to inform you,
+						br
+						| on demand as promptly as we all can.
+					
+					h4.sizeXXLg.txtL.inlineblock.padXSm.HpadXLg.whiteBG.round.left.dkt.dktBD
+						| Call
+					h4.sizeXXLg.txtL.inlineblock.padXSm.HpadXLg.dktBG.round.right.white.dktBD
+						| 1-800-6425-1539
+					p.sizeSm.txtL.dark.TmarXLg
+						| Our 
+						strong.dkt professionals 
+						| are ready to inform you in the best delays.

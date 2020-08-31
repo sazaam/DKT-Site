@@ -1,5 +1,5 @@
-ul.context
+ul.links.context(class= links_cl || "")
 	li(style='display: inline;')
-		a.btn.btn-border-slider-white.round.left.dkt(href='/#/' + lang + link_url)= t('View')
+		a.gowhite.bt.btn-border-slider-white.round.left.dkt.whiteBG(href='/#/' + lang + link_url)= t('View')
 	li(style='display: inline;')
-		a.btn.btn-border-slider-black.round.right(href='/#/' + lang + link_url)= t('More')
+		a.goblack.bt.btn-border-slider-black.round.right.dktBG(href='/#/' + lang + link_url)= t(links_name || 'More')

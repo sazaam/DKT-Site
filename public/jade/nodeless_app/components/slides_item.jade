@@ -1,21 +1,38 @@
-li.bg-dark(style='width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;')
-	.slidebg.slide-zoom(style='background-image:url(' + article.mainimage + ')')
+li.bg-dark.noselect(unselectable="on", style='width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;')
+	.slidebg.slide-zoom(style='opacity:.3;background-image:url(' + article.mainimage + ')')
 	- var link_url = child.path ;
 	- if(child.name == 'home'){
 		.hs-caption.container(style='top: 0px; display: table;')
 			.caption-content.center
 				h1.cover.biglogo.txtC
 					span.hidden= t(article.name)
-				span.block.uppercase.montserrat.dkt(style='margin-top: -25px; margin-left: 4px; font-size:15.5px;')= t(article.fullname)
-				.hs-title-size-3.font-alt.m-b-20
-					span.btn.round.left.HpadXXLg.dktBG= t(article.product.name)
-					span.btn.btn-border-slider-black.round.right.HpadXXLg= t(article.product.desc)
+				.block.uppercase.montserrat(style='color:#333;margin-top: -25px; margin-left: 4px; font-size:15.5px;')= t(article.fullname)
+
+				ul.links.dkt.context.TmarLg.sizeLg.noBd
+					li(style='display: inline;')
+						em.gowhite.bt.btn-border-slider-white.round.left.whiteBG.dkt= t('Technology')
+					li(style='display: inline;')
+						em.goblack.bt.btn-border-slider-black.round.right.dktBG= t('Provides')
+
 	- }else if(child.name == 'products'){
 		.hs-caption.container(style='top: 0px; display: table;')
 			.caption-content.left.vmiddle
 				.hs-title-size-3.font-alt.m-b-20.context
 					span.whiteBG.block.floatL.padSm.VpadXSm.round.both.dkt= t(article.product.name)
-				.hs-title-size-1.font-inc.LmarXXSm.Vmar.white= t(article.product.desc)
+				.hs-title-size-1.font-inc.LmarXXSm.Vmar.white
+					span= t(article.product.desc)
+				
+				.line.BmarXLg
+					.unit.size1of3
+						p.txtJ.marXXXXLg.padXSm It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. 
+					.unit.size1of3
+						p.txtJ.marXXXXLg.padXSm The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text.
+					.unit.lastUnit
+						p.txtJ.marXXXXLg.padXSm And a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+
+				- var links_cl = "dkt noBd" ;
+				- var links_name = "the products" ;
+
 				include  ./links
 
 	- }else if(child.name == 'about'){
@@ -23,15 +40,33 @@ li.bg-dark(style='width: 100%; float: left; margin-right: -100%; position: relat
 			.caption-content.right.vmiddle
 				.hs-title-size-3.font-alt.m-b-20.context
 					span.whiteBG.block.floatL.padSm.VpadXSm.round.both.dkt= t(article.product.name)
-				.hs-title-size-1.font-inc.LmarXXSm.Vmar.white= t(article.product.desc)
+				.hs-title-size-1.font-inc.LmarXXSm.Vmar.white
+					span= t(article.product.desc)
+				
+		
+				.line.BmarXLg
+					.unit.size1of3
+						p.txtJ.marXXXXLg.padXSm It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. 
+					.unit.size1of3
+						p.txtJ.marXXXXLg.padXSm The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text.
+					.unit.lastUnit
+						p.txtJ.marXXXXLg.padXSm And a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+				- var links_cl = "dkt noBd" ;
+				- var links_name = "the company" ;
+
 				include  ./links
 	- }else{
 		- var even = i % 2 == 0 ;
 		- var cl = even ? 'right' : 'left' ;
 		.hs-caption.container(style='top: 0px; display: table;')
-			.caption-content(class=cl)
-				.hs-title-size-3.font-alt.m-b-20= t(article.product.name)
-				.hs-title-size-1.font-inc.Bmar= t(article.product.desc)
+			.noproduct.caption-content(class=cl)
+				.hs-title-size-3.font-alt.m-b-20
+					span= t(article.product.name)
+				.hs-title-size-1.font-inc.BmarXLg
+					span= t(article.product.desc)
 				
+				- var links_cl = "dkt noBd" ;
+				- var links_name = "product" ;
+
 				include  ./links
 	- }

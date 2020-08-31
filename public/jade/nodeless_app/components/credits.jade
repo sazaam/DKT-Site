@@ -1,6 +1,6 @@
 .fullH.ocreBG
 	.container.rel
-		.context.padXXXLg.Bpad0.sizeLg.txtL
+		.context.HpadXXXLg.Bpad0.sizeLg.txtL(style="margin-top:3em;")
 			.hs-title-size-3.font-alt.m-b-20.context.txtL.white
 				span.block.floatL.round.both.dkt= t("Company ")
 			.hs-title-size-1.font-inc.LmarXXSm.BmarXXLg.dark= t("Our Philosophy ")
@@ -14,6 +14,9 @@
 				p.txtJ.marXXXXLg.padXSm And a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
 		.aboutgo(style="padding:3em 0 10em")
 			- var link_url = '/#/' + lang + '/contact/' ;
+			- var links_cl = 'dkt' ;
+			- var links_name = "Company" ;
+			
 			include ./links
 
 	.container.rel

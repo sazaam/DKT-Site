@@ -9,13 +9,16 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "nodemon app"
   },
   "dependencies": {
+    "axios": "^0.20.0",
     "cookie-parser": "~1.4.4",
-    "debug": "~2.6.9",
+    "debug": "^4.1.1",
     "express": "~4.16.1",
     "express-async-await": "^1.1.0",
+    "express-graphql": "^0.11.0",
+    "graphql": "^15.3.0",
     "http-errors": "~1.6.3",
     "i18next": "^19.7.0",
     "i18next-http-backend": "^1.0.18",
@@ -24,6 +27,7 @@
     "jade": "~1.11.0",
     "mongodb": "^3.5.8",
     "morgan": "^1.9.1",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.0",
+    "nodemon": "^2.0.4"
   }
 }

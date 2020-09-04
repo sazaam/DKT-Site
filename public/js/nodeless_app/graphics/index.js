@@ -324,7 +324,7 @@ module.exports = {
 			
 			// cy.index = -1 ;
 			
-			if(cy.index == -1) launch() ;
+			if(cy.index == -1 ) launch() ;
 			else{
 				cy.index -- ;
 				launch() ;

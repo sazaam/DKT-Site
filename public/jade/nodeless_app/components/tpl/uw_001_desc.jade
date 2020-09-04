@@ -72,7 +72,7 @@ section.page.zind3(style="top:5em;background:#FFF;")
 			.unit.lastUnit.dark.round.right.padXXXLg.RmarXXXXLg(style="margin-top:0em")
 				.Tmar.RmarXXXLg.RpadXXXLg.txtL.sizeLg
 					- locals.context = product_section.name ;
-					!{ render(t(components.desc, locals), locals) }
+					| !{ render(t(components.desc, locals), locals) }
 			
 		
 		.line(style="margin-top:2em")
@@ -80,7 +80,7 @@ section.page.zind3(style="top:5em;background:#FFF;")
 				.abs.top0.right0.left0.Hpad.VpadXSm.ocreBG
 					span.block.Hpad.dkt Specifications
 				.txtR.Bmar(style="margin-top:4em")
-					table.tables(row="4").font-inc.dark(style="width:100%")
+					table.tables.font-inc.dark(style="width:100%" row="4")
 						tbody.lh2
 							tr
 								td.bold.dkt.size1of3.txtL.Lpad Web Materials 
@@ -118,11 +118,11 @@ section.page.zind3(style="top:5em;background:#FFF;")
 
 			.unit.size2of5
 				.TmarXXXLg.RmarXXXLg.RpadXXXLg.txtL
-					!{ render(t(components.instr, locals), locals) }
+					| !{ render(t(components.instr, locals), locals) }
 
 		.line(style="margin-top:5em;margin-bottom:5em")
 			.Tmar.RmarXXXLg.RpadXXXLg.txtL
-				!{ render(t(components.concl, locals), locals) }
+				| !{ render(t(components.concl, locals), locals) }
 
 
 .extra.context.rel(style='height:21em;background:#222;')

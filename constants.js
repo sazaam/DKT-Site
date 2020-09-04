@@ -11,8 +11,7 @@ module.exports = {
   fixtures:'./json/fixtures/fixtures.json',
   users:{
     dkt:{
-      identifier: 'dkt',
-      password: 'Butokukai1'
+      
     }
   }
     

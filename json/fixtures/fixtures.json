@@ -43,6 +43,43 @@
         
         "children": [
             {
+                "id": 32,
+                "name": "lm_001",
+                
+                "position": 1,
+                "level": 2,
+                
+                "article":{
+                    "name": "lm 001 Series",
+                    
+                    "mainimage":"/img/lm_001.png",
+                    
+                    "product":{
+                        "name":"DKT__products.name_lm_001",
+                        "desc":"DKT Coating Machinery"
+                    },
+
+                    "body":{
+                        "id": 35,
+                        "name": "uw_001_desc",
+                        "vars":{
+                            "toto":"tata",
+                            "linkpath":"/contact/",
+                            "pics":["/img/lm_002.png"],
+                            "productname":"t(product_section.article.product.name)",
+
+                            "components":{
+                                "desc":"DKT__products.desc",
+                                "instr":"DKT__products.instr",
+                                "concl":"DKT__products.concl"
+                            }
+                        },
+                        "tpl":["./components/tpl/uw_001_desc"]
+                    }
+
+                }
+            },
+            {
                 "id": 12,
                 "name": "sl_001",
                 
@@ -79,20 +116,21 @@
                     
                 }
             },
+           
             {
-                "id": 32,
-                "name": "lm_001",
+                "id": 35,
+                "name": "uv_001",
                 
                 "position": 1,
                 "level": 2,
                 
                 "article":{
-                    "name": "lm 001 Series",
+                    "name": "uv 001 Series",
                     
-                    "mainimage":"/img/lm_001.png",
+                    "mainimage":"/img/uv_001.png",
                     
                     "product":{
-                        "name":"DKT__products.name_lm_001",
+                        "name":"DKT__products.name_uv_001",
                         "desc":"DKT Coating Machinery"
                     },
 
@@ -100,9 +138,11 @@
                         "id": 35,
                         "name": "uw_001_desc",
                         "vars":{
-                            "toto":"tata",
+                            "year":2013,
+                            "tags":"#UVCoater #Coater #TPU #PET",
+                            "toto":"home.title",
                             "linkpath":"/contact/",
-                            "pics":["/img/lm_002.png"],
+                            "pics":["/img/uv_002.png"],
                             "productname":"t(product_section.article.product.name)",
 
                             "components":{
@@ -149,45 +189,6 @@
                             }
                         },
                        
-                        "tpl":["./components/tpl/uw_001_desc"]
-                    }
-
-                }
-            },
-            {
-                "id": 35,
-                "name": "uv_001",
-                
-                "position": 1,
-                "level": 2,
-                
-                "article":{
-                    "name": "uv 001 Series",
-                    
-                    "mainimage":"/img/uv_001.png",
-                    
-                    "product":{
-                        "name":"DKT__products.name_uv_001",
-                        "desc":"DKT Coating Machinery"
-                    },
-
-                    "body":{
-                        "id": 35,
-                        "name": "uw_001_desc",
-                        "vars":{
-                            "year":2013,
-                            "tags":"#UVCoater #Coater #TPU #PET",
-                            "toto":"home.title",
-                            "linkpath":"/contact/",
-                            "pics":["/img/uv_002.png"],
-                            "productname":"t(product_section.article.product.name)",
-
-                            "components":{
-                                "desc":"DKT__products.desc",
-                                "instr":"DKT__products.instr",
-                                "concl":"DKT__products.concl"
-                            }
-                        },
                         "tpl":["./components/tpl/uw_001_desc"]
                     }
 

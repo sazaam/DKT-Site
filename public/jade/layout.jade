@@ -20,28 +20,23 @@ html.abs.fullW.fullH.context.whiteBG(lang=lang, style="overflow-y: auto;")
 		link(rel="stylesheet" type="text/css" href="/css/all.css")
 
 		- // FOR JADE PARSER SERVER FIRST JET
-		- var data_sections = sections ;
-
+		
 		title= title
 
 
 		//- LATER FOR IN-BROWSER PARSER SERVER FIRST JET
-		//- script.
+		//-  FOR IN-BROWSER PARSER SERVER FIRST JET
+		script.
 			(function(){
 				var prefix = 'data_' ;
-				var Data = !{JSON.stringify(Data)} ;
-				for(var s in Data){
-					var node = Data[s] ;
-					var data = node.data ;
-					var name = prefix + node.name ;
-					Data[name] = window[name] = JSON.parse(node.data) ;
-
-					console.log('DATA >', name , window[name])
-				}
+				var Data = !{JSON.stringify(db_sections)} ;
+				
+				console.log(Data)
 				window.Data = Data ;
 			})() ;
 
 	body.abs.all.left0.right0.top0.bottom0
+		
 		block content
 		- var other = [].concat(data_sections) ;
 		- var home = other.shift() ;

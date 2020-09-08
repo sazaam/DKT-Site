@@ -98,8 +98,8 @@ red {
 }
 .btn{border-radius:0;}
 
-.round{
-	/* border-radius:6px; */
+.rounded{
+	border-radius:6px;
 }
 
 /* CSS TRANSITION EFFECTS */
@@ -205,7 +205,6 @@ red {
 }
 .half .work-item{
 	/* width:25%; */
-	
 }
 .half .work-item *{font-size:90% !important;}
 

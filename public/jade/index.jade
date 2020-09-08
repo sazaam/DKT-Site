@@ -1,21 +1,27 @@
 extends ./layout
-- var fix = locals.AppendNominatedVarsObject ;
+//- - var fix = locals.AppendNominatedVarsObject ;
 
 block content
-
 	nav.continent.abs.left0.right0.fullW.fullH.none
-		
 		- var l = data_sections.length ;
 		- for(var i = 0 ; i < data_sections.length ; i ++){
 			- var ds = data_sections[i] ;
-
-			//- IMPORTANT FIX --> vars access datas as objects 
-			//- - if(!!data_section.article && !!data_section.article.variables){
-			//- 	- !!fix && fix(data_section.article, data_section.article.variables, 'variables') ;
-			//- - }
-			//- END FIX
+			- var db_section = db_sections[i] ;
+			- var db_post = db_section.post ;
+			- var db_template = db_section.post.template ;
+			- var db_jade = db_section.post.template.jade ;
+			
 			section.section.fullH(id=ds.name, class=ds.name)
-				| !{ renderFile('./public/jade/nodeless_app/' + ds.name + '.jade', {t:t, lang:lang, render: render, renderFile: renderFile, data_sections:data_sections, data_section:ds }) }
+				//- .sizeXXXLg.TpadXXXLg
+
+				| !{ render(db_jade, p({db_section:db_section}))}
+				
+				//- SOME DEBUGGING FEATURE
+				- (function() {
+					include /core/log
+				- })(db_section)
+
+				//- | !{ renderFile(basedir + 'nodeless_app/' + ds.name + '.jade', p({data_section:ds, db_section:db_section })) }
 		- }
 		
 		

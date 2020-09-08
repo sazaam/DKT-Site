@@ -4,17 +4,25 @@ extends ./layouts/layout_simple
 block full
 
 block flow
+
 	nav.data-container.none
 		- var target_sections = data_section.children ;
+		- var db_target_sections = db_section.children ;
 		- if(!!target_sections && target_sections.length){
 			- var ch = target_sections ;
 			- var l = ch.length ;
 			- for(var  i = 0 ; i < l ; i++){
 				- var child = ch[i] ;
+				- var db_child = db_target_sections[i] ;
 				//- - console.log(child)
 				section.subsection.fullH.whiteBG(id=child.name, class=child.name)
 					- var product_section = child ;
 					- var products_section = data_section ;
+
+
+					script. 
+						console.log(!{JSON.stringify(db_child)})
+
 					include ./layouts/article
 			- }
 		- }

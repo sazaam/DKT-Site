@@ -5,7 +5,7 @@ let port = process.env.PORT || '3000' ;
 let server ;
 
 module.exports = {
-  launchServer:(app)=>{
+  launchServer: app =>{
 
     app.set('port', port) ;
   

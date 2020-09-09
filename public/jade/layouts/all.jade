@@ -1,0 +1,24 @@
+
+
+- var l = data_sections.length ;
+- for(var i = 0 ; i < data_sections.length ; i ++){
+  - var data_section = data_sections[i] ;
+  - var db_section = db_sections[i] ;
+  - var db_post = db_section.post ;
+  - var db_template = db_section.post.template ;
+  - var db_jade = db_section.post.template.jade ;
+  
+  section.section.fullH(id=data_section.name, class=data_section.name)
+    
+    //- | !{ render('include ./sam \nscript| console.log(!{JSON.stringify(locals.filename)})', p({basedir:'/public/', filename:'sam.jade', data_section:data_section, db_section:db_section}))}
+    //- .sizeXXXLg.TpadXXXLg
+    | !{ render(db_jade, p({filename:basedir + 'db_jade.jade', data_section:data_section, db_section:db_section}))}
+
+    script| console.log(!{JSON.stringify(p())})
+    
+    //- | !{ renderFile(basedir + 'nodeless_app/' + ds.name + '.jade', p({data_section:ds, db_section:db_section })) }
+- }
+  
+  
+  
+script(type='text/javascript' src='./js/strawnode.js?starter=./nodeless_app/')

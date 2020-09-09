@@ -327,11 +327,11 @@ html:lang(ru) .lang_ru a, html:lang(ko) .lang_ko a, html:lang(en) .lang_en a{
 }
 
 .slideprev {
-	cursor: url(./skin/prev-light.png), e-resize;
+	cursor: url(./skin/prev-light.png), auto;
 }
 
 .slidenext {
-	cursor: url(./skin/next-light.png), e-resize;
+	cursor: url(./skin/next-light.png), auto;
 }
 
 .bt{

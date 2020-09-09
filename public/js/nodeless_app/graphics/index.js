@@ -138,18 +138,22 @@ module.exports = {
 			var mm = res.userData.mm = function(e){
 				var li = $(e.currentTarget) ;
 				if(e.target.tagName == 'SPAN' || e.target.tagName == 'A'){
-					li.removeClass('slideprev')
-					li.removeClass('slidenext')
+					if( e.target.tagName == 'A') li.removeClass('slideprev')
+					if( e.target.tagName == 'A') li.removeClass('slidenext')
 					return ;
 				} else {
 					
-					var w = $(window).width()
-					var mw = w >> 1 ;
-					var screenX = window.screenX = e.screenX || window.screenX ;
+					var w = $(window).width() ;
+					var mw = w / 2 ;
+					
+					var screenX = window.screenX = e.pageX || window.screenX ;
 					if(screenX > mw){
+						// trace('heyyyy -> right')
+						// trace('screenX', e.screenX, ' mw >>', mw, ' fw ::>>', w)
 						li.addClass('slidenext')
 						li.removeClass('slideprev')
 					}else{
+						// trace('left <- heyyyy')
 						li.addClass('slideprev')
 						li.removeClass('slidenext')
 					}
@@ -159,17 +163,17 @@ module.exports = {
 			
 			var clk = res.userData.clk = function(e){
 				
-				if(e.target.tagName == 'SPAN' || e.target.tagName == 'A'){
+				if( e.target.tagName == 'A'){
 					
 					return ;
 				} else {
 					
 					var w = $(window).width() ;
-					var mw = w >> 1 ;
-					var screenX = window.screenX = e.screenX || window.screenX ;
+					var mw = w / 2 ;
+					var screenX = window.screenX = e.pageX || window.screenX ;
 					if(screenX > mw){
 						halt() ;
-						trace(cy.index)
+						// trace(cy.index)
 						cy.next() ;
 					}else{
 						halt() ;
@@ -393,7 +397,7 @@ module.exports = {
 				elem.data('click', function(e){
 					e.preventDefault() ;
 					e.stopPropagation() ;
-					trace(href)
+					// trace(href)
 					
 					document.location = '/#' + href ;
 				}) ;

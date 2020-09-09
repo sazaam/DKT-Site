@@ -1,29 +1,12 @@
 extends ./layout
 //- - var fix = locals.AppendNominatedVarsObject ;
 
+
 block content
 	nav.continent.abs.left0.right0.fullW.fullH.none
-		- var l = data_sections.length ;
-		- for(var i = 0 ; i < data_sections.length ; i ++){
-			- var ds = data_sections[i] ;
-			- var db_section = db_sections[i] ;
-			- var db_post = db_section.post ;
-			- var db_template = db_section.post.template ;
-			- var db_jade = db_section.post.template.jade ;
-			
-			section.section.fullH(id=ds.name, class=ds.name)
-				//- .sizeXXXLg.TpadXXXLg
 
-				| !{ render(db_jade, p({db_section:db_section}))}
-				
-				//- SOME DEBUGGING FEATURE
-				- (function() {
-					include /core/log
-				- })(db_section)
+		//- | !{ render('include ./sam \nscript| console.log(!{JSON.stringify(locals)})', p({basedir:basedir, filename: basedir + 'sam.jade', data_section:data_section, db_section:db_section}))}
 
-				//- | !{ renderFile(basedir + 'nodeless_app/' + ds.name + '.jade', p({data_section:ds, db_section:db_section })) }
-		- }
-		
-		
-		
-	script(type='text/javascript' src='./js/strawnode.js?starter=./nodeless_app/')
+		//- | !{ renderFile(basedir + '/layouts/all.jade', p({filename:'/index.jade' , data_section:data_section, db_section:db_section}))}
+		//- | !{ renderFile(basedir + '/layouts/all.jade', p({filename:'/index.jade', data_section:data_section, db_section:db_section}))}
+		| !{ renderFile(basedir + 'layouts/all.jade', p({ filename: basedir + 'layouts/all.jade', data_section:data_section, db_section:db_section}))}

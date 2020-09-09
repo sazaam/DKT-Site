@@ -1,25 +1,41 @@
 
-block content
-:markdown
-  # Markdown
-  I often like including !{t(saz)} documents.
-  ~~~
-  code_line(1);
-  // a code comment
-  class MoreCode { }
-  ~~~
-  
+//- ----------------------- START  => Extends
 
-  <code class="prettyprint padLg whiteBG dkt inlineblock rounded">
-    code_line(1);
-    // a code comment
-    class More Code { }
-  </code>
+extends /layouts/page
+
+//- ----------------------- END : Extends
 
 
+block content  
 
-h1= db_section.name
-  - for(var i = 0 ; i < db_section.children.length ; i ++){
-    - var sss = db_section.children[i].name ;
-      + pet(sss)
-  - }
+	block flow
+
+		nav.data-container.none
+			- var target_sections = data_section.children ;
+			- var db_target_sections = db_section.children ;
+			- if(!!target_sections && target_sections.length){
+				- var ch = target_sections ;
+				- var l = ch.length ;
+				//- script| console.log(!{JSON.stringify(ch)})
+				
+
+				- for(var i = 0 ; i < l ; i ++){
+					- var product_section = ch[i] ;
+					- var products_section = data_section ;
+					section.subsection.fullH.whiteBG(id=product_section.name, class=product_section.name)
+						include /pages/uw_001_desc
+
+					//- script| console.log(!{JSON.stringify(product_section)})
+				- }
+
+			- }
+
+
+
+		- var target_sections = data_section.children ;
+		.extra.rel.context(style='height:50%;background:#8C8C8C;')
+			include /layouts/components/slideshow
+
+		include /layouts/components/patchwork
+
+		include /layouts/components/credits

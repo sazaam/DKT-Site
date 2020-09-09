@@ -1,0 +1,180 @@
+- var ch = products_section.children ;
+- var next = ch[ch.indexOf(product_section)+1] || ch[0] ;
+- var prev = ch[ch.indexOf(product_section)-1] || ch[ch.length - 1] ;
+- var pics = product_section.article.body.vars.pics ;
+- var components = product_section.article.body.vars.components ;
+
+.extra.context.rel(style='height:50%;background:#222;')
+	.abs.top0.left0.bottom0.right0(style='opacity:.3;background:#222 url(' + product_section.article.mainimage + ') no-repeat 50% 50%;')
+		span.hidden Image
+
+	.to_products.prev.abs.left0.bottom0.fullH.context.sizeR.txtL.size2of5
+		- var cur = prev ;
+		.cont.none.abs.bottom0.left0.HmarXXXLg.round.both.dkt.dktBG
+			.sizeSm.font-inc.white.padXXLg.VpadSm= t('prev')
+			include /layouts/components/item_block
+		.linker.abs.bottom0.left0.right0.marXXXLg
+			a.inlineblock.sizeSm.font-inc.white.dktBG.round.both(href= "/#/" + lang + cur.path)
+				span.block.padXXLg.VpadSm= t('prev')
+			.sizeXXXXLg.TmarXXSm.context.clear
+				span.inlineblock.white.lh09= t(prev.article.product.name)
+				span.block.sizeXSm.HmarXXXSm.inconsolata.uppercase.white= t(prev.article.product.desc)
+
+	.to_products.next.abs.right0.bottom0.context.sizeR.txtR.size2of5
+		- var cur = next ;
+		.cont.none.abs.bottom0.right0.HmarXXXLg.round.both.dkt.dktBG
+			.sizeSm.font-inc.white.padXXLg.VpadSm= t('next')
+			include /layouts/components/item_block
+		.linker.abs.bottom0.left0.right0.marXXXLg
+			a.inlineblock.sizeSm.font-inc.white.dktBG.round.both(href= "/#/" + lang + cur.path)
+				span.block.padXXLg.VpadSm= t('next')
+			.sizeXXXXLg.TmarXXSm.context
+				span.inlineblock.white.lh09= t(next.article.product.name)
+				span.block.sizeXSm.HmarXXXSm.inconsolata.uppercase.white= t(next.article.product.desc)
+
+
+	.abs.left0.top0.right0.context.sizeR.txtL.TmarXXXXLg.TpadXXLg
+		.linker.marXXXLg.round.both.dktBG.inlineblock
+			a.block.sizeSm.font-inc.white.padXXLg.VpadSm(href="/#/"+ lang + "/products/")= t('back to Products')
+
+
+section.page.zind3(style="top:5em;background:#FFF;")
+
+
+	.container.rel
+		.line.txtL(style="margin-top:2em")
+			.unit.size1of2.floatR.txtR.context.sizeLg.dkt.pad.BpadXXLg
+				.hs-title-size-3.font-alt.m-b-20.context.white
+					span.block.round.both.dkt= t(product_section.article.product.name)
+				.hs-title-size-1.font-inc.LmarXXSm.BmarSm.dark= t(product_section.article.product.desc)
+			.unit.lastUnit.pad.BpadXXLg.txtL
+				.font-inc
+					strong #{t('Creation Year')} :
+					span.fat-link.dkt #{t(year)}
+				.font-inc
+					strong #{t('Tags')} : 
+					span.fat-link.dkt #{t(tags)}
+				.font-inc 
+					strong #{t('Description File')} : 
+					a.dkt(href='/pdf/' +  product_section.name + '.pdf' target="_blank") #{t(product_section.name) + '.pdf'}
+			
+					
+
+	.line.rel(style="height:400px;background:#222")
+		
+		ul.pics.line.fullH
+			- var ll = pics.length ;
+			- for(var ii = 0 ; ii < ll ; ii ++){
+				li.floatL.cover.special(style='width:500px;height:100%;background:url(' + pics[ii] + ') no-repeat 50% 50%;background-size:cover')
+					span.hidden Image
+			- }
+		
+	.container(style="margin-top:0em")
+		.line(style="margin-top:2em")
+			.unit.lastUnit.dark.round.right.padXXXLg.RmarXXXXLg(style="margin-top:0em")
+				.Tmar.RmarXXXLg.RpadXXXLg.txtL.sizeLg
+					- locals.context = product_section.name ;
+					| !{ render(t(components.desc, locals), locals) }
+			
+		
+		.line(style="margin-top:2em")
+			.unit.floatR.size1of2.context.ivoryBG.white.round.both.rel(style="border:1px solid #9d1639")
+				.abs.top0.right0.left0.Hpad.VpadXSm.ocreBG
+					span.block.Hpad.dkt Specifications
+				.txtR.Bmar(style="margin-top:4em")
+					table.tables.font-inc.dark(style="width:100%" row="4")
+						tbody.lh2
+							tr
+								td.bold.dkt.size1of3.txtL.Lpad Web Materials 
+								td.txtL.Rpad PET film
+							tr
+								td.bold.dkt.size1of3.txtL.Lpad Web Thickness
+								td.txtL.Rpad 100 ~ 250 micron
+							tr
+								td.bold.dkt.size1of3.txtL.Lpad Web Width
+								td.txtL.Rpad 500 ~ 1,570 mm
+							tr
+								td.bold.dkt.size1of3.txtL.Lpad Machine Speed
+								td.txtL.Rpad Max. 30m/min
+							tr
+								td.bold.dkt.size1of3.txtL.Lpad Unwind Diameter
+								td.txtL.Rpad Max. 800mm
+							tr
+								td.bold.dkt.size1of3.txtL.Lpad Rewind Diameter
+								td.txtL.Rpad Max. 800mm
+							tr
+								td.bold.dkt.size1of3.txtL.Lpad Coating System
+								td.txtL.Rpad (Double Top) Roller Gap Adjusting System
+							tr
+								td.bold.dkt.size1of3.txtL.Lpad Dryer Diameter
+								td.txtL.Rpad Low/Middle/High Pressure UV system
+							tr
+								td.bold.dkt.size1of3.txtL.Lpad Inspection Room
+								td.txtL.Rpad Top Roller Gap Adjusting System
+							tr
+								td.bold.dkt.size1of3.txtL.Lpad Laminating System
+								td.txtL.Rpad by Sight
+							tr
+								td.bold.dkt.size1of3.txtL.Lpad Rewinding System
+								td.txtL.Rpad Center (Surface Turret) Winding System
+
+			.unit.size2of5
+				.TmarXXXLg.RmarXXXLg.RpadXXXLg.txtL
+					| !{ render(t(components.instr, locals), locals) }
+
+		.line(style="margin-top:5em;margin-bottom:5em")
+			.Tmar.RmarXXXLg.RpadXXXLg.txtL
+				| !{ render(t(components.concl, locals), locals) }
+
+
+.extra.context.rel(style='height:21em;background:#222;')
+	.abs.top0.left0.bottom0.right0
+		span.hidden Image
+
+	.to_products.prev.abs.left0.bottom0.fullH.context.sizeR.txtL.size2of5
+		- var cur = prev ;
+		.cont.none.abs.bottom0.left0.HmarXXXLg.round.both.dkt.dktBG
+			.sizeSm.font-inc.white.padXXLg.VpadSm= t('prev')
+			include /layouts/components/item_block
+		.linker.abs.bottom0.left0.right0.marXXXLg
+			a.inlineblock.sizeSm.font-inc.white.dktBG.round.both(href= "/#/" + lang + cur.path)
+				span.block.padXXLg.VpadSm= t('prev')
+			.sizeXXXXLg.TmarXXSm.context.clear
+				span.inlineblock.white.lh09= t(prev.article.product.name)
+				span.block.sizeXSm.HmarXXXSm.inconsolata.uppercase.white= t(prev.article.product.desc)
+
+	.to_products.next.abs.right0.bottom0.fullH.context.sizeR.txtR.size2of5
+		- var cur = next ;
+		.cont.none.abs.bottom0.right0.HmarXXXLg.round.both.dkt.dktBG
+			.sizeSm.font-inc.white.padXXLg.VpadSm= t('next')
+			include /layouts/components/item_block
+		.linker.abs.bottom0.left0.right0.marXXXLg
+			a.inlineblock.sizeSm.font-inc.white.dktBG.round.both(href= "/#/" + lang + cur.path)
+				span.block.padXXLg.VpadSm= t('next')
+			.sizeXXXXLg.TmarXXSm.context
+				span.inlineblock.white.lh09= t(next.article.product.name)
+				span.block.sizeXSm.HmarXXXSm.inconsolata.uppercase.white= t(next.article.product.desc)
+
+
+	.abs.left0.top0.bottom.right0.context.sizeR.txtC
+		.linker.marXXXLg.round.both.dktBG.inlineblock
+			a.block.sizeSm.font-inc.white.padXXLg.VpadSm(href="/#/"+ lang + "/products/")= t('back to Products')
+
+section.page.zind3.ocreBG.footer.context(style="top:5em;")
+	.container.rel
+		.line(style="margin-top:5em")
+			.Tmar.txtC
+				.work-details.font-alt.sizeXXXLg.dkt #{t('contact Us')}
+			.fullW
+				.txtC
+					- var links_cl = "dkt" ;
+					- var links_name = "home.title" ;
+					include /layouts/components/links
+	.container.rel
+		.line.txtR
+			.unit.endlogo.marXXLg
+				span.hidden DKT
+			.lastUnit.sizeLg
+				span.block.HpadXXXLg.pad.dkt Thank You
+	.container.rel(style="margin-bottom:10em")
+		include /layouts/components/infos

@@ -98,9 +98,9 @@ let root = async (req, res) => {
 	
 	if(!MAINDEBUG || RELEASED){
 
-		
+		const jadebasedir = path.join(__dirname, 'public', 'jade') ;
 		let params = {
-			basedir:CONSTANTS.PATH.jade,
+			basedir:jadebasedir + '\\',
 			title:CONSTANTS.SITE.title,
 			lang: req.i18n.language,
 			t: req.t,
@@ -108,6 +108,7 @@ let root = async (req, res) => {
 			data_sections: data_sections,
 			render: jade.render,
 			renderFile: jade.renderFile,
+			join:path.join,
 			p:(newp) => {
 				
 				return !!newp ? merge(clone(params), newp) : clone(params) ;

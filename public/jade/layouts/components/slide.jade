@@ -1,5 +1,6 @@
 li.bg-dark.noselect(unselectable="on", style='width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;')
-	.slidebg.slide-zoom(style='opacity:.3;background-image:url(' + article.mainimage + ')')
+	.slidebg.slide-zoom(style='opacity:.3;background-image:url(' + (!!(article.body) ? article.body.vars.pics[0] : article.mainimage) + ')')
+		
 	- var link_url = child.path ;
 	- if(child.name == 'home'){
 		.hs-caption.container(style='top: 0px; display: table;')

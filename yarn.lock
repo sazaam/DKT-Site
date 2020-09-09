@@ -1077,6 +1077,13 @@ json5@2.0.0:
   dependencies:
     minimist "^1.2.0"
 
+jstransformer-marked@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/jstransformer-marked/-/jstransformer-marked-1.0.3.tgz#07ce849d95a3c4e398f2dfd90d94be3b88453f16"
+  integrity sha1-B86EnZWjxOOY8t/ZDZS+O4hFPxY=
+  dependencies:
+    marked "^0.3.9"
+
 jstransformer@0.0.2:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/jstransformer/-/jstransformer-0.0.2.tgz#7aae29a903d196cfa0973d885d3e47947ecd76ab"
@@ -1132,6 +1139,11 @@ make-dir@^3.0.0:
   integrity sha512-g3FeP20LNwhALb/6Cz6Dd4F2ngze0jz7tbzrD2wAV+o9FeNHe4rL+yK2md0J/fiSf1sa1ADhXqi5+oVwOM/eGw==
   dependencies:
     semver "^6.0.0"
+
+marked@^0.3.9:
+  version "0.3.19"
+  resolved "https://registry.yarnpkg.com/marked/-/marked-0.3.19.tgz#5d47f709c4c9fc3c216b6d46127280f40b39d790"
+  integrity sha512-ea2eGWOqNxPcXv8dyERdSr/6FmzvWwzjMxpfGB/sbMccXoct+xY+YukPD+QTUZwyvK7BZwcr4m21WBOW41pAkg==
 
 marked@^1.1.1:
   version "1.1.1"

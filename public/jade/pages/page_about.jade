@@ -1,38 +1,20 @@
 
 //- ----------------------- START  => Extends
 
-//extends /layouts/page
+extends ./page
 
 //- ----------------------- END : Extends
 
-block full
-  - var data_section = data_sections[2] ;
+include /mixins/_global
+
 
 block flow
-  .extra.rel.context.cover(style='height:30%;background:#080808 url(' + data_section.article.mainimage  + ') no-repeat 50% 50%;')
-    span.hidden data_section.name
-  .extra.rel.darkBG
-    .container.rel
-      .context.HpadXXXLg.Bpad0.sizeLg.txtR(style="margin-top:3em;margin-bottom:3em;")
-        .hs-title-size-3.font-alt.m-b-20.context.txtL.white
-          span.block.floatR.round.both.dkt= t("About ")
-        .hs-title-size-1.font-inc.LmarXXSm.light= t("The Company")
+  
+  - var main_media = getComponentsByTypename(section.post.bracket, 'ComponentModularMedia')[0].media ;
 
-  - var tr = t('home.title') ;
-  .extra.rel
-    .container.rel.darkBG(style="margin-top:1px;")
-      .line.BmarXLg
-        .unit.size2of3
-          .txtL.marXXXXLg.Tmar0.padXSm
-            :markdown
-              > #### It is a long established fact that a reader will be distracted 
-              
-              ***
-              ##### by the [readable] content of a [page] when 'looking' at its layout. 
-              #{tr} The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using,
-              
-              ~~~
-              'Content here, content here', making it look like readable English.
-              ~~~ 
-        .unit.lastUnit
-          p.txtJ.marXXXXLg.padXSm And a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like
+  +topimage(CDN + main_media[1].url, color, 'About', "The Company")
+  
+
+  each md_article in getComponentsByTypename(section.post.bracket, 'ComponentModularArticle')
+    - var params2 = !!md_article.page ? merge(params, rfs(md_article.page.jade, md_article.page.path, params)) : params ;
+    +article("article_" + md_article.name, md_article.template.jade, params2, md_article.color || '#169d65')

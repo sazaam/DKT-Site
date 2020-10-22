@@ -102,7 +102,222 @@ module.exports = {
 		
 	},
 	
-	
+	////////////////////////// SLIDESHOW
+	smallslideshow : smallslideshow = function(e, cond){
+		
+		var res = e.target ;
+		var id = res.id ;
+		var parentID = res.parentStep.id ;
+		var rt = $('#' + id ) ;
+		var slideshow = rt.find('.pics') ;
+		
+		if(!slideshow.length) return ;
+		
+		var slides = rt.find('.pics li') ;
+		
+		var launched = false ;
+		
+		var cy ;
+		
+		
+		if(!res.userData.cy){
+			
+			var commands = [] ;
+			cy = res.userData.cy = new Cyclic(commands) ;
+			var TIME = 2000 ;
+			
+			
+			
+			
+			var mm = res.userData.mm = function(e){
+				
+				var li = $(e.target) ;
+				var w = li.width() ;
+
+				var mw = w >> 1 ;
+				
+				var screenX = window.screenX = e.pageX || window.screenX ;
+				
+				var localX = screenX - li.offset().left ;
+				
+				if(localX > mw){ // ON RIGHT
+					
+					li.addClass('slidenext')
+					li.removeClass('slideprev')
+
+					
+				}else{ // ON LEFT
+
+					li.addClass('slideprev')
+					li.removeClass('slidenext')
+
+				}
+				
+			}
+
+
+
+			
+			
+			var clk = res.userData.clk = function(e){
+				
+				var tg = $(e.target) ;
+				var w = tg.width() ;
+
+				var mw = w >> 1 ;
+				
+				var screenX = window.screenX = e.pageX || window.screenX ;
+				
+				var localX = screenX - tg.offset().left ;
+				
+				trace(screenX)
+
+				if(localX > mw){ // ON RIGHT
+
+					cy.next() ;
+
+					
+				}else{ // ON LEFT
+					
+					cy.prev() ;
+
+				}
+				
+			}
+				
+			
+			
+			
+			slides.each(function(i, el){
+				
+				var li = $(el) ;
+				
+				cy.push(new Command(null, function(el, i){
+					var c = this ;
+					var li = $(el) ;
+					
+					clear() ;
+					
+					li.css({
+						'left':'0',
+						'z-index':'2'
+					}) ;
+					
+					
+					// trace(i)
+					
+					var tw = res.userData.tw = BetweenJS.parallel(
+						BetweenJS.create({
+							target:li,
+							to:{
+								'opacity':100
+							},
+							from:{
+								'opacity':0
+							},
+							time:.45,
+							ease:Expo.easeOut
+						})
+					) ;
+					li.trigger('mousemove') ;
+					
+					tw.onComplete = function(){
+						c.dispatchComplete() ;
+					}
+					tw.play() ;
+					
+					return this ;
+				}, el, i))
+
+				
+			})
+			
+		}
+		
+		cy = res.userData.cy ;
+		
+		var clear = res.userData.clear = res.userData.clear || function(){
+			
+			if(res.userData.tw){
+				res.userData.tw.stop() ;
+			}
+
+			slides.css({
+				'z-index':'1',
+				'left':'-15000px',
+				'opacity':'0'
+			}).removeClass('inited') ;
+			
+		}
+		
+		
+		
+		var enable = res.userData.enable = res.userData.enable || function(cond){
+			
+			slides.each(function(i, el){
+				var li = $(el) ;
+				
+				if(cond){
+					
+					li.click(res.userData.clk) ;
+					li.mousemove(res.userData.mm) ;
+					
+				}else{
+					
+					li.off('click', clk) ;
+					li.off('mousemove', mm) ;
+					
+				}
+				
+			}) ;
+			
+		}
+		
+		if(cond){
+			
+			clear() ;
+
+			enable(true) ;
+			cy.next() ;
+			
+		}else{
+			
+			clear() ;
+			
+			enable(false) ;
+			
+		}
+		
+		
+	},
+	////////////////////////// PARALLAX
+	parallax : parallax = function(e){
+		
+		var res = Unique.instance.hierarchy.currentStep ;
+		var id = res.id ;
+		
+		var pos = $(document).scrollTop() ;
+		
+		var node = $('#'+id+' .slideshow') ;
+		
+		if (node.length > 0) {
+			
+			var homeSHeight = node.height() ;
+			var top = $(document).scrollTop() ;
+			
+			var hh = node.height() ;
+			var dif = hh - top ;
+			
+			if ((top <= homeSHeight)) {
+				node.css('top', parseInt(top * 0.55));
+			}
+			if ((top <= homeSHeight)) {
+				node.css('opacity', (1 - (parseInt(top/node.height() * 10)/10)));
+			}
+		}
+		
+		
+	},
 	
 	////////////////////////// SLIDESHOW
 	slideshow : slideshow = function(e, cond){
@@ -138,24 +353,53 @@ module.exports = {
 			var mm = res.userData.mm = function(e){
 				var li = $(e.currentTarget) ;
 				if(e.target.tagName == 'SPAN' || e.target.tagName == 'A'){
-					if( e.target.tagName == 'A') li.removeClass('slideprev')
-					if( e.target.tagName == 'A') li.removeClass('slidenext')
+					if( e.target.tagName == 'A') li.removeClass('slideprev slidenext')
+					// if( e.target.tagName == 'A') li.removeClass('slidenext')
 					return ;
 				} else {
 					
+
 					var w = $(window).width() ;
-					var mw = w / 2 ;
+					var h = $(window).height() ;
+					var mw = w >> 1 ;
+					var mh = h >> 1 ;
 					
+					mh = mh + (mh >> 1) ;
+
 					var screenX = window.screenX = e.pageX || window.screenX ;
+					var screenY = window.screenY = e.pageY || window.screenY ;
+					var top = $(document).scrollTop() ;
+					
 					if(screenX > mw){
 						// trace('heyyyy -> right')
 						// trace('screenX', e.screenX, ' mw >>', mw, ' fw ::>>', w)
 						li.addClass('slidenext')
 						li.removeClass('slideprev')
+
+						if(res.index == 0){
+							if(screenY > mh){
+								li.addClass('slidedown') ;
+								li.removeClass('slideprev slidenext') ;
+							} else{
+								li.removeClass('slidedown') ;
+								// li.removeClass('slideprev slidenext') ;
+							}
+						}
+
 					}else{
 						// trace('left <- heyyyy')
 						li.addClass('slideprev')
 						li.removeClass('slidenext')
+
+						if(res.index == 0){
+							if(screenY > mh){
+								li.addClass('slidedown') ;
+								li.removeClass('slideprev slidenext') ;
+							} else{
+								li.removeClass('slidedown') ;
+								// li.removeClass('slideprev slidenext') ;
+							}
+						}
 					}
 				}
 				
@@ -169,15 +413,77 @@ module.exports = {
 				} else {
 					
 					var w = $(window).width() ;
-					var mw = w / 2 ;
+					var h = $(window).height() ;
+					
+					var top = $(document).scrollTop() ;
+
+					var mw = w >> 1 ;
+					var mh = h >> 1 ;
+					
+					mh = mh + (mh >> 1) ;
 					var screenX = window.screenX = e.pageX || window.screenX ;
-					if(screenX > mw){
-						halt() ;
-						// trace(cy.index)
-						cy.next() ;
-					}else{
-						halt() ;
-						cy.prev() ;
+					var screenY = window.screenY = e.pageY || window.screenY ;
+
+					if(screenX > mw){ // ON RIGHT
+
+						if(res.index == 0){ // HOME Case
+							
+							if(screenY > mh){ // ON DOWNCLICK
+								
+								// 
+								BetweenJS.create({
+									target:document.documentElement,
+									to:{'scrollTop':555},
+									time:.5,
+									ease:Expo.easeOut
+								}).play() ;
+								
+							} else{
+								
+								halt() ;
+								cy.next() ;
+
+							}
+
+						}else{ // OTHER Cases
+
+							halt() ;
+							cy.next() ;
+
+						}
+
+
+						
+					}else{ // ON LEFT
+						
+						if(res.index == 0){ // HOME Case
+							
+							if(screenY > mh){ // ON DOWNCLICK
+							
+								//
+								// $(document).scrollTop(150) ;
+								BetweenJS.create({
+									target:document.documentElement,
+									to:{'scrollTop':555},
+									time:.5,
+									ease:Expo.easeOut
+								}).play() ;
+
+								
+							} else{
+								
+								halt() ;
+								cy.prev() ;
+								
+							}
+
+						}else{ // OTHER Cases
+
+							halt() ;
+							cy.prev() ;
+
+						}
+
 					}
 					
 				}
@@ -319,12 +625,11 @@ module.exports = {
 		
 		if(cond){
 			
-			trace('opening UID :', id) ;
+			// trace('opening UID :', id) ;
 			
 			clear() ;
-			
+
 			enable(true) ;
-			
 			
 			// cy.index = -1 ;
 			
@@ -337,7 +642,7 @@ module.exports = {
 			
 		}else{
 			
-			trace('closing UID :', id) ;
+			// trace('closing UID :', id) ;
 			
 			clear() ;
 			
@@ -369,10 +674,10 @@ module.exports = {
 			var dif = hh - top ;
 			
 			if ((top <= homeSHeight)) {
-				node.css('top', (top * 0.55));
+				node.css('top', parseInt(top * 0.55));
 			}
 			if ((top <= homeSHeight)) {
-				node.css('opacity', (1 - top/node.height() * 1));
+				node.css('opacity', (1 - (parseInt(top/node.height() * 10)/10)));
 			}
 		}
 		
@@ -397,8 +702,6 @@ module.exports = {
 				elem.data('click', function(e){
 					e.preventDefault() ;
 					e.stopPropagation() ;
-					// trace(href)
-					
 					document.location = '/#' + href ;
 				}) ;
 				
@@ -410,7 +713,6 @@ module.exports = {
 		}else{
 			it.each(function(i, el){
 				var elem = $(el) ;
-				
 				elem.unbind('click', elem.data('click')) ;
 			})
 			
@@ -426,7 +728,7 @@ module.exports = {
 	////////////////////////// MAIN FUNCTIONS FOCUS & TOGGLE
 	
 	////////////////////////// FOCUS
-	focus : focus = function(e){
+	products_focus : focus = function(e){
 		var res = e.target ;
 		var id = res.id ;
 		
@@ -434,34 +736,83 @@ module.exports = {
 		var continent 					= $('.continent') ;
 		
 		var target_section = $('section.' + id) ;
-		var inited = target_section ;
-		
+				
 		if(e.type == 'focusIn'){
 			
-			target_section.appendTo(all) ;
-			
-			
-			scrollEv('scroll', scroll, true) ;
-			scrollEv('scroll', parallax, true) ;
-			
-			slideshow(e, true) ;
-			patchwork(e, true) ;
-			languages(e, true) ;
 			
 			res.focusReady() ;
 			
+			smallslideshow(e, true) ;
 			
 			
 		}else{
 			
-			languages(e, false) ;
-			patchwork(e, false) ;
-			slideshow(e, false) ;
+			smallslideshow(e, false) ;
 			
-			scrollEv('scroll', parallax, false) ;
-			scrollEv('scroll', scroll, false) ;
+			res.focusReady() ;
 			
+		}
+
+	},
+	
+	////////////////////////// TOGGLE
+	products_toggle : toggle = function(e){
+	
+		var res = e.target ;
+
+		var noID 						= res.id == '' ;
+		var id 							= noID ? res.parentStep.id : res.id ;
+		var ind 						= noID ? res.parentStep.index : res.index ;
+		
+		
+		var all 						= $('.all') ;
+		var parent 						= $('.' + res.parentStep.id + '_section_container') ;
+		var continent 					= $('.continent') ;
+		
+		var target_section = $('section.' + id) ;
+		var patchwork = $('.' + res.parentStep.id + '_patchwork') ;
+		var credits = $('.' + res.parentStep.id + '_credits') ;
+		var certif = $('.' + res.parentStep.id + '_certif') ;
+
+		if(res.opening){
+			
+			patchwork.addClass('none') ;
+			credits.addClass('none') ;
+			certif.removeClass('none') ;
+
+			target_section.appendTo(parent) ;
+			res.ready() ;
+			
+		}else{
+			
+			patchwork.removeClass('none') ;
+			credits.removeClass('none') ;
+			certif.addClass('none') ;
+
 			target_section.appendTo(continent) ;
+			res.ready() ;
+		
+		}
+
+	},
+	
+	////////////////////////// FOCUS
+	focus : focus = function(e){
+		var res = e.target ;
+		var id = res.id ;
+		
+		var all 						= $('.all') ;
+		var continent 			= $('.continent') ;
+		
+		var target_section 	= $('section.' + id) ;
+				
+		if(e.type == 'focusIn'){
+			
+			res.focusReady() ;
+			
+		}else{
+			
+			
 			
 			res.focusReady() ;
 			
@@ -472,44 +823,53 @@ module.exports = {
 	////////////////////////// TOGGLE
 	toggle : toggle = function(e){
 	
-		// var DOMSections = $('#globalnav').children().toArray() ;
-		// var ll = DOMSections.length ;
-		
-		
-		// for(var i = 0 ; i < ll ; i++){
-			// var DOMsection = $(DOMSections[i]) ;
-			
-			
-		// }
-	
 		var res = e.target ;
 
-		var noID 						= res.id == '' ;
-		var id 							= noID ? res.parentStep.id : res.id ;
-		var ind 						= noID ? res.parentStep.index : res.index ;
+		var noID 									= res.id == '' ;
+		var id 										= noID ? res.parentStep.id : res.id ;
+		var ind 									= noID ? res.parentStep.index : res.index ;
 		
 		id = id == '@' ? 'home' : id ;
 		
 		
+		var all 									= $('.all') ;
+		var continent 						= $('.continent') ;
 		
-		
-		var target_section = $('section.' + id) ;
+		var target_section 				= $('section.' + id) ;
 		
 		if(res.opening){
 			
-			trace('TOGGLE IN')
-			trace('opening section > ', id) ;
+			var target_navlinks 		= $('.sectionsnav li') ;
+			var target_navlink 			= $('#global_' + id) ;
 			
-			// target_section.appendTo(all)
+			if(res.parentStep.ancestor == res.parentStep){
+				target_navlinks.removeClass('active') ;
+				target_navlink.addClass('active') ;
+			}
 			
+			target_section.appendTo(all) ;
+
+			scrollEv('scroll', scroll, true) ;
+			// scrollEv('scroll', parallax, true) ;
+			
+			slideshow(e, true) ;
+			patchwork(e, true) ;
+			languages(e, true) ;
+
 			res.ready() ;
 			
 		}else{
-		
-			trace('closing section > ', id) ;
 			
-			// target_section.appendTo(continent)
+
+			languages(e, false) ;
+			patchwork(e, false) ;
+			slideshow(e, false) ;
 			
+			// scrollEv('scroll', parallax, false) ;
+			scrollEv('scroll', scroll, false) ;
+
+
+			target_section.appendTo(continent) ;
 			res.ready() ;
 		
 		}

@@ -6,6 +6,7 @@ let main_sections_getOrdered = `query {
   sections(where:{level:1}, sort:"position:asc"){
     id
     name
+    path
     
     post{
       name
@@ -17,6 +18,47 @@ let main_sections_getOrdered = `query {
       bracket{
         __typename
         
+        ... on ComponentJadeJadePage {
+
+          name
+          jade
+          path
+
+        }
+        
+        ... on ComponentModularMedia {
+          name
+          
+          media{
+            name
+            url
+          }
+          
+          template{
+            name
+            jade
+          }
+        }
+
+        ... on ComponentModularArticle {
+          
+          name
+          
+          page{
+            name
+            jade
+            path
+          }
+          
+          template{
+            name
+            jade
+          }
+
+        }
+        
+        
+
         ... on ComponentSingleBlocsSlideshow {
           name
           sections{
@@ -47,21 +89,6 @@ let main_sections_getOrdered = `query {
           }
         }
         
-        ... on ComponentModularArticle {
-          name
-          template{
-            name
-            jade
-          }
-        }
-        
-        ... on ComponentModularMedia {
-          name
-          template{
-            name
-            jade
-          }
-        }
         
       }
     }
@@ -69,6 +96,7 @@ let main_sections_getOrdered = `query {
     children{
       id
       name
+      path
       post{
         name
         template{
@@ -79,6 +107,41 @@ let main_sections_getOrdered = `query {
         bracket{
           __typename
           
+          ... on ComponentJadeJadePage {
+            name
+            jade
+            path
+          }
+          
+          ... on ComponentModularArticle {
+            
+            name
+            
+            page{
+              name
+              jade
+              path
+            }
+
+            template{
+              name
+              jade
+            }
+          }
+          
+          ... on ComponentModularMedia {
+            name
+            
+            media{
+              name
+              url
+            }
+            template{
+              name
+              jade
+            }
+          }
+
           ... on ComponentSingleBlocsSlideshow {
             name
             sections{
@@ -108,23 +171,6 @@ let main_sections_getOrdered = `query {
               jade
             }
           }
-          
-          ... on ComponentModularArticle {
-            name
-            template{
-              name
-              jade
-            }
-          }
-          
-          ... on ComponentModularMedia {
-            name
-            template{
-              name
-              jade
-            }
-          }
-
           
 
         }

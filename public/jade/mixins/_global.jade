@@ -1,79 +1,293 @@
 mixin link(o)
-	ul.links.context(class= o.cl || "")
+	ul.links(class= o.cl || "")
 		li(style='display: inline;')
-			a.gowhite.bt.btn-border-slider-white.round.left.dkt.whiteBG(href='/#/' + lang + o.url)= t('View')
+			a.gowhite.bt.btn-border-slider-white.round.left.dkt.whiteBG(href='/#/' + lang + o.url)= t(o.prename || 'view')
 		li(style='display: inline;')
-			a.goblack.bt.btn-border-slider-black.round.right.dktBG(href='/#/' + lang + o.url)= t(o.name || 'More')
+			a.goblack.bt.btn-border-slider-black.round.right.dktBG(href='/#/' + lang + o.url)= t(o.name || 'more')
 
 
+mixin linkblock(o, isPatchwork)
+	- var medias = o.post.bracket[1].media ;
+	- if(isPatchwork){
+		- var cl = section.name == 'home' ? "size1of2" : "size1of4" ;
+		li.work-item.rel.context(class= cl)
+			a.data.none(href= "/" + lang + o.path)
+			.work-image
+				img(src= CDN + medias[0].url , alt='')
+			.work-caption(style="font-size:80%")
+				.work-descr.ls1= t(o.post.vars.post.surname)
+				h3.work-title.uppercase.Bmar.ls1= t(o.post.vars.post.name) 
+				+link({name:o.path.replace(/(^\/)|s\/.+($)/gi,''), cl:"dkt", url:o.path})
+	- } else {
+		.work-item.rel.context.fullW.noMQ(class=cl)
+			a.data.none(href= "/" + lang + o.path)
+			.work-image
+				img(src= CDN + medias[0].url, alt='')
+			.work-caption(style="font-size:80%")
+				.work-descr.ls1= t(o.post.vars.post.surname) 
+				h3.work-title.uppercase.Bmar.ls1= t(o.post.vars.post.name) 
+	- }
 
-mixin slide(section)
-	- let article = section.article ;
-	li.bg-dark.noselect(unselectable="on", style='width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;')
-		.slidebg.slide-zoom(style='opacity:.3;background-image:url(' + (!!(article.body) ? article.body.vars.pics[0] : article.mainimage) + ')')
-			
-		- var link_url = section.path ;
-		- if(child.name == 'home'){
+
+mixin intro(section)
+	.anthraxBG
+		.container.rel
+			.context.HpadXXXLg.Bpad0.sizeLg.txtR(style="margin-top:3em;")
+				.hs-title-size-3.font-alt.m-b-20.context.txtL.white
+					span.block.floatR.round.both.dkt= section.name
+				.hs-title-size-1.font-inc.LmarXXSm.BmarXXLg.dark= t("Overview ")
+		.container.rel.Tmar(style="margin-bottom:5em;")
+			.line
+				.unit.size1of3
+					p.txtJ.marXXXXLg.padXSm It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. 
+				.unit.size1of3
+					p.txtJ.marXXXXLg.padXSm The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text.
+				.unit.lastUnit
+					p.txtJ.marXXXXLg.padXSm And a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+
+			.line.txtR.RmarXXXLg.Rpad
+				+link({name:t("All " + section.name ), cl:"dkt", url:section.path})
+
+
+mixin slide(child_section, i)
+
+	- var link_url = child_section.path ;
+	- var post = child_section.post ;
+	- var vars = child_section.post.vars ;
+	- var medias = child_section.post.bracket[1].media ;
+
+	li.bg-dark.noselect(unselectable="on" style='width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;')
+		- var media = section.name == 'home' ? medias[0].url : ((1 in medias) ? medias[1].url : medias[0].url) ;
+		.slidebg.slide-zoom(style='opacity:.3;background-image:url(' + CDN + media + ')')
+
+		- if(child_section.name == 'home'){
+
 			.hs-caption.container(style='top: 0px; display: table;')
 				.caption-content.center
 					h1.cover.biglogo.txtC
-						span.hidden= t(article.name)
-					.block.uppercase.montserrat(style='color:#333;margin-top: -25px; margin-left: 4px; font-size:15.5px;')= t(article.fullname)
+						span.hidden= post.vars.post.name
+					.block.uppercase.montserrat(style='color:#333;margin-top: -25px; margin-left: 4px; font-size:15.5px;')= post.vars.post.surname
 
 					ul.links.dkt.context.TmarLg.sizeLg.noBd
 						li(style='display: inline;')
-							em.gowhite.bt.btn-border-slider-white.round.left.whiteBG.dkt= t('Technology')
+							em.gowhite.bt.btn-border-slider-white.round.left.whiteBG.dkt= t('DKT__globals.company.accroche_1')
 						li(style='display: inline;')
-							em.goblack.bt.btn-border-slider-black.round.right.dktBG= t('Provides')
+							em.goblack.bt.btn-border-slider-black.round.right.dktBG= t('DKT__globals.company.accroche_2')
 
-		- }else if(child.name == 'products'){
+		- }else if(child_section.name == 'techs'){
+
 			.hs-caption.container(style='top: 0px; display: table;')
 				.caption-content.left.vmiddle
 					.hs-title-size-3.font-alt.m-b-20.context
-						span.whiteBG.block.floatL.padSm.VpadXSm.round.both.dkt= t(article.product.name)
+						span.whiteBG.block.floatL.padSm.VpadXSm.round.both.dkt= post.vars.post.name
 					.hs-title-size-1.font-inc.LmarXXSm.Vmar.white
-						span= t(article.product.desc)
-					
-					.line.BmarXLg
-						.unit.size1of3
-							p.txtJ.marXXXXLg.padXSm It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. 
-						.unit.size1of3
-							p.txtJ.marXXXXLg.padXSm The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text.
-						.unit.lastUnit
-							p.txtJ.marXXXXLg.padXSm And a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+						span= post.vars.post.surname
 
-					- var links_cl = "dkt noBd" ;
-					- var links_name = "the products" ;
+					+link({name:t("tech",  {count: 0}), cl:"dkt noBd", url:link_url})
 
-					+link({name:"product", cl:"dkt noBd", url:link_url})
+		- }else if(child_section.name == 'products'){
 
-		- }else if(child.name == 'about'){
 			.hs-caption.container(style='top: 0px; display: table;')
 				.caption-content.right.vmiddle
 					.hs-title-size-3.font-alt.m-b-20.context
-						span.whiteBG.block.floatL.padSm.VpadXSm.round.both.dkt= t(article.product.name)
+						span.whiteBG.block.floatL.padSm.VpadXSm.round.both.dkt= post.vars.post.name
 					.hs-title-size-1.font-inc.LmarXXSm.Vmar.white
-						span= t(article.product.desc)
-					
-			
-					.line.BmarXLg
-						.unit.size1of3
-							p.txtJ.marXXXXLg.padXSm It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. 
-						.unit.size1of3
-							p.txtJ.marXXXXLg.padXSm The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text.
-						.unit.lastUnit
-							p.txtJ.marXXXXLg.padXSm And a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-					
-					+link({name:"the company", cl:"dkt noBd", url:link_url})
+						span= post.vars.post.surname
+
+					+link({name:t("product",  {count: 0}), cl:"dkt noBd", url:link_url})
+
+		- }else if(child_section.name == 'about'){
+			.hs-caption.container(style='top: 0px; display: table;')
+				.caption-content.left.vmiddle
+					.hs-title-size-3.font-alt.m-b-20.context
+						span.whiteBG.block.floatL.padSm.VpadXSm.round.both.dkt= post.vars.post.name
+					.hs-title-size-1.font-inc.LmarXXSm.Vmar.white
+						span= post.vars.post.surname
+
+					+link({name:t("company"), cl:"dkt noBd", url:link_url})
 		- }else{
 			- var even = i % 2 == 0 ;
 			- var cl = even ? 'right' : 'left' ;
 			.hs-caption.container(style='top: 0px; display: table;')
 				.noproduct.caption-content(class=cl)
 					.hs-title-size-3.font-alt.m-b-20
-						span= t(article.product.name)
+						span= t(post.vars.post.name)
 					.hs-title-size-1.font-inc.BmarXLg
-						span= t(article.product.desc)
-					
+						span= t(post.vars.post.surname)
+
 					+link({name:"product", cl:"dkt noBd", url:link_url})
 		- }
+
+
+mixin infos()
+	.ivoryBG(style="border-top:1px dashed #9d1639")
+		.container.rel(style="padding-top:2em;padding-bottom:2em;")
+			.line.txtL
+				h6.sizeSm.dkt.LmarXXXXLg= t('DKT__globals.company.copy_to')
+				p.unit.txtL.sizeSm.LmarXXXXLg
+					!= t('DKT__globals.company.address_1')
+					br
+					!= t('DKT__globals.company.address_2')
+					br
+					br
+					!= t('tel') + " : " + t('DKT__globals.company.telephone')
+					br
+					!= t('fax') + " : " + t('DKT__globals.company.fax')
+					
+				.lastUnit.sizeSm.RmarXXXXLg.txtR
+					span.block 
+						br
+						!= t('DKT__globals.company.copy') + t('DKT__globals.company.copy_year') 
+						br
+						!= t('DKT__globals.company.copy_to')
+
+
+mixin credits()
+	.extra.rel.context(id=section.name + "_credits", class= section.name + "_credits")
+		.anthraxBG
+			.container.pad0.rel
+				.context.HpadXXXLg.Bpad0.sizeLg.txtL(style="margin-top:3em;")
+					.hs-title-size-3.font-alt.m-b-20.context.txtL.white
+						span.block.floatL.round.both.dkt= t("our_company")
+					.hs-title-size-1.font-inc.LmarXXSm.BmarXXLg.dark= t("greetings")
+			.container.pad0.rel.round.both.ivoryBG(style="margin-bottom:10em;")
+				.line
+					.unit.size1of3
+						p.txtJ.marXXXXLg.padXSm 
+							!= t("DKT__about.embassy.md_1") 
+					.unit.size1of3
+						p.txtJ.marXXXXLg.padXSm
+							!= t("DKT__about.embassy.md_2")
+					.unit.lastUnit
+						p.txtJ.marXXXXLg.padXSm
+							!= t("DKT__about.embassy.md_3")
+				
+				.aboutgo(style="padding:3em 0 10em")
+					+link({name:t("our_company"), cl:"dkt", url: '/about/'})
+				.line.txtL.round.ivoryBG.right(style="background:#E8E8E8;border:1px dashed #9d1639")
+					.unit.endlogo.floatR.marXXLg
+						span.hidden= t('DKT__globals.company.name')
+					.lastUnit.sizeLg.marXXLg
+						span.block.dkt.TmarXSm= t('thank_you')
+
+			
+			+infos()
+
+
+mixin certif()
+	.extra.rel.context.none(id=section.name + "_certif", class= section.name + "_certif")
+		.container.rel
+				.line.txtL.sizeLg.mar.pad.VpadXXLg
+					+pageheader("our_products", surname)
+		.container.context.BmarXXXLg.sizeXXXLg.shady.round.both(style="background:#131313;")
+			.line.BpadXXXLg(style="margin-bottom:5em;")
+				.unit.size2of3.sizeXSm
+					.sizeLg.marXXXLg.txtL
+
+						p.sizeLg.txtL
+							!= render(t('DKT__products.certif_01'))
+						
+						.line.context
+							.unit.size1of3
+								p.sizR.txtL.Tmar.Rmar
+									!= render(t('DKT__products.certif_02'))
+
+							.unit.lastUnit
+									
+						.line.context.TmarXXXLg
+							.unit.size1of3.floatR
+								!= render(t('DKT__products.certif_03'))
+							.unit.lastUnit
+									
+							
+				.unit.lastUnit.sizeXSm
+					.sizeLg.marXXXLg.txtL
+
+						p.sizeLg.txtL
+							!= render(t('DKT__products.needinfo_01'))
+						p.sizeR.txtL.BmarXLg
+							!= render(t('DKT__products.needinfo_02'))
+						.sizeSm
+							!= render(t('DKT__products.needinfo_03'))
+							
+						p.sizeSm.txtL.TmarXLg
+							!= render(t('DKT__products.needinfo_04'))
+
+
+
+
+mixin topimage(url, color, title, subtitle)
+	.extra.rel.context.cover(style='height:30%;background:url(' + url  + ') no-repeat 50% 50%;background-size:cover')
+		span.hidden= title
+		+sectionheader(title, subtitle)
+
+mixin sectionheader(title, subtitle)
+	.container.rel.fullH.context
+		.abs.right0.bottom0.context.HpadXXXXLg.BpadXLg.sizeXXLg.txtR
+			.hs-title-size-3.font-alt.m-b-20.context.txtL.white
+				span.block.floatR.round.both.light= t(title)
+			.hs-title-size-1.font-inc.LmarXXSm.white= t(subtitle)
+
+
+mixin pageheader(title, subtitle)
+	if title
+		.hs-title-size-3.font-alt.m-b-20.context.white
+			span.block.round.both.dkt= t(title)
+	if subtitle
+		.hs-title-size-1.font-inc.LmarXXSm.BmarSm.dark= t(subtitle)
+
+
+mixin article(n, j, p, color)
+
+	.articles(class= n)
+		| !{ render(j, p)}
+
+	style(type="text/css" rel="stylesheet").
+		.articles.#{n} strong{
+			color:#{color}
+		}
+		.articles.#{n} a{
+			color:#{color}
+		}
+		.articles.#{n} hr{
+			border-color:#{color}
+		}
+
+mixin back(last)
+	if (last)
+		.abs.left0.top0.bottom.right0.context.sizeR.txtC.dkt.noBd
+			.linker.marXXXLg.round.both.dkt.dktBG.inlineblock
+				a.block.sizeSm.font-inc.white.padXXLg.VpadSm(href="/#/"+ lang + "/products/")= t('back_to', {target:section.name})
+	else 
+		.abs.left0.top0.right0.context.sizeR.txtL.TmarXXXXLg.TpadXXLg.dkt.noBd
+			.linker.marXXXLg.round.both.dktBG.inlineblock
+				a.block.sizeSm.font-inc.white.padXXLg.VpadSm(href="/#/"+ lang + section.path)= t('back_to', {target:section.name})
+
+
+mixin nextprev()
+	- var ch = section.children ;
+	- var next = ch[ch.indexOf(child_section)+1] || ch[0] ;
+	- var prev = ch[ch.indexOf(child_section)-1] || ch[ch.length - 1] ;
+	.to_products.prev.abs.left0.bottom0.fullH.context.sizeR.txtL.size2of5.noBd
+		- var cur = prev ;
+		.cont.none.abs.bottom0.left0.HmarXXXLg.round.both.dkt.dktBG
+			.sizeSm.font-inc.white.padXXLg.VpadSm= t('prev')
+			+linkblock(cur)
+		.linker.abs.bottom0.left0.right0.marXXXLg
+			a.inlineblock.sizeSm.font-inc.white.dktBG.round.both(href= "/#/" + lang + cur.path)
+				span.block.padXXLg.VpadSm= t('prev')
+			.sizeXXXXLg.TmarXXSm.context.clear
+				span.inlineblock.dkt.lh09= t(prev.post.vars.post.name)
+				span.block.sizeXSm.HmarXXXSm.inconsolata.uppercase.ls1= t(prev.post.vars.post.surname)
+
+	.to_products.next.abs.right0.bottom0.context.sizeR.txtR.size2of5.noBd
+		- var cur = next ;
+		.cont.none.abs.bottom0.right0.HmarXXXLg.round.both.dkt.dktBG
+			.sizeSm.font-inc.white.padXXLg.VpadSm= t('next')
+			+linkblock(cur)
+		.linker.abs.bottom0.left0.right0.marXXXLg
+			a.inlineblock.sizeSm.font-inc.white.dktBG.round.both(href= "/#/" + lang + cur.path)
+				span.block.padXXLg.VpadSm= t('next')
+			.sizeXXXXLg.TmarXXSm.context
+				span.inlineblock.dkt.lh09= t(next.post.vars.post.name)
+				span.block.sizeXSm.HmarXXXSm.inconsolata.uppercase.ls1= t(next.post.vars.post.surname)

@@ -1,13 +1,81 @@
 {
-    "home": {
-        "title": "Книжный магазин",
-        "test": "p\n       | The \n       strong.dkt= {{ productname }} + ' ' \n       | is Книжный магазин\n       br\n       | to магазин and final-coat Книжный \n       strong.dkt Книжный-магазин \n       | films.",
-        "sazaam":"Обновить в списке $t(home.title)",
-        "total": "Всего в списке {{counter}} книг",
-        "buttonText": "Обновить страницу",
-        "buttonHTML": "<button onClick='window.location.reload();'>$t(buttonText)</button>"
+    
+    "view":"더보기",
+    
+    "product": "제품",
+    "our_products": "우리 제품",
+    "tech": "기술",
+    "company": "회사",
+    "our_company": "우리 회사",
+
+    
+    
+    
+    "next":"다음",
+    "prev":"이전",
+    "back_to":"{{ target }} 로 돌아 가기",
+    "thank_you": "감사합니다",
+    "greetings": "인사말",
+
+
+    "specs":"명세서",
+    "creation_year":"창조 연도",
+    "tags":"태그",
+    "desc_file":"설명 파일",
+
+    "DKT__globals": {
+        "company": {
+            "accroche_1": "기술",
+            "accroche_2": "제공",
+            "address_1": "구미시 산호대로 116-60",
+            "address_2": "대한민국 경북",
+            "telephone": "+82-54-462-5326~7",
+            "fax": "+82-54-462-5320 / +82-54-716-0004",
+            "copy": "All Rights Reserved © ",
+            "copy_to": "(주) DKT - 디케이티",
+            "copy_year": "2020",
+            "creation_year": "2007"
+        }
+    },
+    
+    "DKT__about":{
+
+
+        "embassy": {
+            "philosophy": "Our Philsophy",
+            "md_1": "독자가 레이아웃을 볼 때 페이지의 읽을 수있는 내용에주의를 분산시키는 것은 오랫동안 확립 된 사실입니다. Lorem Ipsum을 사용하는 요점은 'Content here, content here'를 사용하는 것과 달리 문자가 다소 정규 분포되어있어 읽기 쉬운 영어처럼 보입니다.",
+            "md_2": "Lorem Ipsum을 사용하는 요점은 'Content here, content here'를 사용하는 것과 달리 문자가 다소 정규 분포되어있어 읽기 쉬운 영어처럼 보입니다. 많은 데스크탑 출판 패키지와 웹 페이지 편집기는 이제 기본 모델 텍스트로 Lorem Ipsum을 사용합니다.",
+            "md_3": "그리고 'lorem ipsum'을 검색하면 아직 초기 단계에있는 많은 웹 사이트를 찾을 수 있습니다. 다양한 버전이 수년에 걸쳐, 때로는 우연히, 때로는 의도적으로 (주사 된 유머 등) 진화했습니다."
+          },
+          "articles": {
+            "article_01": {
+              "desc_01": "##### __DKT__ - {{ section.post.vars.post.name }}\n***\n## __성공__ 으로 가는 __길__\n#### 나중에 모든 __장애물__ 에 __감사__ 하는 것입니다.  \n[__'Albert Einstein'__](https://duckduckgo.com), 20 세기에  \n최고의 영향력.  \n****\n**$t({{vars.test}})** : 미래의 한 조각, 1985.  [__'Albert Einstein'__](),",
+              
+              "desc_02": "***\n그리고  __{{ section.post.vars.post.name }}__ 를 검색하면 아직 초기 단계에있는 많은 웹 사이트를 찾을 수 있습니다.\n다양한 버전이 수년에 걸쳐, 때로는 우연히, 때로는 의도적으로 진화했습니다 (유머 주입 등 __{{ section.post.vars.post.surname }}__ )"
+            },
+            "article_02": {
+              "desc_01": "##### __DKT__ - {{ section.post.vars.post.name }}\n***\n ## __성공__ 으로 가는 __길__\n#### 나중에 모든 __장애물__ 에 __감사__ 하는 것입니다.  \n[__'Albert Einstein'__](https://duckduckgo.com), 20 세기에  \n최고의 영향력.  \n****\n**$t({{vars.test}})** : 미래의 한 조각, 1985.  [__'Albert Einstein'__](),",
+      
+              "desc_02": "## A brief __overview__  \n****\n![GitHub Logo](/img/logo_big_green.png) \n  \n****  \n**$t({{vars.test}})** :  One piece of the Future, 1985.  [__'Albert Einstein'__]()"
+            }
+          }
     },
     "DKT__products":{
+
+        "certif_01":"| 당사의 \nspan.dkt 제품은  \n| 모두 \nstrong.dkt ISO-4501-8888 \n| 에서 라이센스 및 인증을 받았습니다.",
+        "certif_02":"| 그들은 우리가 말하는 동안 끊임없는 점검과 통제를 받고 있습니다. 수많은 연속 테스트를 통해 전체 기능을 제공 할 때까지 여러 빌딩 비 빌딩 서문의 전체 프로세스를 통해 어려운 교육을 받게됩니다.",
+        "certif_03":"| 그런 다음 파트너 및 인증 된 발송인이 고객 자산의 일부가 될 때까지 다양한 보험 정책에 해당 될 때까지 시민 적으로 확인 가능한 통제하에 배송됩니다.",
+
+        "needinfo_01":"span.dkt 당사 제품 \n| 에 대한 정보가 \nspan.dkt 필요\n| 하십니까?",
+        "needinfo_02":"| 알려 드릴 준비가되어있는 당사의 \nstrong.dkt 전문가, \n| 에게 문의하십시오.",
+        "needinfo_03":"h4.sizeXXLg.txtL.inlineblock.padXSm.HpadXLg.antraciteBG.round.left.dkt.dktBD\n   | 요구 \nh4.sizeXXLg.txtL.inlineblock.padXSm.HpadXLg.dktBG.round.right.white.dktBD\n   | 1545 - 8989",
+        "needinfo_04":"| 저희 \nstrong.dkt 전문가들은 \n| 최선의 지연에 대해 알려 드릴 준비가되어 있습니다.",
+
+        "name_sl_001": "슬리터 4201-S",
+        "name_lm_001": "라미네이터 6001-S",
+        "name_uw_001": "언와인더 / 리와인더 9001-S",
+        "name_uv_001": "UV 코터 12002-S",
+
         "desc_sl_001": "p\n       strong.dkt {{ productname }} \n       | 가 일반적으로 사용됩니다.\n       br\n       | 다양한 \n       strong.dkt PET 대상 \n       | 필름을 분리하고 최종 \n       strong.dkt 코팅 \n       | 합니다.",
         "desc_lm_001": "p\n       strong.dkt {{ productname }} \n       | 가 일반적으로 사용됩니다.\n       br\n       | 다양한 \n       strong.dkt PET 대상 \n       | 필름을 분리하고 최종 \n       strong.dkt 코팅 \n       | 합니다.",
         "desc_uw_001": "p\n       strong.dkt {{ productname }} \n       | 가 일반적으로 사용됩니다.\n       br\n       | 다양한 \n       strong.dkt PET 대상 \n       | 필름을 분리하고 최종 \n       strong.dkt 코팅 \n       | 합니다.",

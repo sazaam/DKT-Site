@@ -3,6 +3,7 @@
 	
 var express = require('Express') ;
 // var struct = require('./struct') ;
+
 var routes = require('./routes') ;
 
 var app = express() ;

@@ -22,7 +22,7 @@ html {
 body {
 	background: #fff;
 	font: 400 12px/1.8 "Open Sans", Verdana, sans-serif;
-	color: #666;
+	color: #999;
 	-webkit-font-smoothing: antialiased;
 }
 
@@ -72,11 +72,11 @@ iframe {
 a,
 .btn,
 .navbar a {
-	-webkit-transition: all 0.125s ease-in-out 0s;
-	   -moz-transition: all 0.125s ease-in-out 0s;
-		-ms-transition: all 0.125s ease-in-out 0s;
-		 -o-transition: all 0.125s ease-in-out 0s;
-			transition: all 0.125s ease-in-out 0s;
+	-webkit-transition: all 0.16s ease-out 0s;
+	   -moz-transition: all 0.16s ease-out 0s;
+		-ms-transition: all 0.16s ease-out 0s;
+		 -o-transition: all 0.16s ease-out 0s;
+			transition: all 0.16s ease-out 0s;
 }
 
 .team-detail,
@@ -84,11 +84,11 @@ a,
 .work-caption,
 .work-image > img,
 .work-image:after {
-	-webkit-transition: all 0.3s ease-out 0s;
-	   -moz-transition: all 0.3s ease-out 0s;
-		-ms-transition: all 0.3s ease-out 0s;
-		 -o-transition: all 0.3s ease-out 0s;
-			transition: all 0.3s ease-out 0s;
+	-webkit-transition: all 0.16s ease-out 0s;
+	   -moz-transition: all 0.16s ease-out 0s;
+		-ms-transition: all 0.16s ease-out 0s;
+		 -o-transition: all 0.16s ease-out 0s;
+			transition: all 0.16s ease-out 0s;
 }
 
 /* Reset border-radius */
@@ -1329,10 +1329,10 @@ Preloader
 
 .loader {
 	position: absolute;
-	border-left: 2px solid #b2b2b2;
-	border-top: 2px solid rgba(245, 245, 245, 0.8);
-	border-right: 2px solid rgba(245, 245, 245, 0.8);
-	border-bottom: 2px solid rgba(245, 245, 245, 0.8);
+	border-left: 4px solid #fff;
+	border-top: 4px solid #fff;
+	border-right: 4px solid #fff;
+	border-bottom: 4px solid #9d1639;
 	height: 46px;
 	width: 46px;
 	left: 50%;
@@ -1340,7 +1340,7 @@ Preloader
 	margin: -23px 0 0 -23px;
 	text-indent: -9999em;
 	font-size: 10px;
-	z-index: 9999;
+	/* z-index: 9999; */
 	-webkit-animation: load 0.8s infinite linear;
 	   -moz-animation: load 0.8s infinite linear;
 		 ms-animation: load 0.8s infinite linear;

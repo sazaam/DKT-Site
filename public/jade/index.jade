@@ -1,12 +1,7 @@
 extends ./layout
-//- - var fix = locals.AppendNominatedVarsObject ;
-
 
 block content
 	nav.continent.abs.left0.right0.fullW.fullH.none
 
-		//- | !{ render('include ./sam \nscript| console.log(!{JSON.stringify(locals)})', p({basedir:basedir, filename: basedir + 'sam.jade', data_section:data_section, db_section:db_section}))}
-
-		//- | !{ renderFile(basedir + '/layouts/all.jade', p({filename:'/index.jade' , data_section:data_section, db_section:db_section}))}
-		//- | !{ renderFile(basedir + '/layouts/all.jade', p({filename:'/index.jade', data_section:data_section, db_section:db_section}))}
-		| !{ renderFile(basedir + 'layouts/all.jade', p({ filename: basedir + 'layouts/all.jade', data_section:data_section, db_section:db_section}))}
+		//- REAL ONE
+		| !{ renderFile(basedir + 'layouts/all.jade', p(locals, { filename: basedir + 'layouts/all.jade'}))}

@@ -1,3 +1,7 @@
+
+
+
+
 var path = require('path') ;
 
 var i18next = require('i18next') ;
@@ -22,7 +26,6 @@ i18next
 	})
 
 
-
 module.exports = {
 
   enable:()=>{
@@ -31,5 +34,6 @@ module.exports = {
       ignoreRoutes: ['/foo'], // or function(req, res, options, i18next) { /* return true to ignore */ }
       removeLngFromUrl: false
     })
-  }
+	},
+	i18next:i18next
 }

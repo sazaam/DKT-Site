@@ -27,7 +27,6 @@
         "name": "products",
         "position": 3,
         "level": 1,
-        
         "article":{
             "name": "products",
 
@@ -67,7 +66,7 @@
                             "linkpath":"/contact/",
                             "pics":["/img/lm_002.png"],
                             "productname":"t(product_section.article.product.name)",
-
+                            
                             "components":{
                                 "desc":"DKT__products.desc",
                                 "instr":"DKT__products.instr",

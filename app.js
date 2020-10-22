@@ -11,7 +11,8 @@ let fetch = require('node-fetch') ;
 let axios = require('axios') ;
 const { setHeaders, setHeader, GraphQLClient, gql } = require('graphql-request') ;
 // view engine
-let jade = require('jade') ;
+const jade = require('jade') ;
+const md = require('marked') ;
 
 const routes = require('./routes')
 const server = require('./server') ;
@@ -75,47 +76,114 @@ let root = async (req, res) => {
 	// JSON FIXTURES
 	let data_sections = await fixtures(req, res).catch( err => {console.log(err)}) ;
 	
+	
+	
+	const JADESETTINGS = {
+		params:{},
+		excludes:{
+			// settings:1,
+			// language:1,
+			// languageDir:1,
+			// t:1,
+			// exists:1,
+			i18n:1,
+			// basedir:1,
+			// title:1,
+			// lang:1,
+			// render:1,
+			// renderFile:1,
+			// join:1,
+			// p:1,
+			_locals:1,
+			cache:1,
+			// filename:1
+		}
+
+	}
 
 	let merge = (p, newp) => {
-		
 		for(var s in newp) p[s] = newp[s] ;
-		
 		return p ;
 	}
-	
-	let clone = p => {
-		let cl = {} ;
-		
-		let excludes = {'_locals':1} ;
 
-		for(var s in p)
-			if(!(s in excludes))
+	let clone = (p) => {
+		let cl = {}, ex = JADESETTINGS.excludes ;
+		for(var s in p){
+			if(!(s in ex)){
 				cl[s] = p[s] ;
-
+			}
+		}
 		return cl ;
 	}
 
 	
+	let customize = (bracket, source) => {
+		var customs = {} ;
+		var module = getComponentsByTypename(bracket, 'ComponentJadeJadePage') ;
+
+		if(!! module.length && module[0].jade != ''){
+			customs = rfs(module[0].jade, module[0].path, source) ;
+		}
+		return customs ;
+	}
+
+	let getComponentsByTypename = (list, name) => {
+		let l = list.length ;
+		let p = [] ;
+		for(var i = 0 ; i < l ; i ++){
+			let el = list[i] ;
+			if(name == el.__typename) 
+				p[p.length] = el ;
+		}
+		return p ;
+	}
+	
+	let rfs = (src, filename, params) => {
+		var Module = module.constructor;
+		var m = new Module("", params) ;
+		
+		m._compile(src, filename) ;
+		return m.exports ;
+	}
+	
+	let p = (locals, input) => {
+		return merge(clone(locals), clone(input)) ;
+	}
+	
 	if(!MAINDEBUG || RELEASED){
 
 		const jadebasedir = path.join(__dirname, 'public', 'jade') ;
-		let params = {
+		
+		let i18next = i18.i18next ;
+		let loadedLangs = await Object.keys(i18next.services.resourceStore.data) ; 
+		
+		let params = CONSTANTS.jadeparams = {
 			basedir:jadebasedir + '\\',
 			title:CONSTANTS.SITE.title,
 			lang: req.i18n.language,
+			langs: loadedLangs,
 			t: req.t,
 			db_sections:db_sections,
 			data_sections: data_sections,
+			require:require,
 			render: jade.render,
 			renderFile: jade.renderFile,
+			compile: jade.compile,
+			compileFile: jade.compileFile,
 			join:path.join,
-			p:(newp) => {
-				
-				return !!newp ? merge(clone(params), newp) : clone(params) ;
-			}
+			app:app,
+			md:md,
+			CDN:CONSTANTS.PATH.cdn,
+			// pliotize:pliotize,
+			customize:customize,
+			getComponentsByTypename:getComponentsByTypename,
+			rfs:rfs,
+			p:p,
+			merge:merge,
+			clone:clone
 		} ;
 
-			// -------------> FRONT-END JS APP
+		
 		res.render(path.join(__dirname, 'public/jade/index'), params) ;
 	}
 
@@ -135,7 +203,6 @@ let login = async (app) => {
 
 	const endpoint = CONSTANTS.PATH.db + CONSTANTS.PATH.db_graphql ;
 	
-	
 	CONSTANTS.DKTClient = new GraphQLClient(endpoint) ;
 	CONSTANTS.DKTClient.setHeaders({ 
 		authorization: `Bearer ${CONSTANTS.user.jwt}`
@@ -149,6 +216,8 @@ let login = async (app) => {
 	
 	app.use('/', async (req, res) => {
 		RELEASED = true ;
+		
+		
 		await root(req, res).catch( err => {console.log(err)}) ;
 	
 	}) ;

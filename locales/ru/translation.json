@@ -8,10 +8,10 @@
         "buttonHTML": "<button onClick='window.location.reload();'>$t(buttonText)</button>"
     },
     "DKT__products":{
-        "desc_uw_001": "p\n       | The \n       strong.dkt= {{ productname }} + ' ' \n       | is Книжный магазин\n       br\n       | to магазин and final-coat Книжный \n       strong.dkt Книжный-магазин \n       | films.",
-        "desc_sl_001": "p\n       | The \n       strong.dkt= {{ productname }} + ' ' \n       | is Книжный магазин\n       br\n       | to магазин and final-coat Книжный \n       strong.dkt Книжный-магазин \n       | films.",
-        "desc_lm_001": "p\n       | The \n       strong.dkt= {{ productname }} + ' ' \n       | is Книжный магазин\n       br\n       | to магазин and final-coat Книжный \n       strong.dkt Книжный-магазин \n       | films.",
-        "desc_uv_001": "p\n       | The \n       strong.dkt= {{ productname }} + ' ' \n       | is Книжный магазин\n       br\n       | to магазин and final-coat Книжный \n       strong.dkt Книжный-магазин \n       | films.",
+        "desc_uw_001": "p\n       | The \n       strong.dkt {{ productname }} + ' ' \n       | is Книжный магазин\n       br\n       | to магазин and final-coat Книжный \n       strong.dkt Книжный-магазин \n       | films.",
+        "desc_sl_001": "p\n       | The \n       strong.dkt {{ productname }} + ' ' \n       | is Книжный магазин\n       br\n       | to магазин and final-coat Книжный \n       strong.dkt Книжный-магазин \n       | films.",
+        "desc_lm_001": "p\n       | The \n       strong.dkt {{ productname }} + ' ' \n       | is Книжный магазин\n       br\n       | to магазин and final-coat Книжный \n       strong.dkt Книжный-магазин \n       | films.",
+        "desc_uv_001": "p\n       | The \n       strong.dkt {{ productname }} + ' ' \n       | is Книжный магазин\n       br\n       | to магазин and final-coat Книжный \n       strong.dkt Книжный-магазин \n       | films.",
 
         "instr_sl_001": "p\n       strong.dkt PET Base film \n       | 보호 필름 제거, \n       strong.dkt Soft Mold \n       | 및 \n       strong.dkt UV Curing \n       | 을 통한 \n       strong.dkt Gap 코팅 시스템 사용 \n       br\n       strong.dkt UV 경화 \n       | 후 \n       strong.dkt 라미네이팅 \n       | 및 되감기 .",
         "instr_lm_001": "p\n       strong.dkt PET Base film \n       | 보호 필름 제거, \n       strong.dkt Soft Mold \n       | 및 \n       strong.dkt UV Curing \n       | 을 통한 \n       strong.dkt Gap 코팅 시스템 사용 \n       br\n       strong.dkt UV 경화 \n       | 후 \n       strong.dkt 라미네이팅 \n       | 및 되감기 .",

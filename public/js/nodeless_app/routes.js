@@ -8,87 +8,139 @@
 
 var graphics = require('./graphics/index.js') ;
 
-var focus = graphics.focus ;
-var toggle = graphics.toggle ;
 
 
-var sects = [
-	{
-		name:'home',
-		"@jade": '/jade/home',
-		"@json": '/home/',
-		"@focus":focus,
-		"@toggle":toggle
-	},
-	{
-		name:'products',
-		"@jade": '/jade/products',
-		"@json": '/products/',
-		"@focus":focus,
-		"@toggle":toggle,
-		children:[
-			{
-				name:'sl_001',
-				"@jade": '/jade/product',
-				"@json": '/products/{$1}',
-				"@focus":focus,
-				"@toggle":toggle
-			},
-			{
-				name:'lm_001',
-				"@jade": '/jade/product',
-				"@json": '/products/{$1}',
-				"@focus":focus,
-				"@toggle":toggle
-			},
-			{
-				name:'uw_001',
-				"@jade": '/jade/product',
-				"@json": '/products/{$1}',
-				"@focus":focus,
-				"@toggle":toggle
-			},
-			{
-				name:'uv_001',
-				"@jade": '/jade/product',
-				"@json": '/products/{$1}',
-				"@focus":focus,
-				"@toggle":toggle
-			}
-		]
-	},
+
+
+
+
+/// H*CK !!! -> Incoming Datazzzz
+if(!!window.Data && window.Data.length){
+
+	var sections = window.Data ;
 	
-	{
-		name:'about',
-		"@jade": '/jade/about',
-		"@json": '/about/',
-		"@focus":focus,
-		"@toggle":toggle,
-		children:[
-			{
-				name:'intro',
-				"@jade": '/jade/news_new',
-				"@json": '/news/{$1}',
-				"@focus":focus,
-				"@toggle":toggle
-			},
-			{
-				name:'clients',
-				"@jade": '/jade/news_new',
-				"@json": '/news/{$1}',
-				"@focus":focus,
-				"@toggle":toggle
-			}
-		]
-	},{
-		name:'contact',
-		"@jade": '/jade/contact',
-		"@json": '/contact/',
-		"@focus":focus,
-		"@toggle":toggle
-	}
+	var sects = (function(sections){
+		
+		var items = [] ;
+		var l = sections.length ;
+		
+		for(var i = 0 ; i < l ; i ++){
+			
+			var section = sections[i] ;
 
-] ;
+			var post = section.post ;
+			var vars = post.vars ;
+			var behavior = vars.behavior ;
+
+			items[items.length] = {
+				
+				"name":section.name,
+				"@jade": behavior['@jade'],
+				"@json": behavior['@json'],
+				"@focus": graphics[behavior['@focus']],
+				"@toggle": graphics[behavior['@toggle']],
+				"children": !!section.children && section.children.length ? arguments.callee(section.children) : undefined
+				
+			} ;
+
+		}
+		
+		return items ;
+
+	})(sections) ;
+
+	// console.log('DB Behavior sections', sects)
+	
+}else{
+	
+	var focus = graphics.focus ;
+	var toggle = graphics.toggle ;
+
+	var sects = [
+		{
+			name:'home',
+			"@jade": '/jade/home',
+			"@json": '/home/',
+			"@focus":focus,
+			"@toggle":toggle
+		},
+		{
+			name:'products',
+			"@jade": '/jade/products',
+			"@json": '/products/',
+			"@focus":focus,
+			"@toggle":toggle,
+			children:[
+				{
+					name:'sl_001',
+					"@jade": '/jade/product',
+					"@json": '/products/{$1}',
+					"@focus":focus,
+					"@toggle":toggle
+				},
+				{
+					name:'lm_001',
+					"@jade": '/jade/product',
+					"@json": '/products/{$1}',
+					"@focus":focus,
+					"@toggle":toggle
+				},
+				{
+					name:'uw_001',
+					"@jade": '/jade/product',
+					"@json": '/products/{$1}',
+					"@focus":focus,
+					"@toggle":toggle
+				},
+				{
+					name:'uv_001',
+					"@jade": '/jade/product',
+					"@json": '/products/{$1}',
+					"@focus":focus,
+					"@toggle":toggle
+				}
+			]
+		},
+		
+		{
+			name:'about',
+			"@jade": '/jade/about',
+			"@json": '/about/',
+			"@focus":focus,
+			"@toggle":toggle,
+			children:[
+				{
+					name:'intro',
+					"@jade": '/jade/news_new',
+					"@json": '/news/{$1}',
+					"@focus":focus,
+					"@toggle":toggle
+				},
+				{
+					name:'clients',
+					"@jade": '/jade/news_new',
+					"@json": '/news/{$1}',
+					"@focus":focus,
+					"@toggle":toggle
+				}
+			]
+		},{
+			name:'contact',
+			"@jade": '/jade/contact',
+			"@json": '/contact/',
+			"@focus":focus,
+			"@toggle":toggle
+		}
+	
+	] ;
+
+
+}
+
+	
+
+
+
 
 var defaultFunction = function(node, exp){
 

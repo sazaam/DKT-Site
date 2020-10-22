@@ -1,5 +1,5 @@
 doctype html
-html.abs.fullW.fullH.context.whiteBG(lang=lang, style="overflow-y: auto;")
+html.abs.fullW.fullH.context.darkBG(lang=lang, style="overflow-y: auto;")
 	head
 		meta(http-equiv="Content-Type" content="text/html; charset=utf-8")
 		meta(http-equiv="X-UA-Compatible" content="IE=edge,chrome=1")
@@ -19,7 +19,7 @@ html.abs.fullW.fullH.context.whiteBG(lang=lang, style="overflow-y: auto;")
 
 		link(rel="stylesheet" type="text/css" href="/css/all.css")
 
-		- // FOR JADE PARSER SERVER FIRST JET
+		//- FOR JADE PARSER SERVER FIRST JET
 		
 		title= title
 
@@ -27,58 +27,44 @@ html.abs.fullW.fullH.context.whiteBG(lang=lang, style="overflow-y: auto;")
 		//- LATER FOR IN-BROWSER PARSER SERVER FIRST JET
 		//-  FOR IN-BROWSER PARSER SERVER FIRST JET
 		script.
-			(function(){
-				var prefix = 'data_' ;
-				var Data = !{JSON.stringify(db_sections)} ;
+			window.Data = !{JSON.stringify(db_sections)} ;
+			console.log('DB Data sections', window.Data) ;
 				
-				console.log(Data)
-				window.Data = Data ;
-			})() ;
 
-	body.abs.all.left0.right0.top0.bottom0
-
-
+	body.abs.all.left0.right0.top0.bottom0.darkBG
 
 		//- !!! IMPORTANT THIS WORKS
-		//- | !{ render('include ./sam \nscript| console.log(!{JSON.stringify(locals)})', p({basedir:basedir, filename: basedir + 'sam.jade', data_section:data_section, db_section:db_section}))}
-		//- | !{ renderFile(basedir + 'sam.jade', p({ filename: basedir + 'sam.jade', data_section:data_section, db_section:db_section}))}
+		//- | !{ render('include ./sam \nscript| console.log(!{JSON.stringify(locals)})', p(locals, {basedir:basedir, filename: basedir + 'sam.jade', data_section:data_section, db_section:db_section}))}
+		//- | !{ renderFile(basedir + 'sam.jade', p(locals, { filename: basedir + 'sam.jade', data_section:data_section, db_section:db_section}))}
 
 
 
 		block content
-		- var other = [].concat(data_sections) ;
-		- var home = other.shift() ;
-		- var href = '/#/' + lang + '/home/' ;
+		
 		#topbar.topbar.navbar.navbar-custom.navbar-fixed-top.RpadXXLg.LpadSm
-			.home.floatL
-				a.block.pad.inconsolata(href= href)
-					span= t('DKT')
-			ol.flowvisible(style="margin-left:120px")
-				- var ss = other ;
-				- var l = ss.length ;
-				- for(var i = 0 ; i < l ; i ++){
-					- var s = ss[i] ;
-					- var name = s.name ;
-					- var href = '/#/' + lang + '/' + name + '/' ;
-
-					//- EACH MAIN SECTION LINK
-					li.floatL(id= "gobal_" + name, class= "gobal_" + name)
-						a.block.pad.HpadXLg.inconsolata(href= href)
+			
+			//- MAIN NAV SECTION LINKS
+			ol.sectionsnav.flowvisible
+				
+				- var other = [].concat(db_sections) ;
+				- var home = other.shift() ;
+				
+				//-  HOME SPECIAL CASE
+				li.home.floatL(id= "global_" + 'home', class= "global_" + 'home')
+					a.block.pad.inconsolata(href= '/#/' + lang + '/home/')
+						span= t('DKT')
+				
+				//-  OTHERS CASE
+				each navsection in other
+					- var name = navsection.name ;
+					li.others.floatL(id= "global_" + name, class= "global_" + name)
+						a.block.pad.HpadXLg.inconsolata(href= '/#/' + lang + '/' + name + '/')
 							span= name
-				- }
-				ul#langnav.langnav.context.floatR
-					- var ss = ['en', 'ko'] ;
-					- var l = ss.length ;
-					- for(var i = 0 ; i < l ; i ++){
-						- var s = ss[i] ;
-						- var name = s ;
-						- var href = '/#/' + lang + '/' + name + '/' ;
-						- var cl = "lang lang_" + name ;
-
-						//- EACH MAIN SECTION LINK
-						li.floatL(id= "lang_" + name, class= cl)
-							a.block.mar.HpadXSm.inconsolata.round.both(href='?lng='+name, lang=name)
-								span= name
-					- }
-			.test.fullW
-				textarea.fullW.dkt
+				
+			//- LAGUAGE BAR
+			ul#langnav.langnav.context.floatR
+				each language in langs
+					- var active = language == lang ? ' active ' : '' ;
+					li.floatL(id= "lang_" + language, class= "lang " + active + "lang_" + language)
+						a.block.mar.HpadXSm.inconsolata.round.both(href='?lng=' + language, lang=language)
+							span= language

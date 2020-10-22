@@ -236,9 +236,19 @@ red {
 	width:50% !important;
 }
 
-html:lang(ru) .lang_ru a, html:lang(ko) .lang_ko a, html:lang(en) .lang_en a{
+.active.lang a{
 	color:#9d1639 !important;
 	background:white;
+}
+
+
+.sectionsnav .others.active a{
+	color:#9d1639 !important;
+	background:white;
+}
+
+.sectionsnav .home.active a{
+	background-position:0 0;
 }
 
 .page{
@@ -279,7 +289,7 @@ html:lang(ru) .lang_ru a, html:lang(ko) .lang_ko a, html:lang(en) .lang_en a{
 
 
 .endlogo{
-	width:100px;
+	width:80px;
 	height:50px;
 	background:url(./skin/dkt_white.png) no-repeat -100px -50px;
 }
@@ -299,8 +309,14 @@ html:lang(ru) .lang_ru a, html:lang(ko) .lang_ko a, html:lang(en) .lang_en a{
 
 
 .tables{cursor:default}
-.tables tr:hover td{background:#9d1639;color:white}
-.tables tr:hover td.bold{color:#E1647C}
+
+.tables tr{
+	margin-top:1px;
+	background:#E8E8E8;
+}
+/* 
+.tables tr:hover td{background:#e3dcd5;color:#9d1639}
+.tables tr:hover td.bold{color:#E1647C} */
 
 .topbar textarea{display:none}
 
@@ -334,6 +350,10 @@ html:lang(ru) .lang_ru a, html:lang(ko) .lang_ko a, html:lang(en) .lang_en a{
 	cursor: url(./skin/next-light.png), auto;
 }
 
+.slidedown {
+	cursor: url(./skin/down-light.png), auto;
+}
+
 .bt{
 	border:1px solid transparent;
 	display: inline-block;
@@ -352,4 +372,22 @@ html:lang(ru) .lang_ru a, html:lang(ko) .lang_ko a, html:lang(en) .lang_en a{
 	user-select: none; 
 }
 
-body{background:#333}
+
+.close_btn{border-radius:0 0 0 6px !important}
+
+
+hr{border-top: 1px dashed #9d1639;}
+pre{
+	border:0;
+	background:transparent;
+	padding:0 !important;
+	margin:0 !important;
+}
+code{
+	display:block;
+	padding:15px !important;
+	margin:0 !important;
+	border-left: 1px dashed #9d1639;
+	border-right: 1px dashed #9d1639;
+	background:#222;
+}

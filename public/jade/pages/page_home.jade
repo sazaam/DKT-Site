@@ -1,0 +1,21 @@
+//- ----------------------- START  => Extends
+
+extends ./page
+
+//- ----------------------- END : Extends
+
+include /mixins/_global
+
+block content
+  
+  .extra.rel.fullH.context
+    - var target_sections = [].concat([db_sections[0]]).concat([db_sections[1]]).concat([db_sections[2]]).concat([db_sections[3]]).concat(db_sections[1].children).concat(db_sections[2].children) ;
+    include /layouts/components/slideshow
+
+
+  block flow
+    
+    - var target_sections = [].concat(db_sections[1].children).concat(db_sections[2].children) ;
+    include /layouts/components/patchwork
+
+    +credits()

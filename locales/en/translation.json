@@ -1,30 +1,99 @@
 {
-    "home": {
-        "title": "Book shop",
-        
-        "sazaam":"This is simple string that contains $t(home.title)",
-        "total": "There are {{counter}} books in the list",
-        "buttonText": "Refresh button",
-        "buttonHTML": "<button onClick='window.location.reload();'>$t(buttonText)</button>"
-    },
-    "DKT__products":{
-        "name_sl_001":"SLITTER 4201-S",
-        "name_lm_001":"LAMINATOR 6001-S",
-        "name_uw_001":"UNWINDER / REWINDER 9001-S",
-        "name_uv_001":"UV COATER 12002-S",
-        "desc_sl_001": "p\n       | The \n       strong.dkt {{ productname }} \n       | is generally used\n       br\n       | to separate and final-coat various \n       strong.dkt PET-destinated \n       | films.",
-        "desc_lm_001": "p\n       | The \n       strong.dkt {{ productname }} \n       | is generally used\n       br\n       | to separate and final-coat various \n       strong.dkt PET-destinated \n       | films.",
-        "desc_uw_001": "p\n       | The \n       strong.dkt {{ productname }} \n       | is generally used\n       br\n       | to separate and final-coat various \n       strong.dkt PET-destinated \n       | films.",
-        "desc_uv_001": "p\n       | The \n       strong.dkt {{ productname }} \n       | is generally used\n       br\n       | to separate and final-coat various \n       strong.dkt PET-destinated \n       | films.",
+  "view": "View",
+  "product": "The Product",
+  "product_plural": "The Products",
+  "our_products": "Our Products",
+  "tech": "The Tech",
+  "tech_plural": "The Techs",
+  "company": "The Company",
+  "our_company": "Our Company",
 
-        "instr_sl_001": "p\n       | Remove \n       strong.dkt protective film \n       | on the \n       strong.dkt PET Base film \n       | , use of \n       strong.dkt Gap coating system \n       | through the Soft Mold and UV Curing.\n       br\n       | After \n       strong.dkt UV Curing, laminating and rewinding.",
-        "instr_lm_001": "p\n       | Remove \n       strong.dkt protective film \n       | on the \n       strong.dkt PET Base film \n       | , use of \n       strong.dkt Gap coating system \n       | through the Soft Mold and UV Curing.\n       br\n       | After \n       strong.dkt UV Curing, laminating and rewinding.",
-        "instr_uw_001": "p\n       | Remove \n       strong.dkt protective film \n       | on the \n       strong.dkt PET Base film \n       | , use of \n       strong.dkt Gap coating system \n       | through the Soft Mold and UV Curing.\n       br\n       | After \n       strong.dkt UV Curing, laminating and rewinding.",
-        "instr_uv_001": "p\n       | Remove \n       strong.dkt protective film \n       | on the \n       strong.dkt PET Base film \n       | , use of \n       strong.dkt Gap coating system \n       | through the Soft Mold and UV Curing.\n       br\n       | After \n       strong.dkt UV Curing, laminating and rewinding.",
-        
-        "concl_sl_001": "p\n       | This asset is \n       strong.dkt quite detailed \n       | and created with an eye towards current and next-generation needs \n       br\n       | in the modern industry and innovative technologies.",
-        "concl_lm_001": "p\n       | This asset is \n       strong.dkt quite detailed \n       | and created with an eye towards current and next-generation needs \n       br\n       | in the modern industry and innovative technologies.",
-        "concl_uw_001": "p\n       | This asset is \n       strong.dkt quite detailed \n       | and created with an eye towards current and next-generation needs \n       br\n       | in the modern industry and innovative technologies.",
-        "concl_uv_001": "p\n       | This asset is \n       strong.dkt quite detailed \n       | and created with an eye towards current and next-generation needs \n       br\n       | in the modern industry and innovative technologies."
+  "tel": "Tel",
+  "fax": "Fax",
+  "next": "Next",
+  "prev": "Previous",
+  "back": "Back",
+  "back_to": "Back to {{ target }}",
+  "welcome": "Welcome",
+  "you": "You",
+  "thank_you": "Thank You",
+  "greetings": "Greetings",
+
+  "specs":"Specifications",
+  "creation_year":"Creation Year",
+  "tags":"Tags",
+  "desc_file":"Description File",
+
+  "DKT__globals": {
+    "machinery": "DKT Coating Machinery",
+    "name": "DKT",
+    "accr": "Dynamic Korea Technology",
+	
+    "company": {
+      "accroche_1": "Technology",
+      "accroche_2": "Provides",
+      "address_1": "116-60, Sanho-daero, Gumi-city,",
+      "address_2": "Kyung-Buk, Republic of Korea",
+      "telephone": "+82-54-462-5326~7",
+      "fax": "+82-54-462-5320 / +82-54-716-0004",
+      "copy": "All Rights Reserved © ",
+      "copy_to": "DKT International Co, Ltd",
+      "copy_year": "2020",
+      "creation_year": "2007"
     }
+  },
+
+  "DKT__about": {
+    "name": "Total Solutions Provider",
+    "surname": "$t(DKT__globals.company.name) Full Scale Enterprise",
+    "creation_year": "2007",
+    "embassy": {
+      "philosophy": "Our Philsophy",
+      "md_1": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
+      "md_2": "The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text.",
+      "md_3": "And a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
+    },
+    "articles": {
+      "article_01": {
+        "desc_01": "##### __DKT__ - {{ section.post.vars.post.name }}\n***\n## __The Way__ to go with success\n#### is to keep __thankfull__, to all __obstacles__ afterwards.  \n[__'Albert Einstein'__](https://duckduckgo.com), is a heavy influencer  \nof the 20th Century.  \n****\n**$t({{vars.test}})** :  One piece of the Future, 1985.  [__'Albert Einstein'__](),",
+
+        "desc_02": "***\nAnd a search for __{{ section.post.vars.post.name }}__ will uncover many web sites still in their infancy.\nVarious versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like __{{ section.post.vars.post.surname }}__ )"
+      },
+      "article_02": {
+        "desc_01": "##### __DKT__ - {{ section.post.vars.post.name }}\n***\n ## __The Way__ to go with success\n#### is to keep __thankfull__, to all __obstacles__ afterwards.  \n[__'Albert Einstein'__](https://duckduckgo.com), is a heavy influencer  \nof the 20th Century.  \n****\n**$t({{vars.test}})** :  One piece of the Future, 1985.  [__'Albert Einstein'__](),",
+
+        "desc_02": "## A brief __overview__  \n****\n![GitHub Logo](/img/logo_big_green.png) \n  \n****  \n**$t({{vars.test}})** :  One piece of the Future, 1985.  [__'Albert Einstein'__]()"
+      }
+    }
+  },
+
+  "DKT__products": {
+
+	"certif_01":"| Our \nspan.dkt products  \n| have all obtained licensing and certification from \nstrong.dkt ISO-4501-8888.",
+	"certif_02":"| They are under constant check and control as we speak. Numerous consecutive tests puts them at a hard training, through the whole process of multiple building-unbuilding preface, until full-and-functional delivery. ",
+	"certif_03":"| They then are shipped under cimilarily checkable controls, by partner and certified shipper, until they become part of client's property, which falls under, again various of our insurances policies.",
+	"needinfo_01":"span.dkt Need \n| an information on any of our \nspan.dkt products ?",
+	"needinfo_02":"| Feel free to contact our \nstrong.dkt professionals, \n| which are ready to inform you,\nbr\n| on demand as promptly as we all can.",
+	"needinfo_03":"h4.sizeXXLg.txtL.inlineblock.padXSm.HpadXLg.antraciteBG.round.left.dkt.dktBD\n   | Call \nh4.sizeXXLg.txtL.inlineblock.padXSm.HpadXLg.dktBG.round.right.white.dktBD\n   | 1-800-6425-1539",
+	"needinfo_04":"| Our \nstrong.dkt professionals \n| are ready to inform you in the best delays.",
+	
+    "name_sl_001": "SLITTER 4201-S",
+    "name_lm_001": "LAMINATOR 6001-S",
+    "name_uw_001": "UNWINDER / REWINDER 9001-S",
+    "name_uv_001": "UV COATER 12002-S",
+    "desc_sl_001": "p\n       | The \n       strong.dkt {{ productname }} \n       | is generally used\n       br\n       | to separate and final-coat various \n       strong.dkt PET-destinated \n       | films.",
+    "desc_lm_001": "p\n       | The \n       strong.dkt {{ productname }} \n       | is generally used\n       br\n       | to separate and final-coat various \n       strong.dkt PET-destinated \n       | films.",
+    "desc_uw_001": "p\n       | The \n       strong.dkt {{ productname }} \n       | is generally used\n       br\n       | to separate and final-coat various \n       strong.dkt PET-destinated \n       | films.",
+    "desc_uv_001": "p\n       | The \n       strong.dkt {{ productname }} \n       | is generally used\n       br\n       | to separate and final-coat various \n       strong.dkt PET-destinated \n       | films.",
+
+    "instr_sl_001": "p\n       | Remove \n       strong.dkt protective film \n       | on the \n       strong.dkt PET Base film \n       | , use of \n       strong.dkt Gap coating system \n       | through the Soft Mold and UV Curing.\n       br\n       | After \n       strong.dkt UV Curing, laminating and rewinding.",
+    "instr_lm_001": "p\n       | Remove \n       strong.dkt protective film \n       | on the \n       strong.dkt PET Base film \n       | , use of \n       strong.dkt Gap coating system \n       | through the Soft Mold and UV Curing.\n       br\n       | After \n       strong.dkt UV Curing, laminating and rewinding.",
+    "instr_uw_001": "p\n       | Remove \n       strong.dkt protective film \n       | on the \n       strong.dkt PET Base film \n       | , use of \n       strong.dkt Gap coating system \n       | through the Soft Mold and UV Curing.\n       br\n       | After \n       strong.dkt UV Curing, laminating and rewinding.",
+    "instr_uv_001": "p\n       | Remove \n       strong.dkt protective film \n       | on the \n       strong.dkt PET Base film \n       | , use of \n       strong.dkt Gap coating system \n       | through the Soft Mold and UV Curing.\n       br\n       | After \n       strong.dkt UV Curing, laminating and rewinding.",
+
+    "concl_sl_001": "p\n       | This asset is \n       strong.dkt quite detailed \n       | and created with an eye towards current and next-generation needs \n       br\n       | in the modern industry and innovative technologies.",
+    "concl_lm_001": "p\n       | This asset is \n       strong.dkt quite detailed \n       | and created with an eye towards current and next-generation needs \n       br\n       | in the modern industry and innovative technologies.",
+    "concl_uw_001": "p\n       | This asset is \n       strong.dkt quite detailed \n       | and created with an eye towards current and next-generation needs \n       br\n       | in the modern industry and innovative technologies.",
+    "concl_uv_001": "p\n       | This asset is \n       strong.dkt quite detailed \n       | and created with an eye towards current and next-generation needs \n       br\n       | in the modern industry and innovative technologies."
+  }
 }

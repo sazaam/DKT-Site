@@ -174,6 +174,9 @@ red {
 .dktBD{
 	border:1px solid #9d1639;
 }
+.contact .dktTOPBD{
+	border-top:1px dashed #9d1639;
+}
 
 .lightdkt{
 	color:#E1647C;
@@ -185,6 +188,36 @@ red {
 	border:1px solid #E1647C;
 }
 
+.about .dkt{
+	color:#169d65;
+}
+.about .dktBG{
+	background:#169d65;
+}
+.about .dktBD{
+	border:1px solid #169d65;
+}
+.about .dktTOPBD{
+	border-top:1px dashed #169d65
+}
+
+.contact .dkt{
+	color:#132645;
+}
+.contact .dktBG{
+	background:#132645;
+}
+.contact .dktBD{
+	border:1px solid #132645;
+}
+.contact .dktTOPBD{
+	border-top:1px dashed #132645
+}
+
+.formBG{
+	border:0px !important;
+	background:#F3F3F3;
+}
 
 .ocreBG{
 	background:#e3dcd5;

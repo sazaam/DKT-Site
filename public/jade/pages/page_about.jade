@@ -11,10 +11,11 @@ include /mixins/_global
 block flow
   
   - var main_media = getComponentsByTypename(section.post.bracket, 'ComponentModularMedia')[0].media ;
-
   +topimage(CDN + main_media[1].url, color, 'About', "The Company")
   
 
   each md_article in getComponentsByTypename(section.post.bracket, 'ComponentModularArticle')
     - var params2 = !!md_article.page ? merge(params, rfs(md_article.page.jade, md_article.page.path, params)) : params ;
     +article("article_" + md_article.name, md_article.template.jade, params2, md_article.color || '#169d65')
+
+  +infos()

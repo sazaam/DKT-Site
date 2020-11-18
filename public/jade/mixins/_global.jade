@@ -120,7 +120,7 @@ mixin slide(child_section, i)
 
 
 mixin infos()
-	.ivoryBG(style="border-top:1px dashed #9d1639")
+	.ivoryBG.dktTOPBD
 		.container.rel(style="padding-top:2em;padding-bottom:2em;")
 			.line.txtL
 				h6.sizeSm.dkt.LmarXXXXLg= t('DKT__globals.company.copy_to')
@@ -174,6 +174,45 @@ mixin credits()
 			+infos()
 
 
+mixin contactform()
+	.extra.TmarXXLg.rel.context.montserrat(id=section.name + "_contactform", class= section.name + "_contactform")
+		form(action="#")
+			.fline.context
+				p
+					label.Hpad.dkt(for="firstname") First name
+					input.Hpad.formBG(type="text" id="firstname" placeholder="")
+			.fline.context
+				p
+					label.Hpad.dkt(for="lastname") Last Name
+					input.Hpad.formBG(type="text" id="lastname" placeholder="")
+			.fline.context
+				p
+					label.Hpad.dkt(for="companyname") Company name
+					input.Hpad.formBG(type="text" id="companyname" placeholder="")
+			.fline.context
+				p
+					label.Hpad.dkt(for="email") Email
+					input.Hpad.formBG(type="text" id="email" placeholder="")
+			.fline.context
+				p
+					label.Hpad.dkt(for="service") Service
+					select.Hpad.formBG(type="select" id="service")
+						option(value="Private") General
+						option(value="true") Machinery
+						option(value="caca") Marketing
+						option(value="caca") Careers
+			.fline.context
+				p
+					label.Hpad.dkt(for="messagebody") Message
+					input.Hpad.formBG(type="text" id="messagesubject" placeholder="Subject")
+				p
+					textarea.pad.formBG(id="messagebody" style="width:100%;height:450px" type="text" placeholder="Your Message")
+			.fline.context
+				p
+					input.Hpad.dkt.formBG(type="submit" value="Send Message")
+
+
+
 mixin certif()
 	.extra.rel.context.none(id=section.name + "_certif", class= section.name + "_certif")
 		.container.rel
@@ -199,22 +238,31 @@ mixin certif()
 								!= render(t('DKT__products.certif_03'))
 							.unit.lastUnit
 									
-							
 				.unit.lastUnit.sizeXSm
+					//- +needinfo			
 					.sizeLg.marXXXLg.txtL
-
 						p.sizeLg.txtL
 							!= render(t('DKT__products.needinfo_01'))
 						p.sizeR.txtL.BmarXLg
 							!= render(t('DKT__products.needinfo_02'))
 						.sizeSm
 							!= render(t('DKT__products.needinfo_03'))
-							
+						
 						p.sizeSm.txtL.TmarXLg
 							!= render(t('DKT__products.needinfo_04'))
 
 
-
+mixin needinfo()
+		.sizeLg.marXXXLg.txtL
+			p.sizeLg.txtL
+				!= render(t('DKT__products.needinfo_01'))
+			p.sizeR.txtL.BmarXLg
+				!= render(t('DKT__products.needinfo_02'))
+			.sizeSm
+				!= render(t('DKT__products.needinfo_03'))
+			
+			p.sizeSm.txtL.TmarXLg
+				!= render(t('DKT__products.needinfo_04'))
 
 mixin topimage(url, color, title, subtitle)
 	.extra.rel.context.cover(style='height:30%;background:url(' + url  + ') no-repeat 50% 50%;background-size:cover')

@@ -1,7 +1,7 @@
-
+require('dotenv').config() ;
 let http = require('http') ;
 
-let port = process.env.PORT || '80' ;
+let port = process.env.PORT || '3000' ;
 let server ;
 
 module.exports = {

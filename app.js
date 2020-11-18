@@ -9,7 +9,7 @@ let path = require('path') ;
 let fs = require('fs') ;
 let fetch = require('node-fetch') ;
 let axios = require('axios') ;
-const { setHeaders, setHeader, GraphQLClient, gql } = require('graphql-request') ;
+const { GraphQLClient, gql } = require('graphql-request') ;
 // view engine
 const jade = require('jade') ;
 const md = require('marked') ;
@@ -203,10 +203,16 @@ let login = async (app) => {
 
 	const endpoint = CONSTANTS.PATH.db + CONSTANTS.PATH.db_graphql ;
 	
-	CONSTANTS.DKTClient = new GraphQLClient(endpoint) ;
-	CONSTANTS.DKTClient.setHeaders({ 
-		authorization: `Bearer ${CONSTANTS.user.jwt}`
-	}) ;
+	const { GraphQLClient } = require('graphql-request');
+	const { Headers } = require('cross-fetch');
+	
+	global.Headers = global.Headers || Headers;
+	
+	CONSTANTS.DKTClient = new GraphQLClient(endpoint, {
+		headers: {
+			authorization: `Bearer ${CONSTANTS.user.jwt}`
+		},
+	});
 	
 	console.log('\t  LOGIN SUCCESSFULL') ;
 }

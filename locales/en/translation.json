@@ -66,7 +66,15 @@
       }
     }
   },
+  "DKT__contacts":{
+    "telephone": "Via Telephone",
+    "telephone_txt": "Worldwide answering to your demand.",
+    "email": "Via Email",
+    "email_txt": "Please feel free to leave us an email concerning any of our products or other requests.",
+    "postmail": "Via PostMail",
+    "postmail_txt": "And we still open our mailbox on daily basis!"
 
+  },
   "DKT__products": {
 
 	"certif_01":"| Our \nspan.dkt products  \n| have all obtained licensing and certification from \nstrong.dkt ISO-4501-8888.",

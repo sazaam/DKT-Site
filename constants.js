@@ -1,5 +1,7 @@
 
+console.log(process.env.API_USERNAME)
 console.log(process.env.API_SECRET)
+console.log(process.env.STRAPI_PATH)
 
 module.exports = {
   ENV:"development",

@@ -56,7 +56,6 @@ let MAINDEBUG = true ;
 let RELEASED = false ;
 
 let db = async (req, res) => {
-
 	let data = await CONSTANTS.DKTClient.request(queries.sections.query, queries.sections.variables || {}) ;
 	return data.sections ;
 }
@@ -198,13 +197,13 @@ let root = async (req, res) => {
 let login = async (app) => {
 	// No unhandled rejection!
 	console.log('////////  LOGGING IN AS DKT ////////')
+
 	const { data } = await axios.post(CONSTANTS.PATH.db + CONSTANTS.PATH.db_auth, CONSTANTS.users.dkt) ;
 	
 	CONSTANTS.user = data ;
 	CONSTANTS.token = 'Bearer ' + data.jwt ;
 
 	const endpoint = CONSTANTS.PATH.db + CONSTANTS.PATH.db_graphql ;
-	
 	const { GraphQLClient } = require('graphql-request');
 	const { Headers } = require('cross-fetch');
 	
@@ -237,8 +236,9 @@ let login = async (app) => {
 
 	// SITE LOGIN AS DKT VIEWER USER
 	await login(app).catch((err) => {
+		console.log(err)
 		console.log('/tLOGIN FAILED  ////////') ;
-		console.log('Let us check \n\t1. our Credentials\n\t2. if server on ' + CONSTANTS.PATH.db + 'is running') ;
+		console.log('Let us check \n\t1. our Credentials\n	2. if server on "' + CONSTANTS.PATH.db + '" is running') ;
 	}) ;
 	
 	// SERVER READY SO FINALLY LAUNCHING

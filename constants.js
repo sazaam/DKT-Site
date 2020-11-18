@@ -1,13 +1,14 @@
 
-module.exports = {
+console.log(process.env.API_SECRET)
 
+module.exports = {
   ENV:"development",
   PATH:{
     jade:'/public/jade/',
-    db:'http://localhost:1337/',
-    db_auth:'auth/local',
-    db_graphql:'graphql',
-    cdn:'http://localhost:1337'
+    db: process.env.STRAPI_PATH,
+    db_auth: process.env.STRAPI_AUTH,
+    db_graphql: process.env.STRAPI_GRAPHQL,
+    cdn: process.env.CDN
   },
   SITE:{
     title:'> Dynamic Korea Technology'
@@ -15,9 +16,8 @@ module.exports = {
   fixtures:'./json/fixtures/fixtures.json',
   users:{
     dkt:{
-      identifier: 'dkt',
-      password: 'GB85J2embgKk7jz'
+      identifier: process.env.API_USERNAME,
+      password: process.env.API_SECRET
     }
   }
-
 }

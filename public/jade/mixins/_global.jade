@@ -179,37 +179,38 @@ mixin contactform()
 		form(action="#")
 			.fline.context
 				p
-					label.Hpad.dkt(for="firstname") First name
+					label.Hpad.dkt(for="firstname")= t("DKT__contacts.form.firstname")
 					input.Hpad.formBG(type="text" id="firstname" placeholder="")
 			.fline.context
 				p
-					label.Hpad.dkt(for="lastname") Last Name
+					label.Hpad.dkt(for="lastname")= t("DKT__contacts.form.lastname")
 					input.Hpad.formBG(type="text" id="lastname" placeholder="")
 			.fline.context
 				p
-					label.Hpad.dkt(for="companyname") Company name
+					label.Hpad.dkt(for="companyname")= t("DKT__contacts.form.company")
 					input.Hpad.formBG(type="text" id="companyname" placeholder="")
 			.fline.context
 				p
-					label.Hpad.dkt(for="email") Email
+					label.Hpad.dkt(for="email")= t("DKT__contacts.form.email")
 					input.Hpad.formBG(type="text" id="email" placeholder="")
 			.fline.context
 				p
-					label.Hpad.dkt(for="service") Service
-					select.Hpad.formBG(type="select" id="service")
-						option(value="Private") General
-						option(value="true") Machinery
-						option(value="caca") Marketing
-						option(value="caca") Careers
+					label.Hpad.dkt(for="service")= t("DKT__contacts.form.service")
+					select.Hpad.floatR.formBG(type="select" id="service")
+						- var emails = t("DKT__contacts.emails", { returnObjects: true}) ;
+						- for (var str in emails) {
+							option.fullW.fullH(value=emails[str])= str
+						- }
+						
 			.fline.context
 				p
-					label.Hpad.dkt(for="messagebody") Message
-					input.Hpad.formBG(type="text" id="messagesubject" placeholder="Subject")
+					label.Hpad.dkt(for="messagebody")= t("DKT__contacts.form.message")
+					input.Hpad.formBG(type="text" id="messagesubject" placeholder= t("DKT__contacts.form.subject"))
 				p
-					textarea.pad.formBG(id="messagebody" style="width:100%;height:450px" type="text" placeholder="Your Message")
+					textarea.pad.formBG(id="messagebody" style="width:100%;height:450px" type="text" placeholder=t("DKT__contacts.form.your_message"))
 			.fline.context
 				p
-					input.Hpad.dkt.formBG(type="submit" value="Send Message")
+					input.Hpad.dkt.formBG(type="submit" value=t("DKT__contacts.form.send"))
 
 
 

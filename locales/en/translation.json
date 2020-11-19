@@ -28,7 +28,7 @@
     "machinery": "DKT Coating Machinery",
     "name": "DKT",
     "accr": "Dynamic Korea Technology",
-	
+    "suffix":"@dktmc.com",
     "company": {
       "accroche_1": "Technology",
       "accroche_2": "Provides",
@@ -69,21 +69,41 @@
   "DKT__contacts":{
     "telephone": "Via Telephone",
     "telephone_txt": "Worldwide answering to your demand.",
+    "telephone_sales": "1-800-6425-1539",
     "email": "Via Email",
     "email_txt": "Please feel free to leave us an email concerning any of our products or other requests.",
+    "form":{
+      "firstname":"First Name",
+      "lastname":"Last Name",
+      "company":"Company Name",
+      "email":"Email",
+      "service":"Service",
+      "message":"Message",
+      "subject":"Subject",
+      "your_message":"Your Message",
+      "send":"Send Message"
+    },
+    "sep_email":"If you prefer, you can always write us an email from your favorite mail client",
+    "emails":{
+      "General":"info$t(DKT__globals.suffix)",
+      "Machinery":"machinery$t(DKT__globals.suffix)",
+      "Marketing":"marketing$t(DKT__globals.suffix)",
+      "Careers":"careers$t(DKT__globals.suffix)"
+    },
+
     "postmail": "Via PostMail",
     "postmail_txt": "And we still open our mailbox on daily basis!"
 
   },
   "DKT__products": {
 
-	"certif_01":"| Our \nspan.dkt products  \n| have all obtained licensing and certification from \nstrong.dkt ISO-4501-8888.",
-	"certif_02":"| They are under constant check and control as we speak. Numerous consecutive tests puts them at a hard training, through the whole process of multiple building-unbuilding preface, until full-and-functional delivery. ",
-	"certif_03":"| They then are shipped under cimilarily checkable controls, by partner and certified shipper, until they become part of client's property, which falls under, again various of our insurances policies.",
-	"needinfo_01":"span.dkt Need \n| an information on any of our \nspan.dkt products ?",
-	"needinfo_02":"| Feel free to contact our \nstrong.dkt professionals, \n| which are ready to inform you,\nbr\n| on demand as promptly as we all can.",
-	"needinfo_03":"h4.sizeXXLg.txtL.inlineblock.padXSm.HpadXLg.antraciteBG.round.left.dkt.dktBD\n   | Call \nh4.sizeXXLg.txtL.inlineblock.padXSm.HpadXLg.dktBG.round.right.white.dktBD\n   | 1-800-6425-1539",
-	"needinfo_04":"| Our \nstrong.dkt professionals \n| are ready to inform you in the best delays.",
+    "certif_01":"| Our \nspan.dkt products  \n| have all obtained licensing and certification from \nstrong.dkt ISO-4501-8888.",
+    "certif_02":"| They are under constant check and control as we speak. Numerous consecutive tests puts them at a hard training, through the whole process of multiple building-unbuilding preface, until full-and-functional delivery. ",
+    "certif_03":"| They then are shipped under cimilarily checkable controls, by partner and certified shipper, until they become part of client's property, which falls under, again various of our insurances policies.",
+    "needinfo_01":"span.dkt Need \n| an information on any of our \nspan.dkt products ?",
+    "needinfo_02":"| Feel free to contact our \nstrong.dkt professionals, \n| which are ready to inform you,\nbr\n| on demand as promptly as we all can.",
+    "needinfo_03":"h4.sizeXXLg.txtL.inlineblock.padXSm.HpadXLg.antraciteBG.round.left.dkt.dktBD\n   | Call \nh4.sizeXXLg.txtL.inlineblock.padXSm.HpadXLg.dktBG.round.right.white.dktBD\n   | $t(DKT__contacts.telephone_sales)",
+    "needinfo_04":"| Our \nstrong.dkt professionals \n| are ready to inform you in the best delays.",
 	
     "name_sl_001": "SLITTER 4201-S",
     "name_lm_001": "LAMINATOR 6001-S",

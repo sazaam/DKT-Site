@@ -11,7 +11,7 @@ include /mixins/_global
 block flow
 
 	- var main_media = getComponentsByTypename(section.post.bracket, 'ComponentModularMedia')[0].media ;
-	+topimage(CDN + main_media[1].url, color, 'Contact', "Contact Us")
+	+topimage(main_media[1], color, 'Contact', "Contact Us")
 	
 	section.page.zind3.rel(style="background:#E8E8E8;")
 		

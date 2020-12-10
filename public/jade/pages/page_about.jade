@@ -11,7 +11,7 @@ include /mixins/_global
 block flow
   
   - var main_media = getComponentsByTypename(section.post.bracket, 'ComponentModularMedia')[0].media ;
-  +topimage(CDN + main_media[1].url, color, 'About', "The Company")
+  +topimage(main_media[1], color, 'About', "The Company")
   
 
   each md_article in getComponentsByTypename(section.post.bracket, 'ComponentModularArticle')

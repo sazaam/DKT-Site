@@ -1,3 +1,6 @@
+//- - var newstr = 'img' ;
+- var newstr = '' ;
+
 mixin link(o)
 	ul.links(class= o.cl || "")
 		li(style='display: inline;')
@@ -13,7 +16,7 @@ mixin linkblock(o, isPatchwork)
 		li.work-item.rel.context(class= cl)
 			a.data.none(href= "/" + lang + o.path)
 			.work-image
-				img(src= CDN + medias[0].url , alt='')
+				img(src= CDN + medias[0].url.replace('uploads', newstr ) , alt='')
 			.work-caption(style="font-size:80%")
 				.work-descr.ls1= t(o.post.vars.post.surname)
 				h3.work-title.uppercase.Bmar.ls1= t(o.post.vars.post.name) 
@@ -22,7 +25,7 @@ mixin linkblock(o, isPatchwork)
 		.work-item.rel.context.fullW.noMQ(class=cl)
 			a.data.none(href= "/" + lang + o.path)
 			.work-image
-				img(src= CDN + medias[0].url, alt='')
+				img(src= CDN + medias[0].url.replace('uploads', newstr) , alt='')
 			.work-caption(style="font-size:80%")
 				.work-descr.ls1= t(o.post.vars.post.surname) 
 				h3.work-title.uppercase.Bmar.ls1= t(o.post.vars.post.name) 
@@ -48,6 +51,9 @@ mixin intro(section)
 			.line.txtR.RmarXXXLg.Rpad
 				+link({name:t("All " + section.name ), cl:"dkt", url:section.path})
 
+mixin mediasmallslide(media)
+	li.round.left.cover.abs.top0.left0.zi10(style='width:100%;height:100%;background:url(' + CDN + media.url.replace('uploads', newstr) + ') no-repeat 50% 50%;background-size:cover;opacity: 0;')
+		span.hidden Image
 
 mixin slide(child_section, i)
 
@@ -58,6 +64,7 @@ mixin slide(child_section, i)
 
 	li.bg-dark.noselect(unselectable="on" style='width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;')
 		- var media = section.name == 'home' ? medias[0].url : ((1 in medias) ? medias[1].url : medias[0].url) ;
+		- media = media.replace('uploads', newstr) ;
 		.slidebg.slide-zoom(style='opacity:.3;background-image:url(' + CDN + media + ')')
 
 		- if(child_section.name == 'home'){
@@ -265,8 +272,9 @@ mixin needinfo()
 			p.sizeSm.txtL.TmarXLg
 				!= render(t('DKT__products.needinfo_04'))
 
-mixin topimage(url, color, title, subtitle)
-	.extra.rel.context.cover(style='height:30%;background:url(' + url  + ') no-repeat 50% 50%;background-size:cover')
+mixin topimage(media, color, title, subtitle)
+	- var newstr = '' ;
+	.extra.rel.context.cover(style='height:30%;background:url(' + CDN + media.url.replace('uploads', newstr) + ') no-repeat 50% 50%;background-size:cover')
 		span.hidden= title
 		+sectionheader(title, subtitle)
 

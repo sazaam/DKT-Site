@@ -55,9 +55,7 @@ section.page.zind3.rel(style="background:#FFF;")
 							.loader.abs.left0.top.dkt.zi1
 								.hidden ohhhh
 							each media in medias
-								li.round.left.cover.abs.top0.left0.zi10(style='width:100%;height:100%;background:url(' + CDN + media.url + ') no-repeat 50% 50%;background-size:cover;opacity: 0;')
-									//- 
-									span.hidden Image
+								+mediasmallslide(media)
 					.line.rel.ocreBG.round.right
 						.abs.top0.right0.left0.pad
 							span.sizeLg.block.Hpad.dkt= t('specs')

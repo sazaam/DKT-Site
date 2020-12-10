@@ -23,7 +23,6 @@ const i18 = require('./lang') ;
 const queries = require('./queries') ;
 const UTILS = require('./utils') ;
 const CONSTANTS = require('./constants') ;
-const DATAS = require('./datas') ;
 
 
 // START THE EXPRESS
@@ -51,7 +50,7 @@ const app = express() ;
 
 })(app) ;
 
-let MAINDEBUG = true ;
+let MAINDEBUG = false ;
 // let MAINDEBUG = false ;
 let RELEASED = false ;
 
@@ -75,7 +74,7 @@ let root = async (req, res) => {
 
 	
 	// JSON FIXTURES
-	let data_sections = await fixtures(req, res).catch( err => {console.log(err)}) ;
+	// let data_sections = await fixtures(req, res).catch( err => {console.log(err)}) ;
 	
 	
 	
@@ -159,13 +158,13 @@ let root = async (req, res) => {
 		let loadedLangs = await Object.keys(i18next.services.resourceStore.data) ; 
 		
 		let params = CONSTANTS.jadeparams = {
-			basedir:jadebasedir + '\\',
+			basedir:jadebasedir + '/',
 			title:CONSTANTS.SITE.title,
 			lang: req.i18n.language,
 			langs: loadedLangs,
 			t: req.t,
 			db_sections:db_sections,
-			data_sections: data_sections,
+			// data_sections: data_sections,
 			require:require,
 			render: jade.render,
 			renderFile: jade.renderFile,

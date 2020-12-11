@@ -31,8 +31,6 @@
 	}
 	
 })('strawnode', (function(){
-		
-
 
 			// UTILS
 			var scriptSrc = function(abs) {

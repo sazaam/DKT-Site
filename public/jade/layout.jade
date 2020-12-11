@@ -20,52 +20,13 @@ html.abs.fullW.fullH.context.darkBG(lang=lang, style="overflow-y: auto;")
 		link(rel="stylesheet" type="text/css" href="/css/all.css")
 
 		//- FOR JADE PARSER SERVER FIRST JET
-		
-		title= title
-
-
-		//- LATER FOR IN-BROWSER PARSER SERVER FIRST JET
-		//-  FOR IN-BROWSER PARSER SERVER FIRST JET
-		script.
-			window.Data = !{JSON.stringify(db_sections)} ;
-			console.log('DB Data sections', window.Data) ;
-				
+		block title
+			title= title
 
 	body.abs.all.left0.right0.top0.bottom0.darkBG
-
-		//- !!! IMPORTANT THIS WORKS
-		//- | !{ render('include ./sam \nscript| console.log(!{JSON.stringify(locals)})', p(locals, {basedir:basedir, filename: basedir + 'sam.jade', data_section:data_section, db_section:db_section}))}
-		//- | !{ renderFile(basedir + 'sam.jade', p(locals, { filename: basedir + 'sam.jade', data_section:data_section, db_section:db_section}))}
-
-		#mainloader.loader.abs.left0.top.dkt.zi1
-			.hidden ohhhh
+		
+		include /layouts/topmenu
 
 		block content
-		
-		#topbar.topbar.navbar.navbar-custom.navbar-fixed-top.RpadXXLg.LpadSm
+
 			
-			//- MAIN NAV SECTION LINKS
-			ol.sectionsnav.flowvisible
-				
-				- var other = [].concat(db_sections) ;
-				- var home = other.shift() ;
-				
-				//-  HOME SPECIAL CASE
-				li.home.floatL(id= "global_" + 'home', class= "global_" + 'home')
-					a.block.pad.inconsolata(href= '/#/' + lang + '/home/')
-						span= t('DKT')
-				
-				//-  OTHERS CASE
-				each navsection in other
-					- var name = navsection.name ;
-					li.others.floatL(id= "global_" + name, class= "global_" + name)
-						a.block.pad.HpadXLg.inconsolata(href= '/#/' + lang + '/' + name + '/')
-							span= name
-				
-			//- LAGUAGE BAR
-			ul#langnav.langnav.context.floatR
-				each language in langs
-					- var active = language == lang ? ' active ' : '' ;
-					li.floatL(id= "lang_" + language, class= "lang " + active + "lang_" + language)
-						a.block.mar.HpadXSm.inconsolata.round.both(href='?lng=' + language, lang=language)
-							span= language

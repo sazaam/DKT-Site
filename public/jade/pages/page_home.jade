@@ -8,13 +8,17 @@ include /mixins/_global
 
 block content
   
-  .extra.rel.fullH.context
+  .extra.rel.fullH.context(style='height:90%;')
     - var target_sections = [].concat([db_sections[0]]).concat([db_sections[1]]).concat([db_sections[2]]).concat([db_sections[3]]).concat(db_sections[1].children).concat(db_sections[2].children) ;
     include /layouts/components/slideshow
 
 
   block flow
-    
+    .extra.whiteBG(style='height:30%;')
+      .container(style="padding:2em 0")
+        .txtC.dkt.montserrat.sizeXXXLg Total Solution Provider
+
+
     - var target_sections = [].concat(db_sections[1].children).concat(db_sections[2].children) ;
     include /layouts/components/patchwork
 

@@ -1,3 +1,5 @@
 extends ./layout
 block content
-    #error.red 404
+    include /mixins/_global
+    .container
+        #error.red.sizeXXXLg.montserrat= errormessage

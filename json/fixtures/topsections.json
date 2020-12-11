@@ -1,0 +1,37 @@
+[
+  {
+    "id": "5f52a181096e6d05185a363e",
+    "name": "home",
+    "path": "/home/",
+    "position": 1,
+    "level": 1
+  },
+  {
+    "id": "5f64e21134db8f1020bedb76",
+    "name": "techs",
+    "path": "/techs/",
+    "position": 2,
+    "level": 1
+  },
+  {
+    "id": "5f52a190096e6d05185a363f",
+    "name": "products",
+    "path": "/products/",
+    "position": 3,
+    "level": 1
+  },
+  {
+    "id": "5f53ade2d665493b24aa6734",
+    "name": "about",
+    "path": "/about/",
+    "position": 4,
+    "level": 1
+  },
+  {
+    "id": "5f53e6665710812194846280",
+    "name": "contact",
+    "path": "/contact/",
+    "position": 5,
+    "level": 1
+  }
+]

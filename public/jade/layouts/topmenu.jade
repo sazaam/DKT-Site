@@ -1,0 +1,26 @@
+#topbar.topbar.navbar.navbar-custom.navbar-fixed-top
+  //- MAIN NAV SECTION LINKS
+  ol.sectionsnav.flowvisible
+    - var other = [].concat(topsections) ;
+    - var home = other.shift() ;
+    
+    //-  HOME SPECIAL CASE
+    li.home.floatL(id= "global_" + 'home', class= "global_" + 'home')
+      a.block.pad.inconsolata(href= '/#/' + lang + '/home/')
+        span= t('DKT')
+    
+    //-  OTHERS CASE
+    each navsection in other
+      - var name = navsection.name ;
+      li.others.floatL(id= "global_" + name, class= "global_" + name)
+        a.block.pad.Hpad.inconsolata(href= '/#/' + lang + '/' + name + '/')
+          span= name
+    
+  //- LAGUAGE BAR
+  ul#langnav.langnav.context.floatR.mar.VpadXXXSm
+    each language in langs
+      - var active = language == lang ? ' active ' : '' ;
+      li.floatL(id= "lang_" + language, class= "lang " + active + "lang_" + language)
+        a.block.HpadXSm.inconsolata.round.both(href='?lng=' + language, lang=language)
+          span= language
+

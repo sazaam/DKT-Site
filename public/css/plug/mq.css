@@ -13,17 +13,14 @@
  
  */
 
-
-
 /* > 0  */ 
  @media screen and (min-width: 0px) {
-	.XXLg{font-size:70%}
+  .XXLg{font-size:70%}
 }
 
 /* > 1024  */ 
  @media screen and (min-width: 450px) {
   .XXLg{font-size:80% !important}
-  
 }
 
 /* > 1024  */ 

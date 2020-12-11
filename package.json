@@ -2,7 +2,7 @@
   "name": "between_official",
   "version": "0.0.0",
   "description": "parcel express + babel + browsersync proxy example",
-  "main": "fapp.js",
+  "main": "app.js",
   "keywords": [],
   "author": "sazaam",
   "email": "sazaam@gmail",

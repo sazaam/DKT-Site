@@ -2,7 +2,7 @@
 
 
 
-let main_sections_getOrdered = `query {
+let datas = `query {
   sections(where:{level:1}, sort:"position:asc"){
     id
     name
@@ -188,6 +188,27 @@ let main_sections_getOrdered = `query {
 `;
 
 
+let navdatas = `query {
+  sections(where:{level:1}, sort:"position:asc"){
+    id
+    name
+    path
+    
+    children{
+      id
+      name
+      path
+      position
+      level
+    }
+
+    position
+    level
+  }
+}
+`;
+
+
 /* 
           todo - canuse --  JSONPath on locales System selectonly one language etc... 
 */
@@ -195,7 +216,8 @@ let main_sections_getOrdered = `query {
 
 module.exports = {
   sections:{
-    query:main_sections_getOrdered,
+    datas:datas,
+    navdatas:navdatas,
     variables:{}
   }
 }

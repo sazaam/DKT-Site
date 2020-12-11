@@ -1,6 +1,6 @@
 require('dotenv').config() ;
 
-const express = require('express') ;
+const express = require('express')  ;
 
 let async = require('express-async-await') ;
 let createError = require('http-errors') ;
@@ -16,7 +16,6 @@ const { GraphQLClient, gql } = require('graphql-request') ;
 const jade = require('jade') ;
 const md = require('marked') ;
 
-const routes = require('./routes')
 const server = require('./server') ;
 
 const i18 = require('./lang') ;
@@ -38,8 +37,9 @@ const app = express() ;
 	app.use(i18.enable()) ;
 
 	// view engine setup to jade
-	app.set('views', path.join(__dirname, 'public', 'jade'))
-	app.set('view engine', 'jade')
+	app.set('views', path.join(__dirname, 'public', 'jade')) ;
+	app.set('view engine', 'jade') ;
+	// app.set('view cache', true);
 
 	// basic setup
 	app.use(express.json()) ;
@@ -49,146 +49,6 @@ const app = express() ;
 	app.use(express.static(path.join(__dirname, 'public'))) ;
 
 })(app) ;
-
-let MAINDEBUG = false ;
-// let MAINDEBUG = false ;
-let RELEASED = false ;
-
-let db = async (req, res) => {
-	let data = await CONSTANTS.DKTClient.request(queries.sections.query, queries.sections.variables || {}) ;
-	return data.sections ;
-}
-
-
-let fixtures = async (req, res) => {
-
-	let fix = await fs.promises.readFile(CONSTANTS.fixtures, 'utf8') ;
-
-	return UTILS.formatHashes( JSON.parse( fix ) ) ;
-}
-
-let root = async (req, res) => {
-	
-	// REAL DB
-	let db_sections = await db(req, res).catch( err => {console.log(err)}) ;
-
-	
-	// JSON FIXTURES
-	// let data_sections = await fixtures(req, res).catch( err => {console.log(err)}) ;
-	
-	
-	
-	const JADESETTINGS = {
-		params:{},
-		excludes:{
-			// settings:1,
-			// language:1,
-			// languageDir:1,
-			// t:1,
-			// exists:1,
-			i18n:1,
-			// basedir:1,
-			// title:1,
-			// lang:1,
-			// render:1,
-			// renderFile:1,
-			// join:1,
-			// p:1,
-			_locals:1,
-			cache:1,
-			// filename:1
-		}
-
-	}
-
-	let merge = (p, newp) => {
-		for(var s in newp) p[s] = newp[s] ;
-		return p ;
-	}
-
-	let clone = (p) => {
-		let cl = {}, ex = JADESETTINGS.excludes ;
-		for(var s in p){
-			if(!(s in ex)){
-				cl[s] = p[s] ;
-			}
-		}
-		return cl ;
-	}
-
-	
-	let customize = (bracket, source) => {
-		var customs = {} ;
-		var module = getComponentsByTypename(bracket, 'ComponentJadeJadePage') ;
-
-		if(!! module.length && module[0].jade != ''){
-			customs = rfs(module[0].jade, module[0].path, source) ;
-		}
-		return customs ;
-	}
-
-	let getComponentsByTypename = (list, name) => {
-		let l = list.length ;
-		let p = [] ;
-		for(var i = 0 ; i < l ; i ++){
-			let el = list[i] ;
-			if(name == el.__typename) 
-				p[p.length] = el ;
-		}
-		return p ;
-	}
-	
-	let rfs = (src, filename, params) => {
-		var Module = module.constructor;
-		var m = new Module("", params) ;
-		
-		m._compile(src, filename) ;
-		return m.exports ;
-	}
-	
-	let p = (locals, input) => {
-		return merge(clone(locals), clone(input)) ;
-	}
-	
-	if(!MAINDEBUG || RELEASED){
-
-		const jadebasedir = path.join(__dirname, 'public', 'jade') ;
-		
-		let i18next = i18.i18next ;
-		let loadedLangs = await Object.keys(i18next.services.resourceStore.data) ; 
-		
-		let params = CONSTANTS.jadeparams = {
-			basedir:jadebasedir + '/',
-			title:CONSTANTS.SITE.title,
-			lang: req.i18n.language,
-			langs: loadedLangs,
-			t: req.t,
-			db_sections:db_sections,
-			// data_sections: data_sections,
-			require:require,
-			render: jade.render,
-			renderFile: jade.renderFile,
-			compile: jade.compile,
-			compileFile: jade.compileFile,
-			join:path.join,
-			app:app,
-			md:md,
-			CDN:CONSTANTS.PATH.cdn,
-			// pliotize:pliotize,
-			customize:customize,
-			getComponentsByTypename:getComponentsByTypename,
-			rfs:rfs,
-			p:p,
-			merge:merge,
-			clone:clone
-		} ;
-
-		
-		res.render(path.join(__dirname, 'public/jade/index'), params) ;
-	}
-
- 
-}
 
 
 
@@ -217,43 +77,237 @@ let login = async (app) => {
 	console.log('\t  LOGIN SUCCESSFULL') ;
 }
 
-// ROUTES
-(async ()=>{
-	
-	app.use('/', async (req, res) => {
-		RELEASED = true ;
-		
-		
-		await root(req, res).catch( err => {console.log(err)}) ;
-	
-	}) ;
-
-})() ;
-
-// SERVER LAUNCHING
-(async (app)=>{
-
-	// SITE LOGIN AS DKT VIEWER USER
-	await login(app).catch((err) => {
-		console.log(err)
-		console.log('/tLOGIN FAILED  ////////') ;
-		console.log('Let us check \n\t1. our Credentials\n	2. if server on "' + CONSTANTS.PATH.db + '" is running') ;
-	}) ;
-	
-	// SERVER READY SO FINALLY LAUNCHING
-	server.launchServer(app) ;
-
-	if(MAINDEBUG){
-		await root({}, {}).catch( err => {console.log(err)}) ;
+// DB OR FIXTURES
+let fetchdata = async (req, res, part, noreturn) => {
+	let data ;
+	if(process.env.LIVE) {
+		data = await CONSTANTS.DKTClient.request(queries.sections[part], queries.sections.variables || {}) ;
+	}else{
+		data = await fs.promises.readFile(CONSTANTS.fixtures[part], 'utf8') ;
+		data = UTILS.formatHashes( JSON.parse( data ) ) ;
 	}
 
-
-})(app) ;
-
-
-
+	if(noreturn) res.json(data) ;
+	else return data ;
+}
 
 
 
+// JADESETTINGS
+const jadebasedir = path.join(__dirname, 'public', 'jade') ;
+const JADESETTINGS = {
+	params:{},
+	excludes:{
+		// settings:1,
+		// language:1,
+		// languageDir:1,
+		// t:1,
+		// exists:1,
+		i18n:1,
+		// basedir:1,
+		// title:1,
+		// lang:1,
+		// render:1,
+		// renderFile:1,
+		// join:1,
+		// p:1,
+		_locals:1,
+		cache:1,
+		// filename:1
+	}
+
+}
+let i18next = i18.i18next ;
+
+let merge = (p, newp) => {
+	for(var s in newp) p[s] = newp[s] ;
+	return p ;
+}
+
+let clone = (p) => {
+	let cl = {}, ex = JADESETTINGS.excludes ;
+	for(var s in p){
+		if(!(s in ex)){
+			cl[s] = p[s] ;
+		}
+	}
+	return cl ;
+}
+
+let customize = (bracket, source) => {
+	var customs = {} ;
+	var module = getComponentsByTypename(bracket, 'ComponentJadeJadePage') ;
+
+	if(!! module.length && module[0].jade != ''){
+		customs = rfs(module[0].jade, module[0].path, source) ;
+	}
+	return customs ;
+}
+
+let getComponentsByTypename = (list, name) => {
+	let l = list.length ;
+	let p = [] ;
+	for(var i = 0 ; i < l ; i ++){
+		let el = list[i] ;
+		if(name == el.__typename) 
+			p[p.length] = el ;
+	}
+	return p ;
+}
+
+let rfs = (src, filename, params) => {
+	var Module = module.constructor;
+	var m = new Module("", params) ;
+	
+	m._compile(src, filename) ;
+	return m.exports ;
+}
+
+let p = (locals, input) => {
+	return merge(clone(locals), clone(input)) ;
+}
+
+
+// let loadedLangs = await Object.keys(i18next.services.resourceStore.data) ; 
+
+let params = CONSTANTS.jadeparams = {
+	basedir:jadebasedir + '/',
+	title:CONSTANTS.SITE.title,
+	require:require,
+	render: jade.render,
+	renderFile: jade.renderFile,
+	compile: jade.compile,
+	compileFile: jade.compileFile,
+	join:path.join,
+	app:app,
+	md:md,
+	CDN:CONSTANTS.PATH.cdn,
+	customize:customize,
+	getComponentsByTypename:getComponentsByTypename,
+	rfs:rfs,
+	p:p,
+	merge:merge,
+	clone:clone
+} ;
+
+
+let topsections, db_sections ;
+
+
+// WWW
+let content = async (req, res) => {
+	
+	db_sections = db_sections || await fetchdata(req, res, 'datas').catch( err => {console.log(err)}) ;
+
+	res.render(path.join(__dirname, 'public/jade/content.jade'), merge(params, {
+		lang: req.i18n.language,
+		t: req.t,
+		db_sections:db_sections,
+	})) ;
+}
+
+// ERRORS
+let error = async (req, res) => {
+	
+	topsections = topsections || await fetchdata(req, res, 'navdatas').catch( err => {console.log(err)}) ;
+	
+	res.render(path.join(__dirname, 'public/jade/error'), merge(params, {
+		title:'DKT 404',
+		errortype:404,
+		errormessage:'Page Not Found',
+		topsections:topsections
+	})) ;
+	
+}
+
+
+	// MAIN PAGE
+
+let root = async (req, res) => {
+	
+	topsections = topsections || await fetchdata(req, res, 'navdatas').catch( err => {console.log(err)}) ;
+	
+	let loadedLangs = await Object.keys(i18next.services.resourceStore.data) ;
+	res.render(path.join(__dirname, 'public/jade/index'), merge(params, {
+		langs:loadedLangs,
+		lang: req.i18n.language,
+		t: req.t,
+		topsections:topsections
+	})) ;
+
+} 
+
+
+
+
+// ROUTES
+app.use('/datas/', async (req, res) => {
+	// console.log('requesting datas')
+	await fetchdata(req, res, 'datas', true).catch( err => {console.log(err)}) ;
+}) ;
+
+app.use('/navdatas/', async (req, res) => {
+	// console.log('requesting navdatas')
+	await fetchdata(req, res, 'navdatas', true).catch( err => {console.log(err)}) ;
+}) ;
+
+
+
+
+
+app.use('/404/', async (req, res) => {
+	// console.log('requesting error')
+	await error(req, res, true).catch( err => {console.log(err)}) ;
+}) ;
+
+app.use('/content/', async (req, res) => {
+	// console.log('requesting content')
+	await content(req, res).catch( err => {console.log(err)}) ;
+}) ;
+
+app.use('/', async (req, res) => {
+	// console.log('requesting home') ;
+	await root(req, res).catch( err => {console.log(err)}) ;
+	
+}) ;
+
+
+let DELAY_TIME = 1 ;
+
+if(process.env.SHOULD_DELAY == true || process.env.SHOULD_DELAY >=1 ){
+	console.log('DELAYING '+process.env.SHOULD_DELAY+'MS SERVER START FOR STRAPI TO LOAD') ;
+	DELAY_TIME = process.env.SHOULD_DELAY ;
+}
+
+setTimeout(function(){
+
+
+	// SERVER LAUNCHING
+	(async (app)=>{
+		let SUCCESS = true ;
+		
+			if(process.env.LIVE){
+				// SITE LOGIN AS DKT VIEWER USER
+				await login(app).catch((err) => {
+					console.log(err)
+					console.log('/tLOGIN FAILED  ////////') ;
+					console.log('Let us check \n\t1. our Credentials\n	2. if server on "' + CONSTANTS.PATH.db + '" is running') ;
+					SUCCESS = FALSE ;
+					console.log('Server not Ready') ;
+				}) ;
+				
+			}else{
+
+			}
+
+			if (SUCCESS) server.launchServer(app) ;
+			else process.exit() ;
+
+	})(app) ;
+
+
+
+
+}, DELAY_TIME)
 
 module.exports = app ;

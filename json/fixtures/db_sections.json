@@ -1,0 +1,573 @@
+[
+  {
+    "id": "5f52a181096e6d05185a363e",
+    "name": "home",
+    "path": "/home/",
+    "post": {
+      "name": "home",
+      "template": {
+        "name": "page_home",
+        "jade": "\n//- ----------------------- START  => Extends\n\nextends /pages/page_home\n\n//- ----------------------- END : Extends\n\n"
+      },
+      "vars": {
+        "translations": {
+          "test_001": "home.title"
+        },
+        "post": {
+          "name": "DKT",
+          "surname": "Dynamic Korea Technology"
+        },
+        "locals": {},
+        "behavior": {
+          "@jade": "/jade/home",
+          "@json": "/json/home/",
+          "@focus": "focus",
+          "@toggle": "toggle"
+        }
+      },
+      "bracket": [
+        {
+          "__typename": "ComponentJadeJadePage",
+          "name": "page_home",
+          "jade": "module.exports = {\n  saz:\"Hoooooooooo\"\n}",
+          "path": "/pages/page_home"
+        },
+        {
+          "__typename": "ComponentModularMedia",
+          "name": "media_main",
+          "media": [
+            {
+              "name": "00.jpg",
+              "url": "/uploads/00_68e1a09b4d.png"
+            }
+          ],
+          "template": null
+        },
+        {
+          "__typename": "ComponentSingleBlocsSlideshow",
+          "name": "slideshow",
+          "sections": [
+            {
+              "name": "home"
+            },
+            {
+              "name": "products"
+            },
+            {
+              "name": "about"
+            },
+            {
+              "name": "contact"
+            },
+            {
+              "name": "lm_001"
+            },
+            {
+              "name": "sl_001"
+            },
+            {
+              "name": "uv_001"
+            },
+            {
+              "name": "uw_001"
+            }
+          ],
+          "template": null
+        },
+        {
+          "__typename": "ComponentSingleBlocsPatchwork",
+          "name": "patchwork",
+          "sections": [
+            {
+              "name": "lm_001"
+            },
+            {
+              "name": "sl_001"
+            },
+            {
+              "name": "uv_001"
+            },
+            {
+              "name": "uw_001"
+            }
+          ],
+          "template": null
+        }
+      ]
+    },
+    "children": [],
+    "position": 1,
+    "level": 1
+  },
+  {
+    "id": "5f64e21134db8f1020bedb76",
+    "name": "techs",
+    "path": "/techs/",
+    "post": {
+      "name": "techs",
+      "template": {
+        "name": "page_techs",
+        "jade": "\n//- ----------------------- START  => Extends\n\nextends ./pages/page_techs\n\n//- ----------------------- END : Extends"
+      },
+      "vars": {
+        "translations": {
+          "test_001": "home.title"
+        },
+        "post": {
+          "name": "Edge Sharp Innovations",
+          "surname": "DKT Licensed Techs"
+        },
+        "locals": {},
+        "behavior": {
+          "@jade": "/jade/products",
+          "@json": "/json/products/",
+          "@focus": "focus",
+          "@toggle": "toggle"
+        }
+      },
+      "bracket": [
+        {
+          "__typename": "ComponentJadeJadePage",
+          "name": null,
+          "jade": "module.exports = {\n  saz:\"Hoooooooooo\"\n}",
+          "path": "/pages/page_techs"
+        },
+        {
+          "__typename": "ComponentModularMedia",
+          "name": "media_main",
+          "media": [
+            {
+              "name": "hero_blueprint02_05.jpg",
+              "url": "/uploads/hero_blueprint02_05_bceda5ca78.jpg"
+            }
+          ],
+          "template": null
+        }
+      ]
+    },
+    "children": [],
+    "position": 2,
+    "level": 1
+  },
+  {
+    "id": "5f52a190096e6d05185a363f",
+    "name": "products",
+    "path": "/products/",
+    "post": {
+      "name": "products",
+      "template": {
+        "name": "page_products",
+        "jade": "\n//- ----------------------- START  => Extends\n\nextends ./pages/page_products\n\n//- ----------------------- END : Extends"
+      },
+      "vars": {
+        "vars": {},
+        "post": {
+          "name": "High End Machinery",
+          "surname": "DKT Certificated Coating Professional"
+        },
+        "locals": {},
+        "behavior": {
+          "@jade": "/jade/products",
+          "@json": "/json/products/",
+          "@focus": "focus",
+          "@toggle": "toggle"
+        }
+      },
+      "bracket": [
+        {
+          "__typename": "ComponentJadeJadePage",
+          "name": null,
+          "jade": "with(arguments[2].parent) module.exports = {\n   \"name\": \"Our Products\",\n   \"surname\": \"DKT Certificated Coating Professional\"\n}\n",
+          "path": "/pages/page_products"
+        },
+        {
+          "__typename": "ComponentModularMedia",
+          "name": "media_main",
+          "media": [
+            {
+              "name": "full_machine_002.jpg",
+              "url": "/uploads/full_machine_002_f672a72c18.png"
+            }
+          ],
+          "template": null
+        },
+        {
+          "__typename": "ComponentSingleBlocsSlideshow",
+          "name": "slideshow",
+          "sections": [
+            {
+              "name": "lm_001"
+            },
+            {
+              "name": "sl_001"
+            },
+            {
+              "name": "uv_001"
+            },
+            {
+              "name": "uw_001"
+            }
+          ],
+          "template": null
+        },
+        {
+          "__typename": "ComponentSingleBlocsPatchwork",
+          "name": "patchwork",
+          "sections": [
+            {
+              "name": "lm_001"
+            },
+            {
+              "name": "sl_001"
+            },
+            {
+              "name": "uv_001"
+            },
+            {
+              "name": "uw_001"
+            }
+          ],
+          "template": null
+        }
+      ]
+    },
+    "children": [
+      {
+        "id": "5f561f0ab18c393dc4a77e91",
+        "name": "lm_001",
+        "path": "/products/lm_001/",
+        "post": {
+          "name": "lm_001",
+          "template": {
+            "name": "page_product",
+            "jade": "\n//- ----------------------- START  => Extends\n\nextends ./pages/page_product\n\n//- ----------------------- END : Extends\n"
+          },
+          "vars": {
+            "post": {
+              "name": "DKT__products.name_lm_001",
+              "surname": "DKT__globals.machinery"
+            },
+            "behavior": {
+              "@jade": "/jade/products/product",
+              "@json": "/json/products/lm_001/",
+              "@focus": "products_focus",
+              "@toggle": "products_toggle"
+            }
+          },
+          "bracket": [
+            {
+              "__typename": "ComponentJadeJadePage",
+              "name": null,
+              "jade": "\nwith(arguments[2].parent) module.exports = {\n    saz: section.id,\n    product:{\n      year:2009,\n      tags:[\"abstract\", \"new\", \"innovate\"],\n      file: child_section.name + '.pdf'\n    }\n    \n}",
+              "path": "/pages/page_product"
+            },
+            {
+              "__typename": "ComponentModularMedia",
+              "name": "media_main",
+              "media": [
+                {
+                  "name": "lm_001.jpg",
+                  "url": "/uploads/lm_001_f6bd004124.png"
+                },
+                {
+                  "name": "lm_004.jpg",
+                  "url": "/uploads/lm_004_13333d9638.png"
+                }
+              ],
+              "template": null
+            }
+          ]
+        },
+        "position": 1,
+        "level": 2
+      },
+      {
+        "id": "5f561f22b18c393dc4a77e92",
+        "name": "sl_001",
+        "path": "/products/sl_001/",
+        "post": {
+          "name": "sl_001",
+          "template": {
+            "name": "page_product",
+            "jade": "\n//- ----------------------- START  => Extends\n\nextends ./pages/page_product\n\n//- ----------------------- END : Extends\n"
+          },
+          "vars": {
+            "post": {
+              "name": "DKT__products.name_sl_001",
+              "surname": "DKT__globals.machinery"
+            },
+            "behavior": {
+              "@jade": "/jade/products/product",
+              "@json": "/json/products/sl_001/",
+              "@focus": "products_focus",
+              "@toggle": "products_toggle"
+            }
+          },
+          "bracket": [
+            {
+              "__typename": "ComponentJadeJadePage",
+              "name": null,
+              "jade": "\nwith(arguments[2].parent) module.exports = {\n  saz:\"Hoooooooooo\",\n\n    product:{\n      year:2009,\n      tags:[\"abstract\", \"new\", \"innovate\"],\n      file: child_section.name + '.pdf'\n    }\n}",
+              "path": "/pages/page_product"
+            },
+            {
+              "__typename": "ComponentModularMedia",
+              "name": "media_main",
+              "media": [
+                {
+                  "name": "sl_002.jpg",
+                  "url": "/uploads/sl_002_7e67d162e6.png"
+                },
+                {
+                  "name": "sl_001.jpg",
+                  "url": "/uploads/sl_001_7368d7dc62.png"
+                }
+              ],
+              "template": null
+            }
+          ]
+        },
+        "position": 2,
+        "level": 2
+      },
+      {
+        "id": "5f561f7cb18c393dc4a77e94",
+        "name": "uw_001",
+        "path": "/products/uw_001/",
+        "post": {
+          "name": "uw_001",
+          "template": {
+            "name": "page_product",
+            "jade": "\n//- ----------------------- START  => Extends\n\nextends ./pages/page_product\n\n//- ----------------------- END : Extends\n"
+          },
+          "vars": {
+            "post": {
+              "name": "DKT__products.name_uw_001",
+              "surname": "DKT__globals.machinery"
+            },
+            "behavior": {
+              "@jade": "/jade/products/product",
+              "@json": "/json/products/uw_001/",
+              "@focus": "products_focus",
+              "@toggle": "products_toggle"
+            }
+          },
+          "bracket": [
+            {
+              "__typename": "ComponentJadeJadePage",
+              "name": null,
+              "jade": "\nwith(arguments[2].parent) module.exports = {\n    saz:\"Hoooooooooo\",\n    \n    product:{\n      year:2009,\n      tags:[\"abstract\", \"new\", \"innovate\"],\n      file: child_section.name + '.pdf'\n    }\n}",
+              "path": "/pages/page_product"
+            },
+            {
+              "__typename": "ComponentModularMedia",
+              "name": "media_main",
+              "media": [
+                {
+                  "name": "uw_001.jpg",
+                  "url": "/uploads/uw_001_babbed84a1.png"
+                },
+                {
+                  "name": "uw_002.jpg",
+                  "url": "/uploads/uw_002_2d5e2ef38e.png"
+                }
+              ],
+              "template": null
+            }
+          ]
+        },
+        "position": 4,
+        "level": 2
+      },
+      {
+        "id": "5f561f62b18c393dc4a77e93",
+        "name": "uv_001",
+        "path": "/products/uv_001/",
+        "post": {
+          "name": "uv_001",
+          "template": {
+            "name": "page_product",
+            "jade": "\n//- ----------------------- START  => Extends\n\nextends ./pages/page_product\n\n//- ----------------------- END : Extends\n"
+          },
+          "vars": {
+            "post": {
+              "name": "DKT__products.name_uv_001",
+              "surname": "DKT__globals.machinery"
+            },
+            "behavior": {
+              "@jade": "/jade/products/product",
+              "@json": "/json/products/uv_001/",
+              "@focus": "products_focus",
+              "@toggle": "products_toggle"
+            }
+          },
+          "bracket": [
+            {
+              "__typename": "ComponentJadeJadePage",
+              "name": null,
+              "jade": "\nwith(arguments[2].parent) module.exports = {\n  saz:\"Hoooooooooo\",\n\n    product:{\n      year:2009,\n      tags:[\"abstract\", \"new\", \"innovate\"],\n      file: child_section.name + '.pdf'\n    }\n}",
+              "path": "/pages/page_product"
+            },
+            {
+              "__typename": "ComponentModularMedia",
+              "name": "media_main",
+              "media": [
+                {
+                  "name": "uv_001.jpg",
+                  "url": "/uploads/uv_001_28a06bbf0b.png"
+                },
+                {
+                  "name": "uv_002.jpg",
+                  "url": "/uploads/uv_002_5483bb2bcf.png"
+                }
+              ],
+              "template": null
+            }
+          ]
+        },
+        "position": 3,
+        "level": 2
+      }
+    ],
+    "position": 3,
+    "level": 1
+  },
+  {
+    "id": "5f53ade2d665493b24aa6734",
+    "name": "about",
+    "path": "/about/",
+    "post": {
+      "name": "about",
+      "template": {
+        "name": "page_about",
+        "jade": "//- ----------------------- START  => Extends\n\nextends ./pages/page_about\n\n//- ----------------------- END : Extends\n"
+      },
+      "vars": {
+        "vars": {
+          "articles": [
+            {
+              "desc_01": "DKT__about.articles.article_01.desc_01",
+              "desc_02": "DKT__about.articles.article_01.desc_02"
+            },
+            {
+              "desc_01": "DKT__about.articles.article_02.desc_01",
+              "desc_02": "DKT__about.articles.article_02.desc_02"
+            }
+          ]
+        },
+        "post": {
+          "name": "Total Solutions Provider",
+          "surname": "DKT Full-Scale Enterprise"
+        },
+        "behavior": {
+          "@jade": "/jade/about/",
+          "@json": "/json/about/",
+          "@focus": "focus",
+          "@toggle": "toggle"
+        }
+      },
+      "bracket": [
+        {
+          "__typename": "ComponentJadeJadePage",
+          "name": "page_about",
+          "jade": "module.exports = {\n  saz:\"Hoooooooooo\"\n}\n\n",
+          "path": "/pages/page_about"
+        },
+        {
+          "__typename": "ComponentModularMedia",
+          "name": "media_main",
+          "media": [
+            {
+              "name": "full_machine_001.jpg",
+              "url": "/uploads/full_machine_001_b32a9be25a.png"
+            },
+            {
+              "name": "dkt_house.jpg",
+              "url": "/uploads/dkt_house_b74b71a03f.png"
+            }
+          ],
+          "template": null
+        },
+        {
+          "__typename": "ComponentModularArticle",
+          "name": "about_markdown_1",
+          "page": null,
+          "template": {
+            "name": "about_markdown_1",
+            "jade": "include ./articles/md_about_001"
+          }
+        },
+        {
+          "__typename": "ComponentModularArticle",
+          "name": "about_markdown_2",
+          "page": {
+            "name": null,
+            "jade": "with(arguments[2].parent) module.exports = {\n  params:{\n    vars:{test:db_sections[0].name}\n  }\n}",
+            "path": "about_md_2"
+          },
+          "template": {
+            "name": "about_markdown_2",
+            "jade": "\ninclude ./articles/md_about_002"
+          }
+        }
+      ]
+    },
+    "children": [],
+    "position": 4,
+    "level": 1
+  },
+  {
+    "id": "5f53e6665710812194846280",
+    "name": "contact",
+    "path": "/contact/",
+    "post": {
+      "name": "contact",
+      "template": {
+        "name": "page_contact",
+        "jade": "//- ----------------------- START  => Extends\n\nextends ./pages/page_contact\n\n//- ----------------------- END : Extends\n"
+      },
+      "vars": {
+        "translations": {
+          "test_001": "home.title"
+        },
+        "post": {
+          "name": "Contact Us",
+          "surname": ""
+        },
+        "locals": {},
+        "behavior": {
+          "@jade": "/jade/contact",
+          "@json": "/json/contact",
+          "@focus": "focus",
+          "@toggle": "toggle"
+        }
+      },
+      "bracket": [
+        {
+          "__typename": "ComponentJadeJadePage",
+          "name": null,
+          "jade": "module.exports = {\n  saz:\"Hoooooooooo\"\n}\n",
+          "path": "/pages/page_contact"
+        },
+        {
+          "__typename": "ComponentModularMedia",
+          "name": "media_main",
+          "media": [
+            {
+              "name": "dkt_house.jpg",
+              "url": "/uploads/dkt_house_b74b71a03f.png"
+            },
+            {
+              "name": "hero_blueprint02_05.jpg",
+              "url": "/uploads/hero_blueprint02_05_bceda5ca78.jpg"
+            }
+          ],
+          "template": null
+        }
+      ]
+    },
+    "children": [],
+    "position": 5,
+    "level": 1
+  }
+]

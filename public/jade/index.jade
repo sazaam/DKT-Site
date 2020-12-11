@@ -1,7 +1,57 @@
 extends ./layout
-
 block content
-	nav.continent.abs.left0.right0.fullW.fullH.none
 
-		//- REAL ONE
-		| !{ renderFile(basedir + 'layouts/all.jade', p(locals, { filename: basedir + 'layouts/all.jade'}))}
+	nav.continent.abs.left0.right0.fullW.fullH.none
+		
+
+
+
+	//- LOADER
+	#mainloader.loader.abs.left0.top.dkt.zi1
+		.hidden Loading...
+
+	
+
+	script(type='text/javascript' src='/js/strawnode.js?starter=./nodeless_app/')
+	
+		
+	script.
+		console.log('should not come in here')
+		//- Express.app.start() ;
+
+		//- throw 'Error' ;
+		var exitLoader = function(){
+			trace('REMOVING LOADER...');$('#mainloader').remove()
+		}
+		
+		var ajaxified = true ;
+
+		
+
+
+		if(ajaxified){
+			new AjaxRequest().load('/datas/', function(req, res){
+				window.Data = JSON.parse(req.response) ;
+				
+				console.log(window.Data)
+
+				new AjaxRequest().load('/content/', function(req, res){
+					//- console.log($(req.response))
+					$('.continent').append($(req.response)) ;
+					exitLoader() ;
+
+					Express.app.trigger('JSAddress') ;
+
+				})
+
+			}) ;
+			
+
+		}else{
+			
+			//- if(!!!db_sections) throw 'NO DATA WITHIN THE PAGE... should go the ajaxified way.. see app.js' ;
+			
+			//- window.Data = !{JSON.stringify(db_sections)} ;
+			//- console.log('DB Data sections', window.Data) ;
+			//- $(window).on('load', function(){exitLoader()})
+		}

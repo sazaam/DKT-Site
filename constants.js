@@ -11,7 +11,11 @@ module.exports = {
   SITE:{
     title:'> Dynamic Korea Technology'
   },
-  fixtures:'./json/fixtures/fixtures.json',
+  fixtures:
+  {
+    datas:'./json/fixtures/db_sections.json',
+    navdatas:'./json/fixtures/topsections.json',
+  },
   users:{
     dkt:{
       identifier: process.env.API_USERNAME,

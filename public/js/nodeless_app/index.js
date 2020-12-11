@@ -1,10 +1,9 @@
 
 (function(){
-	
-var express = require('Express') ;
-// var struct = require('./struct') ;
 
-var routes = require('./routes') ;
+var express = require('Express') ;
+
+var router = require('./router') ;
 
 var app = express() ;
 
@@ -20,33 +19,24 @@ app
 app
 	.listen('load', function(e){
 		// PAGE LOAD
-		
 			app.discard('load', arguments.callee) ;
-			
-			// WHEN ADDRESS SYSTEM REALLY STARTS
-			if(app.isReady()){
-				app
-				.createClient()
-				.get('/', routes)
-				.initJSAddress() ;
-				
-			}
-			
-			else { // WHEN REAL DEEPLINK ARRIVES WITHOUT HASH, RELOAD W/ HASH
-			
-				app.createClient() ;
-			}
-			
 
-				
-		})
-		.listen('unload', function(e){
+
+			console.log('window Fully Loaded')
 			
-			// PAGE UNLOAD
-			app.discard('unload',arguments.callee) ;
-			//app.destroy() ;
-		}) ;	
-	
+			if(express.app.isReady()){
+
+			}else{
+
+			}
+
+		})
+		.listen('JSAddress', function(e){
+			app
+				.createClient()
+				.get('/', router(window.Data))
+				.initJSAddress() ;
+		}) ;
 
 })()
 

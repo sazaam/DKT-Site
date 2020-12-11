@@ -12,9 +12,3 @@ each section in db_sections
     - var params = p(merge(locals, section.post.vars.locals), {filename:basedir + section_jade_path, section:section}) ;
 
     | !{ render(section_jade,  merge(params, customize(bracket, params) ) )}
-
-
-script(type='text/javascript' src='./js/strawnode.js?starter=./nodeless_app/')
-
-script.
-  $(window).on('load', function(){/*trace('REMOVING...');*/$('#mainloader').remove()})

@@ -1,5 +1,5 @@
 /* -------------------------------------------------------------------
-General Styles
+Slideshow control
 ------------------------------------------------------------------- */
 
 .flex-direction-nav a,
@@ -62,10 +62,12 @@ General Styles
 	display: block;
 }
 
-.flex-control-nav > li > a:hover,
-.flex-control-nav > li > a.flex-active {
-	
-}
+/* FLEX SLIDER PAGINATION */
+.flex-control-paging li a {width: 10px; height: 10px; display: block; background: rgba(255,255,255,0.3); cursor: pointer; text-indent: -9999px; -webkit-border-radius: 20px; -moz-border-radius: 20px; -o-border-radius: 20px; border-radius: 20px; }
+.flex-control-paging li a:hover {background: rgba(255,255,255,0.9); }
+.flex-control-paging li a.flex-active { background: rgba(255,255,255,1); cursor: default; }
+
+
 
 .slideshow {
 	position: relative;
@@ -84,22 +86,6 @@ General Styles
 	     -o-background-size: cover;
 	        background-size: cover;
 }
-
-/* .slideshow > .slides > li .slidebg.slide-zoom { */
-	/* -webkit-transform: scale(1.1); */
-	   /* -moz-transform: scale(1.1); */
-	    /* -ms-transform: scale(1.1); */
-	     /* -o-transform: scale(1.1); */
-	        /* transform: scale(1.1); */
-/* } */
-
-/* .slideshow > .slides > li .slidebg { */
-	/* -webkit-transition: transform 10s ease; */
-	   /* -moz-transition: transform 10s ease; */
-	    /* -ms-transition: transform 10s ease; */
-	     /* -o-transition: transform 10s ease; */
-	        /* transition: transform 10s ease; */
-/* } */
 
 .slideshow-dark .flex-direction-nav .flex-prev {
 	opacity: 0;

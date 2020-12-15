@@ -31,7 +31,7 @@ mixin linkblock(o, isPatchwork)
 
 
 mixin intro(section)
-	.anthraxBG
+	.anthraxBG.context
 		.container.rel
 			.context.HpadXXXLg.Bpad0.sizeLg.txtR(style="margin-top:3em;")
 				.hs-title-size-3.font-alt.m-b-20.context.txtL.white
@@ -115,7 +115,7 @@ mixin slide(child_section, i)
 			- var cl = even ? 'right' : 'left' ;
 			.hs-caption.container(style='top: 0px; display: table;')
 				.noproduct.caption-content(class=cl)
-					.hs-title-size-3.font-alt.m-b-20
+					.hs-title-size-3.font-alt.m-b-20.white
 						span= t(post.vars.post.name)
 					.hs-title-size-1.font-inc.BmarXLg
 						span= t(post.vars.post.surname)
@@ -138,7 +138,7 @@ mixin infos()
 					!= t('tel') + " : " + t('DKT__globals.company.telephone')
 					br
 					!= t('fax') + " : " + t('DKT__globals.company.fax')
-					
+
 				.lastUnit.sizeSm.RmarXXXXLg.txtR
 					span.block 
 						br
@@ -149,7 +149,7 @@ mixin infos()
 
 mixin credits()
 	.extra.rel.context(id=section.name + "_credits", class= section.name + "_credits")
-		.anthraxBG
+		.anthraxBG.context
 			.container.pad0.rel
 				.context.HpadXXXLg.Bpad0.sizeLg.txtL(style="margin-top:3em;")
 					.hs-title-size-3.font-alt.m-b-20.context.txtL.white
@@ -166,7 +166,7 @@ mixin credits()
 					.unit.lastUnit
 						p.txtJ.marXXXXLg.padXSm
 							!= t("DKT__about.embassy.md_3")
-				
+
 				.aboutgo(style="padding:3em 0 10em")
 					+link({name:t("our_company"), cl:"dkt", url: '/about/'})
 				.line.txtL.round.ivoryBG.right(style="background:#E8E8E8;border:1px dashed #9d1639")
@@ -175,7 +175,7 @@ mixin credits()
 					.lastUnit.sizeLg.marXXLg
 						span.block.dkt.TmarXSm= t('thank_you')
 
-			
+
 			+infos()
 
 
@@ -206,7 +206,7 @@ mixin contactform()
 						- for (var str in emails) {
 							option.fullW.fullH(value=emails[str])= str
 						- }
-						
+
 			.fline.context
 				p
 					label.Hpad.dkt(for="messagebody")= t("DKT__contacts.form.message")
@@ -215,15 +215,19 @@ mixin contactform()
 					textarea.pad.formBG(id="messagebody" style="width:100%;height:450px" type="text" placeholder=t("DKT__contacts.form.your_message"))
 			.fline.context
 				p
-					input.Hpad.dkt.formBG(type="submit" value=t("DKT__contacts.form.send"))
+					input.pad.dkt.formBG(type="submit" value=t("DKT__contacts.form.send"))
 
-
+mixin transition_intro()
+	.p-introduction__follow.js-transition-intro.is-shown
+		.p-introduction__follow-in.p-introduction__follow-in--1
+		.p-introduction__follow-in.p-introduction__follow-in--2
+		.p-introduction__follow-in.p-introduction__follow-in--3
 
 mixin certif()
 	.extra.rel.context.none(id=section.name + "_certif", class= section.name + "_certif")
 		.container.rel
-				.line.txtL.sizeLg.mar.pad.VpadXXLg
-					+pageheader("our_products", surname)
+			.line.txtL.sizeLg.mar.pad.VpadXXLg
+				+pageheader("our_products", surname)
 		.container.context.BmarXXXLg.sizeXXXLg.shady.round.both(style="background:#131313;")
 			.line.BpadXXXLg(style="margin-bottom:5em;")
 				.unit.size2of3.sizeXSm
@@ -231,19 +235,19 @@ mixin certif()
 
 						p.sizeLg.txtL
 							!= render(t('DKT__products.certif_01'))
-						
+
 						.line.context
 							.unit.size1of3
 								p.sizR.txtL.Tmar.Rmar
 									!= render(t('DKT__products.certif_02'))
 
 							.unit.lastUnit
-									
+
 						.line.context.TmarXXXLg
 							.unit.size1of3.floatR
 								!= render(t('DKT__products.certif_03'))
 							.unit.lastUnit
-									
+
 				.unit.lastUnit.sizeXSm
 					//- +needinfo			
 					.sizeLg.marXXXLg.txtL
@@ -253,34 +257,33 @@ mixin certif()
 							!= render(t('DKT__products.needinfo_02'))
 						.sizeSm
 							!= render(t('DKT__products.needinfo_03'))
-						
+
 						p.sizeSm.txtL.TmarXLg
 							!= render(t('DKT__products.needinfo_04'))
 
 
 mixin needinfo()
-		.sizeLg.marXXXLg.txtL
-			p.sizeLg.txtL
-				!= render(t('DKT__products.needinfo_01'))
-			p.sizeR.txtL.BmarXLg
-				!= render(t('DKT__products.needinfo_02'))
-			.sizeSm
-				!= render(t('DKT__products.needinfo_03'))
-			
-			p.sizeSm.txtL.TmarXLg
-				!= render(t('DKT__products.needinfo_04'))
+	.sizeLg.marXXXLg.txtL
+		p.sizeLg.txtL
+			!= render(t('DKT__products.needinfo_01'))
+		p.sizeR.txtL.BmarXLg
+			!= render(t('DKT__products.needinfo_02'))
+		.sizeSm
+			!= render(t('DKT__products.needinfo_03'))
+
+		p.sizeSm.txtL.TmarXLg
+			!= render(t('DKT__products.needinfo_04'))
 
 mixin topimage(media, color, title, subtitle)
 	- var newstr = '' ;
 	.extra.rel.context.cover(style='height:30%;background:url(' + CDN + media.url + ') no-repeat 50% 50%;background-size:cover')
-		span.hidden= title
 		+sectionheader(title, subtitle)
 
 mixin sectionheader(title, subtitle)
 	.container.rel.fullH.context
 		.abs.right0.bottom0.context.HpadXXXXLg.BpadXLg.sizeXXLg.txtR
 			.hs-title-size-3.font-alt.m-b-20.context.txtL.white
-				span.block.floatR.round.both.light= t(title)
+				span.block.floatR.round.both= t(title)
 			.hs-title-size-1.font-inc.LmarXXSm.white= t(subtitle)
 
 
@@ -353,25 +356,28 @@ mixin hpintro
 			.sizeXXXXLg We are DKT
 		.container.context.sizeXXLg
 			.line(style="padding:0 0 15em 0")
-				.unit.size1of3.pad.txtL
-					.block.flowimg.fullW(style="height:400px")
-						img.block.fullW.fullH.round.left(src="/img/building_coating.jpg")
-					span.block.Hpad.VpadXSm.dktBG.white.sizeXSm.round.right Techs 
-					.downside.HmarSm.Tmar.context
-						h3.white In Line for Building Facade Coating 
+				.unit.size1of3.txtL
+					.pad
+						.block.flowimg.fullW(style="height:400px")
+							img.block.fullW.fullH.round.left(src="/img/building_coating.jpg")
+						span.block.Hpad.VpadXSm.dktBG.white.sizeXSm.round.right Techs 
+						.downside.HmarSm.Tmar.context
+							p.lh1.white In Line for <br /> span Building Facade Coating 
 
-				.unit.size1of3.pad.txtL
-					.block.flowimg.fullW(style="height:300px")
-						//- (style="height:400px;background:url('/img/facade.jpg') no-repeat top left;")
-						img.block.fullW.fullH.round.left(src="/img/facade.jpg")
-					span.block.Hpad.VpadXSm.dktBG.white.sizeXSm.round.right Products
-					.downside.HmarSm.Tmar.context
-						h3.white 
-							span Discover the latest Coating Films Production Line 
-				
-				.unit.lastUnit.pad.txtL
-					.block.img.flowimg.fullW(style="height:400px")
-						img.block.fullW.fullH.round.left(src="/img/upview.jpg")
-					span.block.Hpad.VpadXSm.dktBG.white.sizeXSm.round.right Philosophy 
-					.downside.HmarSm.Tmar.context
-						h3.white Reproduce Nature at the Nano Level  
+				.unit.size1of3.txtL
+					.pad
+						.block.flowimg.fullW(style="height:300px")
+							//- (style="height:400px;background:url('/img/facade.jpg') no-repeat top left;")
+							img.block.fullW.fullH.round.left(src="/img/facade.jpg")
+						span.block.Hpad.VpadXSm.dktBG.white.sizeXSm.round.right Products
+						.downside.HmarSm.Tmar.context
+							p.lh1.white 
+								span Discover the latest Coating Films Production Line 
+
+				.unit.lastUnit.txtL
+					.pad
+						.block.img.flowimg.fullW(style="height:400px")
+							img.block.fullW.fullH.round.left(src="/img/upview.jpg")
+						span.block.Hpad.VpadXSm.dktBG.white.sizeXSm.round.right Philosophy 
+						.downside.HmarSm.Tmar.context
+							p.lh1.white Reproducing Nature <br /> at the Nano Level  

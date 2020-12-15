@@ -10,10 +10,13 @@ var focus ;
 var toggle ;
 var patchwork ;
 var scroll ;
+var scrollEv ;
 var slideshow ;
-var lang ;
+var smallslideshow ;
+
 var langchange ;
 var parallax ;
+var resetscrolls ;
 
 window.lang = $('html').attr('lang') ;
 
@@ -91,7 +94,6 @@ module.exports = {
 		
 		if(cond){
 			$(document).on(type, clos) ;
-			
 			
 			clos() ;
 			
@@ -290,35 +292,6 @@ module.exports = {
 		
 		
 	},
-	////////////////////////// PARALLAX
-	parallax : parallax = function(e){
-		
-		var res = Unique.instance.hierarchy.currentStep ;
-		var id = res.id ;
-		
-		var pos = $(document).scrollTop() ;
-		
-		var node = $('#'+id+' .slideshow') ;
-		
-		if (node.length > 0) {
-			
-			var homeSHeight = node.height() ;
-			var top = $(document).scrollTop() ;
-			
-			var hh = node.height() ;
-			var dif = hh - top ;
-			
-			if ((top <= homeSHeight)) {
-				node.css('top', parseInt(top * 0.55));
-			}
-			if ((top <= homeSHeight)) {
-				node.css('opacity', (1 - (parseInt(top/node.height() * 10)/10)));
-			}
-		}
-		
-		
-	},
-	
 	////////////////////////// SLIDESHOW
 	slideshow : slideshow = function(e, cond){
 		
@@ -583,10 +556,10 @@ module.exports = {
 				
 				if(cond){
 					
-					li.click(res.userData.clk) ;
-					li.mousemove(res.userData.mm) ;
+					li.on('click', res.userData.clk) ;
+					li.on('mousemove', res.userData.mm) ;
 					
-					a.click(res.userData.navgo) ;
+					a.on('click', res.userData.navgo) ;
 				}else{
 					
 					li.off('click', clk) ;
@@ -671,7 +644,6 @@ module.exports = {
 			var top = $(document).scrollTop() ;
 			
 			var hh = node.height() ;
-			var dif = hh - top ;
 			
 			if ((top <= homeSHeight)) {
 				node.css('top', parseInt(top * 0.55));
@@ -682,6 +654,17 @@ module.exports = {
 		}
 		
 		
+	},
+	resetscrolls : resetscrolls = function(id){
+		
+		var node = $('#'+id+' .slideshow') ;
+		$(document).scrollTop(0) ;
+		
+		if (node.length > 0) {
+			node.css('top', 0) ;
+			node.css('opacity', 1) ;
+		}
+
 	},
 	////////////////////////// PATCHWORK
 	patchwork : patchwork = function(e, cond){
@@ -727,6 +710,11 @@ module.exports = {
 	
 	////////////////////////// MAIN FUNCTIONS FOCUS & TOGGLE
 	
+
+	
+
+
+
 	////////////////////////// FOCUS
 	products_focus : focus = function(e){
 		var res = e.target ;
@@ -812,10 +800,8 @@ module.exports = {
 			
 		}else{
 			
-			
-			
 			res.focusReady() ;
-			
+
 		}
 
 	},
@@ -849,13 +835,15 @@ module.exports = {
 			
 			target_section.appendTo(all) ;
 
-			scrollEv('scroll', scroll, true) ;
-			// scrollEv('scroll', parallax, true) ;
+			$(document).on('scroll', scroll) ;
+			$(document).on('scroll', parallax) ;
 			
+			resetscrolls(id) ;
+
 			slideshow(e, true) ;
 			patchwork(e, true) ;
 			languages(e, true) ;
-
+			
 			res.ready() ;
 			
 		}else{
@@ -865,9 +853,9 @@ module.exports = {
 			patchwork(e, false) ;
 			slideshow(e, false) ;
 			
-			// scrollEv('scroll', parallax, false) ;
-			scrollEv('scroll', scroll, false) ;
-
+			$(document).off('scroll', scroll) ;
+			$(document).off('scroll', parallax) ;
+			
 
 			target_section.appendTo(continent) ;
 			res.ready() ;

@@ -31,6 +31,20 @@
 	}
 	
 })('strawnode', (function(){
+			
+			if(typeof String.prototype.trim !== 'function') {
+				String.prototype.trim = function() {
+					return this.replace(/^\s+|\s+$/g, ''); 
+				}
+			}
+
+			if (!Array.prototype.forEach) {
+				Array.prototype.forEach = function (fn, scope) {
+					for (var i = 0, l = this.length; i < l; ++i) {
+						fn.call(scope || this, this[i], i, this) ;
+					}
+				}
+			}
 
 			// UTILS
 			var scriptSrc = function(abs) {
@@ -45,6 +59,7 @@
 			// NODE URL & PATH
 
 			Object.keys = Object.keys || (function () {
+				
 				var hasOwnProperty = Object.prototype.hasOwnProperty,
 					hasDontEnumBug = !{toString:null}.propertyIsEnumerable("toString"),
 					DontEnums = [
@@ -59,7 +74,7 @@
 					DontEnumsLength = DontEnums.length;
 			  
 				return function (o) {
-					if (!Type.of(o , "object") && !Type.of(o, "function") || o === null)
+					if (!(typeof o == "object") && !(typeof o == "function") || o === null)
 						throw new TypeError("Object.keys called on a non-object");
 				 
 					var result = [];
@@ -1223,7 +1238,8 @@
 				
 				mod = new ModuleLoader(ModuleLoader.concatRoot(url + 'package.json')).load() ;
 				// mod = new ModuleLoader(ModuleLoader.concatRoot(url + '')).load() ;
-				
+				// console.log(url + 'package.json')
+				// console.log(ModuleLoader.concatRoot(url + 'package.json'))
 				if(mod.failed){
 
 					mod.load(ModuleLoader.concatRoot(url + 'index.js') ) ;
@@ -1251,8 +1267,8 @@
 				// 	r = JSON.parse(resp) ;
 				// 	return r ;
 				// }
-				
-				var packageJSON = new Function('return '+resp)() ;
+				// console.log(resp)
+				var packageJSON = new Function('return ' + resp)() ;
 
 				mod.load(ModuleLoader.concatRoot(url + (packageJSON.main || packageJSON.index || './index.js'))) ;
 				
@@ -1411,9 +1427,13 @@
 				}
 
 				var isAbs = abs_r.test(id) ;
-				
+				// console.log('isAbs >>', isAbs) ;
+				// console.log('isAbs >>', id) ;
+
+				if(id.indexOf('//') > -1) id = id.replace('//', '/')
+				// console.log(id)
 				if(isAbs)
-					ModuleLoader.setModuleRoot(absolute_root) ;
+					ModuleLoader.setModuleRoot(id) ;
 				
 				// IF REQUIRE IS CALLED ON AS CONTENT SIMPLE HTTP REQUEST
 				if(!!load_as_content){

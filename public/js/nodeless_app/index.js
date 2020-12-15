@@ -19,24 +19,25 @@ app
 app
 	.listen('load', function(e){
 		// PAGE LOAD
-			app.discard('load', arguments.callee) ;
+		app.discard('load', arguments.callee) ;
 
 
-			console.log('window Fully Loaded')
-			
-			if(express.app.isReady()){
+		console.log('window Fully Loaded')
+		
+		if(express.app.isReady()){
 
-			}else{
+		}else{
 
-			}
+		}
 
-		})
-		.listen('JSAddress', function(e){
-			app
-				.createClient()
-				.get('/', router(window.Data))
-				.initJSAddress() ;
-		}) ;
+	})
+	.listen('JSAddress', function(e){
+		
+		app
+			.createClient()
+			.get('/', router(window.Data))
+			.initJSAddress() ;
+	}) ;
 
 })()
 

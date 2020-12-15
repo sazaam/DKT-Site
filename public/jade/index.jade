@@ -21,7 +21,7 @@ block content
 
 		//- throw 'Error' ;
 		var exitLoader = function(){
-			trace('REMOVING LOADER...');$('#mainloader').remove()
+			console.log('REMOVING LOADER...');$('#mainloader').remove()
 		}
 		
 		var ajaxified = true ;
@@ -31,16 +31,18 @@ block content
 
 		if(ajaxified){
 			new AjaxRequest().load('/datas/', function(req, res){
-				window.Data = JSON.parse(req.response) ;
+				
+				var data = res ;
+				window.Data = JSON.parse(data) ;
 				
 				console.log(window.Data)
 
 				new AjaxRequest().load('/content/', function(req, res){
-					//- console.log($(req.response))
-					$('.continent').append($(req.response)) ;
+					
+					$('.continent').append($(res)) ;
 					exitLoader() ;
-
-					Express.app.trigger('JSAddress') ;
+					
+					Express.app.fire('JSAddress') ;
 
 				})
 

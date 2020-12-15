@@ -16,7 +16,11 @@
 .montserrat{
 	font-family:'montserrat';
 }
+.rhdp{
+	font-family:'Red Hat Display', sans-serif;
+}
 
+.heavy{font-weight:900}
 
 .caption-content.bottom {
 	vertical-align: bottom;

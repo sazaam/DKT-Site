@@ -124,59 +124,6 @@ mixin slide(child_section, i)
 		- }
 
 
-mixin infos()
-	.ivoryBG.dktTOPBD
-		.container.rel(style="padding-top:2em;padding-bottom:2em;")
-			.line.txtL
-				h6.sizeSm.dkt.LmarXXXXLg= t('DKT__globals.company.copy_to')
-				p.unit.txtL.sizeSm.LmarXXXXLg
-					!= t('DKT__globals.company.address_1')
-					br
-					!= t('DKT__globals.company.address_2')
-					br
-					br
-					!= t('tel') + " : " + t('DKT__globals.company.telephone')
-					br
-					!= t('fax') + " : " + t('DKT__globals.company.fax')
-
-				.lastUnit.sizeSm.RmarXXXXLg.txtR
-					span.block 
-						br
-						!= t('DKT__globals.company.copy') + t('DKT__globals.company.copy_year') 
-						br
-						!= t('DKT__globals.company.copy_to')
-
-
-mixin credits()
-	.extra.rel.context(id=section.name + "_credits", class= section.name + "_credits")
-		.anthraxBG.context
-			.container.pad0.rel
-				.context.HpadXXXLg.Bpad0.sizeLg.txtL(style="margin-top:3em;")
-					.hs-title-size-3.font-alt.m-b-20.context.txtL.white
-						span.block.floatL.round.both.dkt= t("our_company")
-					.hs-title-size-1.font-inc.LmarXXSm.BmarXXLg.dark= t("greetings")
-			.container.pad0.rel.round.both.ivoryBG(style="margin-bottom:10em;")
-				.line
-					.unit.size1of3
-						p.txtJ.marXXXXLg.padXSm 
-							!= t("DKT__about.embassy.md_1") 
-					.unit.size1of3
-						p.txtJ.marXXXXLg.padXSm
-							!= t("DKT__about.embassy.md_2")
-					.unit.lastUnit
-						p.txtJ.marXXXXLg.padXSm
-							!= t("DKT__about.embassy.md_3")
-
-				.aboutgo(style="padding:3em 0 10em")
-					+link({name:t("our_company"), cl:"dkt", url: '/about/'})
-				.line.txtL.round.ivoryBG.right(style="background:#E8E8E8;border:1px dashed #9d1639")
-					.unit.endlogo.floatR.marXXLg
-						span.hidden= t('DKT__globals.company.name')
-					.lastUnit.sizeLg.marXXLg
-						span.block.dkt.TmarXSm= t('thank_you')
-
-
-			+infos()
 
 
 mixin contactform()
@@ -217,11 +164,6 @@ mixin contactform()
 				p
 					input.pad.dkt.formBG(type="submit" value=t("DKT__contacts.form.send"))
 
-mixin transition_intro()
-	.p-introduction__follow.js-transition-intro.is-shown
-		.p-introduction__follow-in.p-introduction__follow-in--1
-		.p-introduction__follow-in.p-introduction__follow-in--2
-		.p-introduction__follow-in.p-introduction__follow-in--3
 
 mixin certif()
 	.extra.rel.context.none(id=section.name + "_certif", class= section.name + "_certif")
@@ -351,15 +293,109 @@ mixin nextprev()
 				span.block.sizeXSm.HmarXXXSm.inconsolata.uppercase.ls1= t(next.post.vars.post.surname)
 
 mixin hpintro
+	.extra.darkBG.context.rel(style="height:100%")
+		#noisecanvas.abs.fullW.fullH.context(style="background:url(/img/noise.jpg) no-repeat left top;background-size:cover")
+		.abs.top0.left0.right0.fullW
+			+transition_intro
+		.abs.top0.left0.right0
+			.sizeXXXXLg.rhdp.white.heavy(style="padding:5em 0") 
+				.sizeXXXXLg= t("DKT__about.name")
+			.container
+				.context(style="height:450px")
+					.line.fullH
+						.unit.size2of5.fullH.rel
+							.sizeXXXXLg.txtL.fullH.pad
+								p.sizeLg.lh1.white 1. Finding the Product
+								.sizeSm.white.abs.bottom0
+									p.Bmar.pad.lh1.
+										We Build Machines.
+									p.Bmar.pad.sizeSm.lh1.
+										The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text.
+						.lastUnit.fullH.rounded.context
+							.srongpointbg.fullW.fullH.cover(style="background:url(/img/timelapse.jpg) no-repeat left top;background-size:cover")
+				
+
+mixin transition_intro()
+	.p-introduction__follow.js-transition-intro.is-shown
+		.p-introduction__follow-in.p-introduction__follow-in--1
+		.p-introduction__follow-in.p-introduction__follow-in--2
+		.p-introduction__follow-in.p-introduction__follow-in--3
+
+
+
+
+
+mixin infos()
+	.ivoryBG.dktTOPBD
+		.container.rel(style="padding-top:2em;padding-bottom:2em;")
+			.line.txtL
+				h6.sizeSm.dkt.LmarXXXXLg= t('DKT__globals.company.copy_to')
+				p.unit.txtL.sizeSm.LmarXXXXLg
+					!= t('DKT__globals.company.address_1')
+					br
+					!= t('DKT__globals.company.address_2')
+					br
+					br
+					!= t('tel') + " : " + t('DKT__globals.company.telephone')
+					br
+					!= t('fax') + " : " + t('DKT__globals.company.fax')
+
+				.lastUnit.sizeSm.RmarXXXXLg.txtR
+					span.block 
+						br
+						!= t('DKT__globals.company.copy') + t('DKT__globals.company.copy_year') 
+						br
+						!= t('DKT__globals.company.copy_to')
+
+
+mixin credits()
+	.extra.rel.context(id=section.name + "_credits", class= section.name + "_credits")
+		.anthraxBG.context
+			.container.pad0.rel
+				.context.HpadXXXLg.Bpad0.sizeLg.txtL(style="margin-top:3em;")
+					.hs-title-size-3.font-alt.m-b-20.context.txtL.white
+						span.block.floatL.round.both.dkt= t("Why us?")
+					.hs-title-size-1.font-inc.LmarXXSm.BmarXXLg.dark= t("And why they trust us")
+			.container.pad0.rel.round.both.ivoryBG.context(style="margin-bottom:10em;")
+				.line
+					.unit.size1of3
+						.block.img.flowimg.fullW(style="height:400px")
+							.strongpointbg.fullW.fullH.cover(style="background:url(/img/facade.jpg) no-repeat left top;background-size:cover")
+						span.block.Hpad.VpadXSm.dktBG.white.sizeR Philosophy 
+						p.txtJ.marXXXXLg.padXSm 
+							!= t("DKT__about.embassy.md_1") 
+					.unit.size1of3
+						.block.img.flowimg.fullW(style="height:400px")
+							.strongpointbg.fullW.fullH.cover(style="background:url(/img/building_coating.jpg) no-repeat left top;background-size:cover")
+						span.block.Hpad.VpadXSm.dktBG.white.sizeR Philosophy 
+						p.txtJ.marXXXXLg.padXSm
+							!= t("DKT__about.embassy.md_2")
+					.unit.lastUnit
+						.block.img.flowimg.fullW(style="height:400px")
+							.strongpointbg.fullW.fullH.cover(style="background:url(/img/upview.jpg) no-repeat left top;background-size:cover")
+						span.block.Hpad.VpadXSm.dktBG.white.sizeR.round.right Philosophy 
+						p.txtJ.marXXXXLg.padXSm
+							!= t("DKT__about.embassy.md_3")
+
+				.aboutgo(style="padding:3em 0 10em")
+					+link({name:t("our_company"), cl:"dkt", url: '/about/'})
+				.line.txtL.round.ivoryBG.right(style="background:#E8E8E8;border:1px dashed #9d1639")
+					.unit.endlogo.floatR.marXXLg
+						span.hidden= t('DKT__globals.company.name')
+					.lastUnit.sizeLg.marXXLg
+						span.block.dkt.TmarXSm= t('thank_you')
+
+
+
+
+mixin hpstrongpoints
 	.extra.darkBG.context.montserrat
-		.sizeXXXXLg.rhdp.white.heavy(style="padding:5em 0") 
-			.sizeXXXXLg We are DKT
 		.container.context.sizeXXLg
-			.line(style="padding:0 0 15em 0")
+			.line(style="padding:15em 0 15em 0")
 				.unit.size1of3.txtL
 					.pad
 						.block.flowimg.fullW(style="height:400px")
-							img.block.fullW.fullH.round.left(src="/img/building_coating.jpg")
+							.strongpointbg.fullW.fullH.cover(style="background:url(/img/building_coating.jpg) no-repeat left top;background-size:cover")
 						span.block.Hpad.VpadXSm.dktBG.white.sizeXSm.round.right Techs 
 						.downside.HmarSm.Tmar.context
 							p.lh1.white In Line for <br /> span Building Facade Coating 
@@ -368,7 +404,7 @@ mixin hpintro
 					.pad
 						.block.flowimg.fullW(style="height:300px")
 							//- (style="height:400px;background:url('/img/facade.jpg') no-repeat top left;")
-							img.block.fullW.fullH.round.left(src="/img/facade.jpg")
+							.strongpointbg.fullW.fullH.cover(style="background:url(/img/facade.jpg) no-repeat left top;background-size:cover")
 						span.block.Hpad.VpadXSm.dktBG.white.sizeXSm.round.right Products
 						.downside.HmarSm.Tmar.context
 							p.lh1.white 
@@ -377,7 +413,7 @@ mixin hpintro
 				.unit.lastUnit.txtL
 					.pad
 						.block.img.flowimg.fullW(style="height:400px")
-							img.block.fullW.fullH.round.left(src="/img/upview.jpg")
+							.strongpointbg.fullW.fullH.cover(style="background:url(/img/upview.jpg) no-repeat left top;background-size:cover")
 						span.block.Hpad.VpadXSm.dktBG.white.sizeXSm.round.right Philosophy 
 						.downside.HmarSm.Tmar.context
 							p.lh1.white Reproducing Nature <br /> at the Nano Level  

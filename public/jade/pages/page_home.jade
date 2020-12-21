@@ -14,11 +14,14 @@ block content
 
 
   block flow
-    +transition_intro
+    
     +hpintro
-
+    //- +hpstrongpoints
+    +credits()
 
     - var target_sections = [].concat(db_sections[1].children).concat(db_sections[2].children) ;
     include /layouts/components/patchwork
 
-    +credits()
+    +infos()
+
+    

@@ -15,7 +15,7 @@ include /mixins/_global
 
 section.page.zind3.rel.context(style="background:#FFF;")
 	.abs.top0.right0.sizeLg.zi20
-		a.inlineblock.padXLg.Vpad0.inconsolata.dktBG.round.close_btn.white(href="#" + section.path)
+		a.inlineblock.padXLg.Vpad0.inconsolata.dktBG.round.close_btn.white(href="#/" + lang + section.path)
 			span.sizeLg x
 	
 	.container.rel.zi1
@@ -57,9 +57,9 @@ section.page.zind3.rel.context(style="background:#FFF;")
 							each media in medias
 								+mediasmallslide(media)
 					.line.rel.ocreBG.round.right
-						.abs.top0.right0.left0.pad
+						.pad
 							span.sizeLg.block.Hpad.dkt= t('specs')
-						.txtR.Bmar(style="margin-top:4em")
+						.txtR
 							table.tables.font-inc.dark(style="width:100%" row="4")
 								tbody.lh2
 									tr
@@ -95,6 +95,7 @@ section.page.zind3.rel.context(style="background:#FFF;")
 									tr
 										td.bold.dkt.size1of3.txtL.Lpad Rewinding System
 										td.txtL.Rpad Center (Surface Turret) Winding System
+						.canvascontainer.context.fullW.ocreBG(style="height:450px")
 			.lastUnit
 				.TmarXXXLg.RmarXXXLg.RpadXXXLg.txtL
 						| !{ render(t(components.instr + '_' + child_section.name, locals), locals) }

@@ -549,7 +549,7 @@ Responsive Media Querries
 	height: 100%;
 	position: absolute;
 	top: 0;
-	background-color: #9d1639;
+	background-color: #FFF;
 	animation-name: loopFollow;
 	-webkit-animation-duration: .8s;
 	animation-duration: .8s;
@@ -649,7 +649,6 @@ red {
 .slides{background:#222;}
 
 .height50{height:50%;}
-
 
 
 .navbar .home a{

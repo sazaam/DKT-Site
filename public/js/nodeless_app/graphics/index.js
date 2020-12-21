@@ -4,11 +4,26 @@ require('../strawnode_modules/strawnode_modules/jquery.ba-hashchange.min.js') ;
 require('../strawnode_modules/betweenjs.js') ;
 
 
-// require('../events/index.js') ;
+var THREE = window.THREE = require('../../threejs/build/three.js') ;
+
+require('../../threejs/examples/js/controls/OrbitControls.js')
+require('../../threejs/examples/js/controls/TrackballControls.js')
+require('../../threejs/examples/js/loaders/GLTFLoader.js')
+require('../../threejs/examples/js/loaders/DRACOLoader.js')
+require('../../threejs/examples/js/loaders/RGBELoader.js')
+
+var effects = require('./effects.js') ;
+
+
 
 var focus ;
 var toggle ;
+var products_focus ;
+var products_toggle ;
+
 var patchwork ;
+var threenoise ;
+
 var scroll ;
 var scrollEv ;
 var slideshow ;
@@ -85,8 +100,10 @@ module.exports = {
 		
 		if(pos > 0){
 			$('.navbar').addClass('overnav') ; 
+			$('.js-transition-intro').addClass('none') ;
 		}else{
-			$('.navbar').removeClass('overnav') ; 
+			$('.navbar').removeClass('overnav') ;
+			$('.js-transition-intro').removeClass('none') ;
 		}
 		
 	},
@@ -103,7 +120,38 @@ module.exports = {
 		
 		
 	},
-	
+	small3D:small3D = function(e, cond){
+		
+		var res = e.target ;
+		
+		var canvasholder = $('#'+res.id+' .canvascontainer') ;
+		
+		if(cond){
+
+			if(!!canvasholder.length){
+			// 	canvasholder.css('backgroundImage', '') ;
+				effects.viz3D.enable(true, canvasholder, e) ;	
+			}
+
+		}else{
+
+			if(!!canvasholder.length){
+				effects.viz3D.enable(false, canvasholder, e) ;	
+			}
+
+		}
+		
+		if(cond){
+
+
+
+
+		}else{
+
+
+		}
+
+	},
 	////////////////////////// SLIDESHOW
 	smallslideshow : smallslideshow = function(e, cond){
 		
@@ -172,7 +220,6 @@ module.exports = {
 				
 				var localX = screenX - tg.offset().left ;
 				
-				trace(screenX)
 
 				if(localX > mw){ // ON RIGHT
 
@@ -633,7 +680,7 @@ module.exports = {
 		
 		var res = Unique.instance.hierarchy.currentStep ;
 		var id = res.id ;
-		
+		if(id== '@') return ;
 		var pos = $(document).scrollTop() ;
 		
 		var node = $('#'+id+' .slideshow') ;
@@ -659,7 +706,7 @@ module.exports = {
 		
 		var node = $('#'+id+' .slideshow') ;
 		$(document).scrollTop(0) ;
-		
+		$('.js-transition-intro').removeClass('none') ;
 		if (node.length > 0) {
 			node.css('top', 0) ;
 			node.css('opacity', 1) ;
@@ -705,7 +752,25 @@ module.exports = {
 		
 	},
 	
-	
+	threenoise:threenoise = function(e, cond){
+		
+		var canvasholder = $('#noisecanvas') ;
+
+		if(cond){
+
+			if(!!canvasholder.length){
+				canvasholder.css('backgroundImage', '') ;
+				effects.noiseeffect.enable(true, canvasholder) ;	
+			}
+
+		}else{
+			if(!!canvasholder.length){
+				effects.noiseeffect.enable(false, canvasholder) ;	
+			}
+
+		}
+
+	},
 	
 	
 	////////////////////////// MAIN FUNCTIONS FOCUS & TOGGLE
@@ -716,7 +781,7 @@ module.exports = {
 
 
 	////////////////////////// FOCUS
-	products_focus : focus = function(e){
+	products_focus : products_focus = function(e){
 		var res = e.target ;
 		var id = res.id ;
 		
@@ -731,10 +796,11 @@ module.exports = {
 			res.focusReady() ;
 			
 			smallslideshow(e, true) ;
-			
+			small3D(e, true) ;
 			
 		}else{
 			
+			small3D(e, false) ;
 			smallslideshow(e, false) ;
 			
 			res.focusReady() ;
@@ -744,7 +810,7 @@ module.exports = {
 	},
 	
 	////////////////////////// TOGGLE
-	products_toggle : toggle = function(e){
+	products_toggle : products_toggle = function(e){
 	
 		var res = e.target ;
 
@@ -842,6 +908,9 @@ module.exports = {
 
 			slideshow(e, true) ;
 			patchwork(e, true) ;
+
+			threenoise(e, true) ;
+
 			languages(e, true) ;
 			
 			res.ready() ;
@@ -850,6 +919,9 @@ module.exports = {
 			
 
 			languages(e, false) ;
+
+			threenoise(e, false) ;
+
 			patchwork(e, false) ;
 			slideshow(e, false) ;
 			

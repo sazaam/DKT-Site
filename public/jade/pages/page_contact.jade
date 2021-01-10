@@ -5,36 +5,42 @@ extends ./page
 
 //- ----------------------- END : Extends
 
-include /mixins/_global
-
 
 block flow
 
 	- var main_media = getComponentsByTypename(section.post.bracket, 'ComponentModularMedia')[0].media ;
-	+topimage(main_media[1], color, 'Contact', "Contact Us")
+	+topimage(main_media[1], color, section.cleanname, section.surname)
 	
 	section.page.zind3.rel.context(style="background:#E8E8E8;")
 		
-		.container.rel
-			.line.txtR(style="margin:2em 0")
-				.unit.size1of2.floatR.txtR.context.sizeLg.dkt.pad.BpadXXLg
-					+pageheader('DKT__contacts.telephone', 'DKT__contacts.telephone_txt')
-				.unit.lastUnit.sizeSm
-					+needinfo()
-			.line.txtL(style="margin:4em 0")
-				.unit.size1of3.floatL.txtL.context.sizeLg.dkt.pad.BpadXXLg
-					+pageheader('DKT__contacts.email', 'DKT__contacts.email_txt')
-				.unit.size3of5.floatR.TpadXXXLg.txtR
-					+contactform()
-			.line.txtR(style="margin:4em 0 5em")
-				.unit.size1of2.floatL.txtL.context.sizeLg.dkt.pad.BpadXXLg
-					+pageheader('DKT__contacts.postmail', 'DKT__contacts.postmail_txt')
-					p.TmarXXLg
-						!= t('DKT__globals.company.address_1')
-						br
-						!= t('DKT__globals.company.address_2')
+		.line(style="background:url(/img/phone.png) no-repeat;background-position: 50% 74%")
+			.container.rel
+				.line.txtL(style="padding:4em 0 8em;")
+					.unit.size1of3.txtL.context.pad.BpadXXLg
+						+pageheader('DKT__contact.telephone', 'DKT__contact.telephone_txt')
+					.unit.size3of5.floatR.sizeLg.TmarXXXLg
+						.sizeSm.txtC(style="margin-top:8em")
+							+callus('DKT__contact.telephone_sales', 'marbleBG')
+		.line
+			.container.rel
+				.line.txtL(style="padding:4em 0 0")
+					.unit.size1of3.txtL.context.sizeLg.dkt.pad.BpadXXLg
+						+pageheader('DKT__contact.email', 'DKT__contact.email_txt')
+					.unit.size3of5.floatR.TpadXXXLg.txtR
+						+contactform()
+			.container.rel
+				.line.txtR(style="padding:6em 0 0")
+					.unit.size1of3.txtL.context.sizeLg.dkt.pad.BpadXXLg
+						+pageheader('DKT__contact.postmail', 'DKT__contact.postmail_txt')
+						p.TmarXXLg
+							!= t('DKT__globals.company.address_1')
+							br
+							!= t('DKT__globals.company.address_2')
+					.unit.lastUnit
+						.mailbox(style="height:320px;background:url(/img/mailbox.png) no-repeat;background-position: 50% 4em")
+							.hidden mailbox
 
 
-	+infos()
+	+footer()
 
 

@@ -4,37 +4,40 @@ extends ./page
 
 //- ----------------------- END : Extends
 
-include /mixins/_global
-
 block content  
-
 	//-  EMPTY
 
 	block flow
+		//- DO NOT REMOVE, IN USE FOR CHILDREN LOADING, THEN SLIDESHOW AND PATCHWORK
+		- var target_sections = section.children ;
+
+
 
 		nav.data-container.none
-			- var target_sections = section.children ;
+			//- HERE ARE APPENDED INVISIBILY THE CHILDREN SECTIONS 
 			- if(!!target_sections && target_sections.length){
-
 				each child_section in target_sections
-
-					section.subsection.fullH.whiteBG(id=child_section.name, class=child_section.name, style="border-top:10px solid #9d1639;border-bottom:10px solid #9d1639;")
-						- var productjade = child_section.post.template.jade ;
-						- var bracket = child_section.post.bracket ;
-						- var params = p(merge(locals, child_section.post.vars.locals), {filename:basedir + child_section.name + '.jade', section:section, child_section: child_section}) ;
-						
-						| !{ render(productjade, merge(params, customize(bracket, params) ))}
+					+loadchildrensection(child_section, section)
 			- }
+			
 
-
-
+		//- SLIDESHOW GOES FIRST, BUT WITH A HEIGHT OF 50%
 		.extra.rel.context(style='height:50%;')
-			- var target_sections = section.children ;
-			include /layouts/components/slideshow
-				
-		.products_section_container
-		include /layouts/components/patchwork
+			+slideshow()
 		
-		+certif()
 
-		+credits()
+		//- THEN THE CHILDREN LOADING BLOCK
+		.products_section_container
+			//- HERE WILL STAND THE FUTURE PRODUCTS -- DO NOT REMOVE !!
+		
+
+		//- THEN COMES PATCHWORK
+		+patchwork()
+
+		//- AND EVENTUALLY THE PRODUCTS PAGE RELATED BLOCKS 
+		each products_article in getComponentsByTypename(section.post.bracket, 'ComponentModularArticle')
+			+article(products_article, params)
+
+
+		+footer()
+	

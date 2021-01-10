@@ -207,23 +207,23 @@ Patchwork
 }
 
 .work-title {
-	font-size: 18px;
+	/* font-size: 18px; */
 	color: #fff;
 	margin: 0 0 6px;
 }
 
 .work-descr {
 	text-transform: uppercase;
-	font-size: 14px;
+	/* font-size: 14px; */
 	color: #999;
 }
 
 .works-grid-4 .work-title {
-	font-size: 14px;
+	/* font-size: 14px; */
 }
 
 .works-grid-4 .work-descr {
-	font-size: 12px;
+	/* font-size: 12px; */
 }
 
 .work-item:hover .work-image:after {
@@ -1011,4 +1011,62 @@ code{
 	border-left: 1px dashed #9d1639;
 	border-right: 1px dashed #9d1639;
 	background:#222;
+}
+
+
+
+
+
+/* MARKDOWN CUSTOMS */
+
+
+.hpintro strong{
+	font-weight:bold;
+}
+
+.hpintro h2{
+	margin-bottom:2em;
+	font-size:140%;
+}
+
+.hpintro .arr{
+	width:40px;
+	height:40px;
+}
+
+.hpintro .arr.arrnext{
+	background: url(../skin/next-light.png) no-repeat left top;
+}
+.hpintro .arr.arrprev{
+	background: url(../skin/prev-light.png) no-repeat left top;
+}
+
+
+.why strong{
+	font-weight:bold;
+	color:#434343;
+}
+.why em{
+	/* font-style:italic; */
+	color:#9d1639;
+}
+
+.why h2{
+	margin-bottom:1em;
+	font-size:140%;
+}
+
+.marked h2{
+	font-size:140%;
+}
+
+.marked strong{
+	font-weight:bold;
+}
+
+.marked em{
+	color:#9d1639;
+}
+#contact .marked em{
+	color:#132645;
 }

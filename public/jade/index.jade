@@ -13,21 +13,18 @@ block content
 	
 
 	script(type='text/javascript' src='/js/strawnode.js?starter=./nodeless_app/')
-
+	
 		
 	script.
 		console.log('should not come in here')
 		//- Express.app.start() ;
-		console.log(THREE)
+
 		//- throw 'Error' ;
 		var exitLoader = function(){
 			console.log('REMOVING LOADER...');$('#mainloader').remove()
 		}
 		
 		var ajaxified = true ;
-
-		
-
 
 		if(ajaxified){
 			new AjaxRequest().load('/datas/', function(req, res){

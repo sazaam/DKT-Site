@@ -142,30 +142,29 @@ var noise = {
           uniforms.u_resolution.value.x = renderer.domElement.width;
           uniforms.u_resolution.value.y = renderer.domElement.height;
         }
-    
+        
+
         animNoise = noise.settings.animNoise = function() {
           noise.settings.NOISEID = requestAnimationFrame( animNoise );
           renderNoise();
         }
-    
         renderNoise = noise.settings.renderNoise = function() {
           uniforms.u_time.value += 0.05 ;
           renderer.render( scene, camera );
-        }
-
+        } ;
+        // ANIM_TW = noise.settings.ANIM_TW = BJS.animationframe(renderNoise) ;
+        
       }else{
-        onWRNoise = noise.settings.onWRNoise
-        animNoise = noise.settings.animNoise ;
+        onWRNoise = noise.settings.onWRNoise ;
+        // ANIM_TW = noise.settings.ANIM_TW ;
         renderNoise = noise.settings.renderNoise ;
+        animNoise = noise.settings.animNoise ;
       }
       
-
-      
       window.addEventListener( 'resize', onWRNoise, false ) ;
-      
       onWRNoise();
       animNoise();
-
+      // ANIM_TW.play() ;
 
     }else{
       

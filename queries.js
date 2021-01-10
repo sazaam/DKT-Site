@@ -3,7 +3,7 @@
 
 
 let datas = `query {
-  sections(where:{level:1}, sort:"position:asc"){
+  sections(where:{level:1, position_lt:10}, sort:"position:asc"){
     id
     name
     path
@@ -53,6 +53,11 @@ let datas = `query {
           template{
             name
             jade
+          }
+          
+          media{
+            name
+            url
           }
 
         }
@@ -127,6 +132,11 @@ let datas = `query {
               name
               jade
             }
+            
+            media{
+              name
+              url
+            }
           }
           
           ... on ComponentModularMedia {
@@ -189,7 +199,7 @@ let datas = `query {
 
 
 let navdatas = `query {
-  sections(where:{level:1}, sort:"position:asc"){
+  sections(where:{level:1, position_lt:10}, sort:"position:asc"){
     id
     name
     path

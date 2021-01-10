@@ -1,35 +1,599 @@
 
+//- 
+//- 
+//- 
+//- ///////////////////////////////////////// REPETITIVE
+
+//- LINKS
 mixin link(o)
 	ul.links(class= o.cl || "")
 		li(style='display: inline;')
-			a.gowhite.bt.btn-border-slider-white.round.left.dkt.whiteBG(href='/#/' + lang + o.url)= t(o.prename || 'view')
+			a.gowhite.bt.btn-border-slider-white.round.left.dkt.whiteBG(href=o.url)= t(o.prename || 'view')
 		li(style='display: inline;')
-			a.goblack.bt.btn-border-slider-black.round.right.dktBG(href='/#/' + lang + o.url)= t(o.name || 'more')
+			a.goblack.bt.btn-border-slider-black.round.right.dktBG(href=o.url)= t(o.name || 'more')
+
+mixin callus(number, cl)
+	.call
+		h4.sizeXLg.txtL.inlineblock.padXSm.HpadXLg.antraciteBG.round.left.dkt.dktBD(class=cl)= t('call') 
+		h4.sizeXLg.txtL.inlineblock.padXSm.HpadXLg.dktBG.round.right.white.dktBD= t(number)
 
 
-mixin linkblock(o, isPatchwork)
-	- var medias = o.post.bracket[1].media ;
+//- MEDIAS
+mixin mediasmallslide(media)
+	li.round.left.cover.abs.top0.left0.zi10(style='width:100%;height:100%;background:url(' + CDN + media.url + ') no-repeat 50% 50%;background-size:cover;opacity: 0;')
+		span.hidden Image
+
+
+//- LINK AS A BLOCK
+mixin linkblock(ch, isPatchwork, linkname)
+	- var name = ch.name ;
+	- var cleanname = ch.cleanname ;
+	- var surname = ch.surname ;
+	- var cleanlink = ch.cleanlink ;
+	- var medias = ch.post.bracket[1].media ;
 	- if(isPatchwork){
-		- var cl = section.name == 'home' ? "size1of2" : "size1of4" ;
-		li.work-item.rel.context(class= cl)
-			a.data.none(href= "/" + lang + o.path)
+		- var isHome = section.name == 'home' ;
+		li.work-item.rel.context(class=isHome ? "size1of2" : "size1of4")
 			.work-image
 				img(src= CDN + medias[0].url , alt='')
 			.work-caption(style="font-size:80%")
-				.work-descr.ls1= t(o.post.vars.post.surname)
-				h3.work-title.uppercase.Bmar.ls1= t(o.post.vars.post.name) 
-				+link({name:o.path.replace(/(^\/)|s\/.+($)/gi,''), cl:"dkt", url:o.path})
+				.work-descr(class=isHome ? "sizeXLg" : "sizeR")= surname
+				h3.work-title.uppercase.Bmar(class=isHome ? "sizeXXLg" : "sizeXLg")= cleanname 
+				+link({name:linkname, cl:"dkt", url:cleanlink})
 	- } else {
 		.work-item.rel.context.fullW.noMQ(class=cl)
-			a.data.none(href= "/" + lang + o.path)
 			.work-image
 				img(src= CDN + medias[0].url , alt='')
 			.work-caption(style="font-size:80%")
-				.work-descr.ls1= t(o.post.vars.post.surname) 
-				h3.work-title.uppercase.Bmar.ls1= t(o.post.vars.post.name) 
+				.work-descr.ls1= surname
+				h3.work-title.uppercase.Bmar.ls1= cleanname
+				+link({name:linkname, cl:"dkt", url:cleanlink})
 	- }
 
 
+//- CORE - LOAD INNER SECTIONS OF A PARENT (PRODUCTS CASE)
+mixin loadchildrensection(ch, par)
+	section.subsection.fullH.whiteBG(id=ch.name, class=ch.name, style="border-top:10px solid #9d1639;border-bottom:10px solid #9d1639;")
+		- var productjade = ch.post.template.jade ;
+		- var bracket = ch.post.bracket ;
+		- var params = p(merge(locals, ch.post.vars.locals), {filename:basedir + ch.name + '.jade', section:par, child_section: ch}) ;
+		
+		| !{ render(productjade, merge(params, customize(bracket, params) ))}
+
+
+//- HEADERS
+
+//- SECTION HEADER IMAGE
+mixin topimage(media, color, title, subtitle)
+	- var newstr = '' ;
+	.extra.rel.context.cover(style='height:30%;background:url(' + CDN + media.url + ') no-repeat 50% 50%;background-size:cover')
+		+sectionheader(title, subtitle)
+
+//- SECTION HEADER
+mixin sectionheader(title, subtitle)
+	.container.rel.fullH.context
+		.abs.right0.bottom0.context.HpadXXXXLg.BpadXLg.sizeXXLg.txtR
+			.hs-title-size-3.font-alt.m-b-20.context.txtL.white
+				span.block.floatR.round.both= t(title)
+			.hs-title-size-1.font-inc.LmarXXSm.white= t(subtitle)
+
+
+//- PAGE HEADER
+mixin pageheader(title, subtitle)
+	if title
+		.hs-title-size-3.font-alt.m-b-20.context.white
+			span.block.round.both.dkt= t(title)
+	if subtitle
+		.hs-title-size-1.font-inc.LmarXXSm.BmarSm.shady= t(subtitle)
+
+
+//- INSIDE PAGE HEADER
+mixin innerheader(header, subheader, clh, cls)
+	.sizeXXXXLg.rhdp.heavy 
+		.sizeXXXXLg(class=clh)= t(header)
+		if(subheader)
+			.sizeXLg(class=cls)= t(subheader)
+
+//- FOOTER CREDITS & INFOS
+mixin footer()
+	.ivoryBG.dktTOPBD
+		.container.rel(style="padding-top:2em;padding-bottom:2em;")
+			.abs.right0.top0.RmarXXXXLg
+				a.block.RmarginLg.pad.HpadLg.sizeSm.dktBG.white.topofpage(href="#")= t('topofpage')
+			.line.txtL
+				h6.sizeSm.dkt.LmarXXXXLg= t('DKT__globals.company.copy_to')
+				p.unit.txtL.sizeSm.LmarXXXXLg
+					!= t('DKT__globals.company.address_1')
+					br
+					!= t('DKT__globals.company.address_2')
+					br
+					br
+					!= t('tel') + " : " + t('DKT__globals.company.telephone')
+					br
+					!= t('fax') + " : " + t('DKT__globals.company.fax')
+
+				.lastUnit.sizeSm.RmarXXXXLg.txtR
+					span.block 
+						br
+						!= t('DKT__globals.company.copy') + t('DKT__globals.company.copy_year') 
+						br
+						!= t('DKT__globals.company.copy_to')
+					+dktlogosmall
+
+//- 
+//- 
+//- 
+//- ///////////////////////////////////////// CUSTOM BLOCKS
+
+//- 
+//- 
+//- 
+//- ///////////////////////////////////////// HOME SLIDESHOWS
+
+
+//-  MAIN SLIDESHOW
+mixin slideshow()
+	.slideshow.module-parallax.module-fade.module-full-height.fullH
+		- if(!!target_sections && target_sections.length){
+			ul.slides
+				each child_section in target_sections
+					+slide(child_section, target_sections.indexOf(child_section))
+
+			ol.flex-control-nav.flex-control-paging
+
+				each child_section in target_sections
+					li
+						a= target_sections.indexOf(child_section) + 1
+		- }
+
+//- MAIN SLIDESHOW SLIDES
+mixin slide(child_section, i)
+
+	- var name = child_section.name ;
+	- var cleanname = child_section.cleanname ;
+	- var surname = child_section.surname ;
+	- var cleanlink = child_section.cleanlink ;
+
+	- var post = child_section.post ;
+	- var medias = child_section.post.bracket[1].media ;
+
+	li.bg-dark.noselect(unselectable="on" style='width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;')
+		- var media = section.name == 'home' ? medias[0].url : ((1 in medias) ? medias[1].url : medias[0].url) ;
+		- media = media ;
+		.slidebg.slide-zoom(style='opacity:.3;background-image:url(' + CDN + media + ')')
+
+		- if(name == 'home'){
+
+			.hs-caption.container(style='top: 0px; display: table;')
+				.caption-content.center
+					h1.cover.biglogo.txtC
+						span.hidden= cleanname
+					.block.uppercase.montserrat(style='color:#333;margin-top: -25px; margin-left: 4px; font-size:15.5px;')= surname
+
+					ul.links.dkt.context.TmarLg.sizeLg.noBd
+						li(style='display: inline;')
+							em.gowhite.bt.btn-border-slider-white.round.left.whiteBG.dkt= t('DKT__globals.company.accroche_1')
+						li(style='display: inline;')
+							em.goblack.bt.btn-border-slider-black.round.right.dktBG= t('DKT__globals.company.accroche_2')
+
+		- }else if(name == 'techs'){
+
+			.hs-caption.container(style='top: 0px; display: table;')
+				.caption-content.left.vmiddle
+					.hs-title-size-3.font-alt.m-b-20.context
+						span.whiteBG.block.floatL.padSm.VpadXSm.round.both.dkt.uppercase= cleanname
+					.hs-title-size-1.font-inc.LmarXXSm.Vmar.white
+						span= surname
+
+					+link({name:t("tech",  {count: 0}), cl:"dkt noBd", url:cleanlink})
+
+		- }else if(name == 'products'){
+
+			.hs-caption.container(style='top: 0px; display: table;')
+				.caption-content.right.vmiddle
+					.hs-title-size-3.font-alt.m-b-20.context
+						span.whiteBG.block.floatL.padSm.VpadXSm.round.both.dkt.uppercase= cleanname
+					.hs-title-size-1.font-inc.LmarXXSm.Vmar.white
+						span= surname
+
+					+link({name:t("product",  {count: 0}), cl:"dkt noBd", url:cleanlink})
+
+		- }else if(name == 'about'){
+			.hs-caption.container(style='top: 0px; display: table;')
+				.caption-content.left.vmiddle
+					.hs-title-size-3.font-alt.m-b-20.context
+						span.whiteBG.block.floatL.padSm.VpadXSm.round.both.dkt.uppercase= cleanname
+					.hs-title-size-1.font-inc.LmarXXSm.Vmar.white
+						span= surname
+
+					+link({name:t("company"), cl:"dkt noBd", url:cleanlink})
+		- }else{
+			- var even = i % 2 == 0 ;
+			- var cl = even ? 'right' : 'left' ;
+			
+			.hs-caption.container(style='top: 0px; display: table;')
+				.noproduct.caption-content(class=cl)
+					.hs-title-size-3.font-alt.m-b-20.white
+						span= cleanname
+					.hs-title-size-1.font-inc.BmarXLg
+						span= surname
+
+					+link({name:"product", cl:"dkt noBd", url:cleanlink})
+		- }
+
+
+
+
+//-  PATCHWORKS
+mixin patchwork()
+	.extra.rel.context(id=section.name + "_patchwork", class= section.name + "_patchwork")
+		.patchwork.context.txtC
+			- if(!!target_sections && target_sections.length){
+				ul.works-grid.works-grid-masonry.works-grid-2.works-hover-w
+					- var l = target_sections.length ;
+					- var cl = l < 3 || section.name == 'home' ? "size1of2" : "size1of4" ;
+
+					each child_section in target_sections
+						+linkblock(child_section, true, "product")
+			- }
+
+//- 
+//- 
+//- 
+//- ///////////////////////////////////////// OTHER CUSTOM BLOCKS
+
+//- 
+//- //////////////// HOME
+
+
+//- TRANSITION LOADER ANIM
+mixin transition_intro()
+	.p-introduction__follow.js-transition-intro.is-shown
+		.p-introduction__follow-in.p-introduction__follow-in--1
+		.p-introduction__follow-in.p-introduction__follow-in--2
+		.p-introduction__follow-in.p-introduction__follow-in--3
+
+//- HP INTRODUCTION PAGE
+mixin hpintro
+	.extra.darkBG.context.rel.hpintro(style="height:100%")
+		- var introcomponent = getComponentByName(section.post.bracket, 'home_intro') ;
+		- var media = introcomponent.media ;
+		- var background = media.shift() ;
+
+		#noisecanvas.abs.fullW.fullH.context(style="background:url(" + CDN + background.url +") no-repeat left top;background-size:cover")
+		.abs.top0.left0.fullW
+			+transition_intro
+		
+		.abs.top0.left0.fullW
+			.container(style="padding:5em 0")
+				+innerheader(header, undefined, 'white')
+
+			.container
+				.context(style="height:450px")
+					ol#slidrens.slidrens.fullH.context
+						each frame, i in frames
+							li.sizeXXXXLg.txtL.fullH
+								- var cl = i % 2 == 0 ? 'txtR' : 'txtL' ;
+								.line.fullH
+									.unit.size2of5.fullH.rel
+										h3.sizeLg.lh1.pad.white= t(frame.title) 
+										.sizeXSm.white.abs.left0.bottom0.padXXXXLg(class=cl)
+											:marked !{md(t(frame.text, locals))}
+										.abs.top0.left0.right0.pad(style="margin-top:100px")
+											a.block.arr.arrnext.floatR(href="#")
+												span.hidden &gt;
+											a.block.arr.arrprev.floatL(href="#")
+												span.hidden &lt;
+											
+									.lastUnit.fullH.rounded.context
+										.fullW.fullH.cover(style="background:url(" + CDN + media[i].url +") no-repeat left top;background-size:cover")
+
+
+mixin why
+	.extra.why.rel.context(id=section.name + "_why", class= section.name + "_why")
+		
+		- var introcomponent = component ;
+		- var media = introcomponent.media ;
+		
+		.anthraxBG.context
+
+
+			.container(style="padding:5em 0")
+				+innerheader(header, subheader, 'dkt', 'dark')
+				
+			.container.pad0.rel.round.both.ivoryBG.context(style="margin-bottom:10em;")
+				.line
+					each whyframe, i in whyframes
+						- var cl = i % 3 == 2 ? "lastUnit" : "size1of3" ;
+						.unit(class= cl)
+							.block.img.rel.flowimg.fullW(style="height:400px")
+								-var bg = media[i].url ;
+								.strongpointbg.fullW.fullH.cover(style="background:url(" + CDN +  bg + ") no-repeat left top;background-size:cover")
+								.abs.block.bottom0.left0.right0.sizeXLg.rhdp.heavy.txtL
+									a.block.HpadLg.VpadXSm.white.sizeXLg.lh1= t(whyframe.title) 
+							.txtJ.marXXXXLg.padXSm
+								:marked !{md(t(whyframe.text, locals))}
+
+				.aboutgo(style="padding:3em 0 10em")
+					+link({name:t(whylink.name), cl:"dkt", url: whylink.linkto})
+				.line.txtL.round.ivoryBG.right(style="background:#E8E8E8;border:1px dashed #9d1639")
+					.unit.endlogo.floatR.marXXLg
+						span.hidden= t('DKT__globals.company.name')
+					.lastUnit.sizeLg.marXXLg
+						span.block.dkt.TmarXSm= t(ty)
+
+
+//- //////////////// PRODUCTS
+
+
+//- NEED INFO
+mixin needinfo(number, cl)
+	//- .sizeLg.marXXXLg.txtL
+	.sizeLg
+		:marked !{md(t('DKT__products.needinfo_01', locals))}
+		//- != render(t('DKT__products.needinfo_01'))
+	.sizeR.BmarXLg
+		:marked !{md(t('DKT__products.needinfo_02', locals))}
+	
+	.sizeSm
+		+callus(number, cl)
+		
+	.sizeR.TmarXLg
+		:marked !{md(t('DKT__products.needinfo_03', locals))}
+
+//- CERTIFICATIONS
+
+mixin certify
+	.extra.rel.context(id=section.name + "_certify", class= section.name + "_certify")
+		
+		- var introcomponent = component ;
+		- var media = introcomponent.media ;
+
+		.container.rel
+			.line.txtL.sizeLg.mar.pad.VpadXXLg
+				+pageheader(section.cleanname, surname)
+
+		.container.context.BmarXXXLg.sizeXXXLg.shady.round.both(style="background:#131313;")
+			.line.rel.BpadXXXLg.marked(style="margin-bottom:3em;")
+				.unit.size2of3.sizeXSm
+					.sizeLg.marXXXLg.txtL
+
+						.sizeLg.txtL.BmarXLg
+							:marked !{md(t(title, locals))}
+
+						each block, i in certifyblocks
+							- if(i == 0){
+
+								.line.context
+									.unit.size1of3.floatR.txtR
+										:marked !{md(t(block.text, locals))}
+									.unit.lastUnit
+										img.block.fullW(src= CDN + media[i].url)
+							- }else{
+
+								.line.context.TmarXXXLg
+									.unit.size1of3
+										p.sizeR.txtL.Tmar.Rmar
+											:marked !{md(t(block.text, locals))}
+									.unit.lastUnit
+										img.block.fullW(src= CDN + media[i].url)
+									
+							- }
+
+
+				.unit.lastUnit.sizeXSm.context
+					.abs.bottom0.right0.size1of3.BmarginXXXLg
+						.sizeLg.marXXXLg.txtR
+							+needinfo(callnumber)
+
+
+mixin dktlogosmall
+	.endlogo.inlineblock(style="background-position:-120px -50px;")
+		span.hidden= t('~')
+
+//- //////////////// SINGLE PRODUCT
+
+
+mixin productbasics(basics)
+	.line
+		.unit.size2of5.txtC
+			+dktlogosmall
+		.unit.lastunit
+			.font-inc
+				span #{t('creation_year')} :
+				span.dkt #{basics.year}
+			.font-inc
+				span #{t('tags')} : 
+				span.dkt #{basics.tags.join(', ')}
+			.font-inc 
+				span #{t('desc_file')} : 
+				a.dkt(href='/downloads/pdf/' + basics.file, target="_blank") #{basics.file}
+
+
+mixin product
+	- locals.productname = child_section.cleanname ;
+	- var medias = component.media ;
+	//- script. 
+		console.log(!{JSON.stringify(component)})
+	
+	.line.marked(style="margin-bottom:2em")
+		.unit.lastUnit.dark.round.right.RmarXXXXLg(style="margin-top:0em")
+			.Tmar.txtR.sizeLg
+				:marked !{md(t(pointer + '.desc', locals))}
+				
+	.line(style="margin-top:2em;")
+		.unit.floatR.size4of5.round.both
+			.txtL
+				
+				.line.rel.fullW(style="height:400px;")
+					ul.pics.fullH.round.left.flowvisible.ocreBG(style="width:100%;")
+						.loader.abs.left0.top.dkt.zi1
+							.hidden loading...
+						
+						each media in medias
+							+mediasmallslide(media)
+				
+				.line.rel.ocreBG.round.right.inconsolata
+					.pad
+						span.sizeLg.block.dkt.uppercase= t('specs')
+					.txtR
+						table.tables.font-inc.dark(style="width:100%" row="4")
+							tbody.lh2
+								- var specs = t(pointer + '.specs', merge(locals, {returnObjects: true}))
+								each spec, specname in specs
+									tr
+										td.dkt.size1of3.txtL.Lpad.uppercase= specname 
+										td.txtL.Rpad= spec
+					.3dcontainer.context.fullW.ocreBG
+						.padXLg.txtR.white
+							+link({prename:'Load', name:'3D Model'})
+						.canvascontainer.context.fullW.ocreBG.none(style="height:450px")
+		.lastUnit
+			.TmarXXXLg.RmarXXXLg.RpadXXXLg.txtL.marked
+				:marked !{md(t(pointer + '.instr', locals))}
+
+	.line.marked(style="margin-top:5em;margin-bottom:5em")
+		.unit.size4of5.floatR
+			.line
+				.unit.size1of2
+					.LmarXLg.txtL
+						+needinfo('DKT__contact.telephone_sales')
+				.lastunit
+					.RmarXXXLg.txtR
+						:marked !{md(t(pointer + '.concl', locals))}
+						br
+						| !{ render(t('DKT__products.certif_01')) }
+
+//- BACK BUTTON
+mixin back(last)
+	if (last)
+		.abs.left0.top0.bottom.right0.context.sizeR.txtC.dkt.noBd
+			.linker.marXXXLg.round.both.dkt.dktBG.inlineblock
+				a.block.sizeSm.font-inc.white.padXXLg.VpadSm(href="/#/"+ lang + "/products/")= t('back_to', {target:section.name})
+	else 
+		.abs.left0.top0.right0.context.sizeR.txtL.TmarXXXXLg.TpadXXLg.dkt.noBd
+			.linker.marXXXLg.round.both.dktBG.inlineblock
+				a.block.sizeSm.font-inc.white.padXXLg.VpadSm(href="/#/"+ lang + section.path)= t('back_to', {target:section.name})
+
+
+//- NEXT & PREV LINKS
+mixin nextprev()
+	- var ch = section.children ;
+	- var next = ch[ch.indexOf(child_section)+1] || ch[0] ;
+	- var prev = ch[ch.indexOf(child_section)-1] || ch[ch.length - 1] ;
+	.to_products.prev.abs.left0.bottom0.fullH.context.sizeR.txtL.size2of5.noBd
+		- var cur = prev ;
+		- var cleanname = cur.cleanname ;
+		- var surname = cur.surname ;
+		- var cleanlink = cur.cleanlink ;
+
+		.cont.none.abs.bottom0.left0.HmarXXXLg.round.both.dkt.dktBG
+			.sizeSm.font-inc.white.padXXLg.VpadSm= t('prev')
+			+linkblock(cur)
+		.linker.abs.bottom0.left0.right0.marXXXLg
+			a.inlineblock.sizeSm.font-inc.white.dktBG.round.both(href= cleanlink)
+				span.block.padXXLg.VpadSm= t('prev')
+			.sizeXXXXLg.TmarXXSm.context.clear
+				span.inlineblock.dkt.lh09= cleanname
+				span.block.sizeXSm.HmarXXXSm.inconsolata.uppercase.ls1= surname
+
+	.to_products.next.abs.right0.bottom0.context.sizeR.txtR.size2of5.noBd
+		- var cur = next ;
+		- var cleanname = cur.cleanname ;
+		- var surname = cur.surname ;
+		- var cleanlink = cur.cleanlink ;
+
+		.cont.none.abs.bottom0.right0.HmarXXXLg.round.both.dkt.dktBG
+			.sizeSm.font-inc.white.padXXLg.VpadSm= t('next')
+			+linkblock(cur)
+		.linker.abs.bottom0.left0.right0.marXXXLg
+			a.inlineblock.sizeSm.font-inc.white.dktBG.round.both(href= cleanlink)
+				span.block.padXXLg.VpadSm= t('next')
+			.sizeXXXXLg.TmarXXSm.context
+				span.inlineblock.dkt.lh09= cleanname
+				span.block.sizeXSm.HmarXXXSm.inconsolata.uppercase.ls1= surname
+
+
+
+//- //////////////// ABOUT
+
+//- ABOUT ARTICLES
+mixin weird_article(n, j, p, color)
+	.articles(class= n)
+		| !{ render(j, p)}
+	style(type="text/css" rel="stylesheet").
+		.articles.#{n} strong{
+			color:#{color}
+		}
+		.articles.#{n} a{
+			color:#{color}
+		}
+		.articles.#{n} hr{
+			border-color:#{color}
+		}
+
+
+mixin article(art, p)
+	- var p2 = !!art.page ? merge(p, rfs(art.page.jade, art.page.path, p)) : p ;
+	- p2.component = art ;  
+	| !{ render(art.template.jade, p2)}
+
+//- //////////////// CONTACTS
+
+//- CONTACT FORM
+mixin contactform()
+	.extra.TmarXXLg.rel.context.montserrat(id=section.name + "_contactform", class= section.name + "_contactform")
+		form(action="#")
+			.fline.context
+				p
+					label.Hpad.dkt(for="firstname")= t("DKT__contact.form.firstname")
+					input.Hpad.formBG(type="text" id="firstname" placeholder="")
+			.fline.context
+				p
+					label.Hpad.dkt(for="lastname")= t("DKT__contact.form.lastname")
+					input.Hpad.formBG(type="text" id="lastname" placeholder="")
+			.fline.context
+				p
+					label.Hpad.dkt(for="companyname")= t("DKT__contact.form.company")
+					input.Hpad.formBG(type="text" id="companyname" placeholder="")
+			.fline.context
+				p
+					label.Hpad.dkt(for="email")= t("DKT__contact.form.email")
+					input.Hpad.formBG(type="text" id="email" placeholder="")
+			.fline.context
+				p
+					label.Hpad.dkt(for="service")= t("DKT__contact.form.service")
+					select.Hpad.floatR.formBG(type="select" id="service")
+						- var emails = t("DKT__contact.emails", { returnObjects: true}) ;
+						- for (var str in emails) {
+							option.fullW.fullH(value=emails[str])= str
+						- }
+
+			.fline.context
+				p
+					label.Hpad.dkt(for="messagebody")= t("DKT__contact.form.message")
+					input.Hpad.formBG(type="text" id="messagesubject" placeholder= t("DKT__contact.form.subject"))
+				p
+					textarea.pad.formBG(id="messagebody" style="width:100%;height:450px" type="text" placeholder=t("DKT__contact.form.your_message"))
+			.fline.context
+				p
+					input.pad.dkt.formBG(type="submit" value=t("DKT__contact.form.send"))
+
+
+
+
+
+				
+
+
+
+
+
+
+
+//- MAYBE NOT USED
+
+//- INTRO -- WHY US BLOCK
 mixin intro(section)
 	.anthraxBG.context
 		.container.rel
@@ -49,346 +613,8 @@ mixin intro(section)
 			.line.txtR.RmarXXXLg.Rpad
 				+link({name:t("All " + section.name ), cl:"dkt", url:section.path})
 
-mixin mediasmallslide(media)
-	li.round.left.cover.abs.top0.left0.zi10(style='width:100%;height:100%;background:url(' + CDN + media.url + ') no-repeat 50% 50%;background-size:cover;opacity: 0;')
-		span.hidden Image
 
-mixin slide(child_section, i)
-
-	- var link_url = child_section.path ;
-	- var post = child_section.post ;
-	- var vars = child_section.post.vars ;
-	- var medias = child_section.post.bracket[1].media ;
-
-	li.bg-dark.noselect(unselectable="on" style='width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;')
-		- var media = section.name == 'home' ? medias[0].url : ((1 in medias) ? medias[1].url : medias[0].url) ;
-		- media = media ;
-		.slidebg.slide-zoom(style='opacity:.3;background-image:url(' + CDN + media + ')')
-
-		- if(child_section.name == 'home'){
-
-			.hs-caption.container(style='top: 0px; display: table;')
-				.caption-content.center
-					h1.cover.biglogo.txtC
-						span.hidden= post.vars.post.name
-					.block.uppercase.montserrat(style='color:#333;margin-top: -25px; margin-left: 4px; font-size:15.5px;')= post.vars.post.surname
-
-					ul.links.dkt.context.TmarLg.sizeLg.noBd
-						li(style='display: inline;')
-							em.gowhite.bt.btn-border-slider-white.round.left.whiteBG.dkt= t('DKT__globals.company.accroche_1')
-						li(style='display: inline;')
-							em.goblack.bt.btn-border-slider-black.round.right.dktBG= t('DKT__globals.company.accroche_2')
-
-		- }else if(child_section.name == 'techs'){
-
-			.hs-caption.container(style='top: 0px; display: table;')
-				.caption-content.left.vmiddle
-					.hs-title-size-3.font-alt.m-b-20.context
-						span.whiteBG.block.floatL.padSm.VpadXSm.round.both.dkt= post.vars.post.name
-					.hs-title-size-1.font-inc.LmarXXSm.Vmar.white
-						span= post.vars.post.surname
-
-					+link({name:t("tech",  {count: 0}), cl:"dkt noBd", url:link_url})
-
-		- }else if(child_section.name == 'products'){
-
-			.hs-caption.container(style='top: 0px; display: table;')
-				.caption-content.right.vmiddle
-					.hs-title-size-3.font-alt.m-b-20.context
-						span.whiteBG.block.floatL.padSm.VpadXSm.round.both.dkt= post.vars.post.name
-					.hs-title-size-1.font-inc.LmarXXSm.Vmar.white
-						span= post.vars.post.surname
-
-					+link({name:t("product",  {count: 0}), cl:"dkt noBd", url:link_url})
-
-		- }else if(child_section.name == 'about'){
-			.hs-caption.container(style='top: 0px; display: table;')
-				.caption-content.left.vmiddle
-					.hs-title-size-3.font-alt.m-b-20.context
-						span.whiteBG.block.floatL.padSm.VpadXSm.round.both.dkt= post.vars.post.name
-					.hs-title-size-1.font-inc.LmarXXSm.Vmar.white
-						span= post.vars.post.surname
-
-					+link({name:t("company"), cl:"dkt noBd", url:link_url})
-		- }else{
-			- var even = i % 2 == 0 ;
-			- var cl = even ? 'right' : 'left' ;
-			.hs-caption.container(style='top: 0px; display: table;')
-				.noproduct.caption-content(class=cl)
-					.hs-title-size-3.font-alt.m-b-20.white
-						span= t(post.vars.post.name)
-					.hs-title-size-1.font-inc.BmarXLg
-						span= t(post.vars.post.surname)
-
-					+link({name:"product", cl:"dkt noBd", url:link_url})
-		- }
-
-
-
-
-mixin contactform()
-	.extra.TmarXXLg.rel.context.montserrat(id=section.name + "_contactform", class= section.name + "_contactform")
-		form(action="#")
-			.fline.context
-				p
-					label.Hpad.dkt(for="firstname")= t("DKT__contacts.form.firstname")
-					input.Hpad.formBG(type="text" id="firstname" placeholder="")
-			.fline.context
-				p
-					label.Hpad.dkt(for="lastname")= t("DKT__contacts.form.lastname")
-					input.Hpad.formBG(type="text" id="lastname" placeholder="")
-			.fline.context
-				p
-					label.Hpad.dkt(for="companyname")= t("DKT__contacts.form.company")
-					input.Hpad.formBG(type="text" id="companyname" placeholder="")
-			.fline.context
-				p
-					label.Hpad.dkt(for="email")= t("DKT__contacts.form.email")
-					input.Hpad.formBG(type="text" id="email" placeholder="")
-			.fline.context
-				p
-					label.Hpad.dkt(for="service")= t("DKT__contacts.form.service")
-					select.Hpad.floatR.formBG(type="select" id="service")
-						- var emails = t("DKT__contacts.emails", { returnObjects: true}) ;
-						- for (var str in emails) {
-							option.fullW.fullH(value=emails[str])= str
-						- }
-
-			.fline.context
-				p
-					label.Hpad.dkt(for="messagebody")= t("DKT__contacts.form.message")
-					input.Hpad.formBG(type="text" id="messagesubject" placeholder= t("DKT__contacts.form.subject"))
-				p
-					textarea.pad.formBG(id="messagebody" style="width:100%;height:450px" type="text" placeholder=t("DKT__contacts.form.your_message"))
-			.fline.context
-				p
-					input.pad.dkt.formBG(type="submit" value=t("DKT__contacts.form.send"))
-
-
-mixin certif()
-	.extra.rel.context.none(id=section.name + "_certif", class= section.name + "_certif")
-		.container.rel
-			.line.txtL.sizeLg.mar.pad.VpadXXLg
-				+pageheader("our_products", surname)
-		.container.context.BmarXXXLg.sizeXXXLg.shady.round.both(style="background:#131313;")
-			.line.BpadXXXLg(style="margin-bottom:5em;")
-				.unit.size2of3.sizeXSm
-					.sizeLg.marXXXLg.txtL
-
-						p.sizeLg.txtL
-							!= render(t('DKT__products.certif_01'))
-
-						.line.context
-							.unit.size1of3
-								p.sizR.txtL.Tmar.Rmar
-									!= render(t('DKT__products.certif_02'))
-
-							.unit.lastUnit
-
-						.line.context.TmarXXXLg
-							.unit.size1of3.floatR
-								!= render(t('DKT__products.certif_03'))
-							.unit.lastUnit
-
-				.unit.lastUnit.sizeXSm
-					//- +needinfo			
-					.sizeLg.marXXXLg.txtL
-						p.sizeLg.txtL
-							!= render(t('DKT__products.needinfo_01'))
-						p.sizeR.txtL.BmarXLg
-							!= render(t('DKT__products.needinfo_02'))
-						.sizeSm
-							!= render(t('DKT__products.needinfo_03'))
-
-						p.sizeSm.txtL.TmarXLg
-							!= render(t('DKT__products.needinfo_04'))
-
-
-mixin needinfo()
-	.sizeLg.marXXXLg.txtL
-		p.sizeLg.txtL
-			!= render(t('DKT__products.needinfo_01'))
-		p.sizeR.txtL.BmarXLg
-			!= render(t('DKT__products.needinfo_02'))
-		.sizeSm
-			!= render(t('DKT__products.needinfo_03'))
-
-		p.sizeSm.txtL.TmarXLg
-			!= render(t('DKT__products.needinfo_04'))
-
-mixin topimage(media, color, title, subtitle)
-	- var newstr = '' ;
-	.extra.rel.context.cover(style='height:30%;background:url(' + CDN + media.url + ') no-repeat 50% 50%;background-size:cover')
-		+sectionheader(title, subtitle)
-
-mixin sectionheader(title, subtitle)
-	.container.rel.fullH.context
-		.abs.right0.bottom0.context.HpadXXXXLg.BpadXLg.sizeXXLg.txtR
-			.hs-title-size-3.font-alt.m-b-20.context.txtL.white
-				span.block.floatR.round.both= t(title)
-			.hs-title-size-1.font-inc.LmarXXSm.white= t(subtitle)
-
-
-mixin pageheader(title, subtitle)
-	if title
-		.hs-title-size-3.font-alt.m-b-20.context.white
-			span.block.round.both.dkt= t(title)
-	if subtitle
-		.hs-title-size-1.font-inc.LmarXXSm.BmarSm.dark= t(subtitle)
-
-
-mixin article(n, j, p, color)
-
-	.articles(class= n)
-		| !{ render(j, p)}
-
-	style(type="text/css" rel="stylesheet").
-		.articles.#{n} strong{
-			color:#{color}
-		}
-		.articles.#{n} a{
-			color:#{color}
-		}
-		.articles.#{n} hr{
-			border-color:#{color}
-		}
-
-mixin back(last)
-	if (last)
-		.abs.left0.top0.bottom.right0.context.sizeR.txtC.dkt.noBd
-			.linker.marXXXLg.round.both.dkt.dktBG.inlineblock
-				a.block.sizeSm.font-inc.white.padXXLg.VpadSm(href="/#/"+ lang + "/products/")= t('back_to', {target:section.name})
-	else 
-		.abs.left0.top0.right0.context.sizeR.txtL.TmarXXXXLg.TpadXXLg.dkt.noBd
-			.linker.marXXXLg.round.both.dktBG.inlineblock
-				a.block.sizeSm.font-inc.white.padXXLg.VpadSm(href="/#/"+ lang + section.path)= t('back_to', {target:section.name})
-
-
-mixin nextprev()
-	- var ch = section.children ;
-	- var next = ch[ch.indexOf(child_section)+1] || ch[0] ;
-	- var prev = ch[ch.indexOf(child_section)-1] || ch[ch.length - 1] ;
-	.to_products.prev.abs.left0.bottom0.fullH.context.sizeR.txtL.size2of5.noBd
-		- var cur = prev ;
-		.cont.none.abs.bottom0.left0.HmarXXXLg.round.both.dkt.dktBG
-			.sizeSm.font-inc.white.padXXLg.VpadSm= t('prev')
-			+linkblock(cur)
-		.linker.abs.bottom0.left0.right0.marXXXLg
-			a.inlineblock.sizeSm.font-inc.white.dktBG.round.both(href= "/#/" + lang + cur.path)
-				span.block.padXXLg.VpadSm= t('prev')
-			.sizeXXXXLg.TmarXXSm.context.clear
-				span.inlineblock.dkt.lh09= t(prev.post.vars.post.name)
-				span.block.sizeXSm.HmarXXXSm.inconsolata.uppercase.ls1= t(prev.post.vars.post.surname)
-
-	.to_products.next.abs.right0.bottom0.context.sizeR.txtR.size2of5.noBd
-		- var cur = next ;
-		.cont.none.abs.bottom0.right0.HmarXXXLg.round.both.dkt.dktBG
-			.sizeSm.font-inc.white.padXXLg.VpadSm= t('next')
-			+linkblock(cur)
-		.linker.abs.bottom0.left0.right0.marXXXLg
-			a.inlineblock.sizeSm.font-inc.white.dktBG.round.both(href= "/#/" + lang + cur.path)
-				span.block.padXXLg.VpadSm= t('next')
-			.sizeXXXXLg.TmarXXSm.context
-				span.inlineblock.dkt.lh09= t(next.post.vars.post.name)
-				span.block.sizeXSm.HmarXXXSm.inconsolata.uppercase.ls1= t(next.post.vars.post.surname)
-
-mixin hpintro
-	.extra.darkBG.context.rel(style="height:100%")
-		#noisecanvas.abs.fullW.fullH.context(style="background:url(/img/noise.jpg) no-repeat left top;background-size:cover")
-		.abs.top0.left0.right0.fullW
-			+transition_intro
-		.abs.top0.left0.right0
-			.sizeXXXXLg.rhdp.white.heavy(style="padding:5em 0") 
-				.sizeXXXXLg= t("DKT__about.name")
-			.container
-				.context(style="height:450px")
-					.line.fullH
-						.unit.size2of5.fullH.rel
-							.sizeXXXXLg.txtL.fullH.pad
-								p.sizeLg.lh1.white 1. Finding the Product
-								.sizeSm.white.abs.bottom0
-									p.Bmar.pad.lh1.
-										We Build Machines.
-									p.Bmar.pad.sizeSm.lh1.
-										The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text.
-						.lastUnit.fullH.rounded.context
-							.srongpointbg.fullW.fullH.cover(style="background:url(/img/timelapse.jpg) no-repeat left top;background-size:cover")
-				
-
-mixin transition_intro()
-	.p-introduction__follow.js-transition-intro.is-shown
-		.p-introduction__follow-in.p-introduction__follow-in--1
-		.p-introduction__follow-in.p-introduction__follow-in--2
-		.p-introduction__follow-in.p-introduction__follow-in--3
-
-
-
-
-
-mixin infos()
-	.ivoryBG.dktTOPBD
-		.container.rel(style="padding-top:2em;padding-bottom:2em;")
-			.line.txtL
-				h6.sizeSm.dkt.LmarXXXXLg= t('DKT__globals.company.copy_to')
-				p.unit.txtL.sizeSm.LmarXXXXLg
-					!= t('DKT__globals.company.address_1')
-					br
-					!= t('DKT__globals.company.address_2')
-					br
-					br
-					!= t('tel') + " : " + t('DKT__globals.company.telephone')
-					br
-					!= t('fax') + " : " + t('DKT__globals.company.fax')
-
-				.lastUnit.sizeSm.RmarXXXXLg.txtR
-					span.block 
-						br
-						!= t('DKT__globals.company.copy') + t('DKT__globals.company.copy_year') 
-						br
-						!= t('DKT__globals.company.copy_to')
-
-
-mixin credits()
-	.extra.rel.context(id=section.name + "_credits", class= section.name + "_credits")
-		.anthraxBG.context
-			.container.pad0.rel
-				.context.HpadXXXLg.Bpad0.sizeLg.txtL(style="margin-top:3em;")
-					.hs-title-size-3.font-alt.m-b-20.context.txtL.white
-						span.block.floatL.round.both.dkt= t("Why us?")
-					.hs-title-size-1.font-inc.LmarXXSm.BmarXXLg.dark= t("And why they trust us")
-			.container.pad0.rel.round.both.ivoryBG.context(style="margin-bottom:10em;")
-				.line
-					.unit.size1of3
-						.block.img.flowimg.fullW(style="height:400px")
-							.strongpointbg.fullW.fullH.cover(style="background:url(/img/facade.jpg) no-repeat left top;background-size:cover")
-						span.block.Hpad.VpadXSm.dktBG.white.sizeR Philosophy 
-						p.txtJ.marXXXXLg.padXSm 
-							!= t("DKT__about.embassy.md_1") 
-					.unit.size1of3
-						.block.img.flowimg.fullW(style="height:400px")
-							.strongpointbg.fullW.fullH.cover(style="background:url(/img/building_coating.jpg) no-repeat left top;background-size:cover")
-						span.block.Hpad.VpadXSm.dktBG.white.sizeR Philosophy 
-						p.txtJ.marXXXXLg.padXSm
-							!= t("DKT__about.embassy.md_2")
-					.unit.lastUnit
-						.block.img.flowimg.fullW(style="height:400px")
-							.strongpointbg.fullW.fullH.cover(style="background:url(/img/upview.jpg) no-repeat left top;background-size:cover")
-						span.block.Hpad.VpadXSm.dktBG.white.sizeR.round.right Philosophy 
-						p.txtJ.marXXXXLg.padXSm
-							!= t("DKT__about.embassy.md_3")
-
-				.aboutgo(style="padding:3em 0 10em")
-					+link({name:t("our_company"), cl:"dkt", url: '/about/'})
-				.line.txtL.round.ivoryBG.right(style="background:#E8E8E8;border:1px dashed #9d1639")
-					.unit.endlogo.floatR.marXXLg
-						span.hidden= t('DKT__globals.company.name')
-					.lastUnit.sizeLg.marXXLg
-						span.block.dkt.TmarXSm= t('thank_you')
-
-
-
-
-mixin hpstrongpoints
+mixin hpstrongpoints()
 	.extra.darkBG.context.montserrat
 		.container.context.sizeXXLg
 			.line(style="padding:15em 0 15em 0")

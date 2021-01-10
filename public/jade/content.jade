@@ -1,1 +1,17 @@
+
+//- CORE -- SMART REWRITING SECTIONS NAMES 
+each topsection, i in topsections
+  - var db_section = db_sections[i] ;
+  - db_section.cleanname = topsection.cleanname ;
+  - db_section.surname = topsection.surname ;
+  - db_section.cleanlink = topsection.cleanlink ;
+  if(topsection.children)
+    each ch, i in topsection.children
+      - var db_ch = db_section.children[i] ;
+      - db_ch.cleanname = ch.cleanname ;
+      - db_ch.surname = ch.surname ;
+      - db_ch.cleanlink = ch.cleanlink ;
+
+
+
 | !{ renderFile(basedir + 'layouts/all.jade', p(locals, { filename: basedir + 'layouts/all.jade'}))}

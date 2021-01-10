@@ -4,24 +4,29 @@ extends ./page
 
 //- ----------------------- END : Extends
 
-include /mixins/_global
 
 block content
+  - var target_sections = [].concat([db_sections[2]]).concat([db_sections[1]]).concat(db_sections[1].children).concat(db_sections[2].children) ;
   
+  //- HOME SLIDESHOW
   .extra.rel.fullH.context(style='height:90%;')
-    - var target_sections = [].concat([db_sections[0]]).concat([db_sections[1]]).concat([db_sections[2]]).concat([db_sections[3]]).concat(db_sections[1].children).concat(db_sections[2].children) ;
-    include /layouts/components/slideshow
+    
+    +slideshow()
+
+
 
 
   block flow
     
-    +hpintro
-    //- +hpstrongpoints
-    +credits()
-
+    //- HOME ARTICLE BLOCKS
+    each home_article in getComponentsByTypename(section.post.bracket, 'ComponentModularArticle')
+      +article(home_article, params)
+    
+    
+    //- PATCHWORK
     - var target_sections = [].concat(db_sections[1].children).concat(db_sections[2].children) ;
-    include /layouts/components/patchwork
-
-    +infos()
+    +patchwork()
+    
+    +footer()
 
     

@@ -1,5 +1,7 @@
 extends /core/basic
 
+include /mixins/_global
+
 block all
   block vars
     - var vars = section.post.vars.vars ;
@@ -13,3 +15,5 @@ block content
   block full
   
   block flow
+
+  block ajax

@@ -1,13 +1,11 @@
 .extra.rel.context(style='padding:5em 0;background:#E8E8E8')
   .container.rel.context(style="margin-top:1px;")
-    - var params = {vars:{test:"DKT__products.name_sl_001"}, section:section} ;
+  
     .line.BmarXLg
       .unit.size2of3
         .txtL.marXXXXLg.Tmar0.padXSm.dark
-          :marked
-            !{md(t(articles[0].desc_01, params))}
+          :marked !{md(t(desc_01, locals))}
 
       .unit.lastUnit.txtR
         .txtR.marXXXXLg.padXSm 
-          :marked
-            !{md(t(articles[0].desc_02, params))}
+          :marked !{md(t(desc_02, locals))}

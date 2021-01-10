@@ -11,6 +11,7 @@ require('../../threejs/examples/js/controls/TrackballControls.js')
 require('../../threejs/examples/js/loaders/GLTFLoader.js')
 require('../../threejs/examples/js/loaders/DRACOLoader.js')
 require('../../threejs/examples/js/loaders/RGBELoader.js')
+require('../../threejs/examples/js/WebGL.js')
 
 var effects = require('./effects.js') ;
 
@@ -23,7 +24,10 @@ var products_toggle ;
 
 var patchwork ;
 var threenoise ;
+var slidrens ;
 
+var topofpage ;
+var topclos ;
 var scroll ;
 var scrollEv ;
 var slideshow ;
@@ -34,6 +38,9 @@ var parallax ;
 var resetscrolls ;
 
 window.lang = $('html').attr('lang') ;
+
+
+var OKWEBGL = THREE.WEBGL.isWebGLAvailable() && 0 ;
 
 module.exports = {
 	
@@ -101,6 +108,8 @@ module.exports = {
 		if(pos > 0){
 			$('.navbar').addClass('overnav') ; 
 			$('.js-transition-intro').addClass('none') ;
+
+			
 		}else{
 			$('.navbar').removeClass('overnav') ;
 			$('.js-transition-intro').removeClass('none') ;
@@ -117,39 +126,58 @@ module.exports = {
 		}else{
 			$(document).off(type, clos) ;
 		}
-		
-		
+
 	},
+	topclos:topclos = function(e){
+		e.preventDefault() ;
+		e.stopPropagation() ;
+
+		$(document).scrollTop(0) ;
+	},
+	topofpage : topofpage = function(e, cond){
+		var res = e.target ;
+		var id = res.id ;
+		var top = $('#'+id+' .topofpage') ;
+		
+		if(cond){
+			top.on('click', topclos) ;
+			
+		}else{
+			top.off('click', topclos) ;
+		}
+
+	},
+	
 	small3D:small3D = function(e, cond){
 		
 		var res = e.target ;
 		
 		var canvasholder = $('#'+res.id+' .canvascontainer') ;
 		
-		if(cond){
+		if( OKWEBGL ){
 
-			if(!!canvasholder.length){
-			// 	canvasholder.css('backgroundImage', '') ;
-				effects.viz3D.enable(true, canvasholder, e) ;	
+			if(cond){
+
+			
+
+				if(!!canvasholder.length){
+				// 	canvasholder.css('backgroundImage', '') ;
+					effects.viz3D.enable(true, canvasholder, e) ;	
+				}
+	
+			}else{
+	
+				if(!!canvasholder.length){
+					effects.viz3D.enable(false, canvasholder, e) ;	
+				}
+	
 			}
 
-		}else{
-
-			if(!!canvasholder.length){
-				effects.viz3D.enable(false, canvasholder, e) ;	
-			}
-
+			
 		}
 		
-		if(cond){
-
-
-
-
-		}else{
-
-
-		}
+		
+		
 
 	},
 	////////////////////////// SLIDESHOW
@@ -164,9 +192,7 @@ module.exports = {
 		if(!slideshow.length) return ;
 		
 		var slides = rt.find('.pics li') ;
-		
 		var launched = false ;
-		
 		var cy ;
 		
 		
@@ -183,11 +209,8 @@ module.exports = {
 				
 				var li = $(e.target) ;
 				var w = li.width() ;
-
 				var mw = w >> 1 ;
-				
 				var screenX = window.screenX = e.pageX || window.screenX ;
-				
 				var localX = screenX - li.offset().left ;
 				
 				if(localX > mw){ // ON RIGHT
@@ -205,31 +228,18 @@ module.exports = {
 				
 			}
 
-
-
-			
-			
 			var clk = res.userData.clk = function(e){
 				
 				var tg = $(e.target) ;
 				var w = tg.width() ;
-
 				var mw = w >> 1 ;
-				
 				var screenX = window.screenX = e.pageX || window.screenX ;
-				
 				var localX = screenX - tg.offset().left ;
-				
 
 				if(localX > mw){ // ON RIGHT
-
 					cy.next() ;
-
-					
 				}else{ // ON LEFT
-					
 					cy.prev() ;
-
 				}
 				
 			}
@@ -293,7 +303,7 @@ module.exports = {
 
 			slides.css({
 				'z-index':'1',
-				'left':'-15000px',
+				'left':'15000px',
 				'opacity':'0'
 			}).removeClass('inited') ;
 			
@@ -308,13 +318,13 @@ module.exports = {
 				
 				if(cond){
 					
-					li.click(res.userData.clk) ;
-					li.mousemove(res.userData.mm) ;
+					li.on('click', res.userData.clk) ;
+					li.on('mousemove', res.userData.mm) ;
 					
 				}else{
 					
-					li.off('click', clk) ;
-					li.off('mousemove', mm) ;
+					li.off('click', res.userData.clk) ;
+					li.off('mousemove', res.userData.mm) ;
 					
 				}
 				
@@ -350,28 +360,30 @@ module.exports = {
 		
 		if(!slideshow.length) return ;
 		
-		var slides = rt.find('.slides li.bg-dark') ;
+		var slides = slideshow.find('.slides li.bg-dark') ;
 		
-		// var next = rt.find('.flex-direction-nav .flex-next').removeAttr('href') ;
-		// var prev = rt.find('.flex-direction-nav .flex-prev').removeAttr('href') ;
-		var slidesnav = rt.find('.flex-control-nav li a') ;
+		var slidesnav = slideshow.find('.flex-control-nav li a') ;
 		
-		var launched = false ;
+		var sl ;
 		
-		var cy ;
-		
-		
-		if(!res.userData.cy){
+		if(!res.userData.slideshow){
 			
+			sl = res.userData.slideshow = {} ;
+
+
+
+
 			var commands = [] ;
-			cy = res.userData.cy = new Cyclic(commands) ;
+			sl.cy = new Cyclic(commands) ;
 			var TIME = 7000 ;
 			
 			
 			
 			
-			var mm = res.userData.mm = function(e){
+			sl.mm = function(e){
+				
 				var li = $(e.currentTarget) ;
+				
 				if(e.target.tagName == 'SPAN' || e.target.tagName == 'A'){
 					if( e.target.tagName == 'A') li.removeClass('slideprev slidenext')
 					// if( e.target.tagName == 'A') li.removeClass('slidenext')
@@ -425,7 +437,7 @@ module.exports = {
 				
 			}
 			
-			var clk = res.userData.clk = function(e){
+			sl.clk = function(e){
 				
 				if( e.target.tagName == 'A'){
 					
@@ -460,15 +472,15 @@ module.exports = {
 								
 							} else{
 								
-								halt() ;
-								cy.next() ;
+								sl.halt() ;
+								sl.cy.next() ;
 
 							}
 
 						}else{ // OTHER Cases
 
-							halt() ;
-							cy.next() ;
+							sl.halt() ;
+							sl.cy.next() ;
 
 						}
 
@@ -492,15 +504,15 @@ module.exports = {
 								
 							} else{
 								
-								halt() ;
-								cy.prev() ;
+								sl.halt() ;
+								sl.cy.prev() ;
 								
 							}
 
 						}else{ // OTHER Cases
 
-							halt() ;
-							cy.prev() ;
+							sl.halt() ;
+							sl.cy.prev() ;
 
 						}
 
@@ -509,14 +521,15 @@ module.exports = {
 				}
 				
 			}
-			var navgo = res.userData.navgo = function(e){
+
+			sl.navgo = function(e){
 				e.preventDefault() ;
 				e.stopPropagation() ;
 				
 				var a = $(e.currentTarget) ;
-				halt() ;
 				
-				cy.go(a.data('i')) ;
+				sl.halt() ;
+				sl.cy.go(a.data('i')) ;
 			}
 			
 			slides.each(function(i, el){
@@ -526,137 +539,135 @@ module.exports = {
 				a.attr({'href': '#'}) ;
 				a.data({'i': i}) ;
 				li.data('navitem', a) ;
+
+				// a.on('click', sl.navgo) ;
 				
-				a.bind('click', navgo) ;
 				
 				
-				
-				cy.push(new Command(null, function(el, i){
+				sl.cy.push(new Command(null, function(el, i){
 					var c = this ;
 					var li = $(el) ;
 					var a = li.data('navitem') ;
 					
-					clear() ;
-					
+					sl.clear() ;
+
 					li.css({
 						'left':'0',
 						'z-index':'2'
 					}) ;
 					
-					
-					// trace(i)
-					
-					var tw = res.userData.tw = BetweenJS.parallel(
-						BetweenJS.create({
-							target:li,
-							to:{
-								'opacity':100
-							},
-							from:{
-								'opacity':0
-							},
-							time:.45,
-							ease:Expo.easeOut
-						})
-					) ;
+
+					sl.tw = BetweenJS.create({
+						target:li,
+						to:{
+							'opacity':100
+						},
+						from:{
+							'opacity':0
+						},
+						time:.45,
+						ease:Expo.easeOut
+					}) ;
+
 					li.trigger('mousemove') ;
 					
 					/* IMPORTANT HACK FOR CSS-ANIM TO WORK PROPERLY */
 					setTimeout(function(){
 						li.addClass('inited') ;	
-						rt.find('.flex-control-nav li').removeClass('active') ;
+						slideshow.find('.flex-control-nav li').removeClass('active') ;
 						a.parent().addClass('active') ;
-					}, 15)
+					}, 15) ;
 					/* END IMPORTANT */
 					
-					tw.onComplete = function(){
+					sl.tw.onComplete = function(){
 						c.dispatchComplete() ;
 					}
-					tw.play() ;
+
+					sl.tw.play() ;
 					
 					return this ;
+
 				}, el, i))
 			})
 			
-		}
-		
-		cy = res.userData.cy ;
-		
-		var clear = res.userData.clear = res.userData.clear || function(){
+			sl.clear = function(){
 				
-			slides.css({
-				'z-index':'1',
-				'left':'-15000px',
-				'opacity':'0'
-			}).removeClass('inited') ;
-			
-			rt.find('.flex-control-nav li').removeClass('active') ;
-		}
-		
-		
-		
-		var enable = res.userData.enable = res.userData.enable || function(cond){
-			
-			slides.each(function(i, el){
-				var li = $(el) ;
-				var a = li.data('navitem') ;
+				slides.css({
+					'z-index':'1',
+					'left':'15000px',
+					'opacity':'0'
+				}).removeClass('inited') ;
 				
-				if(cond){
+				slideshow.find('.flex-control-nav li').removeClass('active') ;
+			}
+
+			sl.enable = function(cond){
+			
+				slides.each(function(i, el){
+					var li = $(el) ;
+					var a = li.data('navitem') ;
 					
-					li.on('click', res.userData.clk) ;
-					li.on('mousemove', res.userData.mm) ;
+					if(cond){
+						
+						li.on('click', sl.clk) ;
+						li.on('mousemove', sl.mm) ;
+						
+						a.on('click', sl.navgo) ;
+					}else{
+						
+						li.off('click', sl.clk) ;
+						li.off('mousemove', sl.mm) ;
+						
+						a.off('click', sl.navgo) ;
+					}
 					
-					a.on('click', res.userData.navgo) ;
-				}else{
-					
-					li.off('click', clk) ;
-					li.off('mousemove', mm) ;
-					
-					a.off('click', navgo) ;
-				}
+				}) ;
 				
-			}) ;
+			}
 			
+
+			
+		
+			sl.launch = function(){
+				clearTimeout(sl.UID) ;
+				sl.cy.next() ;
+				
+				sl.UID = setTimeout(sl.launch, TIME) ;
+				
+				sl.launched = true ;
+			}
+
+			
+			sl.halt = function(){
+				
+				if(!!sl.tw) sl.tw.stop() ;
+				
+				sl.UID = clearTimeout(sl.UID) ;
+
+				sl.launched = false ;
+				
+			}
+
 		}
 		
-		var launch = res.userData.launch = res.userData.launch || function(){
-			clearTimeout(res.userData.UID) ;
-			cy.next() ;
-			
-			res.userData.UID = setTimeout(function(e){
-				clearTimeout(res.userData.UID) ;
-				launch() ;
-			}, TIME) ;
-			
-			launched = true ;
-		}
-		
-		var halt = res.userData.halt = res.userData.halt || function(){
-			
-			if(!!res.userData.tw) res.userData.tw.stop() ;
-			
-			res.userData.UID = clearTimeout(res.userData.UID) ;
-			launched = res.userData.launched = false ;
-		}
-		
-		// next.click(nn) ;
-		// prev.click(nn) ;
+		sl = res.userData.slideshow ;
+		// sl.launched = false ;
 		
 		
 		if(cond){
 			
 			// trace('opening UID :', id) ;
 			
-			clear() ;
+			sl.clear() ;
 
-			enable(true) ;
+			sl.enable(true) ;
 			
 			// cy.index = -1 ;
 			
-			if(cy.index == -1 ) launch() ;
+			if(sl.cy.index == -1 ) sl.launch() ;
 			else{
-				cy.index -- ;
-				launch() ;
+				sl.cy.index -- ;
+				sl.launch() ;
 				// halt() ;
 			}
 			
@@ -664,11 +675,11 @@ module.exports = {
 			
 			// trace('closing UID :', id) ;
 			
-			clear() ;
+			sl.clear() ;
 			
-			enable(false) ;
+			sl.enable(false) ;
 			
-			halt() ;
+			sl.halt() ;
 			
 			
 		}
@@ -732,7 +743,7 @@ module.exports = {
 				elem.data('click', function(e){
 					e.preventDefault() ;
 					e.stopPropagation() ;
-					document.location = '/#' + href ;
+					document.location = href ;
 				}) ;
 				
 				elem.bind('click', elem.data('click')) ;
@@ -752,23 +763,148 @@ module.exports = {
 		
 	},
 	
+	slidrens:slidrens = function(e, cond){
+		var res = e.target ;
+		var id = res.id ;
+		
+		var rt = $('#' + id) ;
+
+		var slidesol = rt.find('#slidrens') ;
+		
+
+		// return ;
+		if(!slidesol.length) return ;
+		
+		var slides = slidesol.find('li') ;
+		var first = $(slides.get(0)) ;
+		
+		if(!res.userData.hpintrocy){
+			
+			var commands = [] ;
+			cy = res.userData.hpintrocy = new Cyclic(commands) ;
+			
+			res.userData.hpintroclk = function(e){
+				
+				e.preventDefault() ;
+				e.stopPropagation() ;
+				
+				var tg = $(e.target) ;
+				
+				if(tg.hasClass('arrnext')){ // ON RIGHT
+					cy.next() ;
+				}else{ // ON LEFT
+					cy.prev() ;
+				}
+				
+			}
+				
+			
+			
+			
+			slides.each(function(i, el){
+				
+				cy.push(new Command(null, function(el, i){
+					var c = this ;
+					var li = $(el) ;
+					
+					res.userData.hpintroclear() ;
+					
+					li.removeClass('none').css({'opacity':0}) ;
+					
+					var tw = res.userData.hpintrotw = BetweenJS.create({
+						target:li,
+						to:{
+							'opacity':100
+						},
+						time:.25,
+						ease:Expo.easeOut
+					})
+
+					tw.play() ;
+					
+					// return this ;
+				}, el, i))
+				
+			})
+			
+		}
+		
+		cy = res.userData.hpintrocy ;
+		
+		var clear = res.userData.hpintroclear = res.userData.hpintroclear || function(reset){
+			
+			if(!!res.userData.hpintrotw && res.userData.hpintrotw.isPlaying){
+				res.userData.hpintrotw.stop() ;
+			}
+
+			slides.css({
+				'opacity':'0'
+			}).addClass('none') ;
+			
+			if(reset){
+				first.css({'opacity':1}).removeClass('none') ;
+			}
+
+		}
+		
+		var arrows = rt.find('.arr') ;
+		
+		var enable = res.userData.hpintroenable = res.userData.hpintroenable || function(cond){
+			
+			arrows.each(function(i, el){
+				var arr = $(el) ;
+				
+				if(cond){
+					
+					arr.on('click', res.userData.hpintroclk) ;
+					
+				}else{
+					
+					arr.off('click', res.userData.hpintroclk) ;
+					
+				}
+				
+			}) ;
+			
+		}
+		
+		if(cond){
+			
+			enable(true) ;
+			cy.index = 0 ;
+
+		}else{
+			
+			clear(true) ;
+			
+			enable(false) ;
+			
+		}
+		
+
+	},
 	threenoise:threenoise = function(e, cond){
 		
 		var canvasholder = $('#noisecanvas') ;
 
-		if(cond){
+		if ( OKWEBGL ) {
+			
+			if(cond){
 
-			if(!!canvasholder.length){
-				canvasholder.css('backgroundImage', '') ;
-				effects.noiseeffect.enable(true, canvasholder) ;	
-			}
+				if(!!canvasholder.length){
+					canvasholder.css('backgroundImage', '') ;
+					effects.noiseeffect.enable(true, canvasholder) ;	
+				}
 
-		}else{
-			if(!!canvasholder.length){
-				effects.noiseeffect.enable(false, canvasholder) ;	
+			}else{
+				if(!!canvasholder.length){
+					effects.noiseeffect.enable(false, canvasholder) ;	
+				}
+
 			}
 
 		}
+
 
 	},
 	
@@ -825,24 +961,35 @@ module.exports = {
 		
 		var target_section = $('section.' + id) ;
 		var patchwork = $('.' + res.parentStep.id + '_patchwork') ;
-		var credits = $('.' + res.parentStep.id + '_credits') ;
+		var why = $('.' + res.parentStep.id + '_why') ;
 		var certif = $('.' + res.parentStep.id + '_certif') ;
 
 		if(res.opening){
 			
 			patchwork.addClass('none') ;
-			credits.addClass('none') ;
-			certif.removeClass('none') ;
+			why.addClass('none') ;
+			// certif.removeClass('none') ;
+
 
 			target_section.appendTo(parent) ;
+
+			topofpage(e, true) ;
+
 			res.ready() ;
 			
 		}else{
 			
-			patchwork.removeClass('none') ;
-			credits.removeClass('none') ;
-			certif.addClass('none') ;
 
+			topofpage(e, false) ;
+
+			patchwork.removeClass('none') ;
+			why.removeClass('none') ;
+			// certif.addClass('none') ;
+			
+			/* HACKY BUT WORTHY */
+			resetscrolls(id) ;
+			
+			
 			target_section.appendTo(continent) ;
 			res.ready() ;
 		
@@ -911,14 +1058,23 @@ module.exports = {
 
 			threenoise(e, true) ;
 
+			slidrens(e, true) ;
+
+
 			languages(e, true) ;
 			
+			topofpage(e, true) ;
+
 			res.ready() ;
 			
 		}else{
 			
 
+			topofpage(e, false) ;
+
 			languages(e, false) ;
+
+			slidrens(e, false) ;
 
 			threenoise(e, false) ;
 

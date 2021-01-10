@@ -1,123 +1,36 @@
 
 
-include /mixins/_global
+extends ./page
 
 
 
-- var medias = getComponentsByTypename(child_section.post.bracket, 'ComponentModularMedia')[0].media ;
-
-- var components = { "desc":"DKT__products.desc", "instr":"DKT__products.instr", "concl":"DKT__products.concl" } ;
-
-- locals.productname = t(child_section.post.vars.post.name) ;
-
-- var vars = child_section.vars ;
-
-
-section.page.zind3.rel.context(style="background:#FFF;")
-	.abs.top0.right0.sizeLg.zi20
-		a.inlineblock.padXLg.Vpad0.inconsolata.dktBG.round.close_btn.white(href="#/" + lang + section.path)
-			span.sizeLg x
+block content
+	block ajax
 	
-	.container.rel.zi1
+	section.page.zind3.rel.context(style="background:#FFF;")
+		.abs.top0.right0.sizeLg.zi20
+			a.inlineblock.padXLg.Vpad0.inconsolata.dktBG.round.close_btn.white(href="#/" + lang + section.path)
+				span.sizeLg x
 		
-		.line.txtL(style="margin-top:2em")
-			.unit.size1of2.floatR.txtR.context.sizeLg.dkt.pad.BpadXXLg
-				+pageheader('DKT__products.name_' + child_section.name, 'DKT__globals.machinery')
-
-
-			.unit.lastUnit.Tpad.BpadXXLg.txtL
-				.line
-					.unit.size2of5.txtC
-						.endlogo.inlineblock(style="background-position:-120px -50px;")
-							span.hidden Tadaaa
-					.unit.lastunit
-						.font-inc
-							span #{t('creation_year')} :
-							span.dkt #{product.year}
-						.font-inc
-							span #{t('tags')} : 
-							span.dkt #{product.tags}
-						.font-inc 
-							span #{t('desc_file')} : 
-							a.dkt(href='/pdf/' +  product.file, target="_blank") #{product.file}
-		
-	.container(style="margin-top:0em")
-		.line(style="margin-bottom:2em")
-			.unit.lastUnit.dark.round.right.RmarXXXXLg(style="margin-top:0em")
-				.Tmar.txtR.sizeLg
-					| !{ render(t(components.desc + '_' + child_section.name, p(locals)), p(locals)) }
+		.container.rel.zi1
 			
-		.line(style="margin-top:2em;")
-			.unit.floatR.size4of5.round.both
-				.txtL
-					.line.rel.fullW(style="height:400px;")
-						ul.pics.fullH.round.left.flowvisible.ocreBG(style="width:100%;")
-							.loader.abs.left0.top.dkt.zi1
-								.hidden ohhhh
-							each media in medias
-								+mediasmallslide(media)
-					.line.rel.ocreBG.round.right
-						.pad
-							span.sizeLg.block.Hpad.dkt= t('specs')
-						.txtR
-							table.tables.font-inc.dark(style="width:100%" row="4")
-								tbody.lh2
-									tr
-										td.bold.dkt.size1of3.txtL.Lpad Web Materials 
-										td.txtL.Rpad PET film
-									tr
-										td.bold.dkt.size1of3.txtL.Lpad Web Thickness
-										td.txtL.Rpad 100 ~ 250 micron
-									tr
-										td.bold.dkt.size1of3.txtL.Lpad Web Width
-										td.txtL.Rpad 500 ~ 1,570 mm
-									tr
-										td.bold.dkt.size1of3.txtL.Lpad Machine Speed
-										td.txtL.Rpad Max. 30m/min
-									tr
-										td.bold.dkt.size1of3.txtL.Lpad Unwind Diameter
-										td.txtL.Rpad Max. 800mm
-									tr
-										td.bold.dkt.size1of3.txtL.Lpad Rewind Diameter
-										td.txtL.Rpad Max. 800mm
-									tr
-										td.bold.dkt.size1of3.txtL.Lpad Coating System
-										td.txtL.Rpad (Double Top) Roller Gap Adjusting System
-									tr
-										td.bold.dkt.size1of3.txtL.Lpad Dryer Diameter
-										td.txtL.Rpad Low/Middle/High Pressure UV system
-									tr
-										td.bold.dkt.size1of3.txtL.Lpad Inspection Room
-										td.txtL.Rpad Top Roller Gap Adjusting System
-									tr
-										td.bold.dkt.size1of3.txtL.Lpad Laminating System
-										td.txtL.Rpad by Sight
-									tr
-										td.bold.dkt.size1of3.txtL.Lpad Rewinding System
-										td.txtL.Rpad Center (Surface Turret) Winding System
-						.canvascontainer.context.fullW.ocreBG(style="height:450px")
-			.lastUnit
-				.TmarXXXLg.RmarXXXLg.RpadXXXLg.txtL
-						| !{ render(t(components.instr + '_' + child_section.name, locals), locals) }
+			.line.txtL(style="margin-top:2em")
+				.unit.size1of2.floatR.txtR.context.sizeLg.dkt.pad.BpadXXLg
+					+pageheader(child_section.cleanname, child_section.surname)
 
-		.line(style="margin-top:5em;margin-bottom:5em")
-			.unit.size4of5.floatR
-				.line
-					.unit.size1of2
-						.TmarXXXLg.LmarXXXLg.txtL
-							| !{ render(t('DKT__products.needinfo_03')) }
-					.lastunit
-						.Tmar.RmarXXXLg.txtR
-							| !{ render(t(components.concl + '_' + child_section.name, locals), locals) }
-							br
-							| !{ render(t('DKT__products.certif_01')) }
+				.unit.lastUnit.Tpad.BpadXXLg.txtL
+					+productbasics(basics)
+		
+		.container
+			//- PRODUCTS ARTICLE BLOCKS
+			each product_article in getComponentsByTypename(child_section.post.bracket, 'ComponentModularArticle')
+				+article(product_article, params)
 
-.extra.context.rel.noproduct(style='height:21em;')
-	.abs.top0.left0.bottom0.right0
-		span.hidden Image
 
-	+nextprev()
+	.extra.context.rel(style='height:21em;')
+		.abs.top0.left0.bottom0.right0
+			span.hidden Image
 
-	+back(true)
+		+nextprev()
 
-//- +credits()
+		+back(true)

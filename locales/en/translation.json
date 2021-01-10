@@ -1,4 +1,5 @@
 {
+  
   "view": "View",
   "product": "The Product",
   "product_plural": "The Products",
@@ -8,26 +9,38 @@
   "company": "The Company",
   "our_company": "Our Company",
 
-  "tel": "Tel",
-  "fax": "Fax",
   "next": "Next",
   "prev": "Previous",
   "back": "Back",
   "back_to": "Back to {{ target }}",
+  "topofpage": "Top of Page",
+  
   "welcome": "Welcome",
   "you": "You",
-  "thank_you": "Thank You",
+  "ty": "Thank You.",
+  "call": "Call",
   "greetings": "Greetings",
+  
+  "tel": "Tel",
+  "fax": "Fax",
 
   "specs":"Specifications",
   "creation_year":"Creation Year",
   "tags":"Tags",
   "desc_file":"Description File",
-
+  
+  
   "DKT__globals": {
-    "machinery": "DKT Coating Machinery",
     "name": "DKT",
     "accr": "Dynamic Korea Technology",
+    "TSP": "Total Solutions Provider",
+    "machinery": "$t(~) Coating Machinery",
+    "certified": "$t(~) Certificated Coating Professional",
+    "licensed": "$t(~) Licensed Techs",
+    "edgy": "Edge Sharp Innovations",
+    "fullscale": "$t(~) Full Scale Enterprise",
+    "contactus": "Contact Us",
+    "keepintouch": "Keep In Touch",
     "suffix":"@dktmc.com",
     "company": {
       "accroche_1": "Technology",
@@ -37,37 +50,66 @@
       "telephone": "+82-54-462-5326~7",
       "fax": "+82-54-462-5320 / +82-54-716-0004",
       "copy": "All Rights Reserved © ",
-      "copy_to": "DKT International Co, Ltd",
+      "copy_to": "$t(~) International Co, Ltd",
       "copy_year": "2020",
       "creation_year": "2007"
     }
   },
+  
+  "~":"$t(DKT__globals.name)",
+  "~~":"$t(DKT__globals.accr)",
+  "~~~":"$t(DKT__globals.TSP)",
 
+  "DKT__home": {
+    "name": "$t(~)",
+    "surname": "$t(~~)",
+
+    "intro":{
+      "title_01":"Finding the Product",
+      "text_01":"## We Build Machines.  \nThe point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text.",
+      "title_02":"Gathering the Techs",
+      "text_02":"## We Build Machines.  \nThe point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text.",
+      "title_03":"Developing the Line",
+      "text_03":"## We Build Machines.\nThe point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text."
+    }
+  },
   "DKT__about": {
-    "name": "Total Solutions Provider",
-    "surname": "$t(DKT__globals.company.name) Full Scale Enterprise",
+    "name": "$t(~~~)",
+    "surname": "$t(DKT__globals.fullscale)",
     "creation_year": "2007",
-    "embassy": {
-      "philosophy": "Our Philsophy",
-      "md_1": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
-      "md_2": "The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text.",
-      "md_3": "And a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
+    
+    "why":{
+      "header":"Why Us ?",
+      "subheader":"And why they trust us",
+      "title_01":"Modularity Achievements",
+      "text_01":"## We deploy _Concepts_.  \nThe point of using __Lorem Ipsum__ is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use __Lorem Ipsum__ as their default model text.",
+      "title_02":"Refining in Detail",
+      "text_02":"## We have _Ideals_.  \nThe __point__ of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ***'Content here, content here',*** making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text.",
+      "title_03":"Delayless Wordwide Delivering",
+      "text_03":"## We also have _Respect_.\nThe point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making [_'Albert Einstein'_]({{whylink.linkto}}) it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text."
     },
+
     "articles": {
-      "article_01": {
-        "desc_01": "##### __DKT__ - {{ section.post.vars.post.name }}\n***\n## __The Way__ to go with success\n#### is to keep __thankfull__, to all __obstacles__ afterwards.  \n[__'Albert Einstein'__](https://duckduckgo.com), is a heavy influencer  \nof the 20th Century.  \n****\n**$t({{vars.test}})** :  One piece of the Future, 1985.  [__'Albert Einstein'__](),",
+      "intro": {
+        "desc_01": "{{ intro }}\n***\n## __The Way__ to go with success\n#### is to keep __thankfull__, to all __obstacles__ afterwards.  \n[__'Albert Einstein'__](https://duckduckgo.com), is a heavy influencer  \nof the 20th Century.  \n****\n**$t({{vars.test}})** :  One piece of the Future, 1985.  [__'Albert Einstein'__](),",
 
-        "desc_02": "***\nAnd a search for __{{ section.post.vars.post.name }}__ will uncover many web sites still in their infancy.\nVarious versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like __{{ section.post.vars.post.surname }}__ )"
+        "desc_02": "***\nAnd a search for __{{ saz }}__ will uncover many web sites still in their infancy.\nVarious versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like __{{ vars.test }}__ )"
       },
-      "article_02": {
-        "desc_01": "##### __DKT__ - {{ section.post.vars.post.name }}\n***\n ## __The Way__ to go with success\n#### is to keep __thankfull__, to all __obstacles__ afterwards.  \n[__'Albert Einstein'__](https://duckduckgo.com), is a heavy influencer  \nof the 20th Century.  \n****\n**$t({{vars.test}})** :  One piece of the Future, 1985.  [__'Albert Einstein'__](),",
+      "history": {
+        "desc_01": "{{ intro }}\n***\n ## __The Way__ to go with success\n#### is to keep __thankfull__, to all __obstacles__ afterwards.  \n[__'Albert Einstein'__](https://duckduckgo.com), is a heavy influencer  \nof the 20th Century.  \n****\n**$t({{ vars.test }})** :  One piece of the Future, 1985.  [__'Albert Einstein'__](),",
 
-        "desc_02": "## A brief __overview__  \n****\n![GitHub Logo](/img/logo_big_green.png) \n  \n****  \n**$t({{vars.test}})** :  One piece of the Future, 1985.  [__'Albert Einstein'__]()"
+        "desc_02": "## A brief __overview__  \n****\n![DKT Logo](/img/logo_big_green.png) \n  \n****  \n**$t({{ vars.test }})** :  One piece of the Future, 1985.  [__'Albert Einstein'__]()"
       }
     }
   },
-  "DKT__contacts":{
-    "telephone": "Via Telephone",
+  "DKT__techs": {
+    "name": "$t(DKT__globals.edgy)",
+    "surname": "$t(DKT__globals.licensed)"
+  },
+  "DKT__contact":{
+    "name": "$t(DKT__globals.contactus)",
+    "surname": "$t(DKT__globals.keepintouch)",
+    "telephone": "By Phone",
     "telephone_txt": "Worldwide answering to your demand.",
     "telephone_sales": "1-800-6425-1539",
     "email": "Via Email",
@@ -96,32 +138,110 @@
 
   },
   "DKT__products": {
+    "name": "$t(our_products)",
+    "surname": "$t(DKT__globals.certified)",
 
-    "certif_01":"| Our \nspan.dkt products  \n| have all obtained licensing and certification from \nstrong.dkt ISO-4501-8888.",
-    "certif_02":"| They are under constant check and control as we speak. Numerous consecutive tests puts them at a hard training, through the whole process of multiple building-unbuilding preface, until full-and-functional delivery. ",
-    "certif_03":"| They then are shipped under cimilarily checkable controls, by partner and certified shipper, until they become part of client's property, which falls under, again various of our insurances policies.",
-    "needinfo_01":"span.dkt Need \n| an information on any of our \nspan.dkt products ?",
-    "needinfo_02":"| Feel free to contact our \nstrong.dkt professionals, \n| which are ready to inform you,\nbr\n| on demand as promptly as we all can.",
-    "needinfo_03":"h4.sizeXXLg.txtL.inlineblock.padXSm.HpadXLg.antraciteBG.round.left.dkt.dktBD\n   | Call \nh4.sizeXXLg.txtL.inlineblock.padXSm.HpadXLg.dktBG.round.right.white.dktBD\n   | $t(DKT__contacts.telephone_sales)",
-    "needinfo_04":"| Our \nstrong.dkt professionals \n| are ready to inform you in the best delays.",
-	
-    "name_sl_001": "SLITTER 4201-S",
-    "name_lm_001": "LAMINATOR 6001-S",
-    "name_uw_001": "UNWINDER / REWINDER 9001-S",
-    "name_uv_001": "UV COATER 12002-S",
-    "desc_sl_001": "p\n       | The \n       strong.dkt {{ productname }} \n       | is generally used\n       br\n       | to separate and final-coat various \n       strong.dkt PET-destinated \n       | films.",
-    "desc_lm_001": "p\n       | The \n       strong.dkt {{ productname }} \n       | is generally used\n       br\n       | to separate and final-coat various \n       strong.dkt PET-destinated \n       | films.",
-    "desc_uw_001": "p\n       | The \n       strong.dkt {{ productname }} \n       | is generally used\n       br\n       | to separate and final-coat various \n       strong.dkt PET-destinated \n       | films.",
-    "desc_uv_001": "p\n       | The \n       strong.dkt {{ productname }} \n       | is generally used\n       br\n       | to separate and final-coat various \n       strong.dkt PET-destinated \n       | films.",
+    "certify":{
+      "header":"$t(our_products)",
+      "subheader":"$t(DKT__globals.certified)",
+      "title":"Our _products_ have all obtained licensing and certification from  \n_ISO-4501-8888_",
+      "text_01":"They are under *constant check and control* as we speak. Numerous consecutive tests puts them at a *hard training*, through the whole process of multiple building-unbuilding preface, until *full-and-functional delivery.* ",
+      "text_02":"They then are *shipped* under *similarily traceable controls*, by *aggregated partner and shipper*, until they become part of client's property, which falls under, again various of our *insurances policies.*"
+    },
 
-    "instr_sl_001": "p\n       | Remove \n       strong.dkt protective film \n       | on the \n       strong.dkt PET Base film \n       | , use of \n       strong.dkt Gap coating system \n       | through the Soft Mold and UV Curing.\n       br\n       | After \n       strong.dkt UV Curing, laminating and rewinding.",
-    "instr_lm_001": "p\n       | Remove \n       strong.dkt protective film \n       | on the \n       strong.dkt PET Base film \n       | , use of \n       strong.dkt Gap coating system \n       | through the Soft Mold and UV Curing.\n       br\n       | After \n       strong.dkt UV Curing, laminating and rewinding.",
-    "instr_uw_001": "p\n       | Remove \n       strong.dkt protective film \n       | on the \n       strong.dkt PET Base film \n       | , use of \n       strong.dkt Gap coating system \n       | through the Soft Mold and UV Curing.\n       br\n       | After \n       strong.dkt UV Curing, laminating and rewinding.",
-    "instr_uv_001": "p\n       | Remove \n       strong.dkt protective film \n       | on the \n       strong.dkt PET Base film \n       | , use of \n       strong.dkt Gap coating system \n       | through the Soft Mold and UV Curing.\n       br\n       | After \n       strong.dkt UV Curing, laminating and rewinding.",
+    "needinfo_01":"*Need* an information on any of our *products* ?",
+    "needinfo_02":"Feel free to contact our *professionals*, which are ready to inform you,  \non demand *as promptly* as we all can.",
+    "needinfo_03":"Our *professionals* are joining efforts to inform you in the *best delays.*",
+    
+    "products":{
+      "lm_001":{
+        "name":"LAMINATOR 6001-S",
+        "surname":"$t(DKT__globals.machinery)",
+        "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
+        "instr": "Remove *protective film* on the *PET Base film*, use of *Gap coating system* through the Soft Mold and UV Curing.  \n After *UV Curing, laminating* and *rewinding.*",
+        "concl": "This asset is *quite detailed* and created with an eye towards current and next-generation needs  \n in the *modern industry* and innovative technologies.",
+        "specs":{
+          "Web Materials":"PET film",
+          "Web Thickness":"100 ~ 250 micron",
+          "Web Width":"500 ~ 1,570 mm",
+          "Machine Speed":"Max. 30m/min",
+          "Unwind Diameter":"Max. 800mm",
+          "Rewind Diameter":"Max. 800mm",
+          "Coating System":"(Double Top) Roller Gap Adjusting System",
+          "Dryer Diameter":"Low/Middle/High Pressure UV system",
+          "Inspection Room":"Top Roller Gap Adjusting System",
+          "Laminating System":"By Sight",
+          "Rewinding System":"Center (Surface Turret) Winding System"
+        }
+      },
+      
+      "sl_001":{
+        "name":"SLITTER 4201-S",
+        "surname":"$t(DKT__globals.machinery)",
+        "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
+        "instr": "Remove *protective film* on the *PET Base film*, use of *Gap coating system* through the Soft Mold and UV Curing.  \n After *UV Curing, laminating* and *rewinding.*",
+        "concl": "This asset is *quite detailed* and created with an eye towards current and next-generation needs  \n in the *modern industry* and innovative technologies.",
+        "specs":{
+          "Web Materials":"PET film",
+          "Web Thickness":"100 ~ 250 micron",
+          "Web Width":"500 ~ 1,570 mm",
+          "Machine Speed":"Max. 30m/min",
+          "Unwind Diameter":"Max. 800mm",
+          "Rewind Diameter":"Max. 800mm",
+          "Coating System":"(Double Top) Roller Gap Adjusting System",
+          "Dryer Diameter":"Low/Middle/High Pressure UV system",
+          "Inspection Room":"Top Roller Gap Adjusting System",
+          "Laminating System":"By Sight",
+          "Rewinding System":"Center (Surface Turret) Winding System"
+        }
+      },
 
-    "concl_sl_001": "p\n       | This asset is \n       strong.dkt quite detailed \n       | and created with an eye towards current and next-generation needs \n       br\n       | in the modern industry and innovative technologies.",
-    "concl_lm_001": "p\n       | This asset is \n       strong.dkt quite detailed \n       | and created with an eye towards current and next-generation needs \n       br\n       | in the modern industry and innovative technologies.",
-    "concl_uw_001": "p\n       | This asset is \n       strong.dkt quite detailed \n       | and created with an eye towards current and next-generation needs \n       br\n       | in the modern industry and innovative technologies.",
-    "concl_uv_001": "p\n       | This asset is \n       strong.dkt quite detailed \n       | and created with an eye towards current and next-generation needs \n       br\n       | in the modern industry and innovative technologies."
+      "uv_001":{
+        "name":"UV COATER 12002-S",
+        "surname":"$t(DKT__globals.machinery)",
+        "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
+        "instr": "Remove *protective film* on the *PET Base film*, use of *Gap coating system* through the Soft Mold and UV Curing.  \n After *UV Curing, laminating* and *rewinding.*",
+        "concl": "This asset is *quite detailed* and created with an eye towards current and next-generation needs  \n in the *modern industry* and innovative technologies.",
+        "specs":{
+          "Web Materials":"PET film",
+          "Web Thickness":"100 ~ 250 micron",
+          "Web Width":"500 ~ 1,570 mm",
+          "Machine Speed":"Max. 30m/min",
+          "Unwind Diameter":"Max. 800mm",
+          "Rewind Diameter":"Max. 800mm",
+          "Coating System":"(Double Top) Roller Gap Adjusting System",
+          "Dryer Diameter":"Low/Middle/High Pressure UV system",
+          "Inspection Room":"Top Roller Gap Adjusting System",
+          "Laminating System":"By Sight",
+          "Rewinding System":"Center (Surface Turret) Winding System"
+        }
+      },
+      
+      "uw_001":{
+        "name":"UNWINDER / REWINDER 9001-S",
+        "surname":"$t(DKT__globals.machinery)",
+        "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
+        "instr": "Remove *protective film* on the *PET Base film*, use of *Gap coating system* through the Soft Mold and UV Curing.  \n After *UV Curing, laminating* and *rewinding.*",
+        "concl": "This asset is *quite detailed* and created with an eye towards current and next-generation needs  \n in the *modern industry* and innovative technologies.",
+        "specs":{
+          "Web Materials":"PET film",
+          "Web Thickness":"100 ~ 250 micron",
+          "Web Width":"500 ~ 1,570 mm",
+          "Machine Speed":"Max. 30m/min",
+          "Unwind Diameter":"Max. 800mm",
+          "Rewind Diameter":"Max. 800mm",
+          "Coating System":"(Double Top) Roller Gap Adjusting System",
+          "Dryer Diameter":"Low/Middle/High Pressure UV system",
+          "Inspection Room":"Top Roller Gap Adjusting System",
+          "Laminating System":"By Sight",
+          "Rewinding System":"Center (Surface Turret) Winding System"
+        }
+      }
+
+
+    }
+    
+
+
   }
 }

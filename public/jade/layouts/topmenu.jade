@@ -1,4 +1,24 @@
 #topbar.topbar.navbar.navbar-custom.navbar-fixed-top
+
+
+  each topsection in topsections
+    //- h1= topsection.id
+    - var prefix = 'DKT__' ;
+    - topsection.cleanname = t( prefix + topsection.name + '.name') ;
+    - topsection.surname = t( prefix + topsection.name + '.surname')
+    - topsection.cleanlink = '/#/' + lang + topsection.path ;
+    //- h2= topsection.cleanname
+    //- h2= topsection.surname
+    //- h2= topsection.cleanlink
+    if(topsection.children)
+      each ch in topsection.children
+        - ch.cleanname = t( prefix + topsection.name + '.' + topsection.name + '.' + ch.name + '.name') ;
+        - ch.surname = t( prefix + topsection.name + '.' + topsection.name + '.' + ch.name + '.surname') ;
+        - ch.cleanlink = '/#/' + lang + ch.path ;
+        //- h1= ch.cleanname
+        //- h1= ch.surname
+        //- h1= ch.cleanlink
+    
   //- MAIN NAV SECTION LINKS
   ol.sectionsnav.flowvisible.uppercase
     - var other = [].concat(topsections) ;

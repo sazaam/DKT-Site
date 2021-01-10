@@ -24,6 +24,9 @@ const UTILS = require('./utils') ;
 const CONSTANTS = require('./constants') ;
 
 
+// let isLive = process.env.LIVE ;
+let isLive = !!process.env.LIVE ;
+
 // START THE EXPRESS
 const app = express() ;
 
@@ -80,8 +83,9 @@ let login = async (app) => {
 // DB OR FIXTURES
 let fetchdata = async (req, res, part, noreturn) => {
 	let data ;
-	if(process.env.LIVE) {
+	if(isLive) {
 		data = await CONSTANTS.DKTClient.request(queries.sections[part], queries.sections.variables || {}) ;
+		data = data.sections ;
 	}else{
 		data = await fs.promises.readFile(CONSTANTS.fixtures[part], 'utf8') ;
 		data = UTILS.formatHashes( JSON.parse( data ) ) ;
@@ -137,7 +141,6 @@ let clone = (p) => {
 let customize = (bracket, source) => {
 	var customs = {} ;
 	var module = getComponentsByTypename(bracket, 'ComponentJadeJadePage') ;
-
 	if(!! module.length && module[0].jade != ''){
 		customs = rfs(module[0].jade, module[0].path, source) ;
 	}
@@ -153,6 +156,19 @@ let getComponentsByTypename = (list, name) => {
 			p[p.length] = el ;
 	}
 	return p ;
+}
+
+let getComponentByName = (list, name) => {
+	let l = list.length ;
+	let right;
+	for(var i = 0 ; i < l ; i ++){
+		el = list[i] ;
+		if(name == el.name){
+			right = el ;
+			break ;
+		} 
+	}
+	return right ;
 }
 
 let rfs = (src, filename, params) => {
@@ -184,6 +200,7 @@ let params = CONSTANTS.jadeparams = {
 	CDN:CONSTANTS.PATH.cdn,
 	customize:customize,
 	getComponentsByTypename:getComponentsByTypename,
+	getComponentByName:getComponentByName,
 	rfs:rfs,
 	p:p,
 	merge:merge,
@@ -197,12 +214,14 @@ let topsections, db_sections ;
 // WWW
 let content = async (req, res) => {
 	
-	db_sections = db_sections || await fetchdata(req, res, 'datas').catch( err => {console.log(err)}) ;
-
+	// db_sections = db_sections || await fetchdata(req, res, 'datas').catch( err => {console.log(err)}) ;
+	db_sections = await fetchdata(req, res, 'datas').catch( err => {console.log(err)}) ;
+	
 	res.render(path.join(__dirname, 'public/jade/content.jade'), merge(params, {
 		lang: req.i18n.language,
 		t: req.t,
 		db_sections:db_sections,
+		topsections:topsections
 	})) ;
 }
 
@@ -225,9 +244,11 @@ let error = async (req, res) => {
 
 let root = async (req, res) => {
 	
-	topsections = topsections || await fetchdata(req, res, 'navdatas').catch( err => {console.log(err)}) ;
+	// topsections = topsections || await fetchdata(req, res, 'navdatas').catch( err => {console.log(err)}) ;
+	topsections = await fetchdata(req, res, 'navdatas').catch( err => {console.log(err)}) ;
 	
 	let loadedLangs = await Object.keys(i18next.services.resourceStore.data) ;
+	
 	res.render(path.join(__dirname, 'public/jade/index'), merge(params, {
 		langs:loadedLangs,
 		lang: req.i18n.language,
@@ -286,7 +307,7 @@ setTimeout(function(){
 	(async (app)=>{
 		let SUCCESS = true ;
 		
-			if(process.env.LIVE){
+			if(isLive){
 				// SITE LOGIN AS DKT VIEWER USER
 				await login(app).catch((err) => {
 					console.log(err)

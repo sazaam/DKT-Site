@@ -10,5 +10,5 @@ each section in db_sections
     - var section_jade = template.jade ;
     - var section_jade_path = '/page_' + section.name ;
     - var params = p(merge(locals, section.post.vars.locals), {filename:basedir + section_jade_path, section:section}) ;
-
+    //- - console.log(locals)
     | !{ render(section_jade,  merge(params, customize(bracket, params) ) )}

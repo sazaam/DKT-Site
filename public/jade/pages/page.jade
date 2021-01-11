@@ -4,9 +4,8 @@ include /mixins/_global
 
 block all
   block vars
-    - var vars = section.post.vars.vars ;
-    - var locs = merge(locals, vars) ;
-    - var params = p(locs, {filename:basedir + section.name + '.jade'}) ;
+    //- EXTREMELY IMPORTANT
+    - var params = p(locals, {filename:basedir + section.name + '.jade'}) ;
 
 block content
       

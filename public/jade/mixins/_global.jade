@@ -56,9 +56,9 @@ mixin loadchildrensection(ch, par)
 	section.subsection.fullH.whiteBG(id=ch.name, class=ch.name, style="border-top:10px solid #9d1639;border-bottom:10px solid #9d1639;")
 		- var productjade = ch.post.template.jade ;
 		- var bracket = ch.post.bracket ;
-		- var params = p(merge(locals, ch.post.vars.locals), {filename:basedir + ch.name + '.jade', section:par, child_section: ch}) ;
+		- var params = p(locals, {filename:basedir + ch.name + '.jade', section:par, child_section: ch}) ;
 		
-		| !{ render(productjade, merge(params, customize(bracket, params) ))}
+		| !{ render(productjade, merge(customize(bracket, params), params))}
 
 
 //- HEADERS
@@ -94,9 +94,49 @@ mixin innerheader(header, subheader, clh, cls)
 		if(subheader)
 			.sizeXLg(class=cls)= t(subheader)
 
+
+
+mixin phoneus
+	.line(style="background:url(" + CDN + component.media[0].url + ") no-repeat;background-position: 50% 74%")
+		.container.rel
+			.line.txtL(style="padding:4em 0 8em;")
+				.unit.size1of3.txtL.context.pad.BpadXXLg
+					+pageheader('DKT__contact.telephone', 'DKT__contact.telephone_txt')
+				.unit.size3of5.floatR.sizeLg.TmarXXXLg
+					.sizeSm.txtC(style="margin-top:8em")
+						+callus('DKT__contact.telephone_sales', 'marbleBG')
+		hr
+
+mixin emailus
+	.line
+		.container.rel(style="background:url(" + CDN + component.media[0].url + ") no-repeat;background-position: 0% 74%")
+			.line.txtL(style="padding:4em 0 0")
+				.unit.size1of3.txtL.context.sizeLg.dkt.pad.BpadXXLg
+					+pageheader('DKT__contact.email', 'DKT__contact.email_txt')
+				.unit.size3of5.floatR.VpadXXXLg.txtR
+					+contactform()
+		hr
+
+mixin postus
+	.line.ivoryBG
+		.container.rel
+			.line.txtR(style="padding:6em 0 0")
+				.unit.size1of3.txtL.context.sizeLg.dkt.pad.BpadXXLg
+					+pageheader('DKT__contact.postmail', 'DKT__contact.postmail_txt')
+					p.TmarXXLg
+						!= t('DKT__globals.company.address_1')
+						br
+						!= t('DKT__globals.company.address_2')
+				.unit.lastUnit
+					.mailbox(style="height:320px;background:url(" + CDN + component.media[0].url + ") no-repeat;background-position: 50% 4em")
+						.hidden mailbox
+		hr
+
+
+
 //- FOOTER CREDITS & INFOS
 mixin footer()
-	.ivoryBG.dktTOPBD
+	.ivoryBG
 		.container.rel(style="padding-top:2em;padding-bottom:2em;")
 			.abs.right0.top0.RmarXXXXLg
 				a.block.RmarginLg.pad.HpadLg.sizeSm.dktBG.white.topofpage(href="#")= t('topofpage')
@@ -439,7 +479,7 @@ mixin product
 					.txtR
 						table.tables.font-inc.dark(style="width:100%" row="4")
 							tbody.lh2
-								- var specs = t(pointer + '.specs', merge(locals, {returnObjects: true}))
+								- var specs = t(pointer + '.specs', merge({returnObjects: true}, locals))
 								each spec, specname in specs
 									tr
 										td.dkt.size1of3.txtL.Lpad.uppercase= specname 
@@ -515,30 +555,21 @@ mixin nextprev()
 
 
 
-//- //////////////// ABOUT
-
-//- ABOUT ARTICLES
-mixin weird_article(n, j, p, color)
-	.articles(class= n)
-		| !{ render(j, p)}
-	style(type="text/css" rel="stylesheet").
-		.articles.#{n} strong{
-			color:#{color}
-		}
-		.articles.#{n} a{
-			color:#{color}
-		}
-		.articles.#{n} hr{
-			border-color:#{color}
-		}
-
+//- //////////////// ALL ARTICLES
 
 mixin article(art, p)
-	- var p2 = !!art.page ? merge(p, rfs(art.page.jade, art.page.path, p)) : p ;
+	//- BE CAREFULL NOT MERGING NEW PARAMS INTO __LOCALS__ BUT INSTEAD DOING THE OPPOSITE IS SAFE 
+	//- IN ORDER NOT TO REWRITE LOCAL VARS LIKE CRAZY, AS LOCALS WOULD BE SHARED BETWEEN TEMPLATES 
+	//- WEIRDLY merge(s, p) IS NOT MERGE s INTO p, but quite the other way around, MERGE last obj into first
+	- var p2 = !!art.page ? merge(rfs(art.page.jade, art.page.path, p), p) : p ;
 	- p2.component = art ;  
 	| !{ render(art.template.jade, p2)}
-
+	//- ARTICLE STYLES
+	if(p2.css)
+		| !{ render(p2.css, p2)}
 //- //////////////// CONTACTS
+
+
 
 //- CONTACT FORM
 mixin contactform()

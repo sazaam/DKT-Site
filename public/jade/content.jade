@@ -12,6 +12,4 @@ each topsection, i in topsections
       - db_ch.surname = ch.surname ;
       - db_ch.cleanlink = ch.cleanlink ;
 
-
-
-| !{ renderFile(basedir + 'layouts/all.jade', p(locals, { filename: basedir + 'layouts/all.jade'}))}
+| !{ renderFile(basedir + 'layouts/all.jade', p({ __dirname:basedir + 'layouts/', filename:'all.jade'}, locals))}

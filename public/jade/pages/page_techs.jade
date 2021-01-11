@@ -9,25 +9,15 @@ block content
 	//-  EMPTY
 
 	block flow
+		//- DO NOT REMOVE, IN USE FOR CHILDREN LOADING, THEN SLIDESHOW AND PATCHWORK
+		- var target_sections = section.children ;
+
+
 
 		nav.data-container.none
-			- var target_sections = section.children ;
+			//- HERE ARE APPENDED INVISIBILY THE CHILDREN SECTIONS 
 			- if(!!target_sections && target_sections.length){
-
 				each child_section in target_sections
-
-					section.subsection.fullH.whiteBG(id=child_section.name, class=child_section.name)
-						//- script| console.log(!{JSON.stringify(p(locals))})
-						- var productjade = child_section.post.template.jade ;
-						- var params = p(merge(locals, child_section.post.vars.locals), {filename:basedir + child_section.name + '.jade', section:section, child_section: child_section}) ;
-						| !{ render(productjade, params)}
+					+loadchildrensection(child_section, section)
 			- }
-
-
-		.extra.rel.context(style='height:50%;background:#8C8C8C;')
-			- var target_sections = section.children ;
-			//- include /layouts/components/slideshow
-
-		//- include /layouts/components/patchwork
-
-		//- +credits
+		nav.data-container.none

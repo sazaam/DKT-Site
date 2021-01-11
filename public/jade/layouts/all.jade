@@ -1,6 +1,10 @@
 
 
 
+
+script. 
+  console.log(!{JSON.stringify(locals)})
+
 each section in db_sections
   section.section.fullH.montserrat(id=section.name, class=section.name)
     - var post = section.post ;
@@ -9,6 +13,11 @@ each section in db_sections
 
     - var section_jade = template.jade ;
     - var section_jade_path = '/page_' + section.name ;
-    - var params = p(merge(locals, section.post.vars.locals), {filename:basedir + section_jade_path, section:section}) ;
-    //- - console.log(locals)
-    | !{ render(section_jade,  merge(params, customize(bracket, params) ) )}
+    
+    //- VERY IMPORTANT HERE WANNA REWRITE LOCALS SO PUT LOCALS IN FRONT AND WRITE NEW PARAMS
+    //- AND MORE IMPORTANTLY, WE WANT TO LURE JADE INTO THINKING BEEING AT ROOT OF JADE FOLDER FOR BACKEND REASONS
+    //- IF WE SWITCH LOCALS TO LAST POSITION, LOCALS WILL BE THE REAL ONES AND MAKE OUR BACKEND EXTENDS FAIL.
+    //- IN THAT CASE ONE CAN ALWAYS CHANGE ALL PATHES IN THE BACK END, OR PUT all.jade FILE AT ROOT AGAIN
+    - var params = p(locals, {__dirname:basedir, filename:basedir + section_jade_path, section:section}) ;
+    //- SPECIFYING DIRNAME IS JUST IN CASE, KIND OF OPTIONAL IT SEEMED
+    | !{ render(section_jade,  merge( customize(bracket, params) , params) )}

@@ -776,7 +776,9 @@ red {
 	border:1px solid #E1647C;
 }
 
-.about .dkt{
+
+hr{margin:0;padding:0;height:0}
+/* .about .dkt{
 	color:#169d65;
 }
 .about .dktBG{
@@ -787,8 +789,10 @@ red {
 }
 .about .dktTOPBD{
 	border-top:1px dashed #169d65
-}
+} */
 
+
+/* 
 .contact .dkt{
 	color:#132645;
 }
@@ -800,7 +804,7 @@ red {
 }
 .contact .dktTOPBD{
 	border-top:1px dashed #132645
-}
+} */
 
 .formBG{
 	border:0px !important;

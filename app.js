@@ -138,6 +138,10 @@ let clone = (p) => {
 	return cl ;
 }
 
+let p = (input, locals) => {
+	return merge(clone(input), clone(locals)) ;
+}
+
 let customize = (bracket, source) => {
 	var customs = {} ;
 	var module = getComponentsByTypename(bracket, 'ComponentJadeJadePage') ;
@@ -179,9 +183,6 @@ let rfs = (src, filename, params) => {
 	return m.exports ;
 }
 
-let p = (locals, input) => {
-	return merge(clone(locals), clone(input)) ;
-}
 
 
 // let loadedLangs = await Object.keys(i18next.services.resourceStore.data) ; 

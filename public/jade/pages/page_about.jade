@@ -10,7 +10,9 @@ block flow
   - var main_media = getComponentsByTypename(section.post.bracket, 'ComponentModularMedia')[0].media ;
   +topimage(main_media[1], color, section.cleanname, section.surname)
   
-  each about_article, i in getComponentsByTypename(section.post.bracket, 'ComponentModularArticle')
-    +article(about_article, params)
+  section.page.zind3.rel.context.marbleBG
+
+    each about_article, i in getComponentsByTypename(section.post.bracket, 'ComponentModularArticle')
+      +article(about_article, params)
 
   +footer()

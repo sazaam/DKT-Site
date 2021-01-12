@@ -3,11 +3,11 @@
   "view": "View",
   "product": "The Product",
   "product_plural": "The Products",
-  "our_products": "Our Products",
+  "our_products": "Products",
   "tech": "The Tech",
   "tech_plural": "The Techs",
   "company": "The Company",
-  "our_company": "Our Company",
+  "our_company": "Company",
 
   "next": "Next",
   "prev": "Previous",
@@ -91,14 +91,14 @@
 
     "articles": {
       "intro": {
-        "desc_01": "{{ intro }}\n***\n## __The Way__ to go with success\n#### is to keep __thankfull__, to all __obstacles__ afterwards.  \n[__'Albert Einstein'__](https://duckduckgo.com), is a heavy influencer  \nof the 20th Century.  \n****\n**$t({{vars.test}})** :  One piece of the Future, 1985.  [__'Albert Einstein'__](),",
+        "desc_01": "{{ intro }}\n****\n## __The Way__ to go with success\n#### is to keep __thankfull__, to all __obstacles__ afterwards.  \n[__'Albert Einstein'__](https://duckduckgo.com), is a heavy influencer  \nof the 20th Century.  \n****\n**$t({{vars.test}})** :  One piece of the Future, 1985.  [__'Albert Einstein'__](),",
 
-        "desc_02": "***\nAnd a search for __{{ saz }}__ will uncover many web sites still in their infancy.\nVarious versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like __{{ vars.test }}__ )"
+        "desc_02": "{{ intro }}\n***\nAnd a search for __{{ saz }}__ will uncover many web sites still in their infancy.\nVarious versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like __{{ vars.test }}__ )"
       },
       "history": {
-        "desc_01": "{{ intro }}\n***\n ## __The Way__ to go with success\n#### is to keep __thankfull__, to all __obstacles__ afterwards.  \n[__'Albert Einstein'__](https://duckduckgo.com), is a heavy influencer  \nof the 20th Century.  \n****\n**$t({{ vars.test }})** :  One piece of the Future, 1985.  [__'Albert Einstein'__](),",
+        "desc_01": "{{ intro }}\n****\n ## __The Way__ to go with success\n#### is to keep __thankfull__, to all __obstacles__ afterwards.  \n[__'Albert Einstein'__](https://duckduckgo.com), is a heavy influencer  \nof the 20th Century.  \n****\n**$t({{ vars.test }})** :  One piece of the Future, 1985.  [__'Albert Einstein'__](),",
 
-        "desc_02": "## A brief __overview__  \n****\n![DKT Logo](/img/logo_big_green.png) \n  \n****  \n**$t({{ vars.test }})** :  One piece of the Future, 1985.  [__'Albert Einstein'__]()"
+        "desc_02": "## A brief __overview__  \n****\n![DKT Logo]({{CDN}}/uploads/logo_big_red_a604eaaeca.png) \n  \n****  \n**$t({{ vars.test }})** :  One piece of the Future, 1985.  [__'Albert Einstein'__]()"
       }
     }
   },

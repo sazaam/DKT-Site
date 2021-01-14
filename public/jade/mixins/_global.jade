@@ -435,10 +435,9 @@ mixin dktlogosmall
 
 
 mixin productbasics(basics)
+	+dktlogosmall
 	.line
-		.unit.size2of5.txtC
-			+dktlogosmall
-		.unit.lastunit
+		.txtL
 			.font-inc
 				span #{t('creation_year')} :
 				span.dkt #{basics.year}
@@ -461,10 +460,12 @@ mixin product
 			.Tmar.txtR.sizeLg
 				:marked !{md(t(pointer + '.desc', locals))}
 				
-	.line(style="margin-top:2em;")
-		.unit.floatR.size4of5.round.both
+	.line(style="margin-top:1em;")
+		.round.both
 			.txtL
-				
+				.line
+					.pad.txtL.marked
+						:marked !{md(t(pointer + '.instr', locals))}
 				.line.rel.fullW(style="height:400px;")
 					ul.pics.fullH.round.left.flowvisible.ocreBG(style="width:100%;")
 						.loader.abs.left0.top.dkt.zi1
@@ -488,21 +489,18 @@ mixin product
 						.padXLg.txtR.white
 							+link({prename:'Load', name:'3D Model'})
 						.canvascontainer.context.fullW.ocreBG.none(style="height:450px")
-		.lastUnit
-			.TmarXXXLg.RmarXXXLg.RpadXXXLg.txtL.marked
-				:marked !{md(t(pointer + '.instr', locals))}
+		//- .lastUnit
+			
 
 	.line.marked(style="margin-top:5em;margin-bottom:5em")
-		.unit.size4of5.floatR
-			.line
-				.unit.size1of2
-					.LmarXLg.txtL
-						+needinfo('DKT__contact.telephone_sales')
-				.lastunit
-					.RmarXXXLg.txtR
-						:marked !{md(t(pointer + '.concl', locals))}
-						br
-						| !{ render(t('DKT__products.certif_01')) }
+		.unit.size1of2
+			.LmarXLg.txtL
+				+needinfo('DKT__contact.telephone_sales')
+		.lastunit
+			.RmarXXXLg.txtR
+				:marked !{md(t(pointer + '.concl', locals))}
+				br
+				| !{ render(t('DKT__products.certif_01')) }
 
 //- BACK BUTTON
 mixin back(last)

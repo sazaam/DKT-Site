@@ -28,6 +28,9 @@ var slidrens ;
 
 var topofpage ;
 var topclos ;
+var navmenus ;
+var navmenusEv ;
+
 var scroll ;
 var scrollEv ;
 var slideshow ;
@@ -128,6 +131,31 @@ module.exports = {
 		}
 
 	},
+	navmenusEv:navmenusEv = function(e){
+		var li = $(e.currentTarget) ;
+		if(e.type == 'mouseenter'){
+			li.addClass('over') ;
+		}else{
+			li.removeClass('over') ;
+		}
+	},
+	navmenus:navmenus = function(e, cond){
+		
+		$('.others').each(function(i, el){
+			var li = $(el) ;
+			
+			if(cond){
+				li.on('mouseenter', navmenusEv) ;
+				li.on('mouseleave', navmenusEv) ;
+			}else{
+				li.off('mouseenter', navmenusEv) ;
+				li.off('mouseleave', navmenusEv) ;
+			}
+				
+		})
+				
+	},
+
 	topclos:topclos = function(e){
 		e.preventDefault() ;
 		e.stopPropagation() ;
@@ -145,7 +173,6 @@ module.exports = {
 		}else{
 			top.off('click', topclos) ;
 		}
-
 	},
 	
 	small3D:small3D = function(e, cond){
@@ -969,7 +996,9 @@ module.exports = {
 			patchwork.addClass('none') ;
 			why.addClass('none') ;
 			// certif.removeClass('none') ;
-
+			
+			$('.global_' + res.parentStep.id + ' ol .navmenu_' + id).addClass('active')
+			
 
 			target_section.appendTo(parent) ;
 
@@ -986,6 +1015,8 @@ module.exports = {
 			why.removeClass('none') ;
 			// certif.addClass('none') ;
 			
+			$('.global_' + res.parentStep.id + ' ol .navmenu_' + id).removeClass('active')
+
 			/* HACKY BUT WORTHY */
 			resetscrolls(id) ;
 			
@@ -1065,10 +1096,13 @@ module.exports = {
 			
 			topofpage(e, true) ;
 
+			navmenus(e, true) ;
+
 			res.ready() ;
 			
 		}else{
 			
+			navmenus(e, false) ;
 
 			topofpage(e, false) ;
 
@@ -1081,6 +1115,9 @@ module.exports = {
 			patchwork(e, false) ;
 			slideshow(e, false) ;
 			
+
+
+
 			$(document).off('scroll', scroll) ;
 			$(document).off('scroll', parallax) ;
 			

@@ -14,17 +14,26 @@ block content
 		
 		.container.rel.zi1
 			//- h1= locals.filename
-			.line.txtL(style="margin-top:2em")
-				.unit.size1of2.floatR.txtR.context.sizeLg.dkt.pad.BpadXXLg
-					+pageheader(child_section.cleanname, child_section.surname)
+			.line
+				.unit.size1of5
+					//- menu
+					if(section.children)
+						ul.sidebar.txtL.TmarXXLg.Vpad.sizeLg
+							each child,i in section.children
+								li(class=(child_section == child ? "active" : ""))
+									a.block.padXSm.round.both(href=child.cleanlink)= child.cleanname
 
-				.unit.lastUnit.Tpad.BpadXXLg.txtL
-					+productbasics(basics)
-		
-		.container
-			//- PRODUCTS ARTICLE BLOCKS
-			each product_article in getComponentsByTypename(child_section.post.bracket, 'ComponentModularArticle')
-				+article(product_article, params)
+				.unit.lastUnit
+					.line.txtL(style="margin-top:2em")
+						.unit.size1of2.floatR.txtR.context.sizeLg.dkt.pad.BpadXXLg
+							+pageheader(child_section.cleanname, child_section.surname)
+
+						.unit.lastUnit.Tpad.Lpad.BpadXXLg.txtL
+							+productbasics(basics)
+
+					//- PRODUCTS ARTICLE BLOCKS
+					each product_article in getComponentsByTypename(child_section.post.bracket, 'ComponentModularArticle')
+						+article(product_article, params)
 
 
 	.extra.context.rel(style='height:21em;')

@@ -32,10 +32,17 @@
     //-  OTHERS CASE
     each navsection in other
       - var name = navsection.name ;
-      li.others.floatL(id= "global_" + name, class= "global_" + name)
+      li.others.floatL.rel(id= "global_" + name, class= "global_" + name)
         a.block.pad.Hpad.inconsolata(href= '/#/' + lang + '/' + name + '/')
           span= name
-    
+        if(navsection.children.length)
+          ol.subnav.abs.txtL.left0.round.right.flowhidden(style="top:4em;width:400px")
+            each navchild, i in navsection.children
+              - var chname = navchild.cleanname ;
+              li.sub(class="navmenu_" + navchild.name )
+                a.block.padXXSm.Hpad.inconsolata(href= '/#/' + lang + '/' + name + '/' + navchild.name + '/')
+                  span= chname
+
   //- LAGUAGE BAR
   ul#langnav.langnav.context.floatR.mar.VpadXXXSm
     each language in langs

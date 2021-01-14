@@ -290,7 +290,6 @@ module.exports = {
 					}) ;
 					
 					
-					// trace(i)
 					
 					var tw = res.userData.tw = BetweenJS.parallel(
 						BetweenJS.create({

@@ -555,6 +555,40 @@ mixin article(art, p)
 		| !{ render(p2.css, p2)}
 //- //////////////// CONTACTS
 
+mixin customarticle(art, p)
+	//- BE CAREFULL NOT MERGING NEW PARAMS INTO __LOCALS__ BUT INSTEAD DOING THE OPPOSITE IS SAFE 
+	//- IN ORDER NOT TO REWRITE LOCAL VARS LIKE CRAZY, AS LOCALS WOULD BE SHARED BETWEEN TEMPLATES 
+	//- WEIRDLY merge(s, p) IS NOT MERGE s INTO p, but quite the other way around, MERGE last obj into first
+
+	
+	- var p3 = merge({}, locals) ;
+	each block, blockname in blocks
+		script.
+			console.log(!{JSON.stringify(blockname)})
+		if(block.md)
+			if(typeof block.md == 'string')
+				- p3[blockname] = {md:md(t(block.md, locals))} ;
+				
+			else
+				each mark, mdname in block.md
+					- p3[mdname] = md(t(mark, locals)) ;
+		if(block.jade)
+			| !{ render(block.jade, p3)}
+		else
+			:marked !{md(t(block, locals))}
+
+
+
+
+//- 	- var p2 = !!art.page ? merge(rfs(art.page.jade, art.page.path, p), p) : p ;
+//- 	- p2.component = art ;
+
+//- 	| !{ render(art.template.jade, p2)}
+//- 	//- ARTICLE STYLES
+//- 	if(p2.css)
+//- 		| !{ render(p2.css, p2)}
+//- //- //////////////// CONTACTS
+
 
 
 

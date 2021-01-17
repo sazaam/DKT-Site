@@ -1055,9 +1055,10 @@ module.exports = {
 		var tg = $('#' + id) ;
 
 		var lazys = tg.find('[lazy]') ;
+		
 		lazys.each(function(i, el){
 			var el = $(el) ;
-			$(el).css({'background-image': 'url(' + el.attr('lazy') + ')'})
+			el.css({'background-image': 'url(' + el.attr('lazy') + ')'}) ;
 		})
 		
 

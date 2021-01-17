@@ -26,7 +26,7 @@ mixin back(obj)
 
 //- MEDIAS
 mixin mediasmallslide(media)
-	li.round.left.cover.abs.top0.left0.zi10(lazy=CDN + media.url, style='width:100%;height:100%;background:url() no-repeat 50% 50%;background-size:cover;opacity: 0;')
+	li.round.left.cover.abs.top0.left0.zi10.lazy(lazy=CDN + media.url, style='width:100%;height:100%;background-repeat:no-repeat;background-position:50% 50%;background-size:cover;opacity: 0;')
 		span.hidden Image
 
 
@@ -41,7 +41,7 @@ mixin linkblock(ch, isPatchwork, linkname, cl)
 		- var isHome = section.name == 'home' ;
 		- var clblock = isHome ? "size1of2" : "size1of4"
 		li.work-item.rel.context(class=!!cl ? clblock + ' ' + cl : clblock)
-			.work-image.fullH(lazy=CDN + medias[0].url, style="background:url() no-repeat left top;background-size:cover")
+			.work-image.fullH.lazy(lazy=CDN + medias[0].url, style="background-repeat:no-repeat;background-position:left top;background-size:cover")
 				.hidden Image
 				//- img(src= CDN + medias[0].url , alt='')
 			.work-caption(style="font-size:80%")
@@ -50,7 +50,7 @@ mixin linkblock(ch, isPatchwork, linkname, cl)
 				+link({name:linkname, cl:"dkt", url:cleanlink})
 	- } else {
 		.work-item.rel.context.fullW.fullH.noMQ(class=cl)
-			.work-image.fullH(lazy=CDN + medias[0].url, style="background:url() no-repeat left top;background-size:cover")
+			.work-image.fullH.lazy(lazy=CDN + medias[0].url, style="background-repeat:no-repeat;background-position:left top;background-size:cover")
 				.hidden Image
 				//- img(src= CDN + medias[0].url , alt='')
 			.work-caption(style="font-size:80%")
@@ -65,7 +65,7 @@ mixin linkblock(ch, isPatchwork, linkname, cl)
 //- SECTION HEADER IMAGE
 mixin topimage(media, color, title, subtitle)
 	- var newstr = '' ;
-	.extra.rel.context.cover(lazy=CDN + media.url , style='height:30%;background:url() no-repeat 50% 50%;background-size:cover')
+	.extra.rel.context.cover.lazy(lazy=CDN + media.url , style='height:30%;background-repeat:no-repeat;background-position:50% 50%;background-size:cover')
 		+sectionheader(title, subtitle)
 
 //- SECTION HEADER
@@ -161,7 +161,7 @@ mixin slide(child_section, i)
 	li.bg-dark.noselect(unselectable="on" style='width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;')
 		- var media = section.name == 'home' ? medias[0].url : ((1 in medias) ? medias[1].url : medias[0].url) ;
 		- media = media ;
-		.slidebg.slide-zoom(lazy=CDN + media, style='opacity:.3;background-image:url()')
+		.slidebg.slide-zoom.lazy(lazy=CDN + media, style='opacity:.3;')
 
 		- if(name == 'home'){
 
@@ -265,7 +265,7 @@ mixin hpintro
 		- var media = introcomponent.media ;
 		- var background = media.shift() ;
 
-		#noisecanvas.abs.fullW.fullH.context(lazy=CDN + background.url, style="background:url() no-repeat left top;background-size:cover")
+		#noisecanvas.abs.fullW.fullH.context.lazy(lazy=CDN + background.url, style="background-repeat:no-repeat;background-position:left top;background-size:cover")
 		.abs.top0.left0.fullW
 			+transition_intro
 		
@@ -291,7 +291,7 @@ mixin hpintro
 												span.hidden &lt;
 											
 									.lastUnit.fullH.rounded.context
-										.fullW.fullH.cover(lazy=CDN + media[i].url, style="background:url() no-repeat left top;background-size:cover")
+										.fullW.fullH.cover.lazy(lazy=CDN + media[i].url, style="background-repeat:no-repeat;background-position:left top;background-size:cover")
 
 
 mixin why
@@ -313,7 +313,7 @@ mixin why
 						.unit(class= cl)
 							.block.img.rel.flowimg.fullW(style="height:400px")
 								-var bg = media[i].url ;
-								.strongpointbg.fullW.fullH.cover(lazy=CDN +  bg, style="background:url() no-repeat left top;background-size:cover")
+								.strongpointbg.fullW.fullH.cover.lazy(lazy=CDN +  bg, style="background-repeat:no-repeat;background-position:left top;background-size:cover")
 								.abs.block.bottom0.left0.right0.sizeXLg.rhdp.heavy.txtL
 									a.block.HpadLg.VpadXSm.white.sizeXLg.lh1= t(whyframe.title) 
 							.txtJ.marXXXXLg.padXSm
@@ -455,8 +455,8 @@ mixin productarticle
 						:marked !{md(t(pointer + '.instr', locals))}
 				.line.rel.fullW(style="height:400px;")
 					ul.pics.fullH.round.left.flowvisible.ocreBG(style="width:100%;")
-						.loader.abs.left0.top.dkt.zi1
-							.hidden loading...
+						//- .loader.abs.left0.top.dkt.zi1
+						//- 	.hidden loading...
 						
 						each media in medias
 							+mediasmallslide(media)

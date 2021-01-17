@@ -13,12 +13,7 @@ block content
 
 
 
-		nav.data-container.none
-			//- HERE ARE APPENDED INVISIBILY THE CHILDREN SECTIONS 
-			- if(!!target_sections && target_sections.length){
-				each child_section in target_sections
-					+loadchildrensection(child_section, section)
-			- }
+		
 			
 
 		//- SLIDESHOW GOES FIRST, BUT WITH A HEIGHT OF 50%
@@ -26,14 +21,17 @@ block content
 			+slideshow()
 		
 
-		//- THEN THE CHILDREN LOADING BLOCK
-		.products_section_container
-			//- HERE WILL STAND THE FUTURE PRODUCTS -- DO NOT REMOVE !!
+		
 		
 
 		//- THEN COMES PATCHWORK
 		+patchwork()
+		
+		//- THEN THE CHILDREN LOADING BLOCK
+		.products_section_container
+			//- HERE WILL STAND THE FUTURE PRODUCTS -- DO NOT REMOVE !!
 
+		
 		//- AND EVENTUALLY THE PRODUCTS PAGE RELATED BLOCKS 
 		each products_article in getComponentsByTypename(section.post.bracket, 'ComponentModularArticle')
 			+article(products_article, params)

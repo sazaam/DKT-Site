@@ -13,7 +13,8 @@ app
 	.set('address', {
 		home:'home',
 		base:'undefined' !== typeof __parameters ? __parameters.base : location.protocol + '//' + location.host + location.pathname,
-		useLocale:true
+		useLocale:true,
+		defaultLocale:'en'
 }) ;
 
 app

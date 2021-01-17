@@ -151,6 +151,14 @@ let customize = (bracket, source) => {
 	return customs ;
 }
 
+let rfs = (src, filename, params) => {
+	var Module = module.constructor;
+	var m = new Module("", params) ;
+	
+	m._compile(src, filename) ;
+	return m.exports ;
+}
+
 let getComponentsByTypename = (list, name) => {
 	let l = list.length ;
 	let p = [] ;
@@ -173,14 +181,6 @@ let getComponentByName = (list, name) => {
 		} 
 	}
 	return right ;
-}
-
-let rfs = (src, filename, params) => {
-	var Module = module.constructor;
-	var m = new Module("", params) ;
-	
-	m._compile(src, filename) ;
-	return m.exports ;
 }
 
 
@@ -216,14 +216,27 @@ let topsections, db_sections ;
 let content = async (req, res) => {
 	
 	// db_sections = db_sections || await fetchdata(req, res, 'datas').catch( err => {console.log(err)}) ;
-	db_sections = await fetchdata(req, res, 'datas').catch( err => {console.log(err)}) ;
-	
-	res.render(path.join(__dirname, 'public/jade/content.jade'), merge(params, {
-		lang: req.i18n.language,
-		t: req.t,
-		db_sections:db_sections,
-		topsections:topsections
-	})) ;
+	console.log(req.params)
+	if(!!req.params.sectionId){
+		res.render(path.join(__dirname, 'public/jade/content.jade'), merge(params, {
+			lang: req.i18n.language,
+			t: req.t,
+			db_sections:db_sections,
+			topsections:topsections,
+			params:req.params
+		})) ;
+	}else{
+		db_sections = await fetchdata(req, res, 'datas').catch( err => {console.log(err)}) ;
+		
+		res.render(path.join(__dirname, 'public/jade/content.jade'), merge(params, {
+			lang: req.i18n.language,
+			t: req.t,
+			db_sections:db_sections,
+			topsections:topsections,
+			params:req.params
+		})) ;
+
+	}
 }
 
 // ERRORS
@@ -282,8 +295,17 @@ app.use('/404/', async (req, res) => {
 	await error(req, res, true).catch( err => {console.log(err)}) ;
 }) ;
 
+
+app.use('/content/section/:sectionId', async (req, res) => {
+	console.log('HELLOOO')
+	console.log(req.params)
+	
+	await content(req, res).catch( err => {console.log(err)}) ;
+}) ;
+
 app.use('/content/', async (req, res) => {
-	// console.log('requesting content')
+	console.log(req.params)
+	
 	await content(req, res).catch( err => {console.log(err)}) ;
 }) ;
 

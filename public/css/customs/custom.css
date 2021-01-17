@@ -432,6 +432,7 @@ Responsive Media Querries
 	.works-grid-4 .work-item,
 	.works-grid-5 .work-item {
 		width: 50%;
+		height:25vw !important;
 	}
 
 }
@@ -511,6 +512,7 @@ Responsive Media Querries
 	.works-grid-4 .work-item,
 	.works-grid-5 .work-item {
 		width: 100%;
+		height:50vw !important;
 	}
 }
 
@@ -856,8 +858,17 @@ hr{margin:0;padding:0;height:0}
 	vertical-align:middle !important;
 }
 
+.work-item{
+	height:12.5vw;
+}
+
+.work-item{
+	height:12.5vw;
+}
+
 .home_patchwork .work-item{
 	width:50% !important;
+	height: 25vw;
 }
 
 .active.lang a{
@@ -1121,3 +1132,11 @@ code{
 	color:#132645;
 }
 
+.subsection{
+	border-top:10px solid #9d1639;
+	border-bottom:10px solid #9d1639;
+}
+
+.products_patchwork .patchwork{
+	background:#131313 !important;
+}

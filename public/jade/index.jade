@@ -16,27 +16,57 @@ block content
 	
 		
 	script.
-		console.log('should not come in here')
-		//- Express.app.start() ;
-
-		//- throw 'Error' ;
+		console.log('AJAXIFIED')
 		var exitLoader = function(){
 			console.log('REMOVING LOADER...');$('#mainloader').remove()
 		}
 		
 		var ajaxified = true ;
-
+		
 		if(ajaxified){
 			new AjaxRequest().load('/datas/', function(req, res){
 				
 				var data = res ;
 				window.Data = JSON.parse(data) ;
+				//- trace(window.Data)
 				
-				console.log(window.Data)
+				//- ERROR HANDLING -> MAKING ERROR SECTION
+				//- window.Data.push( {
+				//- 	level: 1,
+				//- 	id: "777", 
+				//- 	name: "404", 
+				//- 	path: "/404/",
+				//- 	position:40,
+				//- 	post:{
+				//- 		name: "404",
+				//- 		vars: {
+				//- 			behavior:{
+				//- 				'@jade':'/jade/404/', 
+				//- 				'@json':'/json/404/', 
+				//- 				'@focus':'focus', 
+				//- 				'@toggle':'toggle',
+				//- 				"sectionId":'777'
+				//- 			}
+				//- 		} 
+				//- 	}
+				//- }) ;
 
+				//- trace(window.Data)
 				new AjaxRequest().load('/content/', function(req, res){
 					
-					$('.continent').append($(res)) ;
+					trace('NOW THE PAGE HAS LOADED')
+
+					var idsectionurl = '/content/section/' + window.Data[1].children[0].id ;
+					//- var idsectionurl = '/content/section/' + window.Data[0].id ;
+					
+					new AjaxRequest().load(idsectionurl, function(req, res){
+						//- trace(res)
+						trace('ALL OK NOW')
+					})
+
+
+
+				//- 	$('.continent').append($(res)) ;
 					exitLoader() ;
 					
 					Express.app.fire('JSAddress') ;

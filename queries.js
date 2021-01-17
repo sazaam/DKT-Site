@@ -203,11 +203,16 @@ let navdatas = `query {
     id
     name
     path
-    
+    post{
+      name
+    }
     children{
       id
       name
       path
+      post{
+        name
+      }
       position
       level
     }

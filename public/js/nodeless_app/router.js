@@ -19,6 +19,7 @@ var defaultFunction = function(node, exp){
 	var toggle = node['@toggle'] ;
 	var urljade = node['@jade'] ;
 	var urljson = node['@json'] ;
+	var sectionId = node['sectionId'] ;
 	
 	var f ;
 	var jade, json ;
@@ -58,6 +59,9 @@ var defaultFunction = function(node, exp){
 	}
 	
 	f.name = name ;
+	f.sectionId = sectionId ;
+	// console.log('HAHAHAAH', sectionId)
+	// f.sectionId = 
 
 	for(var i = 0 ; i < l ; i++){
 		var child = node.children[i] ;
@@ -67,6 +71,8 @@ var defaultFunction = function(node, exp){
 	}
 
 	exp[name] = f ;
+
+
 
 	return node ;
 }
@@ -84,13 +90,13 @@ var Router = function(routes){
 			for(var i = 0 ; i < l ; i ++){
 				
 				var section = sections[i] ;
-	
+				
 				var post = section.post ;
 				var vars = post.vars ;
 				var behavior = vars.behavior ;
-	
+
 				items[items.length] = {
-					
+					"sectionId":section.id,
 					"name":section.name,
 					"@jade": behavior['@jade'],
 					"@json": behavior['@json'],
@@ -99,7 +105,6 @@ var Router = function(routes){
 					"children": !!section.children && section.children.length ? arguments.callee(section.children) : undefined
 					
 				} ;
-	
 			}
 			
 			return items ;

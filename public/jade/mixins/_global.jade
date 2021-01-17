@@ -12,20 +12,26 @@ mixin link(o)
 		li(style='display: inline;')
 			a.goblack.bt.btn-border-slider-black.round.right.dktBG(href=o.url)= t(o.name || 'more')
 
+//- CALL US INFO
 mixin callus(number, cl)
 	.call
 		h4.sizeXLg.txtL.inlineblock.padXSm.HpadXLg.antraciteBG.round.left.dkt.dktBD(class=cl)= t('call') 
 		h4.sizeXLg.txtL.inlineblock.padXSm.HpadXLg.dktBG.round.right.white.dktBD= t(number)
 
+//- BACK BUTTON
+mixin back(obj)
+	.linker.marXXXLg.round.both.dkt.dktBG.inlineblock
+		a.block.sizeSm.font-inc.white.padXXLg.VpadSm(href=obj.link)= t('back_to', obj)
+
 
 //- MEDIAS
 mixin mediasmallslide(media)
-	li.round.left.cover.abs.top0.left0.zi10(style='width:100%;height:100%;background:url(' + CDN + media.url + ') no-repeat 50% 50%;background-size:cover;opacity: 0;')
+	li.round.left.cover.abs.top0.left0.zi10(lazy=CDN + media.url, style='width:100%;height:100%;background:url() no-repeat 50% 50%;background-size:cover;opacity: 0;')
 		span.hidden Image
 
 
 //- LINK AS A BLOCK
-mixin linkblock(ch, isPatchwork, linkname)
+mixin linkblock(ch, isPatchwork, linkname, cl)
 	- var name = ch.name ;
 	- var cleanname = ch.cleanname ;
 	- var surname = ch.surname ;
@@ -33,17 +39,20 @@ mixin linkblock(ch, isPatchwork, linkname)
 	- var medias = ch.post.bracket[1].media ;
 	- if(isPatchwork){
 		- var isHome = section.name == 'home' ;
-		li.work-item.rel.context(class=isHome ? "size1of2" : "size1of4")
-			.work-image
-				img(src= CDN + medias[0].url , alt='')
+		- var clblock = isHome ? "size1of2" : "size1of4"
+		li.work-item.rel.context(class=!!cl ? clblock + ' ' + cl : clblock)
+			.work-image.fullH(lazy=CDN + medias[0].url, style="background:url() no-repeat left top;background-size:cover")
+				.hidden Image
+				//- img(src= CDN + medias[0].url , alt='')
 			.work-caption(style="font-size:80%")
 				.work-descr(class=isHome ? "sizeXLg" : "sizeR")= surname
 				h3.work-title.uppercase.Bmar(class=isHome ? "sizeXXLg" : "sizeXLg")= cleanname 
 				+link({name:linkname, cl:"dkt", url:cleanlink})
 	- } else {
-		.work-item.rel.context.fullW.noMQ(class=cl)
-			.work-image
-				img(src= CDN + medias[0].url , alt='')
+		.work-item.rel.context.fullW.fullH.noMQ(class=cl)
+			.work-image.fullH(lazy=CDN + medias[0].url, style="background:url() no-repeat left top;background-size:cover")
+				.hidden Image
+				//- img(src= CDN + medias[0].url , alt='')
 			.work-caption(style="font-size:80%")
 				.work-descr.ls1= surname
 				h3.work-title.uppercase.Bmar.ls1= cleanname
@@ -51,22 +60,12 @@ mixin linkblock(ch, isPatchwork, linkname)
 	- }
 
 
-//- CORE - LOAD INNER SECTIONS OF A PARENT (PRODUCTS CASE)
-mixin loadchildrensection(ch, par)
-	section.subsection.fullH.whiteBG(id=ch.name, class=ch.name, style="border-top:10px solid #9d1639;border-bottom:10px solid #9d1639;")
-		- var productjade = ch.post.template.jade ;
-		- var bracket = ch.post.bracket ;
-		- var params = p(locals, {filename:basedir + ch.name + '.jade', section:par, child_section: ch}) ;
-		
-		| !{ render(productjade, merge(customize(bracket, params), params))}
-
-
 //- HEADERS
 
 //- SECTION HEADER IMAGE
 mixin topimage(media, color, title, subtitle)
 	- var newstr = '' ;
-	.extra.rel.context.cover(style='height:30%;background:url(' + CDN + media.url + ') no-repeat 50% 50%;background-size:cover')
+	.extra.rel.context.cover(lazy=CDN + media.url , style='height:30%;background:url() no-repeat 50% 50%;background-size:cover')
 		+sectionheader(title, subtitle)
 
 //- SECTION HEADER
@@ -93,44 +92,6 @@ mixin innerheader(header, subheader, clh, cls)
 		.sizeXXXXLg(class=clh)= t(header)
 		if(subheader)
 			.sizeXLg(class=cls)= t(subheader)
-
-
-
-mixin phoneus
-	.line(style="background:url(" + CDN + component.media[0].url + ") no-repeat;background-position: 50% 74%")
-		.container.rel
-			.line.txtL(style="padding:4em 0 8em;")
-				.unit.size1of3.txtL.context.pad.BpadXXLg
-					+pageheader('DKT__contact.telephone', 'DKT__contact.telephone_txt')
-				.unit.size3of5.floatR.sizeLg.TmarXXXLg
-					.sizeSm.txtC(style="margin-top:8em")
-						+callus('DKT__contact.telephone_sales', 'marbleBG')
-		hr
-
-mixin emailus
-	.line
-		.container.rel(style="background:url(" + CDN + component.media[0].url + ") no-repeat;background-position: 0% 120%")
-			.line.txtL(style="padding:4em 0 0")
-				.unit.size1of3.txtL.context.sizeLg.dkt.pad.BpadXXLg
-					+pageheader('DKT__contact.email', 'DKT__contact.email_txt')
-				.unit.size3of5.floatR.VpadXXXLg.txtR
-					+contactform()
-		hr
-
-mixin postus
-	.line.ivoryBG
-		.container.rel
-			.line.txtR(style="padding:6em 0 0")
-				.unit.size1of3.txtL.context.sizeLg.dkt.pad.BpadXXLg
-					+pageheader('DKT__contact.postmail', 'DKT__contact.postmail_txt')
-					p.TmarXXLg
-						!= t('DKT__globals.company.address_1')
-						br
-						!= t('DKT__globals.company.address_2')
-				.unit.lastUnit
-					.mailbox(style="height:320px;background:url(" + CDN + component.media[0].url + ") no-repeat;background-position: 50% 4em")
-						.hidden mailbox
-		hr
 
 
 
@@ -200,7 +161,7 @@ mixin slide(child_section, i)
 	li.bg-dark.noselect(unselectable="on" style='width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;')
 		- var media = section.name == 'home' ? medias[0].url : ((1 in medias) ? medias[1].url : medias[0].url) ;
 		- media = media ;
-		.slidebg.slide-zoom(style='opacity:.3;background-image:url(' + CDN + media + ')')
+		.slidebg.slide-zoom(lazy=CDN + media, style='opacity:.3;background-image:url()')
 
 		- if(name == 'home'){
 
@@ -249,7 +210,7 @@ mixin slide(child_section, i)
 					+link({name:t("company"), cl:"dkt noBd", url:cleanlink})
 		- }else{
 			- var even = i % 2 == 0 ;
-			- var cl = even ? 'right' : 'left' ;
+			- var cl = even ? 'left' : 'right' ;
 			
 			.hs-caption.container(style='top: 0px; display: table;')
 				.noproduct.caption-content(class=cl)
@@ -257,7 +218,8 @@ mixin slide(child_section, i)
 						span= cleanname
 					.hs-title-size-1.font-inc.BmarXLg
 						span= surname
-
+					//- script. 
+						//- console.log(!{JSON.stringify(post)})
 					+link({name:"product", cl:"dkt noBd", url:cleanlink})
 		- }
 
@@ -267,7 +229,7 @@ mixin slide(child_section, i)
 //-  PATCHWORKS
 mixin patchwork()
 	.extra.rel.context(id=section.name + "_patchwork", class= section.name + "_patchwork")
-		.patchwork.context.txtC
+		.patchwork.context.txtC.marbleBG
 			- if(!!target_sections && target_sections.length){
 				ul.works-grid.works-grid-masonry.works-grid-2.works-hover-w
 					- var l = target_sections.length ;
@@ -275,6 +237,9 @@ mixin patchwork()
 
 					each child_section in target_sections
 						+linkblock(child_section, true, "product")
+					if(section.name!='home')
+						each child_section in target_sections
+							+linkblock(child_section, true, "product", "double")
 			- }
 
 //- 
@@ -300,7 +265,7 @@ mixin hpintro
 		- var media = introcomponent.media ;
 		- var background = media.shift() ;
 
-		#noisecanvas.abs.fullW.fullH.context(style="background:url(" + CDN + background.url +") no-repeat left top;background-size:cover")
+		#noisecanvas.abs.fullW.fullH.context(lazy=CDN + background.url, style="background:url() no-repeat left top;background-size:cover")
 		.abs.top0.left0.fullW
 			+transition_intro
 		
@@ -326,7 +291,7 @@ mixin hpintro
 												span.hidden &lt;
 											
 									.lastUnit.fullH.rounded.context
-										.fullW.fullH.cover(style="background:url(" + CDN + media[i].url +") no-repeat left top;background-size:cover")
+										.fullW.fullH.cover(lazy=CDN + media[i].url, style="background:url() no-repeat left top;background-size:cover")
 
 
 mixin why
@@ -348,7 +313,7 @@ mixin why
 						.unit(class= cl)
 							.block.img.rel.flowimg.fullW(style="height:400px")
 								-var bg = media[i].url ;
-								.strongpointbg.fullW.fullH.cover(style="background:url(" + CDN +  bg + ") no-repeat left top;background-size:cover")
+								.strongpointbg.fullW.fullH.cover(lazy=CDN +  bg, style="background:url() no-repeat left top;background-size:cover")
 								.abs.block.bottom0.left0.right0.sizeXLg.rhdp.heavy.txtL
 									a.block.HpadLg.VpadXSm.white.sizeXLg.lh1= t(whyframe.title) 
 							.txtJ.marXXXXLg.padXSm
@@ -371,7 +336,6 @@ mixin needinfo(number, cl)
 	//- .sizeLg.marXXXLg.txtL
 	.sizeLg
 		:marked !{md(t('DKT__products.needinfo_01', locals))}
-		//- != render(t('DKT__products.needinfo_01'))
 	.sizeR.BmarXLg
 		:marked !{md(t('DKT__products.needinfo_02', locals))}
 	
@@ -433,27 +397,50 @@ mixin dktlogosmall
 
 //- //////////////// SINGLE PRODUCT
 
-
-mixin productbasics(basics)
-	+dktlogosmall
-	.line
-		.txtL
-			.font-inc
-				span #{t('creation_year')} :
-				span.dkt #{basics.year}
-			.font-inc
-				span #{t('tags')} : 
-				span.dkt #{basics.tags.join(', ')}
-			.font-inc 
-				span #{t('desc_file')} : 
-				a.dkt(href='/downloads/pdf/' + basics.file, target="_blank") #{basics.file}
+mixin productnav
+	if(section.children)
+		ul.sidebar.txtL.TmarXXLg.Vpad.sizeLg
+			each child,i in section.children
+				li(class=(child_section == child ? "active" : ""))
+					a.block.padXSm.round.both(href=child.cleanlink)= child.cleanname
 
 
 mixin product
+	.abs.top0.right0.sizeLg.zi20
+		a.inlineblock.padXLg.Vpad0.inconsolata.dktBG.round.close_btn.white(href="#/" + lang + section.path)
+			span.sizeLg x
+	
+	.container.rel.zi1
+		.line
+			.unit.size1of5
+				//- menu
+				+productnav
+				
+
+			.unit.lastUnit
+				.line.txtL(style="margin-top:2em")
+					.unit.size1of2.floatR.txtR.context.sizeLg.dkt.pad.BpadXXLg
+						+pageheader(child_section.cleanname, child_section.surname)
+
+					.unit.lastUnit.Tpad.LpadXXXLg.BpadXXLg.txtL
+						+productbasics(basics)
+
+				//- PRODUCTS ARTICLE BLOCKS
+				each product_article in getComponentsByTypename(child_section.post.bracket, 'ComponentModularArticle')
+					+article(product_article, params)
+	.extra.context.rel(style='height:21em;')
+		.abs.top0.left0.bottom0.right0
+			span.hidden Image
+
+		+nextprev()
+		
+		.abs.left0.top0.bottom.right0.context.sizeR.txtC.dkt.noBd
+			+back({link : "/#/"+ lang + section.path, target:'products' })
+
+
+mixin productarticle
 	- locals.productname = child_section.cleanname ;
 	- var medias = component.media ;
-	//- script. 
-		console.log(!{JSON.stringify(component)})
 	
 	.line.marked(style="margin-bottom:2em")
 		.unit.lastUnit.dark.round.right.RmarXXXXLg(style="margin-top:0em")
@@ -463,7 +450,7 @@ mixin product
 	.line(style="margin-top:1em;")
 		.round.both
 			.txtL
-				.line
+				.line.Lpad
 					.pad.txtL.marked
 						:marked !{md(t(pointer + '.instr', locals))}
 				.line.rel.fullW(style="height:400px;")
@@ -499,20 +486,21 @@ mixin product
 		.lastunit
 			.RmarXXXLg.txtR
 				:marked !{md(t(pointer + '.concl', locals))}
-				br
-				| !{ render(t('DKT__products.certif_01')) }
 
-//- BACK BUTTON
-mixin back(last)
-	if (last)
-		.abs.left0.top0.bottom.right0.context.sizeR.txtC.dkt.noBd
-			.linker.marXXXLg.round.both.dkt.dktBG.inlineblock
-				a.block.sizeSm.font-inc.white.padXXLg.VpadSm(href="/#/"+ lang + "/products/")= t('back_to', {target:section.name})
-	else 
-		.abs.left0.top0.right0.context.sizeR.txtL.TmarXXXXLg.TpadXXLg.dkt.noBd
-			.linker.marXXXLg.round.both.dktBG.inlineblock
-				a.block.sizeSm.font-inc.white.padXXLg.VpadSm(href="/#/"+ lang + section.path)= t('back_to', {target:section.name})
 
+mixin productbasics(basics)
+	+dktlogosmall
+	.line
+		.txtL
+			.font-inc
+				span #{t('creation_year')} :
+				span.dkt #{basics.year}
+			.font-inc
+				span #{t('tags')} : 
+				span.dkt #{basics.tags.join(', ')}
+			.font-inc 
+				span #{t('desc_file')} : 
+				a.dkt(href='/downloads/pdf/' + basics.file, target="_blank") #{basics.file}
 
 //- NEXT & PREV LINKS
 mixin nextprev()
@@ -525,15 +513,15 @@ mixin nextprev()
 		- var surname = cur.surname ;
 		- var cleanlink = cur.cleanlink ;
 
-		.cont.none.abs.bottom0.left0.HmarXXXLg.round.both.dkt.dktBG
+		.cont.none.abs.bottom0.left0.right0.HmarXXXLg.round.both.dkt.dktBG
 			.sizeSm.font-inc.white.padXXLg.VpadSm= t('prev')
 			+linkblock(cur)
 		.linker.abs.bottom0.left0.right0.marXXXLg
 			a.inlineblock.sizeSm.font-inc.white.dktBG.round.both(href= cleanlink)
 				span.block.padXXLg.VpadSm= t('prev')
-			.sizeXXXXLg.TmarXXSm.context.clear
-				span.inlineblock.dkt.lh09= cleanname
-				span.block.sizeXSm.HmarXXXSm.inconsolata.uppercase.ls1= surname
+			.sizeXXLg.TmarXXSm.context
+				span.inlineblock.dkt.lh1= cleanname
+				span.block.sizeSm.HmarXXXSm.inconsolata.uppercase.ls1= surname
 
 	.to_products.next.abs.right0.bottom0.context.sizeR.txtR.size2of5.noBd
 		- var cur = next ;
@@ -541,15 +529,15 @@ mixin nextprev()
 		- var surname = cur.surname ;
 		- var cleanlink = cur.cleanlink ;
 
-		.cont.none.abs.bottom0.right0.HmarXXXLg.round.both.dkt.dktBG
+		.cont.none.abs.bottom0.left0.right0.HmarXXXLg.round.both.dkt.dktBG
 			.sizeSm.font-inc.white.padXXLg.VpadSm= t('next')
 			+linkblock(cur)
 		.linker.abs.bottom0.left0.right0.marXXXLg
 			a.inlineblock.sizeSm.font-inc.white.dktBG.round.both(href= cleanlink)
 				span.block.padXXLg.VpadSm= t('next')
-			.sizeXXXXLg.TmarXXSm.context
-				span.inlineblock.dkt.lh09= cleanname
-				span.block.sizeXSm.HmarXXXSm.inconsolata.uppercase.ls1= surname
+			.sizeXXLg.TmarXXSm.context
+				span.inlineblock.dkt.lh1= cleanname
+				span.block.sizeSm.HmarXXXSm.inconsolata.uppercase.ls1= surname
 
 
 
@@ -560,7 +548,7 @@ mixin article(art, p)
 	//- IN ORDER NOT TO REWRITE LOCAL VARS LIKE CRAZY, AS LOCALS WOULD BE SHARED BETWEEN TEMPLATES 
 	//- WEIRDLY merge(s, p) IS NOT MERGE s INTO p, but quite the other way around, MERGE last obj into first
 	- var p2 = !!art.page ? merge(rfs(art.page.jade, art.page.path, p), p) : p ;
-	- p2.component = art ;  
+	- p2.component = art ;
 	| !{ render(art.template.jade, p2)}
 	//- ARTICLE STYLES
 	if(p2.css)
@@ -568,6 +556,44 @@ mixin article(art, p)
 //- //////////////// CONTACTS
 
 
+
+
+
+mixin phoneus
+	.line(lazy=CDN + component.media[0].url, style="background:url() no-repeat;background-position: 50% 74%")
+		.container.rel
+			.line.txtL(style="padding:4em 0 8em;")
+				.unit.size1of3.txtL.context.pad.BpadXXLg
+					+pageheader('DKT__contact.telephone', 'DKT__contact.telephone_txt')
+				.unit.size3of5.floatR.sizeLg.TmarXXXLg
+					.sizeSm.txtC(style="margin-top:8em")
+						+callus('DKT__contact.telephone_sales', 'marbleBG')
+		hr
+
+mixin emailus
+	.line
+		.container.rel(lazy=CDN + component.media[0].url, style="background:url() no-repeat;background-position: 0% 120%")
+			.line.txtL(style="padding:4em 0 0")
+				.unit.size1of3.txtL.context.sizeLg.dkt.pad.BpadXXLg
+					+pageheader('DKT__contact.email', 'DKT__contact.email_txt')
+				.unit.size3of5.floatR.VpadXXXLg.txtR
+					+contactform()
+		hr
+
+mixin postus
+	.line.ivoryBG
+		.container.rel
+			.line.txtR(style="padding:6em 0 0")
+				.unit.size1of3.txtL.context.sizeLg.dkt.pad.BpadXXLg
+					+pageheader('DKT__contact.postmail', 'DKT__contact.postmail_txt')
+					p.TmarXXLg
+						!= t('DKT__globals.company.address_1')
+						br
+						!= t('DKT__globals.company.address_2')
+				.unit.lastUnit
+					.mailbox(lazy=CDN + component.media[0].url, style="height:320px;background:url() no-repeat;background-position: 50% 4em")
+						.hidden mailbox
+		hr
 
 //- CONTACT FORM
 mixin contactform()
@@ -610,65 +636,30 @@ mixin contactform()
 
 
 
-
-
+//- ERROR PAGE
 				
+mixin error404
+	.extra.err404.rel.context(id="block_404", class= "block_404")
+		.anthraxBG.context
 
-
+			.container.pad0.rel.round.both.ivoryBG.context(style="margin-top:3em;margin-bottom:10em;")
+				.info404.sizeSm(style="padding:3em 0")
+					+innerheader(section.name, 'Not Found', 'dkt lh1', 'dark')
+				hr
+				.line
+					.txtC.marXXXXLg.padXSm
+						h2.sizeXLg.dkt The requested page doesn't exist.
+						p.TmarLg
+							| sorry for the invonvenience, you still can press back if you come from somewhere within the site, 
+							br
+							| or navigate from the home again.
+				hr
+				.aboutgo(style="padding:3em 0 3em")
+					- var o = {link : "#/"+ lang + '/home/', target:'$t(~)' }
+					+back(o)
 
 
 
 
 
 //- MAYBE NOT USED
-
-//- INTRO -- WHY US BLOCK
-mixin intro(section)
-	.anthraxBG.context
-		.container.rel
-			.context.HpadXXXLg.Bpad0.sizeLg.txtR(style="margin-top:3em;")
-				.hs-title-size-3.font-alt.m-b-20.context.txtL.white
-					span.block.floatR.round.both.dkt= section.name
-				.hs-title-size-1.font-inc.LmarXXSm.BmarXXLg.dark= t("Overview ")
-		.container.rel.Tmar(style="margin-bottom:5em;")
-			.line
-				.unit.size1of3
-					p.txtJ.marXXXXLg.padXSm It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. 
-				.unit.size1of3
-					p.txtJ.marXXXXLg.padXSm The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text.
-				.unit.lastUnit
-					p.txtJ.marXXXXLg.padXSm And a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-
-			.line.txtR.RmarXXXLg.Rpad
-				+link({name:t("All " + section.name ), cl:"dkt", url:section.path})
-
-
-mixin hpstrongpoints()
-	.extra.darkBG.context.montserrat
-		.container.context.sizeXXLg
-			.line(style="padding:15em 0 15em 0")
-				.unit.size1of3.txtL
-					.pad
-						.block.flowimg.fullW(style="height:400px")
-							.strongpointbg.fullW.fullH.cover(style="background:url(/img/building_coating.jpg) no-repeat left top;background-size:cover")
-						span.block.Hpad.VpadXSm.dktBG.white.sizeXSm.round.right Techs 
-						.downside.HmarSm.Tmar.context
-							p.lh1.white In Line for <br /> span Building Facade Coating 
-
-				.unit.size1of3.txtL
-					.pad
-						.block.flowimg.fullW(style="height:300px")
-							//- (style="height:400px;background:url('/img/facade.jpg') no-repeat top left;")
-							.strongpointbg.fullW.fullH.cover(style="background:url(/img/facade.jpg) no-repeat left top;background-size:cover")
-						span.block.Hpad.VpadXSm.dktBG.white.sizeXSm.round.right Products
-						.downside.HmarSm.Tmar.context
-							p.lh1.white 
-								span Discover the latest Coating Films Production Line 
-
-				.unit.lastUnit.txtL
-					.pad
-						.block.img.flowimg.fullW(style="height:400px")
-							.strongpointbg.fullW.fullH.cover(style="background:url(/img/upview.jpg) no-repeat left top;background-size:cover")
-						span.block.Hpad.VpadXSm.dktBG.white.sizeXSm.round.right Philosophy 
-						.downside.HmarSm.Tmar.context
-							p.lh1.white Reproducing Nature <br /> at the Nano Level  

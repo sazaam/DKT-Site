@@ -140,7 +140,7 @@
 		
 	})
 	
-	ArrowsNavigator.instance = new ArrowsNavigator() ;
+	// ArrowsNavigator.instance = new ArrowsNavigator() ;
 	
 	var halted = false ;
 	
@@ -159,7 +159,7 @@
 	
 	// SPACEBAR
 
-	$(document).bind('keydown', function(e){
+	$(document).on('keydown', function(e){
 		if(e.keyCode == 32){
 			pauseBetween() ;
 		}
@@ -167,14 +167,14 @@
 	
 	 
 	
-	$(window).bind('blur', function(e){
+	$(window).on('blur', function(e){
 		var AT = BetweenJS.$.AnimationTicker ;
 		if(!!AT.started && !halted) AT.haltSystem() ;
 		// trace('blurred')
 		
 	})
 	
-	$(window).bind('focus', function(e){
+	$(window).on('focus', function(e){
 		var AT = BetweenJS.$.AnimationTicker ;
 		if(!!AT.started && !halted) AT.restoreSystem() ;
 		// trace('focused')

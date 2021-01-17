@@ -7,39 +7,10 @@ extends ./page
 block content
 	block ajax
 	
+
 	section.page.zind3.rel.context(style="background:#FFF;")
-		.abs.top0.right0.sizeLg.zi20
-			a.inlineblock.padXLg.Vpad0.inconsolata.dktBG.round.close_btn.white(href="#/" + lang + section.path)
-				span.sizeLg x
 		
-		.container.rel.zi1
-			//- h1= locals.filename
-			.line
-				.unit.size1of5
-					//- menu
-					if(section.children)
-						ul.sidebar.txtL.TmarXXLg.Vpad.sizeLg
-							each child,i in section.children
-								li(class=(child_section == child ? "active" : ""))
-									a.block.padXSm.round.both(href=child.cleanlink)= child.cleanname
-
-				.unit.lastUnit
-					.line.txtL(style="margin-top:2em")
-						.unit.size1of2.floatR.txtR.context.sizeLg.dkt.pad.BpadXXLg
-							+pageheader(child_section.cleanname, child_section.surname)
-
-						.unit.lastUnit.Tpad.Lpad.BpadXXLg.txtL
-							+productbasics(basics)
-
-					//- PRODUCTS ARTICLE BLOCKS
-					each product_article in getComponentsByTypename(child_section.post.bracket, 'ComponentModularArticle')
-						+article(product_article, params)
+		+product
 
 
-	.extra.context.rel(style='height:21em;')
-		.abs.top0.left0.bottom0.right0
-			span.hidden Image
-
-		+nextprev()
-
-		+back(true)
+	

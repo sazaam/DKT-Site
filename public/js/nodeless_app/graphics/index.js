@@ -2,19 +2,19 @@
 require('../strawnode_modules/strawnode_modules/jquery-1.8.1.min.js') ;
 require('../strawnode_modules/strawnode_modules/jquery.ba-hashchange.min.js') ;
 require('../strawnode_modules/betweenjs.js') ;
+// require('../events/index.js') ;
 
 
-var THREE = window.THREE = require('../../threejs/build/three.js') ;
+// var THREE = window.THREE = require('../../threejs/build/three.js') ;
 
-require('../../threejs/examples/js/controls/OrbitControls.js')
-require('../../threejs/examples/js/controls/TrackballControls.js')
-require('../../threejs/examples/js/loaders/GLTFLoader.js')
-require('../../threejs/examples/js/loaders/DRACOLoader.js')
-require('../../threejs/examples/js/loaders/RGBELoader.js')
-require('../../threejs/examples/js/WebGL.js')
+// require('../../threejs/examples/js/controls/OrbitControls.js')
+// require('../../threejs/examples/js/controls/TrackballControls.js')
+// require('../../threejs/examples/js/loaders/GLTFLoader.js')
+// require('../../threejs/examples/js/loaders/DRACOLoader.js')
+// require('../../threejs/examples/js/loaders/RGBELoader.js')
+// require('../../threejs/examples/js/WebGL.js')
 
-var effects = require('./effects.js') ;
-
+// var effects = require('./effects.js') ;
 
 
 var focus ;
@@ -39,11 +39,13 @@ var smallslideshow ;
 var langchange ;
 var parallax ;
 var resetscrolls ;
+var lazyload ;
 
 window.lang = $('html').attr('lang') ;
 
 
-var OKWEBGL = THREE.WEBGL.isWebGLAvailable() && 0 ;
+var OKWEBGL = 0 ;
+// var OKWEBGL = THREE.WEBGL.isWebGLAvailable() && 0 ;
 
 module.exports = {
 	
@@ -112,7 +114,6 @@ module.exports = {
 			$('.navbar').addClass('overnav') ; 
 			$('.js-transition-intro').addClass('none') ;
 
-			
 		}else{
 			$('.navbar').removeClass('overnav') ;
 			$('.js-transition-intro').removeClass('none') ;
@@ -430,12 +431,13 @@ module.exports = {
 					
 					if(screenX > mw){
 						// trace('heyyyy -> right')
-						// trace('screenX', e.screenX, ' mw >>', mw, ' fw ::>>', w)
+						// trace('screenY', e.screenY, ' mh >>', mh, ' fw ::>>', h)
 						li.addClass('slidenext')
 						li.removeClass('slideprev')
-
-						if(res.index == 0){
+						
+						if(res.id == 'home'){
 							if(screenY > mh){
+								
 								li.addClass('slidedown') ;
 								li.removeClass('slideprev slidenext') ;
 							} else{
@@ -449,7 +451,7 @@ module.exports = {
 						li.addClass('slideprev')
 						li.removeClass('slidenext')
 
-						if(res.index == 0){
+						if(res.id == 'home'){
 							if(screenY > mh){
 								li.addClass('slidedown') ;
 								li.removeClass('slideprev slidenext') ;
@@ -484,14 +486,14 @@ module.exports = {
 
 					if(screenX > mw){ // ON RIGHT
 
-						if(res.index == 0){ // HOME Case
+						if(res.id == 'home'){ // HOME Case
 							
 							if(screenY > mh){ // ON DOWNCLICK
 								
 								// 
 								BetweenJS.create({
 									target:document.documentElement,
-									to:{'scrollTop':555},
+									to:{scrollTop:555},
 									time:.5,
 									ease:Expo.easeOut
 								}).play() ;
@@ -514,7 +516,7 @@ module.exports = {
 						
 					}else{ // ON LEFT
 						
-						if(res.index == 0){ // HOME Case
+						if(res.id == 'home'){ // HOME Case
 							
 							if(screenY > mh){ // ON DOWNCLICK
 							
@@ -719,8 +721,12 @@ module.exports = {
 		var id = res.id ;
 		if(id== '@') return ;
 		var pos = $(document).scrollTop() ;
-		
+		// trace('YOOOO')
+
 		var node = $('#'+id+' .slideshow') ;
+		if(node.length == 0 && id !== '' && id !== 'products'){
+			node = $('#products .slideshow') ;
+		}
 		
 		if (node.length > 0) {
 			
@@ -985,7 +991,15 @@ module.exports = {
 		var parent 						= $('.' + res.parentStep.id + '_section_container') ;
 		var continent 					= $('.continent') ;
 		
-		var target_section = $('section.' + id) ;
+		var target_section ;
+		
+		if(!!!res.template){
+			res.render('/content/section/' + res.sectionId) ;
+		}
+		
+		target_section = res.template ;
+
+
 		var patchwork = $('.' + res.parentStep.id + '_patchwork') ;
 		var why = $('.' + res.parentStep.id + '_why') ;
 		var certif = $('.' + res.parentStep.id + '_certif') ;
@@ -996,10 +1010,18 @@ module.exports = {
 			why.addClass('none') ;
 			// certif.removeClass('none') ;
 			
+
+
+
 			$('.global_' + res.parentStep.id + ' ol .navmenu_' + id).addClass('active')
 			
 
 			target_section.appendTo(parent) ;
+			
+			if(!res.userData.lazyLoaded){
+				lazyload(e, true) ;
+				res.userData.lazyLoaded = true ;
+			}
 
 			topofpage(e, true) ;
 
@@ -1026,7 +1048,20 @@ module.exports = {
 		}
 
 	},
-	
+	lazyload:lazyload = function(e){
+		var res = e.target ;
+		var id = res.id ;
+		
+		var tg = $('#' + id) ;
+
+		var lazys = tg.find('[lazy]') ;
+		lazys.each(function(i, el){
+			var el = $(el) ;
+			$(el).css({'background-image': 'url(' + el.attr('lazy') + ')'})
+		})
+		
+
+	},
 	////////////////////////// FOCUS
 	focus : focus = function(e){
 		var res = e.target ;
@@ -1059,15 +1094,22 @@ module.exports = {
 		var ind 									= noID ? res.parentStep.index : res.index ;
 		
 		id = id == '@' ? 'home' : id ;
+		var target_section ;
+		
+		if(!!!res.template){
+			res.render('/content/section/' + res.sectionId) ;
+		}
+		
+		target_section = res.template ;
 		
 		
 		var all 									= $('.all') ;
 		var continent 						= $('.continent') ;
 		
-		var target_section 				= $('section.' + id) ;
+		
 		
 		if(res.opening){
-			
+
 			var target_navlinks 		= $('.sectionsnav li') ;
 			var target_navlink 			= $('#global_' + id) ;
 			
@@ -1076,7 +1118,26 @@ module.exports = {
 				target_navlink.addClass('active') ;
 			}
 			
+			if(res.id == '404'){
+				target_section.appendTo(all) ;
+
+
+
+				languages(e, true) ;
+				topofpage(e, true) ;
+				navmenus(e, true) ;
+				return res.ready() ;
+			}
+
+
+			
 			target_section.appendTo(all) ;
+
+			if(!res.userData.lazyLoaded){
+				lazyload(e, true) ;
+				res.userData.lazyLoaded = true ;
+			}
+
 
 			$(document).on('scroll', scroll) ;
 			$(document).on('scroll', parallax) ;
@@ -1101,6 +1162,16 @@ module.exports = {
 			
 		}else{
 			
+			if(res.id == '404'){
+				languages(e, false) ;
+				topofpage(e, false) ;
+				navmenus(e, false) ;
+				target_section.appendTo(continent) ;
+				
+				return res.ready() ;
+			}
+
+
 			navmenus(e, false) ;
 
 			topofpage(e, false) ;
@@ -1114,8 +1185,6 @@ module.exports = {
 			patchwork(e, false) ;
 			slideshow(e, false) ;
 			
-
-
 
 			$(document).off('scroll', scroll) ;
 			$(document).off('scroll', parallax) ;

@@ -1,23 +1,73 @@
 
+//- script. 
+//-   console.log(!{JSON.stringify(locals)})
 
 
-
-script. 
-  console.log(!{JSON.stringify(locals)})
 
 each section in db_sections
-  section.section.fullH.montserrat(id=section.name, class=section.name)
+
+  if(section.id == sectionId)
     - var post = section.post ;
     - var bracket = post.bracket ;
     - var template = post.template ;
 
     - var section_jade = template.jade ;
     - var section_jade_path = '/page_' + section.name ;
-    
-    //- VERY IMPORTANT HERE WANNA REWRITE LOCALS SO PUT LOCALS IN FRONT AND WRITE NEW PARAMS
-    //- AND MORE IMPORTANTLY, WE WANT TO LURE JADE INTO THINKING BEEING AT ROOT OF JADE FOLDER FOR BACKEND REASONS
-    //- IF WE SWITCH LOCALS TO LAST POSITION, LOCALS WILL BE THE REAL ONES AND MAKE OUR BACKEND EXTENDS FAIL.
-    //- IN THAT CASE ONE CAN ALWAYS CHANGE ALL PATHES IN THE BACK END, OR PUT all.jade FILE AT ROOT AGAIN
+
     - var params = p(locals, {__dirname:basedir, filename:basedir + section_jade_path, section:section}) ;
-    //- SPECIFYING DIRNAME IS JUST IN CASE, KIND OF OPTIONAL IT SEEMED
-    | !{ render(section_jade,  merge( customize(bracket, params) , params) )}
+
+    //- - console.log('GOOD SECTION')
+    section.section.fullH.montserrat(id=section.name, class=section.name)
+      | !{ render(section_jade,  merge( customize(bracket, params) , params) )}
+
+  else
+    if(section.children)
+      each ch in section.children
+        if(ch.id == sectionId)
+          //- - console.log('GOOD CHILDREN SECTION')
+          section.subsection(id=ch.name, class=ch.name)
+            - var productjade = ch.post.template.jade ;
+            - var bracket = ch.post.bracket ;
+            - var params = p(locals, {filename:basedir + ch.name + '.jade', section:section, child_section: ch}) ;
+
+            | !{ render(productjade, merge(customize(bracket, params), params))}
+
+    //- section.section.fullH.montserrat(id=section.name, class=section.name)
+      //- script. 
+      //-   console.log(!{JSON.stringify(section)})
+      - var post = section.post ;
+      - var bracket = post.bracket ;
+      - var template = post.template ;
+
+      - var section_jade = template.jade ;
+      - var section_jade_path = '/page_' + section.name ;
+      
+      //- VERY IMPORTANT HERE WANNA REWRITE LOCALS SO PUT LOCALS IN FRONT AND WRITE NEW PARAMS
+      //- AND MORE IMPORTANTLY, WE WANT TO LURE JADE INTO THINKING BEEING AT ROOT OF JADE FOLDER FOR BACKEND REASONS
+      //- IF WE SWITCH LOCALS TO LAST POSITION, LOCALS WILL BE THE REAL ONES AND MAKE OUR BACKEND EXTENDS FAIL.
+      //- IN THAT CASE ONE CAN ALWAYS CHANGE ALL PATHES IN THE BACK END, OR PUT all.jade FILE AT ROOT AGAIN
+      - var params = p(locals, {__dirname:basedir, filename:basedir + section_jade_path, section:section}) ;
+      //- SPECIFYING DIRNAME IS JUST IN CASE, KIND OF OPTIONAL IT SEEMED
+      
+      | !{ render(section_jade,  merge( customize(bracket, params) , params) )}
+      
+      if(section.children)
+        //- HERE ARE APPENDED INVISIBILY THE CHILDREN SECTIONS 
+        nav.data-container.none
+          each ch in section.children
+            section.subsection(id=ch.name, class=ch.name)
+                          
+              //- script. 
+              //-   console.log(!{JSON.stringify(ch)})
+              - var productjade = ch.post.template.jade ;
+              - var bracket = ch.post.bracket ;
+              - var params = p(locals, {filename:basedir + ch.name + '.jade', section:section, child_section: ch}) ;
+
+              | !{ render(productjade, merge(customize(bracket, params), params))}
+          
+
+//- ERROR CUSTOM SECTION
+//- section.section.fullH.montserrat(id='404', class='404')
+  - var section_jade_error_path = '../pages/page_404.jade'
+  - var params = p(locals, {__dirname:basedir, filename:basedir + section_jade_error_path, section:{name:'404'}}) ;
+  | !{ renderFile(__dirname + section_jade_error_path,  params )}

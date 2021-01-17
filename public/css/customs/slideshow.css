@@ -65,7 +65,7 @@ Slideshow control
 /* FLEX SLIDER PAGINATION */
 .flex-control-paging li a {width: 10px; height: 10px; display: block; background: rgba(255,255,255,0.3); cursor: pointer; text-indent: -9999px; -webkit-border-radius: 20px; -moz-border-radius: 20px; -o-border-radius: 20px; border-radius: 20px; }
 .flex-control-paging li a:hover {background: rgba(255,255,255,0.9); }
-.flex-control-paging li a.flex-active { background: rgba(255,255,255,1); cursor: default; }
+.flex-control-paging li.active a { background: rgba(255,255,255,1); cursor: default; }
 
 
 

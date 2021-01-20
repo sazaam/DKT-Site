@@ -24,6 +24,7 @@ var products_toggle ;
 
 var patchwork ;
 var threenoise ;
+var small3D ;
 var slidrens ;
 
 var topofpage ;

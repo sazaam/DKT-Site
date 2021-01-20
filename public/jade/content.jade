@@ -2,7 +2,6 @@
 //- CORE -- SMART REWRITING SECTIONS NAMES 
 
 if(params.sectionId)
-  //- - console.log(params.sectionId)
   | !{ renderFile(basedir + 'layouts/all.jade', p({sectionId:params.sectionId, __dirname:basedir + 'layouts/', filename:'all.jade'}, locals))}
 else
 

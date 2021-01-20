@@ -66,11 +66,11 @@
 
     "intro":{
       "title_01":"기계설비 제작 기술",
-      "text_01":"## 고객 니즈에 맞춰 원하는 제품 제작.  \n제품에 맞는 코팅장비 기술  \n고객 요구사항에 맞는 자비설계  \nRoll to Roll 기반 코팅 스스템  \n기계 설계,제작  \n납품/설치 및 시운전  \n유지보수",
-      "title_02":"코팅 공정 기술",
-      "text_02":"## 우리는 기계를 만듭니다.  \n코팅액별 코팅 방법 개발  \n복합 코팅 기술(다중 코팅 기술)  \n나노 코팅 기술(1nm까지 컨트롤)  \n코팅헤드별 코팅공정 개발(기술이전)  \n기재선정 및 전 처리 기술  \n건조 기술 및 경화 기술(열,UV)",
-      "title_03":"신물질 합성, 배합, 광학설계 및 제품 구조 설계",
-      "text_03":"## 우리는 기계를 만듭니다.  \n고분자, 무기물, 유무기 하이브리드 타입 신물질 합성 기술 보유  \n각종 기능성 코팅액 최적화 배합 기술 보유  \n광학설계 기술 보유  \n무기물 분쇄 및 분산 안정화 기술  \n유·무기 분석 기술  \n고 기능성 제품의 구조 해석에 따른 구조 설계  \n다층 구조 코팅 제품 구조 설꼐 및 광학 필터 설계"
+      "text_01":"## 고객 니즈에 맞춰 원하는 제품 제작.  \n 제품에 맞는 코팅장비 기술   \n 고객 요구사항에 맞는 자비설계   \n Roll to Roll 기반 코팅 스스템  \n 기계 설계,제작   \n 납품/설치 및 시운전   \n 유지보수",
+      "title_02":"기술 수집",
+      "text_02":"## 우리는 기계를 만듭니다.  \n독자가 레이아웃을 볼 때 페이지의 읽을 수있는 내용에주의를 분산시키는 것은 내용 된 사실입니다. Lorem Ipsum을 사용하는 요점은 'Content here, content here'를 사용하는 것과 달리 문자가 다소 정규되어있어 읽기 쉬운 영어처럼 시청합니다.",
+      "title_03":"산업 체인 개발",
+      "text_03":"## 우리는 기계를 만듭니다.  \n독자가 레이아웃을 볼 때 페이지의 읽을 수있는 내용에주의를 분산시키는 것은 내용 된 사실입니다. Lorem Ipsum을 사용하는 요점은 'Content here, content here'를 사용하는 것과 달리 문자가 다소 정규되어있어 읽기 쉬운 영어처럼 시청합니다."
     }
   },
   "DKT__about": {
@@ -80,22 +80,21 @@
     "creation_year": "2007",
     
     "why":{
-      "header":"ABOUT US",
-      "subheader":"dkt",
-      "title_01":"DKT",
-      "text_01":"## Start with DKT  \nStart your global thin film business with DKT. 앞서가는 기술력과 노하우로 세계적인 기업으로 성장하고 있습니다.",
-      "title_02":"PHILOSOPHY",
-      "text_02":"## $t(~)는 무한한 도전과 열정으로 새로운 가치를 만들어 고객과 인류에 봉사하는 기업이 되겠습니다.  \n저희 디케이티는 고객을 위하여 항상 새로운 비젼과 가치를 제공, 공유할 것이며 미래로 나아가는 기업이 되도록 하겠습니다.",
-      "title_03":"TRUST,PASSION,VISON",
-      "text_03":"## $t(~)는 항상 신뢰받는 정직한 기업이 되겠습니다.\n고객의 믿음과 사회의 기대에 부응하기 위한 새로운 도전에 대한 열정을 항상 간직하고 고객과 인류에 책임지는 새로운 비젼을 여러분과 공유하겠습니다."
+      "header":"$t(~) 를 사용하는 이유",
+      "subheader":"신뢰하는 원인",
+      "title_01":"모듈화 성과",
+      "text_01":"## 개념 배포.  \n독자가 레이아웃을 볼 때 페이지의 읽을 수있는 내용에주의를 분산시키는 것은 오랫동안 확립 된 사실입니다. *Lorem Ipsum*을 사용하는 요점은 *'Content here, content here'*를 사용하는 것과 달리 문자가 다소 정규 분포되어있어 읽기 쉬운 영어처럼 보입니다.",
+      "title_02":"세부적으로 다듬기",
+      "text_02":"## $t(~)에게는 철학이 있습니다.  \n독자가 레이아웃을 볼 때 페이지의 읽을 수있는 내용에주의를 분산시키는 것은 오랫동안 확립 된 사실입니다. *Lorem Ipsum*을 사용하는 요점은 _'Content here'_ 를 사용하는 것과 달리 문자가 다소 정규 분포되어있어 읽기 쉬운 영어처럼 보입니다.",
+      "title_03":"지연없는 전세계 배송",
+      "text_03":"## $t(~)는 또한 존경심을 가지고 있습니다.\n독자가 레이아웃을 볼 때 페이지의 읽을 수있는 내용에주의를 분산시키는 것은 오랫동안 확립 된 사실입니다. *Lorem Ipsum*을 사용하는 요점은 _'Content here'_ 를 사용하는 것과 달리 문자가 다소 정규 분포되어있어 읽기 쉬운 영어처럼 보입니다."
     },
 
     "articles": {
       "intro": {
-        "desc_01": "{{ intro }}\n***\n## __디케이티__ 는 창립 이래 필름, 종이, 섬유, 잉크 타입 코팅, 호일 산업을 위한 다양한 맞춤형 변환 기계를 개발, 재조, 공급하고 있으며 차별화된 기술과 그 기술을 바탕으로 지속적으로 성장하고 있습니다. \n 이제 글로벌 리더로 발돋움하기 위해 R&D 성과, 노하우 특별한 경험을 바탕으로 중국, 동남아시아, 미국 그리고 유럽에서도 우리의 영역을 확장하고 네트워크를 넓혀가려는 계획으로 사업을 진행하고 있습니다. 또한, 우리는 입증된 첨단 기술 전문지식과 사업화를 가진 기업으로 성잘할 것입니다. 우리 모두는 끊잉없는 혁신과 도전을 통해 이 비전을 이루기 위해 노력할 것입니다. 우리는 고객과 거래시 충성심을 가지고 우리의 의무를 이행하고, 더 나은 제품과 서비스를 제공하며, 사회적 책임을 지는 경영 실천을 하기 위해 더욱 노력할 것입니다. 고객의 니즈를 보다 능동적으로 충족시키지 위해 노력할 것입니다. 디케이티의 문은 언제나 열려있습니다. 감사합니다.  \n****\n**Representative Director** | Jung Jung Hun 鄭貞訓",
+        "desc_01": "{{ intro }}\n***\n## __The Way__ to go with success\n#### is to keep __thankfull__, to all __obstacles__ afterwards.  \n[__'Albert Einstein'__](https://duckduckgo.com), is a heavy influencer  \nof the 20th Century.  \n****\n**$t({{vars.test}})** :  One piece of the Future, 1985.  [__'Albert Einstein'__](),",
 
-        "desc_02": "DKT  hhh  \n***\n이부분은 정리할 필요가 있을것같네요.  __{{ saz }}__ will uncover many web sites still in their infancy.\nVarious versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like __{{ vars.test }}__ )",
-        "desc_03": "DKT  hhh  \n***\n이부분은 정리할 필요가 있을것같네요.  __{{ saz }}__ will uncover many web sites still in their infancy.\nVarious versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like __{{ vars.test }}__ )"
+        "desc_02": "***\nAnd a search for __{{ saz }}__ will uncover many web sites still in their infancy.\nVarious versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like __{{ vars.test }}__ )"
       },
       "history": {
         "desc_01": "{{ intro }}\n***\n ## __The Way__ to go with success\n#### is to keep __thankfull__, to all __obstacles__ afterwards.  \n[__'Albert Einstein'__](https://duckduckgo.com), is a heavy influencer  \nof the 20th Century.  \n****\n**$t({{ vars.test }})** :  One piece of the Future, 1985.  [__'Albert Einstein'__](),",
@@ -157,7 +156,7 @@
     
     "products":{
       "lm_001":{
-        "name":"Multi Coater",
+        "name":"라미네이터 6001-S",
         "surname":"$t(DKT__globals.machinery)",
         "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
         "instr": "Remove *protective film* on the *PET Base film*, use of *Gap coating system* through the Soft Mold and UV Curing.  \n After *UV Curing, laminating* and *rewinding.*",
@@ -178,7 +177,7 @@
       },
       
       "sl_001":{
-        "name":"UV",
+        "name":"슬리터 4201-S",
         "surname":"$t(DKT__globals.machinery)",
         "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
         "instr": "Remove *protective film* on the *PET Base film*, use of *Gap coating system* through the Soft Mold and UV Curing.  \n After *UV Curing, laminating* and *rewinding.*",
@@ -199,7 +198,7 @@
       },
 
       "uv_001":{
-        "name":"Special",
+        "name":"UV 코터 12002-S",
         "surname":"$t(DKT__globals.machinery)",
         "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
         "instr": "Remove *protective film* on the *PET Base film*, use of *Gap coating system* through the Soft Mold and UV Curing.  \n After *UV Curing, laminating* and *rewinding.*",
@@ -220,7 +219,7 @@
       },
       
       "uw_001":{
-        "name":"Coater",
+        "name":"언와인더 / 리와인더 9001-S",
         "surname":"$t(DKT__globals.machinery)",
         "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
         "instr": "Remove *protective film* on the *PET Base film*, use of *Gap coating system* through the Soft Mold and UV Curing.  \n After *UV Curing, laminating* and *rewinding.*",

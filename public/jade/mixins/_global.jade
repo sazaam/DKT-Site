@@ -91,7 +91,11 @@ mixin innerheader(header, subheader, clh, cls)
 	.sizeXXXXLg.rhdp.heavy 
 		.sizeXXXXLg(class=clh)= t(header)
 		if(subheader)
-			.sizeXLg(class=cls)= t(subheader)
+			- var ttt = t(subheader) ;
+			if(ttt = 'dkt')
+				+dktlogosmall
+			else
+				.sizeXLg(class=cls)= ttt
 
 
 
@@ -260,12 +264,13 @@ mixin transition_intro()
 
 //- HP INTRODUCTION PAGE
 mixin hpintro
-	.extra.darkBG.context.rel.hpintro(style="height:100%")
+	.extra.darkBG.context.rel.hpintro(style="height:80%")
 		- var introcomponent = getComponentByName(section.post.bracket, 'home_intro') ;
 		- var media = introcomponent.media ;
 		- var background = media.shift() ;
 
 		#noisecanvas.abs.fullW.fullH.context.lazy(lazy=CDN + background.url, style="background-repeat:no-repeat;background-position:left top;background-size:cover")
+			//- 
 		.abs.top0.left0.fullW
 			+transition_intro
 		

@@ -5,8 +5,22 @@ require('../strawnode_modules/betweenjs.js') ;
 // require('../events/index.js') ;
 
 
-// var THREE = window.THREE = require('../../threejs/build/three.js') ;
+var THREE, effects ;
+var support = {
+	canvas:!!window.HTMLCanvasElement,
+	webgl:!!window.WebGLRenderingContext,
+	isSmallScreen:(function(){
+		return !!window.matchMedia("only screen and (max-width: 760px)").matches
+	})(),
+	okFX:false
+}
 
+if((!support.isSmallScreen) && support.canvas && support.webgl){
+	THREE = window.THREE = require('../../threejs/build/three.js') ;
+	effects = require('./effects.js') ;
+	
+	support.okFX = true ;
+}
 // require('../../threejs/examples/js/controls/OrbitControls.js')
 // require('../../threejs/examples/js/controls/TrackballControls.js')
 // require('../../threejs/examples/js/loaders/GLTFLoader.js')
@@ -14,7 +28,8 @@ require('../strawnode_modules/betweenjs.js') ;
 // require('../../threejs/examples/js/loaders/RGBELoader.js')
 // require('../../threejs/examples/js/WebGL.js')
 
-// var effects = require('./effects.js') ;
+
+
 
 
 var focus ;
@@ -44,9 +59,6 @@ var lazyload ;
 
 window.lang = $('html').attr('lang') ;
 
-
-var OKWEBGL = 0 ;
-// var OKWEBGL = THREE.WEBGL.isWebGLAvailable() && 0 ;
 
 module.exports = {
 	
@@ -183,7 +195,7 @@ module.exports = {
 		
 		var canvasholder = $('#'+res.id+' .canvascontainer') ;
 		
-		if( OKWEBGL ){
+		if( support.okFX && 0){
 
 			if(cond){
 
@@ -919,8 +931,7 @@ module.exports = {
 	threenoise:threenoise = function(e, cond){
 		
 		var canvasholder = $('#noisecanvas') ;
-
-		if ( OKWEBGL ) {
+		if ( support.okFX ) {
 			
 			if(cond){
 

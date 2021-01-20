@@ -104,7 +104,7 @@ var noise = {
     var camera, scene, renderer;
     var uniforms;
     var onWRNoise, animNoise, renderNoise ; 
-
+    var animTW ;
     if(cond){
 
       if(!NOISE_SETTINGS){
@@ -136,43 +136,43 @@ var noise = {
 
         NOISE_SETTINGS = 1 ;
 
-
         onWRNoise = noise.settings.onWRNoise = function( event ) {
-          renderer.setSize( window.innerWidth, window.innerHeight );
+          var ww = canvascontainer.width() ;
+          var hh = canvascontainer.height() ;
+          renderer.setSize( ww, hh );
           uniforms.u_resolution.value.x = renderer.domElement.width;
           uniforms.u_resolution.value.y = renderer.domElement.height;
         }
         
 
-        animNoise = noise.settings.animNoise = function() {
-          noise.settings.NOISEID = requestAnimationFrame( animNoise );
-          renderNoise();
-        }
+        // animNoise = noise.settings.animNoise = function() {
+        //   noise.settings.NOISEID = requestAnimationFrame( animNoise );
+        //   renderNoise();
+        // }
         renderNoise = noise.settings.renderNoise = function() {
           uniforms.u_time.value += 0.05 ;
           renderer.render( scene, camera );
         } ;
-        // ANIM_TW = noise.settings.ANIM_TW = BJS.animationframe(renderNoise) ;
+        ANIM_TW = noise.settings.ANIM_TW = new BJS.$.Animation(undefined, renderNoise) ; 
         
       }else{
         onWRNoise = noise.settings.onWRNoise ;
-        // ANIM_TW = noise.settings.ANIM_TW ;
         renderNoise = noise.settings.renderNoise ;
-        animNoise = noise.settings.animNoise ;
+        ANIM_TW = noise.settings.ANIM_TW ;
       }
       
       window.addEventListener( 'resize', onWRNoise, false ) ;
       onWRNoise();
-      animNoise();
-      // ANIM_TW.play() ;
-
+      
+      ANIM_TW.start() ;
     }else{
       
       onWRNoise = noise.settings.onWRNoise
-      animNoise = noise.settings.animNoise ;
       renderNoise = noise.settings.renderNoise ;
-      
-      cancelAnimationFrame(noise.settings.NOISEID) ;
+      ANIM_TW = noise.settings.ANIM_TW ;
+
+
+      ANIM_TW.halt() ;
       
       window.removeEventListener( 'resize', onWRNoise, false ) ;
       
@@ -249,6 +249,7 @@ var viz3D = {
         
         renderer = new THREE.WebGLRenderer( { antialias: true } );
         renderer.setPixelRatio( window.devicePixelRatio );
+        
         renderer.setSize( canvascontainer.width(), canvascontainer.height() );
         // renderer.setClearColor(0xDDDDDD, 1);
         renderer.outputEncoding = THREE.sRGBEncoding;

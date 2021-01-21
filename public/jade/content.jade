@@ -10,9 +10,13 @@ else
     - db_section.cleanname = topsection.cleanname ;
     - db_section.surname = topsection.surname ;
     - db_section.cleanlink = topsection.cleanlink ;
+    - db_section.customs = customize(db_section.post.bracket, p(locals, {section:db_section})) ;
+    
+
     if(topsection.children)
       each ch, i in topsection.children
         - var db_ch = db_section.children[i] ;
         - db_ch.cleanname = ch.cleanname ;
         - db_ch.surname = ch.surname ;
         - db_ch.cleanlink = ch.cleanlink ;
+        - db_ch.customs = customize(db_ch.post.bracket, p(locals, {section:db_section, child_section: db_ch})) ;

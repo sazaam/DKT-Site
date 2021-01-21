@@ -934,6 +934,14 @@ hr{margin:0;padding:0;height:0}
 	width:100% !important;
 }
 
+
+.pics .arrow.next a{
+	/* background: url(../skin/next-light.png) no-repeat 50% 50%; */
+}
+.pics .arrow.prev a{
+	/* background: url(../skin/prev-light.png) no-repeat 50% 50%; */
+}
+
 .to_products:hover .none{
 	display:block !important
 }
@@ -1138,7 +1146,37 @@ code{
 }
 
 .lazy{
-	background:url('/img/7YRL.gif');
+	/* background:url('/img/7YRL.gif'); */
 	background-repeat:no-repeat;
 	background-position: 50% 50%;
 }
+
+.icons{
+	/*  */
+}
+.icon{
+
+}
+.icon a{
+	/*  */
+	width:40px;
+	height:40px;
+	background-image:url('../skin/icons.png') ;
+	background-repeat:no-repeat;
+	background-position:left top;
+}
+
+.icon a:hover{background-position-y:-60px}
+.icon .CPC{background-position-x: 0;}
+.icon .INFEED{background-position-x: -40px;}
+.icon .SLOT_DIE{background-position-x: -80px;}
+.icon .UN_REWINDER{background-position-x: -120px;}
+.icon .ACCUMULATOR{background-position-x: -160px;}
+.icon .WAVE{background-position-x: -200px;}
+.icon .COMMA{background-position-x: -240px;}
+.icon .MICROGRAVURE{background-position-x: -280px;}
+.icon .HEAT_CHAMBER{background-position-x: -320px;}
+.icon .GAPROLL{background-position-x: -360px;}
+.icon .FLOATING_CHAMBER{background-position-x: -400px;}
+.icon .LOW_UV_CHAMBER{background-position-x: -440px;}
+.icon .HIGH_UV_CHAMBER{background-position-x: -520px;}

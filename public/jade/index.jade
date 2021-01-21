@@ -28,28 +28,28 @@ block content
 				
 				var data = res ;
 				window.Data = JSON.parse(data) ;
-				//- trace(window.Data)
+				trace(window.Data)
 				
 				//- ERROR HANDLING -> MAKING ERROR SECTION
-				//- window.Data.push( {
-				//- 	level: 1,
-				//- 	id: "777", 
-				//- 	name: "404", 
-				//- 	path: "/404/",
-				//- 	position:40,
-				//- 	post:{
-				//- 		name: "404",
-				//- 		vars: {
-				//- 			behavior:{
-				//- 				'@jade':'/jade/404/', 
-				//- 				'@json':'/json/404/', 
-				//- 				'@focus':'focus', 
-				//- 				'@toggle':'toggle',
-				//- 				"sectionId":'777'
-				//- 			}
-				//- 		} 
-				//- 	}
-				//- }) ;
+				window.Data.push( {
+					level: 1,
+					id: "777", 
+					name: "404", 
+					path: "/404/",
+					position:40,
+					post:{
+						name: "404",
+						vars: {
+							behavior:{
+								'@jade':'/jade/404/', 
+								'@json':'/json/404/', 
+								'@focus':'focus', 
+								'@toggle':'toggle',
+								"sectionId":'777'
+							}
+						} 
+					}
+				}) ;
 
 				//- trace(window.Data)
 				new AjaxRequest().load('/content/', function(req, res){

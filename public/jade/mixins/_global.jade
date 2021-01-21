@@ -39,7 +39,7 @@ mixin linkblock(ch, isPatchwork, linkname, cl)
 	- var medias = ch.post.bracket[1].media ;
 	- if(isPatchwork){
 		- var isHome = section.name == 'home' ;
-		- var clblock = isHome ? "size1of2" : "size1of4"
+		- var clblock = isHome ? "size1of2" : "size1of3"
 		li.work-item.rel.context(class=!!cl ? clblock + ' ' + cl : clblock)
 			.work-image.fullH.lazy(lazy=CDN + medias[0].url, style="background-repeat:no-repeat;background-position:left top;background-size:cover")
 				.hidden Image
@@ -92,7 +92,7 @@ mixin innerheader(header, subheader, clh, cls)
 		.sizeXXXXLg(class=clh)= t(header)
 		if(subheader)
 			- var ttt = t(subheader) ;
-			if(ttt = 'dkt')
+			if(ttt == 'dkt')
 				+dktlogosmall
 			else
 				.sizeXLg(class=cls)= ttt
@@ -222,8 +222,20 @@ mixin slide(child_section, i)
 						span= cleanname
 					.hs-title-size-1.font-inc.BmarXLg
 						span= surname
-					//- script. 
-						//- console.log(!{JSON.stringify(post)})
+
+					
+					- var icons = child_section.customs.basics.consists ;
+					script. 
+						console.log(!{JSON.stringify(child_section.cleanname)})
+						console.log(!{JSON.stringify(child_section.customs)})
+					if(icons)
+						ul.icons.context.BmarXXXLg
+							each icon, i in icons
+								li.icon.floatL
+									a.block(class=icon,href="javascript:void()")
+										span.hover.none
+											em= icon
+										span.hidden= icon
 					+link({name:"product", cl:"dkt noBd", url:cleanlink})
 		- }
 
@@ -237,11 +249,9 @@ mixin patchwork()
 			- if(!!target_sections && target_sections.length){
 				ul.works-grid.works-grid-masonry.works-grid-2.works-hover-w
 					- var l = target_sections.length ;
-					- var cl = l < 3 || section.name == 'home' ? "size1of2" : "size1of4" ;
-
 					each child_section in target_sections
 						+linkblock(child_section, true, "product")
-					if(section.name!='home')
+					//- if(section.name!='home')
 						each child_section in target_sections
 							+linkblock(child_section, true, "product", "double")
 			- }
@@ -463,9 +473,16 @@ mixin productarticle
 					ul.pics.fullH.round.left.flowvisible.ocreBG(style="width:100%;")
 						//- .loader.abs.left0.top.dkt.zi1
 						//- 	.hidden loading...
-						
-						each media in medias
+						- var len = 0 ;
+						each media, i in medias
 							+mediasmallslide(media)
+							- len ++ ;
+						if(len > 0)
+							.arrow.next.abs.right0.top50.dktBG(style="width:40px;height:40px;z-index:1500")
+								a.block.fullW.fullH.white.rhdp.heavy.txtC.sizeXXXLg(href="#") &gt;
+							.arrow.prev.abs.left0.top50.dktBG(style="width:40px;height:40px;z-index:1500")
+								a.block.fullW.fullH.white.rhdp.heavy.txtC.sizeXXXLg(href="#") &lt;
+
 				
 				.line.rel.ocreBG.round.right.inconsolata
 					.pad
@@ -710,15 +727,14 @@ mixin error404
 
 			.container.pad0.rel.round.both.ivoryBG.context(style="margin-top:3em;margin-bottom:10em;")
 				.info404.sizeSm(style="padding:3em 0")
-					+innerheader(section.name, 'Not Found', 'dkt lh1', 'dark')
+					+innerheader(section.name, t('errors.404.title'), 'dkt lh1', 'dark')
 				hr
 				.line
 					.txtC.marXXXXLg.padXSm
-						h2.sizeXLg.dkt The requested page doesn't exist.
-						p.TmarLg
-							| sorry for the invonvenience, you still can press back if you come from somewhere within the site, 
-							br
-							| or navigate from the home again.
+						h2.sizeXLg.dkt= t('errors.404.not_found_01')
+						.TmarLg
+							:marked !{md(t('errors.404.not_found_02', locals))}
+							
 				hr
 				.aboutgo(style="padding:3em 0 3em")
 					- var o = {link : "#/"+ lang + '/home/', target:'$t(~)' }

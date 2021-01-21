@@ -2,35 +2,42 @@
 //- script. 
 //-   console.log(!{JSON.stringify(locals)})
 
+if(sectionId == '777')
+  section.section.fullH.montserrat(id='404', class='404')
+    - var section_jade_error_path = '../pages/page_404.jade'
+    - var params = p(locals, {__dirname:basedir, filename:basedir + section_jade_error_path, section:{name:'404'}}) ;
+    | !{ renderFile(__dirname + section_jade_error_path,  params )}
+else
 
+  each section in db_sections
 
-each section in db_sections
+    if(section.id == sectionId)
+      - var post = section.post ;
+      - var bracket = post.bracket ;
+      - var template = post.template ;
 
-  if(section.id == sectionId)
-    - var post = section.post ;
-    - var bracket = post.bracket ;
-    - var template = post.template ;
-
-    - var section_jade = template.jade ;
-    - var section_jade_path = '/page_' + section.name ;
+      - var section_jade = template.jade ;
+      - var section_jade_path = '/page_' + section.name ;
+      
+      - var params = p(locals, {__dirname:basedir, filename:basedir + section_jade_path, section:section}) ;
+      - var customs = customize(bracket, params) ;
     
-    - var params = p(locals, {__dirname:basedir, filename:basedir + section_jade_path, section:section}) ;
+      //- - console.log('GOOD SECTION')
+      section.section.fullH.montserrat(id=section.name, class=section.name)
+        | !{ render(section_jade,  merge( customs , params) )}
 
-    //- - console.log('GOOD SECTION')
-    section.section.fullH.montserrat(id=section.name, class=section.name)
-      | !{ render(section_jade,  merge( customize(bracket, params) , params) )}
-
-  else
-    if(section.children)
-      each ch in section.children
-        if(ch.id == sectionId)
-          //- - console.log('GOOD CHILDREN SECTION')
-          section.subsection(id=ch.name, class=ch.name)
+    else
+      if(section.children)
+        each ch in section.children
+          if(ch.id == sectionId)
             - var productjade = ch.post.template.jade ;
             - var bracket = ch.post.bracket ;
             - var params = p(locals, {filename:basedir + ch.name + '.jade', section:section, child_section: ch}) ;
-
-            | !{ render(productjade, merge(customize(bracket, params), params))}
+            - var customs = customize(bracket, params) ;
+            
+            //- - console.log('GOOD CHILDREN SECTION')
+            section.subsection(id=ch.name, class=ch.name)
+              | !{ render(productjade, merge(params, customs))}
 
     //- section.section.fullH.montserrat(id=section.name, class=section.name)
       //- script. 

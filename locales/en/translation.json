@@ -29,6 +29,15 @@
   "tags":"Tags",
   "desc_file":"Description File",
   
+  "errors":{
+    "404":{
+      "header":"404 Error",
+      "subheader":"Page Not Found",
+      "title":"Not Found",
+      "not_found_01":"The requested page doesn't exist.",
+      "not_found_02":"sorry for the inconvenience, you still can press back if you come from somewhere within the site,   \nor navigate from the home again."
+    }
+  },
   
   "DKT__globals": {
     "name": "DKT",
@@ -154,8 +163,8 @@
     "needinfo_03":"Our *professionals* are joining efforts to inform you in the *best delays.*",
     
     "products":{
-      "lm_001":{
-        "name":"LAMINATOR 6001-S",
+      "coater":{
+        "name":"Coater",
         "surname":"$t(DKT__globals.machinery)",
         "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
         "instr": "Remove *protective film* on the *PET Base film*, use of *Gap coating system* through the Soft Mold and UV Curing.  \n After *UV Curing, laminating* and *rewinding.*",
@@ -175,8 +184,8 @@
         }
       },
       
-      "sl_001":{
-        "name":"SLITTER 4201-S",
+      "multi_coater":{
+        "name":"Multi Coater",
         "surname":"$t(DKT__globals.machinery)",
         "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
         "instr": "Remove *protective film* on the *PET Base film*, use of *Gap coating system* through the Soft Mold and UV Curing.  \n After *UV Curing, laminating* and *rewinding.*",
@@ -196,8 +205,8 @@
         }
       },
 
-      "uv_001":{
-        "name":"UV COATER 12002-S",
+      "uv":{
+        "name":"UV",
         "surname":"$t(DKT__globals.machinery)",
         "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
         "instr": "Remove *protective film* on the *PET Base film*, use of *Gap coating system* through the Soft Mold and UV Curing.  \n After *UV Curing, laminating* and *rewinding.*",
@@ -217,8 +226,8 @@
         }
       },
       
-      "uw_001":{
-        "name":"UNWINDER / REWINDER 9001-S",
+      "special":{
+        "name":"Special",
         "surname":"$t(DKT__globals.machinery)",
         "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
         "instr": "Remove *protective film* on the *PET Base film*, use of *Gap coating system* through the Soft Mold and UV Curing.  \n After *UV Curing, laminating* and *rewinding.*",

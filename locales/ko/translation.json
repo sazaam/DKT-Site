@@ -1,5 +1,6 @@
+
 {
-  
+
   "view": "더보기",
   "product": "제품",
   "product_plural": "제품들",
@@ -29,6 +30,16 @@
   "creation_year":"창조 연도",
   "tags":"태그",
   "desc_file":"설명 파일",
+
+  "errors":{
+    "404":{
+      "header":"404 오류",
+      "subheader":"Page Not Found",
+      "title":"Not Found",
+      "not_found_01":"페이지를 찾을 수 없음.",
+      "not_found_02":"불편을 끼쳐 드려 죄송합니다. 사이트 내 어딘가에서 왔을 경우 뒤로를 누르거나  \n집에서 다시 탐색 할 수 있습니다."
+    }
+  },
 
   "DKT__globals": {
     "name": "DKT",
@@ -156,7 +167,29 @@
     "needinfo_03":"저희 *전문가들은* 최선의 지연에 대해 알려 드릴 준비가되어 있습니다.",
     
     "products":{
-      "lm_001":{
+      
+      "coater":{
+        "name":"Coater",
+        "surname":"$t(DKT__globals.machinery)",
+        "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
+        "instr": "Remove *protective film* on the *PET Base film*, use of *Gap coating system* through the Soft Mold and UV Curing.  \n After *UV Curing, laminating* and *rewinding.*",
+        "concl": "This asset is *quite detailed* and created with an eye towards current and next-generation needs  \n in the *modern industry* and innovative technologies.",
+        "specs":{
+          "Web Materials":"PET film",
+          "Web Thickness":"100 ~ 250 micron",
+          "Web Width":"500 ~ 1,570 mm",
+          "Machine Speed":"Max. 30m/min",
+          "Unwind Diameter":"Max. 800mm",
+          "Rewind Diameter":"Max. 800mm",
+          "Coating System":"(Double Top) Roller Gap Adjusting System",
+          "Dryer Diameter":"Low/Middle/High Pressure UV system",
+          "Inspection Room":"Top Roller Gap Adjusting System",
+          "Laminating System":"By Sight",
+          "Rewinding System":"Center (Surface Turret) Winding System"
+        }
+      },
+      
+      "multi_coater":{
         "name":"Multi Coater",
         "surname":"$t(DKT__globals.machinery)",
         "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
@@ -177,7 +210,7 @@
         }
       },
       
-      "sl_001":{
+      "uv":{
         "name":"UV",
         "surname":"$t(DKT__globals.machinery)",
         "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
@@ -198,7 +231,7 @@
         }
       },
 
-      "uv_001":{
+      "special":{
         "name":"Special",
         "surname":"$t(DKT__globals.machinery)",
         "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
@@ -219,26 +252,6 @@
         }
       },
       
-      "uw_001":{
-        "name":"Coater",
-        "surname":"$t(DKT__globals.machinery)",
-        "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
-        "instr": "Remove *protective film* on the *PET Base film*, use of *Gap coating system* through the Soft Mold and UV Curing.  \n After *UV Curing, laminating* and *rewinding.*",
-        "concl": "This asset is *quite detailed* and created with an eye towards current and next-generation needs  \n in the *modern industry* and innovative technologies.",
-        "specs":{
-          "Web Materials":"PET film",
-          "Web Thickness":"100 ~ 250 micron",
-          "Web Width":"500 ~ 1,570 mm",
-          "Machine Speed":"Max. 30m/min",
-          "Unwind Diameter":"Max. 800mm",
-          "Rewind Diameter":"Max. 800mm",
-          "Coating System":"(Double Top) Roller Gap Adjusting System",
-          "Dryer Diameter":"Low/Middle/High Pressure UV system",
-          "Inspection Room":"Top Roller Gap Adjusting System",
-          "Laminating System":"By Sight",
-          "Rewinding System":"Center (Surface Turret) Winding System"
-        }
-      },
       "other_machines":{
         "name":"Other Machines",
         "surname":"$t(DKT__globals.machinery)",

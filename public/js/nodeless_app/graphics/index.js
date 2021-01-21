@@ -233,6 +233,8 @@ module.exports = {
 		if(!slideshow.length) return ;
 		
 		var slides = rt.find('.pics li') ;
+		var arrow = rt.find('.arrow a') ;
+		
 		var launched = false ;
 		var cy ;
 		
@@ -284,7 +286,19 @@ module.exports = {
 				}
 				
 			}
+			var arrowclk = res.userData.arrowclk = function(e){
+				e.preventDefault() ;
+				e.stopPropagation() ;
+
+				var tg = $(e.target) ;
+
+				if(tg.hasClass('next')){ // ON RIGHT
+					cy.next() ;
+				}else{ // ON LEFT
+					cy.prev() ;
+				}
 				
+			}
 			
 			
 			
@@ -353,23 +367,25 @@ module.exports = {
 		
 		var enable = res.userData.enable = res.userData.enable || function(cond){
 			
+			if(cond){
+				
 			slides.each(function(i, el){
 				var li = $(el) ;
-				
-				if(cond){
-					
 					li.on('click', res.userData.clk) ;
 					li.on('mousemove', res.userData.mm) ;
-					
-				}else{
-					
+				}) ;
+				arrow.on('click', res.userData.arrowclk) ;
+				
+			}else{
+				slides.each(function(i, el){
+					var li = $(el) ;
 					li.off('click', res.userData.clk) ;
 					li.off('mousemove', res.userData.mm) ;
-					
-				}
+				}) ;
+				arrow.off('click', res.userData.arrowclk) ;
 				
-			}) ;
-			
+			}
+
 		}
 		
 		if(cond){
@@ -1067,9 +1083,9 @@ module.exports = {
 		var tg = $('#' + id) ;
 
 		var lazys = tg.find('[lazy]') ;
-		
 		lazys.each(function(i, el){
 			var el = $(el) ;
+			
 			el.css({'background-image': 'url(' + el.attr('lazy') + ')'}) ;
 		})
 		
@@ -1122,7 +1138,7 @@ module.exports = {
 		
 		
 		if(res.opening){
-
+			trace('OPENING', res.id)
 			var target_navlinks 		= $('.sectionsnav li') ;
 			var target_navlink 			= $('#global_' + id) ;
 			
@@ -1133,8 +1149,14 @@ module.exports = {
 			
 			if(res.id == '404'){
 				target_section.appendTo(all) ;
+				if(!res.userData.lazyLoaded){
+					lazyload(e, true) ;
+					res.userData.lazyLoaded = true ;
+				}
 
+				$(document).on('scroll', scroll) ;
 
+				resetscrolls(id) ;
 
 				languages(e, true) ;
 				topofpage(e, true) ;
@@ -1179,6 +1201,9 @@ module.exports = {
 				languages(e, false) ;
 				topofpage(e, false) ;
 				navmenus(e, false) ;
+				
+				$(document).off('scroll', scroll) ;
+				
 				target_section.appendTo(continent) ;
 				
 				return res.ready() ;

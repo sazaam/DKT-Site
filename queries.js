@@ -98,7 +98,7 @@ let datas = `query {
       }
     }
 
-    children{
+    children(sort:"position:asc"){
       id
       name
       path
@@ -206,7 +206,7 @@ let navdatas = `query {
     post{
       name
     }
-    children{
+    children(sort:"position:asc"){
       id
       name
       path

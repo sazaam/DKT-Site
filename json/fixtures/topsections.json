@@ -1,37 +1,95 @@
-[
-  {
-    "id": "5f52a181096e6d05185a363e",
-    "name": "home",
-    "path": "/home/",
-    "position": 1,
-    "level": 1
-  },
-  {
-    "id": "5f64e21134db8f1020bedb76",
-    "name": "techs",
-    "path": "/techs/",
-    "position": 2,
-    "level": 1
-  },
-  {
-    "id": "5f52a190096e6d05185a363f",
-    "name": "products",
-    "path": "/products/",
-    "position": 3,
-    "level": 1
-  },
-  {
-    "id": "5f53ade2d665493b24aa6734",
-    "name": "about",
-    "path": "/about/",
-    "position": 4,
-    "level": 1
-  },
-  {
-    "id": "5f53e6665710812194846280",
-    "name": "contact",
-    "path": "/contact/",
-    "position": 5,
-    "level": 1
-  }
+[{
+        "id": "5f52a181096e6d05185a363e",
+        "name": "home",
+        "path": "/home/",
+        "post": {
+            "name": "home"
+        },
+        "children": [],
+        "position": 1,
+        "level": 1
+    },
+    {
+        "id": "5f52a190096e6d05185a363f",
+        "name": "products",
+        "path": "/products/",
+        "post": {
+            "name": "products"
+        },
+        "children": [{
+                "id": "5f561f0ab18c393dc4a77e91",
+                "name": "coater",
+                "path": "/products/coater/",
+                "post": {
+                    "name": "coater"
+                },
+                "position": 1,
+                "level": 2
+            },
+            {
+                "id": "5f561f22b18c393dc4a77e92",
+                "name": "multi_coater",
+                "path": "/products/multi_coater/",
+                "post": {
+                    "name": "multi_coater"
+                },
+                "position": 2,
+                "level": 2
+            },
+            {
+                "id": "5f561f62b18c393dc4a77e93",
+                "name": "uv",
+                "path": "/products/uv/",
+                "post": {
+                    "name": "uv"
+                },
+                "position": 3,
+                "level": 2
+            },
+            {
+                "id": "5f561f7cb18c393dc4a77e94",
+                "name": "special",
+                "path": "/products/special/",
+                "post": {
+                    "name": "special"
+                },
+                "position": 4,
+                "level": 2
+            },
+            {
+                "id": "600950cb3831222fcc4c7890",
+                "name": "other_machines",
+                "path": "/products/other_machines/",
+                "post": {
+                    "name": "other_machines"
+                },
+                "position": 5,
+                "level": 2
+            }
+        ],
+        "position": 2,
+        "level": 1
+    },
+    {
+        "id": "5f53ade2d665493b24aa6734",
+        "name": "about",
+        "path": "/about/",
+        "post": {
+            "name": "about"
+        },
+        "children": [],
+        "position": 3,
+        "level": 1
+    },
+    {
+        "id": "5f53e6665710812194846280",
+        "name": "contact",
+        "path": "/contact/",
+        "post": {
+            "name": "contact"
+        },
+        "children": [],
+        "position": 4,
+        "level": 1
+    }
 ]

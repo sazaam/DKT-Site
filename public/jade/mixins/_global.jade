@@ -228,7 +228,7 @@ mixin slide(child_section, i)
 					script. 
 						console.log(!{JSON.stringify(child_section.cleanname)})
 						console.log(!{JSON.stringify(child_section.customs)})
-					if(icons)
+					//- if(icons)
 						ul.icons.context.BmarXXXLg
 							each icon, i in icons
 								li.icon.floatL
@@ -471,8 +471,6 @@ mixin productarticle
 						:marked !{md(t(pointer + '.instr', locals))}
 				.line.rel.fullW(style="height:400px;")
 					ul.pics.fullH.round.left.flowvisible.ocreBG(style="width:100%;")
-						//- .loader.abs.left0.top.dkt.zi1
-						//- 	.hidden loading...
 						- var len = 0 ;
 						each media, i in medias
 							+mediasmallslide(media)

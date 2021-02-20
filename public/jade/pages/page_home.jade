@@ -22,8 +22,12 @@ block content
   block flow
     
     //- HOME ARTICLE BLOCKS
-    each home_article in getComponentsByTypename(section.post.bracket, 'ComponentModularArticle')
-      +article(home_article, params)
+    each article in getComponentsByTypename(section.post.bracket, 'ComponentModularArticle')
+
+      if(article.template.name == 'article_custom')
+        +newarticle(article, params)
+      else
+        +article(article, params)
     
     
     //- PATCHWORK

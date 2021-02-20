@@ -261,7 +261,7 @@ let root = async(req, res) => {
 
     // topsections = topsections || await fetchdata(req, res, 'navdatas').catch( err => {console.log(err)}) ;
     topsections = await fetchdata(req, res, 'navdatas').catch(err => { console.log(err) });
-
+    
     let loadedLangs = await Object.keys(i18next.services.resourceStore.data);
 
     res.render(path.join(__dirname, 'public/jade/index'), merge(params, {

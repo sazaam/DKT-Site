@@ -13,9 +13,6 @@ block flow
   section.page.zind3.rel.context.marbleBG
 
     each about_article, i in getComponentsByTypename(section.post.bracket, 'ComponentModularArticle')
-      if(about_article.name == 'about_test')
-        +newarticle(about_article, params)
-      else
-        +article(about_article, params)
+      +newarticle(about_article, params)
 
   +footer()

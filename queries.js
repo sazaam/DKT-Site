@@ -102,6 +102,11 @@ let datas = `query {
       id
       name
       path
+      
+      category{
+        name
+      }
+
       post{
         name
         template{
@@ -210,6 +215,9 @@ let navdatas = `query {
       id
       name
       path
+      category{
+        name
+      }
       post{
         name
       }

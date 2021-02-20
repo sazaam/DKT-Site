@@ -92,7 +92,7 @@ mixin innerheader(header, subheader, clh, cls)
 		.sizeXXXXLg(class=clh)= t(header)
 		if(subheader)
 			- var ttt = t(subheader) ;
-			if(ttt == 'dkt')
+			if(ttt.toLowerCase() == 'dkt')
 				+dktlogosmall
 			else
 				.sizeXLg(class=cls)= ttt
@@ -160,11 +160,11 @@ mixin slide(child_section, i)
 	- var cleanlink = child_section.cleanlink ;
 
 	- var post = child_section.post ;
-	- var medias = child_section.post.bracket[1].media ;
+	- var mediablock = getComponentByName(child_section.post.bracket, 'media_main') 
+	- var medias = mediablock.media ;
+	- var media = section.name == 'home' ? medias[0].url : ((1 in medias) ? medias[1].url : medias[0].url) ;
 
 	li.bg-dark.noselect(unselectable="on" style='width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;')
-		- var media = section.name == 'home' ? medias[0].url : ((1 in medias) ? medias[1].url : medias[0].url) ;
-		- media = media ;
 		.slidebg.slide-zoom.lazy(lazy=CDN + media, style='opacity:.3;')
 
 		- if(name == 'home'){
@@ -221,21 +221,8 @@ mixin slide(child_section, i)
 					.hs-title-size-3.font-alt.m-b-20.white
 						span= cleanname
 					.hs-title-size-1.font-inc.BmarXLg
-						span= surname
+						span= child_section.category.name
 
-					
-					- var icons = child_section.customs.basics.consists ;
-					script. 
-						console.log(!{JSON.stringify(child_section.cleanname)})
-						console.log(!{JSON.stringify(child_section.customs)})
-					//- if(icons)
-						ul.icons.context.BmarXXXLg
-							each icon, i in icons
-								li.icon.floatL
-									a.block(class=icon,href="javascript:void()")
-										span.hover.none
-											em= icon
-										span.hidden= icon
 					+link({name:"product", cl:"dkt noBd", url:cleanlink})
 		- }
 
@@ -415,10 +402,20 @@ mixin dktlogosmall
 
 mixin productnav
 	if(section.children)
-		ul.sidebar.txtL.TmarXXLg.Vpad.sizeLg
+		- var cat = "" ;
+		- var curcat = child_section.category.name ;
+		ul.sidebar.txtL.TmarXXLg.Vpad.sizeLg(category=curcat)
 			each child,i in section.children
-				li(class=(child_section == child ? "active" : ""))
-					a.block.padXSm.round.both(href=child.cleanlink)= child.cleanname
+				- var chcat = child.category.name ;
+				- var isCur = (chcat == curcat) ;
+				if(cat !== chcat)
+					- var catcl = isCur ? 'dktBG white' : 'dkt' ;
+					li.cat.context
+						a.block.padXSm.round.both(class=catcl, href=child.cleanlink)= chcat
+				- var cl = isCur ? "" : "none" ;
+				li.context(category=chcat, class=(child_section == child ? cl + " dkt" : cl))
+					a.floatL.block.padXSm.round.both(href=child.cleanlink)= child.cleanname
+				- cat = chcat ;
 
 
 mixin product
@@ -436,7 +433,7 @@ mixin product
 			.unit.lastUnit
 				.line.txtL(style="margin-top:2em")
 					.unit.size1of2.floatR.txtR.context.sizeLg.dkt.pad.BpadXXLg
-						+pageheader(child_section.cleanname, child_section.surname)
+						+pageheader(child_section.cleanname, child_section.category.name)
 
 					.unit.lastUnit.Tpad.LpadXXXLg.BpadXXLg.txtL
 						+productbasics(basics)
@@ -464,7 +461,7 @@ mixin productarticle
 				:marked !{md(t(pointer + '.desc', locals))}
 				
 	.line(style="margin-top:1em;")
-		.round.both
+		.round.both.LmarXLg
 			.txtL
 				.line.Lpad
 					.pad.txtL.marked
@@ -542,7 +539,7 @@ mixin nextprev()
 				span.block.padXXLg.VpadSm= t('prev')
 			.sizeXXLg.TmarXXSm.context
 				span.inlineblock.dkt.lh1= cleanname
-				span.block.sizeSm.HmarXXXSm.inconsolata.uppercase.ls1= surname
+				span.block.sizeXSm.HmarXXXSm.uppercase.ls1= cur.category.name
 
 	.to_products.next.abs.right0.bottom0.context.sizeR.txtR.size2of5.noBd
 		- var cur = next ;
@@ -558,7 +555,7 @@ mixin nextprev()
 				span.block.padXXLg.VpadSm= t('next')
 			.sizeXXLg.TmarXXSm.context
 				span.inlineblock.dkt.lh1= cleanname
-				span.block.sizeSm.HmarXXXSm.inconsolata.uppercase.ls1= surname
+				span.block.sizeXSm.HmarXXXSm.uppercase.ls1= cur.category.name
 
 
 

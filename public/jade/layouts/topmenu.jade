@@ -7,18 +7,13 @@
     - topsection.cleanname = t( prefix + topsection.post.name + '.name') ;
     - topsection.surname = t( prefix + topsection.post.name + '.surname')
     - topsection.cleanlink = '/#/' + lang + topsection.path ;
-    //- h2= topsection.cleanname
-    //- h2= topsection.surname
-    //- h2= topsection.cleanlink
+    
     if(topsection.children)
       each ch in topsection.children
         - ch.cleanname = t( prefix + topsection.post.name + '.' + topsection.post.name + '.' + ch.post.name + '.name') ;
         - ch.surname = t( prefix + topsection.post.name + '.' + topsection.post.name + '.' + ch.post.name + '.surname') ;
         - ch.cleanlink = '/#/' + lang + ch.path ;
-        //- h1= ch.cleanname
-        //- h1= ch.surname
-        //- h1= ch.cleanlink
-    
+
   //- MAIN NAV SECTION LINKS
   ol.sectionsnav.flowvisible.uppercase
     - var other = [].concat(topsections) ;
@@ -36,12 +31,17 @@
         a.block.pad.Hpad.inconsolata(href= '/#/' + lang + '/' + name + '/')
           span= name
         if(navsection.children.length)
-          ol.subnav.abs.txtL.left0.round.right.flowhidden(style="top:4em;width:400px")
+          ol.subnav.abs.txtR.left0.round.right.flowhidden(style="top:4em;width:400px")
+            - var cat = "" ;
             each navchild, i in navsection.children
               - var chname = navchild.cleanname ;
-              li.sub(class="navmenu_" + navchild.name )
+              - var chcat = navchild.category.name ;
+              li.sub.rel(class="navmenu_" + navchild.name )
+                if(chcat !== cat)
+                  .abs.left0.padXXSm.sizeSm.Hpad.inconsolata.dkt.dark.whiteBG(style="top:3px;border-bottom:1px solid #e3dcd5")= chcat
+                - cat = chcat ;
                 a.block.padXXSm.Hpad.inconsolata(href= '/#/' + lang + '/' + name + '/' + navchild.name + '/')
-                  span= chname
+                  span= '> ' + chname
 
   //- LAGUAGE BAR
   ul#langnav.langnav.context.floatR.mar.VpadXXXSm

@@ -56,6 +56,8 @@ var langchange ;
 var parallax ;
 var resetscrolls ;
 var lazyload ;
+var productcat ;
+var catsclick ;
 
 window.lang = $('html').attr('lang') ;
 
@@ -1039,13 +1041,13 @@ module.exports = {
 			// certif.removeClass('none') ;
 			
 
-
-
 			$('.global_' + res.parentStep.id + ' ol .navmenu_' + id).addClass('active')
 			
 
 			target_section.appendTo(parent) ;
 			
+			productcat(e, true) ;
+
 			if(!res.userData.lazyLoaded){
 				lazyload(e, true) ;
 				res.userData.lazyLoaded = true ;
@@ -1064,6 +1066,8 @@ module.exports = {
 			why.removeClass('none') ;
 			// certif.addClass('none') ;
 			
+			productcat(e, false) ;
+
 			$('.global_' + res.parentStep.id + ' ol .navmenu_' + id).removeClass('active')
 
 			/* HACKY BUT WORTHY */
@@ -1089,6 +1093,36 @@ module.exports = {
 			el.css({'background-image': 'url(' + el.attr('lazy') + ')'}) ;
 		})
 		
+
+	},
+	catsclick:catsclick = function(e){
+		e.preventDefault() ;
+		e.stopPropagation() ;
+
+		var a = $(e.target) ;
+		var li = a.parent() ;
+		var rightcat = a.text() ;
+		var ul = li.parent() ;
+		var curcat = ul.attr('category') ;
+		
+		ul.find('[category]').addClass('none') ;
+		ul.find('[category='+ rightcat +']').toggleClass('none') ;
+	},
+	productcat:productcat = function(e, cond){
+		var res = e.target ;
+		var id = res.id ;
+		
+		var tg = $('#' + id) ;
+
+		var cats = tg.find('.cat a') ;
+		
+
+		if(cond){
+			cats.on('click', catsclick) ;
+			
+		}else{
+			cats.off('click', catsclick) ;
+		}
 
 	},
 	////////////////////////// FOCUS

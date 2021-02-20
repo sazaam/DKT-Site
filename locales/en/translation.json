@@ -97,17 +97,23 @@
       "title_03":"Delayless Wordwide Delivering",
       "text_03":"## We also have _Respect_.\nThe point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making [_'Albert Einstein'_]({{whylink.linkto}}) it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text."
     },
-
+    
     "articles": {
       "intro": {
-        "desc_01": "{{ intro }}\n****\n## __The Way__ to go with success\n#### is to keep __thankfull__, to all __obstacles__ afterwards.  \n[__'Albert Einstein'__](https://duckduckgo.com), is a heavy influencer  \nof the 20th Century.  \n****\n**$t({{vars.test}})** :  One piece of the Future, 1985.  [__'Albert Einstein'__](),",
+        
 
-        "desc_02": "{{ intro }}\n***\nAnd a search for __{{ saz }}__ will uncover many web sites still in their infancy.\nVarious versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like __{{ vars.test }}__ )"
+
+        "desc_01": "## Since its foundation, __$t(~)__ has been developing, manufacturing and supplying a variety of customized conversion machines for the film, paper, textile, ink type coating and foil industries, and continues to grow based on various aspects and technologies.  \n Now, in order to become a global leader, we are conducting business with a plan to expand our field of action and network in China, Southeast Asia, the United States and Europe based on our R&D achievements and special expertise. In addition, we will do well as a company with proven high-tech experience and commercialization patterns. We will all strive to achieve this vision through constant innovation and challenge. We will do our best to fulfill our obligations keeping care and loyalty on top councerning our customers, to provide better products and services, and to practice socially responsible business practices. We will endeavor to meet customer needs more actively and accurately. $t(~)'s door is always open. Thank you.",
+        "desc_02": "**Representative Director** | Jung Jung Hun 鄭貞訓",
+        "philo_01": "## __$t(~)__ will become a company that serves customers and humanity by creating new values with infinite challenge and passion. \nOur DKT will always provide and share new visions and values for our customers, and we will be a company moving forward. ",
+        "passion":"We will always keep our passion for new challenges to meet the expectations of our customers and our society.  \nWe will grow day by day as a young company, a challenging company, and a tireless company.  \nWe will do our best towards customer service and with the most inspired passion.",
+        "trust":"We will always go by the way a trusted and honest company should go by.  \nTrust in honest corporate spirit, trust in honest customers, trust in the future, trust in technology, trust in quality, we will always do our best to build up trust between customers, society and $t(~).",
+        "vision":"We share with you a new vision, a responsible one, for customers, partners, and humanity.  \nTowards a new goal for the beyond, we, $t(~), will stand strong in the future. With all of you, a new vision with always upright values."
       },
       "history": {
-        "desc_01": "{{ intro }}\n****\n ## __The Way__ to go with success\n#### is to keep __thankfull__, to all __obstacles__ afterwards.  \n[__'Albert Einstein'__](https://duckduckgo.com), is a heavy influencer  \nof the 20th Century.  \n****\n**$t({{ vars.test }})** :  One piece of the Future, 1985.  [__'Albert Einstein'__](),",
+        "desc_01": "{{ intro }}\n***\n ## __The Way__ to go with success\n#### is to keep __thankfull__, to all __obstacles__ afterwards.  \n[__'Albert Einstein'__](https://duckduckgo.com), is a heavy influencer  \nof the 20th Century.  \n****\n**$t({{ vars.test }})** :  One piece of the Future, 1985.  [__'Albert Einstein'__](),",
 
-        "desc_02": "## A brief __overview__  \n****\n![DKT Logo]({{CDN}}/uploads/logo_big_red_a604eaaeca.png) \n  \n****  \n**$t({{ vars.test }})** :  One piece of the Future, 1985.  [__'Albert Einstein'__]()"
+        "desc_02": "## A brief __overview__  \n****\n![DKT Logo](/img/logo_big_green.png) \n  \n****  \n**$t({{ vars.test }})** :  One piece of the Future, 1985.  [__'Albert Einstein'__]()"
       }
     }
   },
@@ -163,8 +169,50 @@
     "needinfo_03":"Our *professionals* are joining efforts to inform you in the *best delays.*",
     
     "products":{
-      "coater":{
-        "name":"Coater",
+      "nano_ar_coater":{
+        "name":"Nano Exclusive AR Coater",
+        "surname":"$t(DKT__globals.machinery)",
+        "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
+        "instr": "Remove *protective film* on the *PET Base film*, use of *Gap coating system* through the Soft Mold and UV Curing.  \n After *UV Curing, laminating* and *rewinding.*",
+        "concl": "This asset is *quite detailed* and created with an eye towards current and next-generation needs  \n in the *modern industry* and innovative technologies.",
+        "specs":{
+          "Web Materials":"PET film",
+          "Web Thickness":"100 ~ 250 micron",
+          "Web Width":"500 ~ 1,570 mm",
+          "Machine Speed":"Max. 30m/min",
+          "Unwind Diameter":"Max. 800mm",
+          "Rewind Diameter":"Max. 800mm",
+          "Coating System":"(Double Top) Roller Gap Adjusting System",
+          "Dryer Diameter":"Low/Middle/High Pressure UV system",
+          "Inspection Room":"Top Roller Gap Adjusting System",
+          "Laminating System":"By Sight",
+          "Rewinding System":"Center (Surface Turret) Winding System"
+        }
+      },
+
+      "nano_agnw_coater":{
+        "name":"Nano Exclusive AGnW Coater",
+        "surname":"$t(DKT__globals.machinery)",
+        "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
+        "instr": "Remove *protective film* on the *PET Base film*, use of *Gap coating system* through the Soft Mold and UV Curing.  \n After *UV Curing, laminating* and *rewinding.*",
+        "concl": "This asset is *quite detailed* and created with an eye towards current and next-generation needs  \n in the *modern industry* and innovative technologies.",
+        "specs":{
+          "Web Materials":"PET film",
+          "Web Thickness":"100 ~ 250 micron",
+          "Web Width":"500 ~ 1,570 mm",
+          "Machine Speed":"Max. 30m/min",
+          "Unwind Diameter":"Max. 800mm",
+          "Rewind Diameter":"Max. 800mm",
+          "Coating System":"(Double Top) Roller Gap Adjusting System",
+          "Dryer Diameter":"Low/Middle/High Pressure UV system",
+          "Inspection Room":"Top Roller Gap Adjusting System",
+          "Laminating System":"By Sight",
+          "Rewinding System":"Center (Surface Turret) Winding System"
+        }
+      },
+
+      "gen_optical_coater":{
+        "name":"General Optical Coater",
         "surname":"$t(DKT__globals.machinery)",
         "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
         "instr": "Remove *protective film* on the *PET Base film*, use of *Gap coating system* through the Soft Mold and UV Curing.  \n After *UV Curing, laminating* and *rewinding.*",
@@ -185,7 +233,7 @@
       },
       
       "multi_coater":{
-        "name":"Multi Coater",
+        "name":"POP,DOP,MOP Multi-Coater",
         "surname":"$t(DKT__globals.machinery)",
         "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
         "instr": "Remove *protective film* on the *PET Base film*, use of *Gap coating system* through the Soft Mold and UV Curing.  \n After *UV Curing, laminating* and *rewinding.*",
@@ -205,8 +253,8 @@
         }
       },
 
-      "uv":{
-        "name":"UV",
+      "soft_mold":{
+        "name":"Soft Mold",
         "surname":"$t(DKT__globals.machinery)",
         "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
         "instr": "Remove *protective film* on the *PET Base film*, use of *Gap coating system* through the Soft Mold and UV Curing.  \n After *UV Curing, laminating* and *rewinding.*",
@@ -226,8 +274,8 @@
         }
       },
       
-      "special":{
-        "name":"Special",
+      "hard_gap_mold":{
+        "name":"Hard Gap Mold",
         "surname":"$t(DKT__globals.machinery)",
         "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
         "instr": "Remove *protective film* on the *PET Base film*, use of *Gap coating system* through the Soft Mold and UV Curing.  \n After *UV Curing, laminating* and *rewinding.*",
@@ -246,8 +294,72 @@
           "Rewinding System":"Center (Surface Turret) Winding System"
         }
       },
-      "other_machines":{
-        "name":"Other Machines",
+
+      "cpi":{
+        "name":"CPI",
+        "surname":"$t(DKT__globals.machinery)",
+        "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
+        "instr": "Remove *protective film* on the *PET Base film*, use of *Gap coating system* through the Soft Mold and UV Curing.  \n After *UV Curing, laminating* and *rewinding.*",
+        "concl": "This asset is *quite detailed* and created with an eye towards current and next-generation needs  \n in the *modern industry* and innovative technologies.",
+        "specs":{
+          "Web Materials":"PET film",
+          "Web Thickness":"100 ~ 250 micron",
+          "Web Width":"500 ~ 1,570 mm",
+          "Machine Speed":"Max. 30m/min",
+          "Unwind Diameter":"Max. 800mm",
+          "Rewind Diameter":"Max. 800mm",
+          "Coating System":"(Double Top) Roller Gap Adjusting System",
+          "Dryer Diameter":"Low/Middle/High Pressure UV system",
+          "Inspection Room":"Top Roller Gap Adjusting System",
+          "Laminating System":"By Sight",
+          "Rewinding System":"Center (Surface Turret) Winding System"
+        }
+      },
+
+      "polar_film":{
+        "name":"Polarized Film",
+        "surname":"$t(DKT__globals.machinery)",
+        "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
+        "instr": "Remove *protective film* on the *PET Base film*, use of *Gap coating system* through the Soft Mold and UV Curing.  \n After *UV Curing, laminating* and *rewinding.*",
+        "concl": "This asset is *quite detailed* and created with an eye towards current and next-generation needs  \n in the *modern industry* and innovative technologies.",
+        "specs":{
+          "Web Materials":"PET film",
+          "Web Thickness":"100 ~ 250 micron",
+          "Web Width":"500 ~ 1,570 mm",
+          "Machine Speed":"Max. 30m/min",
+          "Unwind Diameter":"Max. 800mm",
+          "Rewind Diameter":"Max. 800mm",
+          "Coating System":"(Double Top) Roller Gap Adjusting System",
+          "Dryer Diameter":"Low/Middle/High Pressure UV system",
+          "Inspection Room":"Top Roller Gap Adjusting System",
+          "Laminating System":"By Sight",
+          "Rewinding System":"Center (Surface Turret) Winding System"
+        }
+      },
+
+      "slitter":{
+        "name":"Slitter",
+        "surname":"$t(DKT__globals.machinery)",
+        "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
+        "instr": "Remove *protective film* on the *PET Base film*, use of *Gap coating system* through the Soft Mold and UV Curing.  \n After *UV Curing, laminating* and *rewinding.*",
+        "concl": "This asset is *quite detailed* and created with an eye towards current and next-generation needs  \n in the *modern industry* and innovative technologies.",
+        "specs":{
+          "Web Materials":"PET film",
+          "Web Thickness":"100 ~ 250 micron",
+          "Web Width":"500 ~ 1,570 mm",
+          "Machine Speed":"Max. 30m/min",
+          "Unwind Diameter":"Max. 800mm",
+          "Rewind Diameter":"Max. 800mm",
+          "Coating System":"(Double Top) Roller Gap Adjusting System",
+          "Dryer Diameter":"Low/Middle/High Pressure UV system",
+          "Inspection Room":"Top Roller Gap Adjusting System",
+          "Laminating System":"By Sight",
+          "Rewinding System":"Center (Surface Turret) Winding System"
+        }
+      },
+
+      "laminator":{
+        "name":"Laminator",
         "surname":"$t(DKT__globals.machinery)",
         "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
         "instr": "Remove *protective film* on the *PET Base film*, use of *Gap coating system* through the Soft Mold and UV Curing.  \n After *UV Curing, laminating* and *rewinding.*",
@@ -266,6 +378,8 @@
           "Rewinding System":"Center (Surface Turret) Winding System"
         }
       }
+
+
 
 
     }

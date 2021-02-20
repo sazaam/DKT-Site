@@ -71,12 +71,15 @@ let login = async(app) => {
 
     global.Headers = global.Headers || Headers;
 
-    CONSTANTS.DKTClient = new GraphQLClient(endpoint, {
-        headers: {
-            authorization: `Bearer ${CONSTANTS.user.jwt}`
-        },
-    });
 
+    var headers = {
+        authorization: `Bearer ${CONSTANTS.user.jwt}`
+    }
+
+    CONSTANTS.DKTClient = new GraphQLClient(endpoint, {
+        headers: headers
+    });
+    console.log(headers)
     console.log('\t LOGIN SUCCESSFULL');
 }
 
@@ -261,7 +264,7 @@ let root = async(req, res) => {
 
     // topsections = topsections || await fetchdata(req, res, 'navdatas').catch( err => {console.log(err)}) ;
     topsections = await fetchdata(req, res, 'navdatas').catch(err => { console.log(err) });
-
+    
     let loadedLangs = await Object.keys(i18next.services.resourceStore.data);
 
     res.render(path.join(__dirname, 'public/jade/index'), merge(params, {
@@ -345,7 +348,8 @@ setTimeout(function() {
         } else {
             console.log('WILL LOAD LOCAL FILES')
         }
-
+        console.log('Requesting on ' + CONSTANTS.PATH.db)
+        console.log('GraphQL on ' + CONSTANTS.PATH.db + CONSTANTS.PATH.db_graphql)
         if (SUCCESS) server.launchServer(app);
         else process.exit();
 

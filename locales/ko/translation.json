@@ -8,6 +8,7 @@
   "tech": "기술",
   "tech_plural": "기술들",
   "company": "회사",
+  "category": "범주",
   "our_company": "$t(~) 회사",
 
 
@@ -97,7 +98,7 @@
       "text_01":"## Start with DKT  \nStart your global thin film business with DKT. 앞서가는 기술력과 노하우로 세계적인 기업으로 성장하고 있습니다.",
       "title_02":"PHILOSOPHY",
       "text_02":"## $t(~)는 무한한 도전과 열정으로 새로운 가치를 만들어 고객과 인류에 봉사하는 기업이 되겠습니다.  \n저희 디케이티는 고객을 위하여 항상 새로운 비젼과 가치를 제공, 공유할 것이며 미래로 나아가는 기업이 되도록 하겠습니다.",
-      "title_03":"TRUST,PASSION,VISON",
+      "title_03":"TRUST, PASSION, VISION",
       "text_03":"## $t(~)는 항상 신뢰받는 정직한 기업이 되겠습니다.\n고객의 믿음과 사회의 기대에 부응하기 위한 새로운 도전에 대한 열정을 항상 간직하고 고객과 인류에 책임지는 새로운 비젼을 여러분과 공유하겠습니다."
     },
 
@@ -112,7 +113,6 @@
       },
       "history": {
         "desc_01": "{{ intro }}\n***\n ## __The Way__ to go with success\n#### is to keep __thankfull__, to all __obstacles__ afterwards.  \n[__'Albert Einstein'__](https://duckduckgo.com), is a heavy influencer  \nof the 20th Century.  \n****\n**$t({{ vars.test }})** :  One piece of the Future, 1985.  [__'Albert Einstein'__](),",
-
         "desc_02": "## A brief __overview__  \n****\n![DKT Logo](/img/logo_big_green.png) \n  \n****  \n**$t({{ vars.test }})** :  One piece of the Future, 1985.  [__'Albert Einstein'__]()"
       }
     }
@@ -212,7 +212,7 @@
         }
       },
 
-      "gen_optical_coater":{
+      "general_optical_coater":{
         "name":"General Optical Coater",
         "surname":"$t(DKT__globals.machinery)",
         "desc":"*{{ productname }}*는 일반적으로 다양한 * PET 대상 * 필름을 분리하고 최종 코팅하는 데 사용됩니다. ",
@@ -233,7 +233,7 @@
         }
       },
 
-      "multi_coater":{
+      "multicoater":{
         "name":"POP,DOP,MOP Multi-Coater",
         "surname":"$t(DKT__globals.machinery)",
         "desc":"*{{ productname }}*는 일반적으로 다양한 * PET 대상 * 필름을 분리하고 최종 코팅하는 데 사용됩니다. ",

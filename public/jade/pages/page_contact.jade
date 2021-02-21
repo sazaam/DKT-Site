@@ -13,9 +13,8 @@ block flow
 	
 	section.page.zind3.rel.context.marbleBG
 		
-		each contact_article in getComponentsByTypename(section.post.bracket, 'ComponentModularArticle')
-			+article(contact_article, params)
-
+		each article in getComponentsByTypename(section.post.bracket, 'ComponentModularArticle')
+			+article(article, params)
 		
 
 

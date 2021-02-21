@@ -7,6 +7,7 @@
   "tech": "The Tech",
   "tech_plural": "The Techs",
   "company": "The Company",
+  "category": "category",
   "our_company": "Company",
 
   "next": "Next",
@@ -100,9 +101,6 @@
     
     "articles": {
       "intro": {
-        
-
-
         "desc_01": "## Since its foundation, __$t(~)__ has been developing, manufacturing and supplying a variety of customized conversion machines for the film, paper, textile, ink type coating and foil industries, and continues to grow based on various aspects and technologies.  \n Now, in order to become a global leader, we are conducting business with a plan to expand our field of action and network in China, Southeast Asia, the United States and Europe based on our R&D achievements and special expertise. In addition, we will do well as a company with proven high-tech experience and commercialization patterns. We will all strive to achieve this vision through constant innovation and challenge. We will do our best to fulfill our obligations keeping care and loyalty on top councerning our customers, to provide better products and services, and to practice socially responsible business practices. We will endeavor to meet customer needs more actively and accurately. $t(~)'s door is always open. Thank you.",
         "desc_02": "**Representative Director** | Jung Jung Hun 鄭貞訓",
         "philo_01": "## __$t(~)__ will become a company that serves customers and humanity by creating new values with infinite challenge and passion. \nOur DKT will always provide and share new visions and values for our customers, and we will be a company moving forward. ",
@@ -112,7 +110,6 @@
       },
       "history": {
         "desc_01": "{{ intro }}\n***\n ## __The Way__ to go with success\n#### is to keep __thankfull__, to all __obstacles__ afterwards.  \n[__'Albert Einstein'__](https://duckduckgo.com), is a heavy influencer  \nof the 20th Century.  \n****\n**$t({{ vars.test }})** :  One piece of the Future, 1985.  [__'Albert Einstein'__](),",
-
         "desc_02": "## A brief __overview__  \n****\n![DKT Logo](/img/logo_big_green.png) \n  \n****  \n**$t({{ vars.test }})** :  One piece of the Future, 1985.  [__'Albert Einstein'__]()"
       }
     }
@@ -211,7 +208,7 @@
         }
       },
 
-      "gen_optical_coater":{
+      "general_optical_coater":{
         "name":"General Optical Coater",
         "surname":"$t(DKT__globals.machinery)",
         "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
@@ -232,7 +229,7 @@
         }
       },
       
-      "multi_coater":{
+      "multicoater":{
         "name":"POP,DOP,MOP Multi-Coater",
         "surname":"$t(DKT__globals.machinery)",
         "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",

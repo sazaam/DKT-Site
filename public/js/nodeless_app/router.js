@@ -15,26 +15,21 @@ var defaultFunction = function(node, exp){
 	var l = hasChildren ? node.children.length : 0 ;
 	var name = node.name ;
 	var first = hasChildren ? node.children[0] : null ;
+	
+	var sectionId = node['sectionId'] ;
+	
 	var focus = node['@focus'] ;
 	var toggle = node['@toggle'] ;
-	var urljade = node['@jade'] ;
-	var urljson = node['@json'] ;
-	var sectionId = node['sectionId'] ;
 	
 	var f ;
 	var jade, json ;
-	
+
 	if(!!node['index'] || (!!first && first.name == 'index')){
 		
 		f = function(req, res){ return res.ready() }
 
-		jade = urljade || first['@jade']
-		json = urljson || first['@json'] ;
-
 		f.index = function index (req, res){
 			if(res.opening){
-				res.userData.urljade = jade ;
-				res.userData.urljson = json ;
 				res.userData.parameters = {response:res.parentStep} ;
 			}
 			return res ;
@@ -43,13 +38,8 @@ var defaultFunction = function(node, exp){
 		f.index['@toggle'] = toggle ;
 	}else{
 
-		jade = urljade || first['@jade']
-		json = urljson || first['@json'] ;
-		
 		f = function (req, res){
 			if(res.opening){
-				res.userData.urljade = jade ;
-				res.userData.urljson = json ;
 				res.userData.parameters = {response:res} ;
 			}
 			return res ;
@@ -60,9 +50,7 @@ var defaultFunction = function(node, exp){
 	
 	f.name = name ;
 	f.sectionId = sectionId ;
-	// console.log('HAHAHAAH', sectionId)
-	// f.sectionId = 
-
+	
 	for(var i = 0 ; i < l ; i++){
 		var child = node.children[i] ;
 		if(child.name != 'index'){
@@ -98,8 +86,6 @@ var Router = function(routes){
 				items[items.length] = {
 					"sectionId":section.id,
 					"name":section.name,
-					"@jade": behavior['@jade'],
-					"@json": behavior['@json'],
 					"@focus": graphics[behavior['@focus']],
 					"@toggle": graphics[behavior['@toggle']],
 					"children": !!section.children && section.children.length ? arguments.callee(section.children) : undefined

@@ -4,6 +4,10 @@
 //- 
 //- ///////////////////////////////////////// REPETITIVE
 
+mixin log(msg)
+	script. 
+		console.log(!{JSON.stringify(msg)})
+
 //- LINKS
 mixin link(o)
 	ul.links(class= o.cl || "")
@@ -409,12 +413,12 @@ mixin productnav
 				- var chcat = child.category.name ;
 				- var isCur = (chcat == curcat) ;
 				if(cat !== chcat)
-					- var catcl = isCur ? 'dktBG white' : 'dkt' ;
+					- var catcl = isCur ? 'ocreBG dkt' : 'dkt' ;
 					li.cat.context
-						a.block.padXSm.round.both(class=catcl, href=child.cleanlink)= chcat
+						a.floatR.block.padXSm.txtR.round.both(class=catcl, href=child.cleanlink)= chcat
 				- var cl = isCur ? "" : "none" ;
-				li.context(category=chcat, class=(child_section == child ? cl + " dkt" : cl))
-					a.floatL.block.padXSm.round.both(href=child.cleanlink)= child.cleanname
+				li.context(category=chcat, class=(child_section == child ? cl + " active" : cl))
+					a.block.txtR.padXSm.round.both(href=child.cleanlink)= child.cleanname
 				- cat = chcat ;
 
 
@@ -428,20 +432,19 @@ mixin product
 			.unit.size1of5
 				//- menu
 				+productnav
-				
 
 			.unit.lastUnit
 				.line.txtL(style="margin-top:2em")
 					.unit.size1of2.floatR.txtR.context.sizeLg.dkt.pad.BpadXXLg
-						+pageheader(child_section.cleanname, child_section.category.name)
+						+pageheader(child_section.cleanname, child_section.surname)
 
-					.unit.lastUnit.Tpad.LpadXXXLg.BpadXXLg.txtL
+					.unit.lastUnit.Tpad.LpadXXXLg.BpadLg.txtL
+						- basics.category = child_section.category.name
 						+productbasics(basics)
 
-				//- PRODUCTS ARTICLE BLOCKS
-				each product_article in getComponentsByTypename(child_section.post.bracket, 'ComponentModularArticle')
-					+article(product_article, params)
-	.extra.context.rel(style='height:21em;')
+				+productarticle
+
+	.extra.flowvisible.rel(style='height:21em;')
 		.abs.top0.left0.bottom0.right0
 			span.hidden Image
 
@@ -510,6 +513,9 @@ mixin productbasics(basics)
 	+dktlogosmall
 	.line
 		.txtL
+			.font-inc.sizeXXLg
+				span #{t('category')} 
+				span.dkt #{basics.category.toUpperCase()}
 			.font-inc
 				span #{t('creation_year')} :
 				span.dkt #{basics.year}
@@ -525,7 +531,7 @@ mixin nextprev()
 	- var ch = section.children ;
 	- var next = ch[ch.indexOf(child_section)+1] || ch[0] ;
 	- var prev = ch[ch.indexOf(child_section)-1] || ch[ch.length - 1] ;
-	.to_products.prev.abs.left0.bottom0.fullH.context.sizeR.txtL.size2of5.noBd
+	.to_products.prev.abs.left0.bottom0.fullH.flowvisible.sizeR.txtL.size2of5.noBd
 		- var cur = prev ;
 		- var cleanname = cur.cleanname ;
 		- var surname = cur.surname ;
@@ -533,7 +539,7 @@ mixin nextprev()
 
 		.cont.none.abs.bottom0.left0.right0.HmarXXXLg.round.both.dkt.dktBG
 			.sizeSm.font-inc.white.padXXLg.VpadSm= t('prev')
-			+linkblock(cur)
+			+linkblock(cur, false, 'product')
 		.linker.abs.bottom0.left0.right0.marXXXLg
 			a.inlineblock.sizeSm.font-inc.white.dktBG.round.both(href= cleanlink)
 				span.block.padXXLg.VpadSm= t('prev')
@@ -549,7 +555,7 @@ mixin nextprev()
 
 		.cont.none.abs.bottom0.left0.right0.HmarXXXLg.round.both.dkt.dktBG
 			.sizeSm.font-inc.white.padXXLg.VpadSm= t('next')
-			+linkblock(cur)
+			+linkblock(cur,  false, 'product')
 		.linker.abs.bottom0.left0.right0.marXXXLg
 			a.inlineblock.sizeSm.font-inc.white.dktBG.round.both(href= cleanlink)
 				span.block.padXXLg.VpadSm= t('next')
@@ -561,24 +567,8 @@ mixin nextprev()
 
 //- //////////////// ALL ARTICLES
 
+
 mixin article(art, p)
-	//- BE CAREFULL NOT MERGING NEW PARAMS INTO __LOCALS__ BUT INSTEAD DOING THE OPPOSITE IS SAFE 
-	//- IN ORDER NOT TO REWRITE LOCAL VARS LIKE CRAZY, AS LOCALS WOULD BE SHARED BETWEEN TEMPLATES 
-	//- WEIRDLY merge(s, p) IS NOT MERGE s INTO p, but quite the other way around, MERGE last obj into first
-	- var p2 = !!art.page ? merge(rfs(art.page.jade, art.page.path, p), p) : p ;
-	- p2.component = art ;
-	
-	//- script.
-	//- 	console.log(!{JSON.stringify(art.template)})
-	
-	| !{ render(art.template.jade, p2)}
-	//- ARTICLE STYLES
-	if(p2.css)
-		| !{ render(p2.css, p2)}
-//- //////////////// CONTACTS
-
-
-mixin newarticle(art, p)
 	- p.component = art ;
 	- var test = rfs(art.page.jade, art.page.path, p) ;
 	- var p2 = merge(p, test) ;
@@ -608,52 +598,26 @@ mixin newarticle(art, p)
 //- //////////////// CONTACTS
 
 
-mixin customarticle(art, p)
-	//- BE CAREFULL NOT MERGING NEW PARAMS INTO __LOCALS__ BUT INSTEAD DOING THE OPPOSITE IS SAFE 
-	//- IN ORDER NOT TO REWRITE LOCAL VARS LIKE CRAZY, AS LOCALS WOULD BE SHARED BETWEEN TEMPLATES 
-	//- WEIRDLY merge(s, p) IS NOT MERGE s INTO p, but quite the other way around, MERGE last obj into first
-	//- - console.log('YOOO 2', jade_mixins)
-	
-	
-	- var p3 = merge({}, locals) ;
-	//- - p3.jade_mixins = jade_mixins ;
-	each block, blockname in blocks
-		script.
-			console.log(!{JSON.stringify(blockname)})
-		if(block.md)
-			if(typeof block.md == 'string')
-				- p3[blockname] = {md:md(t(block.md, locals))} ;
-				
-			else
-				each mark, mdname in block.md
-					- p3[mdname] = md(t(mark, locals)) ;
-		if(block.jade)
-			| !{ render(block.jade, p3)}
-		else
-			:marked !{md(t(block, locals))}
-
-
-mixin testmixin
-	h1.dktBG.white.padXXXLg CLASSY AINT IT ?
-
 
 mixin phoneus
 	.line(lazy=CDN + component.media[0].url, style="background:url() no-repeat;background-position: 50% 74%")
 		.container.rel
 			.line.txtL(style="padding:4em 0 8em;")
 				.unit.size1of3.txtL.context.pad.BpadXXLg
-					+pageheader('DKT__contact.telephone', 'DKT__contact.telephone_txt')
+					+pageheader(phone, phone_txt)
 				.unit.size3of5.floatR.sizeLg.TmarXXXLg
 					.sizeSm.txtC(style="margin-top:8em")
-						+callus('DKT__contact.telephone_sales', 'marbleBG')
+						+callus(phone_number, 'marbleBG')
 		hr
+
+
 
 mixin emailus
 	.line
-		.container.rel(lazy=CDN + component.media[0].url, style="background:url() no-repeat;background-position: 0% 120%")
+		.container.rel(lazy=CDN + component.media[2].url, style="background:url() no-repeat;background-position: 0% 120%")
 			.line.txtL(style="padding:4em 0 0")
 				.unit.size1of3.txtL.context.sizeLg.dkt.pad.BpadXXLg
-					+pageheader('DKT__contact.email', 'DKT__contact.email_txt')
+					+pageheader(email, email_txt)
 				.unit.size3of5.floatR.VpadXXXLg.txtR
 					+contactform()
 		hr
@@ -663,15 +627,18 @@ mixin postus
 		.container.rel
 			.line.txtR(style="padding:6em 0 0")
 				.unit.size1of3.txtL.context.sizeLg.dkt.pad.BpadXXLg
-					+pageheader('DKT__contact.postmail', 'DKT__contact.postmail_txt')
+					+pageheader(postmail, postmail_txt)
 					p.TmarXXLg
-						!= t('DKT__globals.company.address_1')
+						!= t(company_address_1)
 						br
-						!= t('DKT__globals.company.address_2')
+						!= t(company_address_2)
 				.unit.lastUnit
-					.mailbox(lazy=CDN + component.media[0].url, style="height:320px;background:url() no-repeat;background-position: 50% 4em")
+					.mailbox(lazy=CDN + component.media[1].url, style="height:320px;background:url() no-repeat;background-position: 50% 4em")
 						.hidden mailbox
 		hr
+
+
+
 
 //- CONTACT FORM
 mixin contactform()
@@ -679,38 +646,38 @@ mixin contactform()
 		form(action="#")
 			.fline.context
 				p
-					label.Hpad.dkt(for="firstname")= t("DKT__contact.form.firstname")
+					label.Hpad.dkt(for="firstname")= t(firstname)
 					input.Hpad.formBG(type="text" id="firstname" placeholder="")
 			.fline.context
 				p
-					label.Hpad.dkt(for="lastname")= t("DKT__contact.form.lastname")
+					label.Hpad.dkt(for="lastname")= t(lastname)
 					input.Hpad.formBG(type="text" id="lastname" placeholder="")
 			.fline.context
 				p
-					label.Hpad.dkt(for="companyname")= t("DKT__contact.form.company")
+					label.Hpad.dkt(for="companyname")= t(companyname)
 					input.Hpad.formBG(type="text" id="companyname" placeholder="")
 			.fline.context
 				p
-					label.Hpad.dkt(for="email")= t("DKT__contact.form.email")
+					label.Hpad.dkt(for="email")= t(form_email)
 					input.Hpad.formBG(type="text" id="email" placeholder="")
 			.fline.context
 				p
-					label.Hpad.dkt(for="service")= t("DKT__contact.form.service")
+					label.Hpad.dkt(for="service")= t(service)
 					select.Hpad.floatR.formBG(type="select" id="service")
-						- var emails = t("DKT__contact.emails", { returnObjects: true}) ;
+						- var emails = t(contact_emails, { returnObjects: true}) ;
 						- for (var str in emails) {
 							option.fullW.fullH(value=emails[str])= str
 						- }
 
 			.fline.context
 				p
-					label.Hpad.dkt(for="messagebody")= t("DKT__contact.form.message")
-					input.Hpad.formBG(type="text" id="messagesubject" placeholder= t("DKT__contact.form.subject"))
+					label.Hpad.dkt(for="messagebody")= t(message)
+					input.Hpad.formBG(type="text" id="messagesubject" placeholder= t(subject))
 				p
-					textarea.pad.formBG(id="messagebody" style="width:100%;height:250px" type="text" placeholder=t("DKT__contact.form.your_message"))
+					textarea.pad.formBG(id="messagebody" style="width:100%;height:250px" type="text" placeholder=t(your_message))
 			.fline.context
 				p
-					input.pad.dkt.formBG(type="submit" value=t("DKT__contact.form.send"))
+					input.pad.dkt.formBG(type="submit" value=t(send))
 
 
 

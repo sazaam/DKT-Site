@@ -13,9 +13,6 @@ block flow
   section.page.zind3.rel.context.marbleBG
 
     each article, i in getComponentsByTypename(section.post.bracket, 'ComponentModularArticle')
-      if(article.template.name == 'article_custom')
-        +newarticle(article, params)
-      else
-        +article(article, params)
+      +article(article, params)
 
   +footer()

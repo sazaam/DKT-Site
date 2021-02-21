@@ -23,11 +23,7 @@ block content
     
     //- HOME ARTICLE BLOCKS
     each article in getComponentsByTypename(section.post.bracket, 'ComponentModularArticle')
-
-      if(article.template.name == 'article_custom')
-        +newarticle(article, params)
-      else
-        +article(article, params)
+      +article(article, params)
     
     
     //- PATCHWORK

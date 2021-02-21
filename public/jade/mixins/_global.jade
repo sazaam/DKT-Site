@@ -589,7 +589,7 @@ mixin newarticle(art, p)
 	//- can be an object
 
 	if(typeof orijade == 'string')
-
+		- basejade = orijade ;
 	else
 		each jblock, jblockname in orijade
 			- basejade += jblock ;

@@ -433,7 +433,7 @@ module.exports = {
 
 			var commands = [] ;
 			sl.cy = new Cyclic(commands) ;
-			var TIME = 7000 ;
+			var TIME = 3000 ;
 			
 			
 			
@@ -615,18 +615,20 @@ module.exports = {
 						'z-index':'2'
 					}) ;
 					
+					li.css({'opacity':1}) ;
+					// sl.tw = BetweenJS.create({
+					// 	target:li,
+					// 	to:{
+					// 		'opacity':100
+					// 	},
+					// 	from:{
+					// 		'opacity':0
+					// 	},
+					// 	time:.45,
+					// 	ease:Expo.easeOut
+					// }) ;
 
-					sl.tw = BetweenJS.create({
-						target:li,
-						to:{
-							'opacity':100
-						},
-						from:{
-							'opacity':0
-						},
-						time:.45,
-						ease:Expo.easeOut
-					}) ;
+
 
 					li.trigger('mousemove') ;
 					
@@ -638,11 +640,12 @@ module.exports = {
 					}, 15) ;
 					/* END IMPORTANT */
 					
-					sl.tw.onComplete = function(){
-						c.dispatchComplete() ;
-					}
+					// sl.tw.onComplete = function(){
+					// 	trace('BTW Complete')
+					// 	// c.dispatchComplete() ;
+					// }
 
-					sl.tw.play() ;
+					// sl.tw.play() ;
 					
 					return this ;
 

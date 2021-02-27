@@ -242,21 +242,7 @@ let content = async(req, res) => {
 
     }
 }
-
 // ERRORS
-let error = async(req, res) => {
-
-    topsections = topsections || await fetchdata(req, res, 'navdatas').catch(err => { console.log(err) });
-
-    res.render(path.join(__dirname, 'public/jade/error'), merge(params, {
-        title: 'DKT 404',
-        errortype: 404,
-        errormessage: 'Page Not Found',
-        topsections: topsections
-    }));
-
-}
-
 
 // MAIN PAGE
 
@@ -293,11 +279,6 @@ app.use('/navdatas/', async(req, res) => {
 
 
 
-
-app.use('/404/', async(req, res) => {
-    // console.log('requesting error')
-    await error(req, res, true).catch(err => { console.log(err) });
-});
 
 
 app.use('/content/section/:sectionId', async(req, res) => {

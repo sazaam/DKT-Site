@@ -10,15 +10,20 @@ var support = {
 	canvas:!!window.HTMLCanvasElement,
 	webgl:!!window.WebGLRenderingContext,
 	isSmallScreen:(function(){
-		return !!window.matchMedia("only screen and (max-width: 760px)").matches
+		// Galaxy Fold 768 x 1076
+
+		// return !!window.matchMedia("only screen and (max-width: 769px)").matches
+		
+		// THAT CHANGE REMOVES THE HOMEPAGE SCREEN EFFECT
+		return true ;
 	})(),
 	okFX:false
 }
 
+// WILL KIP ALL THIS, THREE + EFFECTS LOADING
 if((!support.isSmallScreen) && support.canvas && support.webgl){
 	THREE = window.THREE = require('../../threejs/build/three.js') ;
 	effects = require('./effects.js') ;
-	
 	support.okFX = true ;
 }
 // require('../../threejs/examples/js/controls/OrbitControls.js')

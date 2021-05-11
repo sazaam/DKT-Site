@@ -19,12 +19,13 @@ mixin link(o)
 //- CALL US INFO
 mixin callus(number, cl)
 	.call
-		h4.sizeXLg.txtL.inlineblock.padXSm.HpadXLg.antraciteBG.round.left.dkt.dktBD(class=cl)= t('call') 
-		h4.sizeXLg.txtL.inlineblock.padXSm.HpadXLg.dktBG.round.right.white.dktBD= t(number)
+		h4.bt.sizeXLg.txtL.inlineblock.padXSm.HpadXLg.antraciteBG.round.left.dkt.dktBD(class=cl)= t('call') 
+		h4.bt.sizeXLg.txtL.inlineblock.padXSm.HpadXLg.dktBG.round.right.white.dktBD= t(number)
 
 //- BACK BUTTON
 mixin back(obj)
-	.linker.marXXXLg.round.both.dkt.dktBG.inlineblock
+	+link({prename:t('back_to'), name:t('products'), cl:"dkt greyhover", url:obj.link})
+	//- .linker.marXXXLg.round.both.dkt.dktBG.inlineblock
 		a.block.sizeSm.font-inc.white.padXXLg.VpadSm(href=obj.link)= t('back_to', obj)
 
 
@@ -275,7 +276,7 @@ mixin hpintro
 		.abs.top0.left0.fullW
 			+transition_intro
 		
-		.abs.top0.left0.fullW
+		.abs.top0.left0.fullW.secondslide
 			.container(style="padding:5em 0")
 				+innerheader(header, undefined, 'white')
 
@@ -285,8 +286,8 @@ mixin hpintro
 						each frame, i in frames
 							li.sizeXXXXLg.txtL.fullH
 								- var cl = i % 2 == 0 ? 'txtL' : 'txtL' ;
-								.line.fullH
-									.unit.size2of5.fullH.rel
+								.line.fullH.rel
+									.abs.fullH.slidetxt
 										h3.sizeLg.lh1.pad.white(class=cl)= t(frame.title) 
 										.sizeXSm.white.abs.left0.right0.bottom0(class=cl)
 											.padXXXXLg
@@ -297,7 +298,7 @@ mixin hpintro
 											a.block.arr.arrprev.floatL(href="#")
 												span.hidden &lt;
 											
-									.lastUnit.fullH.rounded.context
+									.fullH.rounded.context
 										.fullW.fullH.cover.lazy(lazy=CDN + media[i].url, style="background-repeat:no-repeat;background-position:left top;background-size:cover")
 
 
@@ -314,7 +315,7 @@ mixin why
 				+innerheader(header, subheader, 'dkt', 'dark')
 				
 			.container.pad0.rel.round.both.ivoryBG.context(style="margin-bottom:10em;")
-				.line
+				.line.columns
 					each whyframe, i in whyframes
 						- var cl = i % 3 == 2 ? "lastUnit" : "size1of3" ;
 						.unit(class= cl)
@@ -346,10 +347,10 @@ mixin needinfo(number, cl)
 	.sizeR.BmarXLg
 		:marked !{md(t('DKT__products.needinfo_02', locals))}
 	
-	.sizeSm
+	.VmarXXXXLg
 		+callus(number, cl)
 		
-	.sizeR.TmarXLg
+	.sizeLg
 		:marked !{md(t('DKT__products.needinfo_03', locals))}
 
 //- CERTIFICATIONS
@@ -435,23 +436,28 @@ mixin product
 
 			.unit.lastUnit
 				.line.txtL(style="margin-top:2em")
-					.unit.size1of2.floatR.txtR.context.sizeLg.dkt.pad.BpadXXLg
-						+pageheader(child_section.cleanname, child_section.surname)
-
-					.unit.lastUnit.Tpad.LpadXXXLg.BpadLg.txtL
+					.basics.unit.size1of3.txtL.Tpad.LpadXXXLg.BpadLg
 						- basics.category = child_section.category.name
 						+productbasics(basics)
 
-				+productarticle
+					.unit.lastUnit.txtR.context.sizeLg.dkt.pad.BpadXXLg
+						+pageheader(child_section.cleanname, child_section.surname)
 
-	.extra.flowvisible.rel(style='height:21em;')
+				+productarticle
+		
+	.extra.flowvisible.rel(style='height:26em;')
 		.abs.top0.left0.bottom0.right0
 			span.hidden Image
 
-		+nextprev()
+		.aaa(style="margin-top:10em")
+			+nextprev()
 		
-		.abs.left0.top0.bottom.right0.context.sizeR.txtC.dkt.noBd
-			+back({link : "/#/"+ lang + section.path, target:'products' })
+		.abs.left0.top0.bottom0.right0.context.sizeR.txtC.dkt.noBd
+			+back({link : "/#/"+ lang + section.path, class:"dkthover", target:'products' })
+			.line
+				.pad.dkt.sizeXXXLg &bull;&nbsp;&bull;&nbsp;&bull;
+		
+		
 
 
 mixin productarticle
@@ -459,17 +465,17 @@ mixin productarticle
 	- var medias = component.media ;
 	
 	.line.marked(style="margin-bottom:2em")
-		.unit.lastUnit.dark.round.right.RmarXXXXLg(style="margin-top:0em")
+		.unit.lastUnit.dark.round.right.LpadLg(style="margin-top:0em")
 			.Tmar.txtR.sizeLg
 				:marked !{md(t(pointer + '.desc', locals))}
 				
 	.line(style="margin-top:1em;")
 		.round.both.LmarXLg
 			.txtL
-				.line.Lpad
+				.line.Lpad(style="margin-bottom:3em;")
 					.pad.txtL.marked
 						:marked !{md(t(pointer + '.instr', locals))}
-				.line.rel.fullW(style="height:400px;")
+				.line.rel.fullW.adaptH
 					ul.pics.fullH.round.left.flowvisible.ocreBG(style="width:100%;")
 						- var len = 0 ;
 						each media, i in medias
@@ -497,17 +503,16 @@ mixin productarticle
 						.padXLg.txtR.white
 							+link({prename:'Load', name:'3D Model'})
 						.canvascontainer.context.fullW.ocreBG.none(style="height:450px")
-		//- .lastUnit
-			
 
 	.line.marked(style="margin-top:5em;margin-bottom:5em")
-		.unit.size1of2
-			.LmarXLg.txtL
-				+needinfo('DKT__contact.telephone_sales')
-		.lastunit
-			.RmarXXXLg.txtR
-				:marked !{md(t(pointer + '.concl', locals))}
-
+		
+		.BmarginXXXLg.txtL.sizeLg.HmarXLg
+			:marked !{md(t(pointer + '.concl', locals))}
+		.line.VmarLg 
+			.pad.dkt.sizeXXXLg &bull;&nbsp;&bull;&nbsp;&bull;
+		.HmarXLg.txtL
+			+needinfo('DKT__contact.telephone_sales')
+		
 
 mixin productbasics(basics)
 	+dktlogosmall
@@ -540,12 +545,13 @@ mixin nextprev()
 		.cont.none.abs.bottom0.left0.right0.HmarXXXLg.round.both.dkt.dktBG
 			.sizeSm.font-inc.white.padXXLg.VpadSm= t('prev')
 			+linkblock(cur, false, 'product')
-		.linker.abs.bottom0.left0.right0.marXXXLg
-			a.inlineblock.sizeSm.font-inc.white.dktBG.round.both(href= cleanlink)
+		.linker.abs.bottom0.left0.marXXXLg.size1of2
+			//- a.inlineblock.sizeSm.font-inc.white.dktBG.round.both(href= cleanlink)
 				span.block.padXXLg.VpadSm= t('prev')
-			.sizeXXLg.TmarXXSm.context
+			a.block(href= cleanlink).sizeXXLg.TmarXXSm.context
 				span.inlineblock.dkt.lh1= cleanname
 				span.block.sizeXSm.HmarXXXSm.uppercase.ls1= cur.category.name
+				span.inlineblock.sizeXSm.font-inc.padXXLg.VpadSm.white.dktBG.round.both= t('prev')
 
 	.to_products.next.abs.right0.bottom0.context.sizeR.txtR.size2of5.noBd
 		- var cur = next ;
@@ -556,12 +562,13 @@ mixin nextprev()
 		.cont.none.abs.bottom0.left0.right0.HmarXXXLg.round.both.dkt.dktBG
 			.sizeSm.font-inc.white.padXXLg.VpadSm= t('next')
 			+linkblock(cur,  false, 'product')
-		.linker.abs.bottom0.left0.right0.marXXXLg
-			a.inlineblock.sizeSm.font-inc.white.dktBG.round.both(href= cleanlink)
-				span.block.padXXLg.VpadSm= t('next')
-			.sizeXXLg.TmarXXSm.context
+		.linker.abs.bottom0.right0.marXXXLg.size1of2
+			//- a.inlineblock.sizeSm.font-inc.white.dktBG.round.both(href= cleanlink)
+				
+			a.block(href= cleanlink).sizeXXLg.TmarXXSm.context
 				span.inlineblock.dkt.lh1= cleanname
 				span.block.sizeXSm.HmarXXXSm.uppercase.ls1= cur.category.name
+				span.inlineblock.sizeXSm.font-inc.padXXLg.VpadSm.white.dktBG.round.both= t('next')
 
 
 

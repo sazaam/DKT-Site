@@ -77,6 +77,36 @@
 @media only screen  and (orientation:landscape){
 	
 }
+
+@media only screen  and (orientation:portrait){
+
+  .columns .unit{
+    float:none;
+    width:auto;
+    margin-bottom:10em
+  }
+
+  .secondslide .slidetxt{
+    width:100%
+
+  }
+
+  .links{font-size:120%}
+  .bt{border:none !important}
+
+  .basics{
+    display:none
+  }
+
+
+  .adaptH{height:250px !important}
+
+
+}
+
+
+
+
 /*iPad landscape orientation styles */
 
 /* IPad Portrait MANAGED TO AVOID USING IT*/

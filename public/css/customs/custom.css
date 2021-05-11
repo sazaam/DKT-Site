@@ -935,6 +935,20 @@ hr {
     width: 100% !important;
 }
 
+
+
+
+
+.greyhover .gowhite{background:#E8E8E8}
+
+
+
+
+.slidetxt{background:rgba(0,0,0,.4)}
+
+
+.adaptH{height:400px}
+
 .pics .arrow.next a {
     /* background: url(../skin/next-light.png) no-repeat 50% 50%; */
 }

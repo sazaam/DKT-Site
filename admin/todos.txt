@@ -1,0 +1,29 @@
+
+
+
+
+1. Responsive
+
+    A/ General
+        MediaQueries
+            Menu
+            Footer
+            Font Sizes
+            Main Layout
+
+    B/ Blocks
+        HP 3 Slides
+        HP 3 Blocks
+
+
+
+
+2. Enhancements
+    A/ Home Page 
+        Slideshow First Slide + Logo
+        SlideShow + Down Arrow fix
+    B/ Products Page 
+        LeftNav Needs a more intuitive look
+
+     
+

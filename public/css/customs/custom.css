@@ -683,7 +683,7 @@ red {
 /* CSS TRANSITION EFFECTS */
 
 .slide-zoom {
-    /* transform:scale(1); */
+    transform:scale(1);/*  */
     /* -webkit-transition: transform 10s ease; */
     /* -moz-transition: transform 10s ease; */
     /* -ms-transition: transform 10s ease; */
@@ -691,8 +691,8 @@ red {
 }
 
 .inited .slide-zoom {
-    /* transform:scale(1.1);
-	transition: transform 10s ease; */
+     transform:scale(1.1);
+	transition: transform 10s ease; /**/
 }
 
 .round.left {

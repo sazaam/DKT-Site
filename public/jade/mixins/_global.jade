@@ -106,9 +106,9 @@ mixin innerheader(header, subheader, clh, cls)
 
 //- FOOTER CREDITS & INFOS
 mixin footer()
-	.ivoryBG
+	.ivoryBG.sizeXLg
 		.container.rel(style="padding-top:2em;padding-bottom:2em;")
-			.abs.right0.top0.RmarXXXXLg
+			.abs.right0.top0.RmarXXLg
 				a.block.RmarginLg.pad.HpadLg.sizeSm.dktBG.white.topofpage(href="#")= t('topofpage')
 			.line.txtL
 				h6.sizeSm.dkt.LmarXXXXLg= t('DKT__globals.company.copy_to')
@@ -116,17 +116,16 @@ mixin footer()
 					!= t('DKT__globals.company.address_1')
 					br
 					!= t('DKT__globals.company.address_2')
-					br
-					br
-					!= t('tel') + " : " + t('DKT__globals.company.telephone')
-					br
-					!= t('fax') + " : " + t('DKT__globals.company.fax')
+					span.shady
+						br
+						!= t('tel') + " : " + t('DKT__globals.company.telephone')
+						br
+						!= t('fax') + " : " + t('DKT__globals.company.fax')
 
-				.lastUnit.sizeSm.RmarXXXXLg.txtR
-					span.block 
-						br
+				.lastUnit.sizeXSm.RmarXXXXLg.txtR
+					span.block.marXXXXLg
 						!= t('DKT__globals.company.copy') + t('DKT__globals.company.copy_year') 
-						br
+						br 
 						!= t('DKT__globals.company.copy_to')
 					+dktlogosmall
 

@@ -20,14 +20,14 @@
     - var home = other.shift() ;
     
     //-  HOME SPECIAL CASE
-    li.home.floatL(id= "global_" + 'home', class= "global_" + 'home')
+    li.home.floatL.round.both(id= "global_" + 'home', class= "global_" + 'home')
       a.block.pad.inconsolata(href= '/#/' + lang + '/home/')
         span= t('DKT')
     
     //-  OTHERS CASE
     each navsection in other
       - var name = navsection.name ;
-      li.others.floatL.rel(id= "global_" + name, class= "global_" + name)
+      li.others.floatL.rel.LmarSm(id= "global_" + name, class= "global_" + name)
         a.block.pad.Hpad.inconsolata(href= '/#/' + lang + '/' + name + '/')
           span= name
         if(navsection.children.length)

@@ -497,7 +497,7 @@ Responsive Media Querries
 
 .p-introduction__follow {
     width: 15px;
-    height: 10vh;
+    height: 5vh;
     overflow: hidden;
     position: relative;
     margin: 0 auto 0;
@@ -625,7 +625,7 @@ a.parentlink {
 
 /* 100 % */
 
-red {
+.red {
     color: #ff0000;
     font-weight: 800;
 }
@@ -639,13 +639,22 @@ red {
 }
 
 .navbar .home a {
-    width: 100px;
+    width: 75px;
     height: 100%;
     background: url(../skin/dkt_white.png) no-repeat left -50px;
 }
 
 .navbar .home a span {
     visibility: hidden;
+}
+
+
+.navbar li.home {
+    background:transparent
+}
+
+.navbar li.home.active {
+    background:white
 }
 
 .navbar {
@@ -1057,6 +1066,9 @@ hr {
 
 .slidedown {
     cursor: url(../skin/down-light.png), auto;
+}
+.slidetop {
+    cursor: url(../skin/up-light.png), auto;
 }
 
 .bt {

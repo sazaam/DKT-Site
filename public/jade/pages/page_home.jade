@@ -5,14 +5,14 @@ extends ./page
 //- ----------------------- END : Extends
 
 block content
-  - var target_sections = [].concat([db_sections[2]]).concat([db_sections[1]]).concat(db_sections[1].children) ;
+  - var target_sections = [].concat([db_sections[0]]).concat([db_sections[2]]).concat([db_sections[1]]).concat(db_sections[1].children) ;
   
   //- script. 
     console.log(!{JSON.stringify(locals.__dirname)})
     console.log(!{JSON.stringify(locals.filename)})
 
   //- HOME SLIDESHOW
-  .extra.rel.fullH.context(style='height:90%;')
+  .extra.rel.fullH.context
     
     +slideshow()
 

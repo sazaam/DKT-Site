@@ -433,12 +433,34 @@ module.exports = {
 			
 			sl = res.userData.slideshow = {} ;
 
+			sl.plouf = $('.plouf a') ;
+
+			sl.ploufclick = function(e){
+				e.preventDefault() ;
+				e.stopPropagation() ;
+				
+				
+				sl.halt() ;
+				
+				var scrtop = $(document.documentElement).scrollTop() ;
+				var ttop = scrtop != 0 ? 0 : slideshow.height() ;
+				BetweenJS.create({
+					target:document.documentElement,
+					to:{scrollTop:ttop},
+					time:.5,
+					ease:Expo.easeOut
+				}).play() ;
+
+				
+
+			} ;
+			
 
 
 
 			var commands = [] ;
 			sl.cy = new Cyclic(commands) ;
-			var TIME = 3000 ;
+			var TIME = 10000 ;
 			
 			
 			
@@ -446,7 +468,16 @@ module.exports = {
 			sl.mm = function(e){
 				
 				var li = $(e.currentTarget) ;
+				var scrtop = $(document.documentElement).scrollTop() ;
 				
+				if(scrtop != 0){
+					li.removeClass('slideprev slidenext slidedown').addClass('slidetop')
+					return ;
+				}else{
+					li.removeClass('slidetop') ;
+				}
+
+
 				if(e.target.tagName == 'SPAN' || e.target.tagName == 'A'){
 					if( e.target.tagName == 'A') li.removeClass('slideprev slidenext')
 					// if( e.target.tagName == 'A') li.removeClass('slidenext')
@@ -478,7 +509,6 @@ module.exports = {
 								li.removeClass('slideprev slidenext') ;
 							} else{
 								li.removeClass('slidedown') ;
-								// li.removeClass('slideprev slidenext') ;
 							}
 						}
 
@@ -493,7 +523,6 @@ module.exports = {
 								li.removeClass('slideprev slidenext') ;
 							} else{
 								li.removeClass('slidedown') ;
-								// li.removeClass('slideprev slidenext') ;
 							}
 						}
 					}
@@ -502,10 +531,25 @@ module.exports = {
 			}
 			
 			sl.clk = function(e){
+				var li = $(e.currentTarget) ;
 				
+				if(li.hasClass('slidetop')){
+					
+					BetweenJS.create({
+						target:document.documentElement,
+						to:{scrollTop:0},
+						time:.5,
+						ease:Expo.easeOut
+					}).play() ;
+
+					return ;
+				}
+
+
 				if( e.target.tagName == 'A'){
 					
 					return ;
+
 				} else {
 					
 					var w = $(window).width() ;
@@ -526,6 +570,9 @@ module.exports = {
 							
 							if(screenY > mh){ // ON DOWNCLICK
 								
+								
+								sl.halt() ;
+
 								// 
 								BetweenJS.create({
 									target:document.documentElement,
@@ -728,7 +775,7 @@ module.exports = {
 			sl.clear() ;
 
 			sl.enable(true) ;
-			
+			sl.plouf.on('click', sl.ploufclick) ;
 			// cy.index = -1 ;
 			
 			if(sl.cy.index == -1 ) sl.launch() ;
@@ -741,7 +788,7 @@ module.exports = {
 		}else{
 			
 			// trace('closing UID :', id) ;
-			
+			sl.plouf.off('click', sl.ploufclick) ;
 			sl.clear() ;
 			
 			sl.enable(false) ;

@@ -139,21 +139,22 @@ mixin footer()
 //- 
 //- ///////////////////////////////////////// HOME SLIDESHOWS
 
-
 //-  MAIN SLIDESHOW
 mixin slideshow()
-	.slideshow.module-parallax.module-fade.module-full-height.fullH
+	.slideshow.module-parallax.module-fade.module-full-height.fullH.rel
+		.abs.bottom0.left0.fullW
+				+transition_intro
 		- if(!!target_sections && target_sections.length){
 			ul.slides
 				each child_section in target_sections
 					+slide(child_section, target_sections.indexOf(child_section))
 
-			ol.flex-control-nav.flex-control-paging
-
+			ol.flex-control-nav.flex-control-paging(style="margin-bottom:5vh")
 				each child_section in target_sections
 					li
 						a= target_sections.indexOf(child_section) + 1
 		- }
+
 
 //- MAIN SLIDESHOW SLIDES
 mixin slide(child_section, i)
@@ -174,22 +175,21 @@ mixin slide(child_section, i)
 		- if(name == 'home'){
 
 			.hs-caption.container(style='top: 0px; display: table;')
-				.caption-content.center
-					h1.cover.biglogo.txtC
-						span.hidden= cleanname
-					.block.uppercase.montserrat(style='color:#333;margin-top: -25px; margin-left: 4px; font-size:15.5px;')= surname
+				.caption-content.center.plouf.txtC
+					.centercont.marginAuto(style="width:270px")
+						a.block.cover.biglogo.txtC(href="#")
+							span.hidden= cleanname
+						a.block.uppercase.montserrat.white(href="#", style='margin-top: -20px; margin-left: 4px; font-size:15.2px;')= surname
 
-					ul.links.dkt.context.TmarLg.sizeLg.noBd
+					ul.links.dkt.context.TmarXXXXLg.sizeXLg.noBd
 						li(style='display: inline;')
-							em.gowhite.bt.btn-border-slider-white.round.left.whiteBG.dkt= t('DKT__globals.company.accroche_1')
-						li(style='display: inline;')
-							em.goblack.bt.btn-border-slider-black.round.right.dktBG= t('DKT__globals.company.accroche_2')
+							a.sizeXXXXLg.white.rhdp(href="#")= t('DKT__globals.company.accroche_1') + " " + t('DKT__globals.company.accroche_2')
 
 		- }else if(name == 'techs'){
 
 			.hs-caption.container(style='top: 0px; display: table;')
 				.caption-content.left.vmiddle
-					.hs-title-size-3.font-alt.m-b-20.context
+					.hs-title-size-3.font-alt.m-b-20.context.rhdp
 						span.whiteBG.block.floatL.padSm.VpadXSm.round.both.dkt.uppercase= cleanname
 					.hs-title-size-1.font-inc.LmarXXSm.Vmar.white
 						span= surname
@@ -200,8 +200,8 @@ mixin slide(child_section, i)
 
 			.hs-caption.container(style='top: 0px; display: table;')
 				.caption-content.right.vmiddle
-					.hs-title-size-3.font-alt.m-b-20.white
-						span.uppercase= cleanname
+					.hs-title-size-3.font-alt.m-b-20.white.rhdp
+						span= cleanname
 					.hs-title-size-1.font-inc.LmarXXSm.BmarXLg
 						span= surname
 
@@ -210,8 +210,8 @@ mixin slide(child_section, i)
 		- }else if(name == 'about'){
 			.hs-caption.container(style='top: 0px; display: table;')
 				.caption-content.left.vmiddle
-					.hs-title-size-3.font-alt.m-b-20.white
-						span.uppercase= cleanname
+					.hs-title-size-3.font-alt.m-b-20.white.rhdp
+						span= cleanname
 					.hs-title-size-1.font-inc.LmarXXSm.BmarXLg
 						span= surname
 
@@ -222,7 +222,7 @@ mixin slide(child_section, i)
 			
 			.hs-caption.container(style='top: 0px; display: table;')
 				.noproduct.caption-content(class=cl)
-					.hs-title-size-3.font-alt.m-b-20.white
+					.hs-title-size-3.font-alt.m-b-20.white.rhdp
 						span= cleanname
 					.hs-title-size-1.font-inc.BmarXLg
 						span= child_section.category.name
@@ -270,14 +270,14 @@ mixin hpintro
 		- var media = introcomponent.media ;
 		- var background = media.shift() ;
 
-		#noisecanvas.abs.fullW.fullH.context.lazy(lazy=CDN + background.url, style="background-repeat:no-repeat;background-position:left top;background-size:cover")
+		//- #noisecanvas.abs.fullW.fullH.context.lazy(lazy=CDN + background.url, style="background-repeat:no-repeat;background-position:left top;background-size:cover")
+		#noisecanvas.abs.fullW.fullH.context.whiteBG
 			//- 
-		.abs.top0.left0.fullW
-			+transition_intro
+		
 		
 		.abs.top0.left0.fullW.secondslide
 			.container(style="padding:5em 0")
-				+innerheader(header, undefined, 'white')
+				+innerheader(header, undefined, 'dkt')
 
 			.container
 				.context(style="height:450px")
@@ -313,7 +313,7 @@ mixin why
 			.container(style="padding:5em 0")
 				+innerheader(header, subheader, 'dkt', 'dark')
 				
-			.container.pad0.rel.round.both.ivoryBG.context(style="margin-bottom:10em;")
+			.container.pad0.rel.rounded.ivoryBG.context(style="margin-bottom:10em;")
 				.line.columns
 					each whyframe, i in whyframes
 						- var cl = i % 3 == 2 ? "lastUnit" : "size1of3" ;
@@ -328,7 +328,7 @@ mixin why
 
 				.aboutgo(style="padding:3em 0 10em")
 					+link({name:t(whylink.name), cl:"dkt", url: whylink.linkto})
-				.line.txtL.round.ivoryBG.right(style="background:#E8E8E8;border:1px dashed #9d1639")
+				.line.txtL.rounded.ivoryBG.right(style="background:#E8E8E8;border:1px dashed #9d1639")
 					.unit.endlogo.floatR.marXXLg
 						span.hidden= t('DKT__globals.company.name')
 					.lastUnit.sizeLg.marXXLg

@@ -41,7 +41,7 @@ mixin linkblock(ch, isPatchwork, linkname, cl)
 	- var cleanname = ch.cleanname ;
 	- var surname = ch.surname ;
 	- var cleanlink = ch.cleanlink ;
-	- var medias = ch.post.bracket[1].media ;
+	- var medias = ch.post.bracket[0].media ;
 	- if(isPatchwork){
 		- var isHome = section.name == 'home' ;
 		- var clblock = isHome ? "size1of2" : "size1of3"
@@ -225,7 +225,7 @@ mixin slide(child_section, i)
 					.hs-title-size-3.font-alt.m-b-20.white.rhdp
 						span= cleanname
 					.hs-title-size-1.font-inc.BmarXLg
-						span= child_section.category.name
+						span= surname
 
 					+link({name:"product", cl:"dkt noBd", url:cleanlink})
 		- }
@@ -477,10 +477,11 @@ mixin productarticle
 				.line.rel.fullW.adaptH
 					ul.pics.fullH.round.left.flowvisible.ocreBG(style="width:100%;")
 						- var len = 0 ;
+						
 						each media, i in medias
 							+mediasmallslide(media)
 							- len ++ ;
-						if(len > 0)
+						if(len > 1)
 							.arrow.next.abs.right0.top50.dktBG(style="width:40px;height:40px;z-index:1500")
 								a.block.fullW.fullH.white.rhdp.heavy.txtC.sizeXXXLg(href="#") &gt;
 							.arrow.prev.abs.left0.top50.dktBG(style="width:40px;height:40px;z-index:1500")
@@ -498,7 +499,7 @@ mixin productarticle
 									tr
 										td.dkt.size1of3.txtL.Lpad.uppercase= specname 
 										td.txtL.Rpad= spec
-					.3dcontainer.context.fullW.ocreBG
+					//- .3dcontainer.context.fullW.ocreBG
 						.padXLg.txtR.white
 							+link({prename:'Load', name:'3D Model'})
 						.canvascontainer.context.fullW.ocreBG.none(style="height:450px")
@@ -563,7 +564,7 @@ mixin nextprev()
 			+linkblock(cur,  false, 'product')
 		.linker.abs.bottom0.right0.marXXXLg.size1of2
 			//- a.inlineblock.sizeSm.font-inc.white.dktBG.round.both(href= cleanlink)
-				
+			
 			a.block(href= cleanlink).sizeXXLg.TmarXXSm.context
 				span.inlineblock.dkt.lh1= cleanname
 				span.block.sizeXSm.HmarXXXSm.uppercase.ls1= cur.category.name

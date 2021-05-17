@@ -239,6 +239,8 @@ module.exports = {
 		
 		if(!slideshow.length) return ;
 		
+		var isMulti = slideshow.length > 1 ;
+
 		var slides = rt.find('.pics li') ;
 		var arrow = rt.find('.arrow a') ;
 		
@@ -253,60 +255,65 @@ module.exports = {
 			var TIME = 2000 ;
 			
 			
-			
-			
-			var mm = res.userData.mm = function(e){
-				
-				var li = $(e.target) ;
-				var w = li.width() ;
-				var mw = w >> 1 ;
-				var screenX = window.screenX = e.pageX || window.screenX ;
-				var localX = screenX - li.offset().left ;
-				
-				if(localX > mw){ // ON RIGHT
+			var mm, clk, arrowclk ;
+			if(isMulti){
+
+
+				res.userData.mm = function(e){
 					
-					li.addClass('slidenext')
-					li.removeClass('slideprev')
-
+					var li = $(e.target) ;
+					var w = li.width() ;
+					var mw = w >> 1 ;
+					var screenX = window.screenX = e.pageX || window.screenX ;
+					var localX = screenX - li.offset().left ;
 					
-				}else{ // ON LEFT
+					if(localX > mw){ // ON RIGHT
+						
+						li.addClass('slidenext')
+						li.removeClass('slideprev')
 
-					li.addClass('slideprev')
-					li.removeClass('slidenext')
+						
+					}else{ // ON LEFT
 
+						li.addClass('slideprev')
+						li.removeClass('slidenext')
+
+					}
+					
+				}
+				
+				res.userData.clk = function(e){
+				
+					var tg = $(e.target) ;
+					var w = tg.width() ;
+					var mw = w >> 1 ;
+					var screenX = window.screenX = e.pageX || window.screenX ;
+					var localX = screenX - tg.offset().left ;
+	
+					if(localX > mw){ // ON RIGHT
+						cy.next() ;
+					}else{ // ON LEFT
+						cy.prev() ;
+					}
+					
+				}
+
+
+				res.userData.arrowclk = function(e){
+					e.preventDefault() ;
+					e.stopPropagation() ;
+	
+					var tg = $(e.target) ;
+	
+					if(tg.hasClass('next')){ // ON RIGHT
+						cy.next() ;
+					}else{ // ON LEFT
+						cy.prev() ;
+					}
+					
 				}
 				
 			}
-
-			var clk = res.userData.clk = function(e){
-				
-				var tg = $(e.target) ;
-				var w = tg.width() ;
-				var mw = w >> 1 ;
-				var screenX = window.screenX = e.pageX || window.screenX ;
-				var localX = screenX - tg.offset().left ;
-
-				if(localX > mw){ // ON RIGHT
-					cy.next() ;
-				}else{ // ON LEFT
-					cy.prev() ;
-				}
-				
-			}
-			var arrowclk = res.userData.arrowclk = function(e){
-				e.preventDefault() ;
-				e.stopPropagation() ;
-
-				var tg = $(e.target) ;
-
-				if(tg.hasClass('next')){ // ON RIGHT
-					cy.next() ;
-				}else{ // ON LEFT
-					cy.prev() ;
-				}
-				
-			}
-			
 			
 			
 			slides.each(function(i, el){
@@ -373,25 +380,27 @@ module.exports = {
 		
 		
 		var enable = res.userData.enable = res.userData.enable || function(cond){
-			
-			if(cond){
+			if(isMulti){
+				if(cond){
 				
-			slides.each(function(i, el){
-				var li = $(el) ;
-					li.on('click', res.userData.clk) ;
-					li.on('mousemove', res.userData.mm) ;
-				}) ;
-				arrow.on('click', res.userData.arrowclk) ;
-				
-			}else{
-				slides.each(function(i, el){
-					var li = $(el) ;
-					li.off('click', res.userData.clk) ;
-					li.off('mousemove', res.userData.mm) ;
-				}) ;
-				arrow.off('click', res.userData.arrowclk) ;
-				
+					slides.each(function(i, el){
+						var li = $(el) ;
+						li.on('click', res.userData.clk) ;
+						li.on('mousemove', res.userData.mm) ;
+					}) ;
+					arrow.on('click', res.userData.arrowclk) ;
+					
+				}else{
+					slides.each(function(i, el){
+						var li = $(el) ;
+						li.off('click', res.userData.clk) ;
+						li.off('mousemove', res.userData.mm) ;
+					}) ;
+					arrow.off('click', res.userData.arrowclk) ;
+					
+				}
 			}
+			
 
 		}
 		

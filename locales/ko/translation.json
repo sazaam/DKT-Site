@@ -170,8 +170,8 @@
     
     "products":{
       
-      "nano_ar_coater":{
-        "name":"Nano Exclusive AR Coater",
+      "nano_exclusive_coater":{
+        "name":"Nano Exclusive Coater",
         "surname":"$t(DKT__globals.machinery)",
         "desc":"*{{ productname }}*는 일반적으로 다양한 * PET 대상 * 필름을 분리하고 최종 코팅하는 데 사용됩니다. ",
         "instr": "*PET Base 필름*의 보호 필름을 제거하고 Soft Mold 및 *UV Curing을 통해 Gap 코팅 시스템*을 사용합니다. *UV 경화 후 라미네이트* 처리 및 되감기 작업을 수행합니다.*",
@@ -191,7 +191,7 @@
         }
       },
 
-      "nano_agnw_coater":{
+      "nano_exclusive_agnw_coater":{
         "name":"Nano Exclusive AGnW Coater",
         "surname":"$t(DKT__globals.machinery)",
         "desc":"*{{ productname }}*는 일반적으로 다양한 * PET 대상 * 필름을 분리하고 최종 코팅하는 데 사용됩니다. ",
@@ -211,9 +211,68 @@
           "Rewinding System":"Center (Surface Turret) Winding System"
         }
       },
-
-      "general_optical_coater":{
-        "name":"General Optical Coater",
+      "release_film_coater_for_mlcc":{
+        "name":"Release Film Coater for MLCC",
+        "surname":"$t(DKT__globals.machinery)",
+        "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
+        "instr": "Remove *protective film* on the *PET Base film*, use of *Gap coating system* through the Soft Mold and UV Curing.  \n After *UV Curing, laminating* and *rewinding.*",
+        "concl": "This asset is *quite detailed* and created with an eye towards current and next-generation needs  \n in the *modern industry* and innovative technologies.",
+        "specs":{
+          "Web Materials":"PET film",
+          "Web Thickness":"100 ~ 250 micron",
+          "Web Width":"500 ~ 1,570 mm",
+          "Machine Speed":"Max. 30m/min",
+          "Unwind Diameter":"Max. 800mm",
+          "Rewind Diameter":"Max. 800mm",
+          "Coating System":"(Double Top) Roller Gap Adjusting System",
+          "Dryer Diameter":"Low/Middle/High Pressure UV system",
+          "Inspection Room":"Top Roller Gap Adjusting System",
+          "Laminating System":"By Sight",
+          "Rewinding System":"Center (Surface Turret) Winding System"
+        }
+      },
+      "window_film":{
+        "name":"Window Film",
+        "surname":"$t(DKT__globals.machinery)",
+        "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
+        "instr": "Remove *protective film* on the *PET Base film*, use of *Gap coating system* through the Soft Mold and UV Curing.  \n After *UV Curing, laminating* and *rewinding.*",
+        "concl": "This asset is *quite detailed* and created with an eye towards current and next-generation needs  \n in the *modern industry* and innovative technologies.",
+        "specs":{
+          "Web Materials":"PET film",
+          "Web Thickness":"100 ~ 250 micron",
+          "Web Width":"500 ~ 1,570 mm",
+          "Machine Speed":"Max. 30m/min",
+          "Unwind Diameter":"Max. 800mm",
+          "Rewind Diameter":"Max. 800mm",
+          "Coating System":"(Double Top) Roller Gap Adjusting System",
+          "Dryer Diameter":"Low/Middle/High Pressure UV system",
+          "Inspection Room":"Top Roller Gap Adjusting System",
+          "Laminating System":"By Sight",
+          "Rewinding System":"Center (Surface Turret) Winding System"
+        }
+      },
+      "ppf_coater":{
+        "name":"PPF Coater",
+        "surname":"$t(DKT__globals.machinery)",
+        "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
+        "instr": "Remove *protective film* on the *PET Base film*, use of *Gap coating system* through the Soft Mold and UV Curing.  \n After *UV Curing, laminating* and *rewinding.*",
+        "concl": "This asset is *quite detailed* and created with an eye towards current and next-generation needs  \n in the *modern industry* and innovative technologies.",
+        "specs":{
+          "Web Materials":"PET film",
+          "Web Thickness":"100 ~ 250 micron",
+          "Web Width":"500 ~ 1,570 mm",
+          "Machine Speed":"Max. 30m/min",
+          "Unwind Diameter":"Max. 800mm",
+          "Rewind Diameter":"Max. 800mm",
+          "Coating System":"(Double Top) Roller Gap Adjusting System",
+          "Dryer Diameter":"Low/Middle/High Pressure UV system",
+          "Inspection Room":"Top Roller Gap Adjusting System",
+          "Laminating System":"By Sight",
+          "Rewinding System":"Center (Surface Turret) Winding System"
+        }
+      },
+      "functional_coating_for_optical_film":{
+        "name":"Functional Coating for Optical Film",
         "surname":"$t(DKT__globals.machinery)",
         "desc":"*{{ productname }}*는 일반적으로 다양한 * PET 대상 * 필름을 분리하고 최종 코팅하는 데 사용됩니다. ",
         "instr": "*PET Base 필름*의 보호 필름을 제거하고 Soft Mold 및 *UV Curing을 통해 Gap 코팅 시스템*을 사용합니다. *UV 경화 후 라미네이트* 처리 및 되감기 작업을 수행합니다.*",
@@ -233,8 +292,8 @@
         }
       },
 
-      "multicoater":{
-        "name":"POP,DOP,MOP Multi-Coater",
+      "multiuse_coater_pop_dop_mop":{
+        "name":"Multi-use Coater POP,DOP,MOP",
         "surname":"$t(DKT__globals.machinery)",
         "desc":"*{{ productname }}*는 일반적으로 다양한 * PET 대상 * 필름을 분리하고 최종 코팅하는 데 사용됩니다. ",
         "instr": "*PET Base 필름*의 보호 필름을 제거하고 Soft Mold 및 *UV Curing을 통해 Gap 코팅 시스템*을 사용합니다. *UV 경화 후 라미네이트* 처리 및 되감기 작업을 수행합니다.*",
@@ -254,9 +313,9 @@
         }
       },
 
-      "soft_mold":{
-        "name":"Soft Mold",
-        "surname":"$t(DKT__globals.machinery)",
+      "pattern_coater":{
+        "name":"Pattern Coater",
+        "surname":"Soft Mold Type",
         "desc":"*{{ productname }}*는 일반적으로 다양한 * PET 대상 * 필름을 분리하고 최종 코팅하는 데 사용됩니다. ",
         "instr": "*PET Base 필름*의 보호 필름을 제거하고 Soft Mold 및 *UV Curing을 통해 Gap 코팅 시스템*을 사용합니다. *UV 경화 후 라미네이트* 처리 및 되감기 작업을 수행합니다.*",
         "concl": "위 제품은 *현대 산업과 혁신적인 기술*에 대해 매우 *상세하며*,  \n 차세대 니즈를 염두해 두고 있습니다.",
@@ -275,9 +334,9 @@
         }
       },
 
-      "hard_gap_mold":{
-        "name":"Hard Gap Mold",
-        "surname":"$t(DKT__globals.machinery)",
+      "qd_direct_pattern_coater":{
+        "name":"QD Coater, Direct Pattern Coater",
+        "surname":"Hard Mold Type",
         "desc":"*{{ productname }}*는 일반적으로 다양한 * PET 대상 * 필름을 분리하고 최종 코팅하는 데 사용됩니다. ",
         "instr": "*PET Base 필름*의 보호 필름을 제거하고 Soft Mold 및 *UV Curing을 통해 Gap 코팅 시스템*을 사용합니다. *UV 경화 후 라미네이트* 처리 및 되감기 작업을 수행합니다.*",
         "concl": "위 제품은 *현대 산업과 혁신적인 기술*에 대해 매우 *상세하며*,  \n 차세대 니즈를 염두해 두고 있습니다.",
@@ -296,9 +355,9 @@
         }
       },
 
-      "cpi":{
-        "name":"CPI",
-        "surname":"$t(DKT__globals.machinery)",
+      "cpi_film_equipment":{
+        "name":"CPI Film Equipment",
+        "surname":"CPT (Colorless Polyimide Film)",
         "desc":"*{{ productname }}*는 일반적으로 다양한 * PET 대상 * 필름을 분리하고 최종 코팅하는 데 사용됩니다. ",
         "instr": "*PET Base 필름*의 보호 필름을 제거하고 Soft Mold 및 *UV Curing을 통해 Gap 코팅 시스템*을 사용합니다. *UV 경화 후 라미네이트* 처리 및 되감기 작업을 수행합니다.*",
         "concl": "위 제품은 *현대 산업과 혁신적인 기술*에 대해 매우 *상세하며*,  \n 차세대 니즈를 염두해 두고 있습니다.",
@@ -317,9 +376,9 @@
         }
       },
 
-      "polar_film":{
+      "polarized_film":{
         "name":"Polarized Film",
-        "surname":"$t(DKT__globals.machinery)",
+        "surname":"PVA Film Stretching for Polarizer",
         "desc":"*{{ productname }}*는 일반적으로 다양한 * PET 대상 * 필름을 분리하고 최종 코팅하는 데 사용됩니다. ",
         "instr": "*PET Base 필름*의 보호 필름을 제거하고 Soft Mold 및 *UV Curing을 통해 Gap 코팅 시스템*을 사용합니다. *UV 경화 후 라미네이트* 처리 및 되감기 작업을 수행합니다.*",
         "concl": "위 제품은 *현대 산업과 혁신적인 기술*에 대해 매우 *상세하며*,  \n 차세대 니즈를 염두해 두고 있습니다.",
@@ -340,7 +399,7 @@
 
       "slitter":{
         "name":"Slitter",
-        "surname":"$t(DKT__globals.machinery)",
+        "surname":"Other Machine",
         "desc":"*{{ productname }}*는 일반적으로 다양한 * PET 대상 * 필름을 분리하고 최종 코팅하는 데 사용됩니다. ",
         "instr": "*PET Base 필름*의 보호 필름을 제거하고 Soft Mold 및 *UV Curing을 통해 Gap 코팅 시스템*을 사용합니다. *UV 경화 후 라미네이트* 처리 및 되감기 작업을 수행합니다.*",
         "concl": "위 제품은 *현대 산업과 혁신적인 기술*에 대해 매우 *상세하며*,  \n 차세대 니즈를 염두해 두고 있습니다.",
@@ -359,9 +418,9 @@
         }
       },
 
-      "laminator":{
-        "name":"Laminator",
-        "surname":"$t(DKT__globals.machinery)",
+      "laminater":{
+        "name":"Laminater",
+        "surname":"Other Machine",
         "desc":"*{{ productname }}*는 일반적으로 다양한 * PET 대상 * 필름을 분리하고 최종 코팅하는 데 사용됩니다. ",
         "instr": "*PET Base 필름*의 보호 필름을 제거하고 Soft Mold 및 *UV Curing을 통해 Gap 코팅 시스템*을 사용합니다. *UV 경화 후 라미네이트* 처리 및 되감기 작업을 수행합니다.*",
         "concl": "위 제품은 *현대 산업과 혁신적인 기술*에 대해 매우 *상세하며*,  \n 차세대 니즈를 염두해 두고 있습니다.",

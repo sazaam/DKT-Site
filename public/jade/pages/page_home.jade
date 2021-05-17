@@ -23,7 +23,9 @@ block content
     
     //- HOME ARTICLE BLOCKS
     each article in getComponentsByTypename(section.post.bracket, 'ComponentModularArticle')
-      +article(article, params)
+      if(article.name != 'home_intro' && article.name != 'home_why')
+        +article(article, params)
+        
     
     
     //- PATCHWORK

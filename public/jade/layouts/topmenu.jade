@@ -15,7 +15,7 @@
         - ch.cleanlink = '/#/' + lang + ch.path ;
 
   //- MAIN NAV SECTION LINKS
-  ol.sectionsnav.flowvisible.uppercase
+  ol.sectionsnav.flowvisible
     - var other = [].concat(topsections) ;
     - var home = other.shift() ;
     
@@ -28,7 +28,7 @@
     each navsection in other
       - var name = navsection.name ;
       li.others.floatL.rel.LmarSm(id= "global_" + name, class= "global_" + name)
-        a.block.pad.Hpad.inconsolata(href= '/#/' + lang + '/' + name + '/')
+        a.block.pad.Hpad.inconsolata.uppercase(href= '/#/' + lang + '/' + name + '/')
           span= name
         if(navsection.children.length)
           ol.subnav.abs.txtR.left0.round.right.flowhidden(style="top:4em;width:400px")
@@ -38,7 +38,7 @@
               - var chcat = navchild.category.name ;
               li.sub.rel(class="navmenu_" + navchild.name )
                 if(chcat !== cat)
-                  .abs.left0.padXXSm.sizeSm.Hpad.inconsolata.dkt.dark.whiteBG(style="top:3px;border-bottom:1px solid #e3dcd5")= chcat
+                  .abs.left0.padXXSm.sizeSm.Hpad.inconsolata.dkt.dark.whiteBG.uppercase(style="top:3px;border-bottom:1px solid #e3dcd5")= chcat
                 - cat = chcat ;
                 a.block.padXXSm.Hpad.inconsolata(href= '/#/' + lang + '/' + name + '/' + navchild.name + '/')
                   span= '> ' + chname

@@ -1051,6 +1051,15 @@ hr {
     background: rgba(255, 255, 255, .1);
 }
 
+.hs-caption.container a.goblack:hover{
+    background: #9d1639;
+}
+
+.hs-caption.container a.gowhite:hover{
+    background: #FFF;
+    color:#9d1639
+}
+
 .noproduct .dkt.noBd .whiteBG {
     background: rgba(255, 255, 255, .05);
     color: rgba(255, 255, 255, .6);

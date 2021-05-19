@@ -19,8 +19,11 @@ mixin link(o)
 //- CALL US INFO
 mixin callus(number, cl)
 	.call
-		h4.bt.sizeXLg.txtL.inlineblock.padXSm.HpadXLg.antraciteBG.round.left.dkt.dktBD(class=cl)= t('call') 
-		h4.bt.sizeXLg.txtL.inlineblock.padXSm.HpadXLg.dktBG.round.right.white.dktBD= t(number)
+		//- check first if is not an email
+		if(number.indexOf('@') == -1) 
+			h4.bt.sizeXLg.txtL.inlineblock.padXSm.HpadXLg.dktBG.round.both.white.dktBD.lowercase= t(number)
+		else
+			a.bt.sizeXLg.txtL.inlineblock.padXSm.HpadXLg.dktBG.round.both.white.dktBD.lowercase(href="mailto:"+number)= number
 
 //- BACK BUTTON
 mixin back(obj)
@@ -30,9 +33,16 @@ mixin back(obj)
 
 
 //- MEDIAS
-mixin mediasmallslide(media)
+mixin mediasmallslide(media, contents)
 	li.round.left.cover.abs.top0.left0.zi10.lazy(lazy=CDN + media.url, style='width:100%;height:100%;background-repeat:no-repeat;background-position:50% 50%;background-size:cover;opacity: 0;')
 		span.hidden Image
+		if(contents.legend)
+			- var legend = contents.legend[0] ;
+			legend.legend.abs.bottom0.left0.right0.pad.white.rhdp.sizeLg(style="background:rgba(153, 153, 153, .8)")
+				each leg, legname in legend
+					.txtL= legname 
+					.txtL.light= leg
+				
 
 
 //- LINK AS A BLOCK
@@ -83,12 +93,12 @@ mixin sectionheader(title, subtitle)
 
 
 //- PAGE HEADER
-mixin pageheader(title, subtitle)
+mixin pageheader(title, subtitle, cl)
 	if title
 		.hs-title-size-3.font-alt.m-b-20.context.white
 			span.block.round.both.dkt= t(title)
 	if subtitle
-		.hs-title-size-1.font-inc.LmarXXSm.BmarSm.shady= t(subtitle)
+		.hs-title-size-1.font-inc.LmarXXSm.BmarSm.shady(class=cl)= t(subtitle)
 
 
 //- INSIDE PAGE HEADER
@@ -121,7 +131,10 @@ mixin footer()
 						!= t('tel') + " : " + t('DKT__globals.company.telephone')
 						br
 						!= t('fax') + " : " + t('DKT__globals.company.fax')
-
+						br
+						- var addr = t('DKT__globals.email_addr') ;
+						!= t('Contact') + " : "
+						a.dkt(href="mailto:"+addr)= addr
 				.lastUnit.sizeXSm.RmarXXXXLg.txtR
 					span.block.marXXXXLg
 						!= t('DKT__globals.company.copy') + t('DKT__globals.company.copy_year') 
@@ -142,7 +155,8 @@ mixin footer()
 //-  MAIN SLIDESHOW
 mixin slideshow()
 	.slideshow.module-parallax.module-fade.module-full-height.fullH.rel
-		.abs.bottom0.left0.fullW
+		if(section.name == 'home')
+			.abs.bottom0.left0.fullW
 				+transition_intro
 		- if(!!target_sections && target_sections.length){
 			ul.slides
@@ -219,9 +233,9 @@ mixin slide(child_section, i)
 		- }else{
 			- var even = i % 2 == 0 ;
 			- var cl = even ? 'left' : 'right' ;
-			
+			- cl = section.name == 'home' ? cl + ' noproduct' : cl ;
 			.hs-caption.container(style='top: 0px; display: table;')
-				.noproduct.caption-content(class=cl)
+				.caption-content(class=cl)
 					.hs-title-size-3.font-alt.m-b-20.white.rhdp
 						span= cleanname
 					.hs-title-size-1.font-inc.BmarXLg
@@ -347,10 +361,15 @@ mixin needinfo(number, cl)
 		:marked !{md(t('DKT__products.needinfo_02', locals))}
 	
 	.VmarXXXXLg
-		+callus(number, cl)
+		+callus(number, cl, 'callus', true)
 		
+	.VmarXXXXLg.sizeLg
+		:marked !{md(t('DKT__products.needinfo_04', locals))}
+	.VmarXXXXLg
+		+callus(t('DKT__globals.email_addr'), cl, 'emailus')
 	.sizeLg
 		:marked !{md(t('DKT__products.needinfo_03', locals))}
+	
 
 //- CERTIFICATIONS
 
@@ -463,23 +482,31 @@ mixin productarticle
 	- locals.productname = child_section.cleanname ;
 	- var medias = component.media ;
 	
-	.line.marked(style="margin-bottom:2em")
-		.unit.lastUnit.dark.round.right.LpadLg(style="margin-top:0em")
-			.Tmar.txtR.sizeLg
-				:marked !{md(t(pointer + '.desc', locals))}
+	- var contents = t(pointer, {returnObjects: true})
+	script.
+		window.productContents = !{JSON.stringify(contents)}
+		//- script.
+	//- - console.log(contents)
+	if(!!contents.desc)
+		.line.marked(style="margin-bottom:2em")
+			.unit.lastUnit.round.right.LpadLg(style="margin-top:0em")
+				.Tmar.txtR.sizeLg
+					:marked !{md(t(pointer + '.desc', locals))}
 				
 	.line(style="margin-top:1em;")
 		.round.both.LmarXLg
 			.txtL
-				.line.Lpad(style="margin-bottom:3em;")
-					.pad.txtL.marked
-						:marked !{md(t(pointer + '.instr', locals))}
+				
+				if(!!contents.instr)
+					.line.Lpad(style="margin-bottom:3em;")
+						.pad.txtL.marked
+							:marked !{md(t(pointer + '.instr', locals))}
 				.line.rel.fullW.adaptH
 					ul.pics.fullH.round.left.flowvisible.ocreBG(style="width:100%;")
 						- var len = 0 ;
 						
 						each media, i in medias
-							+mediasmallslide(media)
+							+mediasmallslide(media, contents)
 							- len ++ ;
 						if(len > 1)
 							.arrow.next.abs.right0.top50.dktBG(style="width:40px;height:40px;z-index:1500")
@@ -494,7 +521,8 @@ mixin productarticle
 					.txtR
 						table.tables.font-inc.dark(style="width:100%" row="4")
 							tbody.lh2
-								- var specs = t(pointer + '.specs', merge({returnObjects: true}, locals))
+								- var specs = t(pointer + '.specs', merge({returnObjects: true}, locals)) ;
+								- if(specs.length) specs = specs[0] ;
 								each spec, specname in specs
 									tr
 										td.dkt.size1of3.txtL.Lpad.uppercase= specname 
@@ -505,9 +533,9 @@ mixin productarticle
 						.canvascontainer.context.fullW.ocreBG.none(style="height:450px")
 
 	.line.marked(style="margin-top:5em;margin-bottom:5em")
-		
-		.BmarginXXXLg.txtL.sizeLg.HmarXLg
-			:marked !{md(t(pointer + '.concl', locals))}
+		if(!!contents.concl)
+			.BmarginXXXLg.txtL.sizeLg.HmarXLg
+				:marked !{md(t(pointer + '.concl', locals))}
 		.line.VmarLg 
 			.pad.dkt.sizeXXXLg &bull;&nbsp;&bull;&nbsp;&bull;
 		.HmarXLg.txtL
@@ -607,34 +635,36 @@ mixin article(art, p)
 
 
 mixin phoneus
-	.line(lazy=CDN + component.media[0].url, style="background:url() no-repeat;background-position: 50% 74%")
+	.line(lazy=CDN + component.media[0].url, style="background:url() no-repeat;background-position: 80% 74%")
 		.container.rel
 			.line.txtL(style="padding:4em 0 8em;")
-				.unit.size1of3.txtL.context.pad.BpadXXLg
-					+pageheader(phone, phone_txt)
-				.unit.size3of5.floatR.sizeLg.TmarXXXLg
-					.sizeSm.txtC(style="margin-top:8em")
-						+callus(phone_number, 'marbleBG')
+				.txtL.context.pad.BpadXXLg
+					+pageheader(phone, phone_txt, 'TmarLg')
+					.sizeSm.txtL(style="margin-top:8em")
+						+callus(phone_number, 'marbleBG', 'callus')
 		hr
 
 
 
 mixin emailus
-	.line
-		.container.rel(lazy=CDN + component.media[2].url, style="background:url() no-repeat;background-position: 0% 120%")
+	.line.ivoryBG
+		.container.rel(lazy=CDN + component.media[2].url, style="background:url() no-repeat;background-position: 80% 50%")
 			.line.txtL(style="padding:4em 0 0")
 				.unit.size1of3.txtL.context.sizeLg.dkt.pad.BpadXXLg
-					+pageheader(email, email_txt)
-				.unit.size3of5.floatR.VpadXXXLg.txtR
-					+contactform()
+					+pageheader(email, email_txt, 'TmarLg')
+					.sizeSm.txtL(style="margin:4em 0")
+						+callus(t('DKT__globals.email_addr'), 'marbleBG', 'emailus')
+				//- .unit.size3of5.floatR.VpadXXXLg.txtR
+					//- +contactform()
+					
 		hr
 
 mixin postus
-	.line.ivoryBG
+	.line
 		.container.rel
 			.line.txtR(style="padding:6em 0 0")
 				.unit.size1of3.txtL.context.sizeLg.dkt.pad.BpadXXLg
-					+pageheader(postmail, postmail_txt)
+					+pageheader(postmail, postmail_txt, 'TmarLg')
 					p.TmarXXLg
 						!= t(company_address_1)
 						br

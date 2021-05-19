@@ -21,7 +21,8 @@
   
 
   "ty": "감사합니다.",
-  "call": "요구",
+  "callus": "요구",
+  "emailus": "이메일",
   "greetings": "인사말",
   
   "tel": "Tel",
@@ -174,8 +175,6 @@
         "name":"Nano Exclusive Coater",
         "surname":"$t(DKT__globals.machinery)",
         "desc":"*{{ productname }}*는 일반적으로 다양한 * PET 대상 * 필름을 분리하고 최종 코팅하는 데 사용됩니다. ",
-        "instr": "*PET Base 필름*의 보호 필름을 제거하고 Soft Mold 및 *UV Curing을 통해 Gap 코팅 시스템*을 사용합니다. *UV 경화 후 라미네이트* 처리 및 되감기 작업을 수행합니다.*",
-        "concl": "위 제품은 *현대 산업과 혁신적인 기술*에 대해 매우 *상세하며*,  \n 차세대 니즈를 염두해 두고 있습니다.",
         "specs":{
           "Web Materials":"PET film",
           "Web Thickness":"100 ~ 250 micron",
@@ -256,7 +255,6 @@
         "surname":"$t(DKT__globals.machinery)",
         "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
         "instr": "Remove *protective film* on the *PET Base film*, use of *Gap coating system* through the Soft Mold and UV Curing.  \n After *UV Curing, laminating* and *rewinding.*",
-        "concl": "This asset is *quite detailed* and created with an eye towards current and next-generation needs  \n in the *modern industry* and innovative technologies.",
         "specs":{
           "Web Materials":"PET film",
           "Web Thickness":"100 ~ 250 micron",

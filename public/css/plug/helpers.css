@@ -120,8 +120,8 @@ a				{
 
 /* TRANSFORMS */
 
-.lowercase 					{text-transform:lowercase}
 .uppercase 					{text-transform:uppercase}
+.lowercase 					{text-transform:lowercase !important}
 .italic 						{font-style:italic}
 .normal 						{font-style:normal}
 

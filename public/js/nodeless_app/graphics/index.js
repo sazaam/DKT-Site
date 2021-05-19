@@ -67,6 +67,26 @@ var catsclick ;
 window.lang = $('html').attr('lang') ;
 
 
+var getScrolltop = function(){
+	return $(document.documentElement).scrollTop() ;
+}
+var isAtTop = function(){
+	return !getScrolltop() ;
+}
+
+var scrollto = function(y){
+	BetweenJS.create({
+		target:document.documentElement,
+		to:{scrollTop:y},
+		time:.5,
+		ease:Expo.easeOut
+	}).play() ;
+
+}
+
+
+
+
 module.exports = {
 	
 	////////////////////////// LANGUAGES
@@ -181,7 +201,7 @@ module.exports = {
 		e.preventDefault() ;
 		e.stopPropagation() ;
 
-		$(document).scrollTop(0) ;
+		scrollto(0) ;
 	},
 	topofpage : topofpage = function(e, cond){
 		var res = e.target ;
@@ -239,26 +259,27 @@ module.exports = {
 		
 		if(!slideshow.length) return ;
 		
-		var isMulti = slideshow.length > 1 ;
-
+		
 		var slides = rt.find('.pics li') ;
 		var arrow = rt.find('.arrow a') ;
 		
 		var launched = false ;
 		var cy ;
 		
-		
+		var isMulti = slides.length > 1 ;
+
 		if(!res.userData.cy){
 			
 			var commands = [] ;
 			cy = res.userData.cy = new Cyclic(commands) ;
 			var TIME = 2000 ;
 			
+			res.userData.tables = rt.find('table') ;
+			res.userData.legend = rt.find('legend') ;
 			
 			var mm, clk, arrowclk ;
 			if(isMulti){
-
-
+				
 				res.userData.mm = function(e){
 					
 					var li = $(e.target) ;
@@ -289,7 +310,8 @@ module.exports = {
 					var mw = w >> 1 ;
 					var screenX = window.screenX = e.pageX || window.screenX ;
 					var localX = screenX - tg.offset().left ;
-	
+					
+
 					if(localX > mw){ // ON RIGHT
 						cy.next() ;
 					}else{ // ON LEFT
@@ -304,8 +326,7 @@ module.exports = {
 					e.stopPropagation() ;
 	
 					var tg = $(e.target) ;
-	
-					if(tg.hasClass('next')){ // ON RIGHT
+					if(tg.parent().hasClass('next')){ // ON RIGHT
 						cy.next() ;
 					}else{ // ON LEFT
 						cy.prev() ;
@@ -346,8 +367,61 @@ module.exports = {
 							ease:Expo.easeOut
 						})
 					) ;
+
 					li.trigger('mousemove') ;
 					
+
+					// LEGENDS
+					if(!!productContents.legend){
+						if(!!productContents.legend.length){
+							
+							var legends = productContents.legend[i] ;
+							
+							var legend = res.userData.legend ;
+
+							var legex = $(legend.get(i)) ;
+							
+							var fillLeg = function(legex, legs){
+
+								for(var ss in legs){
+									var sp = legex[0] ;
+									var spname = sp.firstChild ;
+									var spval = sp.lastChild ;
+									
+									$(spname).html(ss)
+									$(spval).html(legs[ss])
+								}
+							}
+							
+							fillLeg(legex, legends) ;
+
+						}		
+					}
+
+					// SPECS
+					var specs = productContents.specs[i] ;
+					var tables = res.userData.tables ;
+					
+					var trex = $(tables.find('tr')[0]).clone() ;
+					tables.find('tr').remove() ;
+
+					var fillSpec = function(trex, specs){
+
+						for(var ss in specs){
+							var sp = trex.clone().appendTo(tables)[0] ;
+							var spname = sp.firstChild ;
+							var spval = sp.lastChild ;
+							
+							$(spname).html(ss)
+							$(spval).html(specs[ss])
+						}
+					}
+
+					
+					fillSpec(trex, specs) ;
+					
+					
+
 					tw.onComplete = function(){
 						c.dispatchComplete() ;
 					}
@@ -451,16 +525,9 @@ module.exports = {
 				
 				sl.halt() ;
 				
-				var scrtop = $(document.documentElement).scrollTop() ;
-				var ttop = scrtop != 0 ? 0 : slideshow.height() ;
-				BetweenJS.create({
-					target:document.documentElement,
-					to:{scrollTop:ttop},
-					time:.5,
-					ease:Expo.easeOut
-				}).play() ;
-
+				var ttop = isAtTop ? slideshow.height() : 0 ;
 				
+				scrollto(ttop) ;
 
 			} ;
 			
@@ -544,12 +611,7 @@ module.exports = {
 				
 				if(li.hasClass('slidetop')){
 					
-					BetweenJS.create({
-						target:document.documentElement,
-						to:{scrollTop:0},
-						time:.5,
-						ease:Expo.easeOut
-					}).play() ;
+					scrollto(0) ;
 
 					return ;
 				}
@@ -582,13 +644,7 @@ module.exports = {
 								
 								sl.halt() ;
 
-								// 
-								BetweenJS.create({
-									target:document.documentElement,
-									to:{scrollTop:555},
-									time:.5,
-									ease:Expo.easeOut
-								}).play() ;
+								scrollto(555) ;
 								
 							} else{
 								
@@ -611,16 +667,8 @@ module.exports = {
 						if(res.id == 'home'){ // HOME Case
 							
 							if(screenY > mh){ // ON DOWNCLICK
-							
-								//
-								// $(document).scrollTop(150) ;
-								BetweenJS.create({
-									target:document.documentElement,
-									to:{'scrollTop':555},
-									time:.5,
-									ease:Expo.easeOut
-								}).play() ;
-
+								
+								scrollto(555) ;
 								
 							} else{
 								
@@ -677,19 +725,6 @@ module.exports = {
 					}) ;
 					
 					li.css({'opacity':1}) ;
-					// sl.tw = BetweenJS.create({
-					// 	target:li,
-					// 	to:{
-					// 		'opacity':100
-					// 	},
-					// 	from:{
-					// 		'opacity':0
-					// 	},
-					// 	time:.45,
-					// 	ease:Expo.easeOut
-					// }) ;
-
-
 
 					li.trigger('mousemove') ;
 					
@@ -701,12 +736,6 @@ module.exports = {
 					}, 15) ;
 					/* END IMPORTANT */
 					
-					// sl.tw.onComplete = function(){
-					// 	trace('BTW Complete')
-					// 	// c.dispatchComplete() ;
-					// }
-
-					// sl.tw.play() ;
 					
 					return this ;
 
@@ -774,32 +803,26 @@ module.exports = {
 		}
 		
 		sl = res.userData.slideshow ;
-		// sl.launched = false ;
-		
 		
 		if(cond){
-			
-			// trace('opening UID :', id) ;
 			
 			sl.clear() ;
 
 			sl.enable(true) ;
 			sl.plouf.on('click', sl.ploufclick) ;
-			// cy.index = -1 ;
 			
 			if(sl.cy.index == -1 ) sl.launch() ;
 			else{
 				sl.cy.index -- ;
 				sl.launch() ;
-				// halt() ;
+				
 			}
 			
 		}else{
 			
-			// trace('closing UID :', id) ;
-			sl.plouf.off('click', sl.ploufclick) ;
 			sl.clear() ;
 			
+			sl.plouf.off('click', sl.ploufclick) ;
 			sl.enable(false) ;
 			
 			sl.halt() ;
@@ -1054,15 +1077,19 @@ module.exports = {
 				
 		if(e.type == 'focusIn'){
 			
-			
+			scrollto($('.products .slideshow').height() - 200) ;
+
 			res.focusReady() ;
 			
 			smallslideshow(e, true) ;
-			small3D(e, true) ;
+			// small3D(e, true) ;
 			
 		}else{
 			
-			small3D(e, false) ;
+			scrollto(0) ;
+
+			// small3D(e, false) ;
+
 			smallslideshow(e, false) ;
 			
 			res.focusReady() ;
@@ -1104,6 +1131,7 @@ module.exports = {
 			why.addClass('none') ;
 			// certif.removeClass('none') ;
 			
+			
 
 			$('.global_' + res.parentStep.id + ' ol .navmenu_' + id).addClass('active')
 			
@@ -1117,15 +1145,16 @@ module.exports = {
 				res.userData.lazyLoaded = true ;
 			}
 
-			topofpage(e, true) ;
+			// topofpage(e, true) ;
 
 			res.ready() ;
 			
 		}else{
 			
 
-			topofpage(e, false) ;
+			// topofpage(e, false) ;
 
+			
 			patchwork.removeClass('none') ;
 			why.removeClass('none') ;
 			// certif.addClass('none') ;

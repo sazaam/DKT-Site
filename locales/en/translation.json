@@ -19,7 +19,8 @@
   "welcome": "Welcome",
   "you": "You",
   "ty": "Thank You.",
-  "call": "Call",
+  "callus": "Call Us",
+  "emailus": "Email Us",
   "greetings": "Greetings",
   
   "tel": "Tel",
@@ -52,6 +53,8 @@
     "contactus": "Contact Us",
     "keepintouch": "Keep In Touch",
     "suffix":"@dktmc.com",
+    "sales":"sales",
+    "email_addr":"$t(DKT__globals.sales)$t(DKT__globals.suffix)",
     "company": {
       "accroche_1": "Coating Machinery",
       "accroche_2": "Creator",
@@ -123,7 +126,7 @@
     "surname": "$t(DKT__globals.keepintouch)",
     "telephone": "By Phone",
     "telephone_txt": "Worldwide answering to your demand.",
-    "telephone_sales": "1-800-6425-1539",
+    "telephone_sales": "+82 54 462 5326",
     "email": "Via Email",
     "email_txt": "Please feel free to leave us an email concerning any of our products or other requests.",
     "form":{
@@ -146,7 +149,7 @@
     },
 
     "postmail": "Via PostMail",
-    "postmail_txt": "And we still open our mailbox on daily basis!"
+    "postmail_txt": "And we still open our mailbox on a daily basis!"
 
   },
   "DKT__products": {
@@ -163,15 +166,15 @@
 
     "needinfo_01":"*Need* an information on any of our *products* ?",
     "needinfo_02":"Feel free to contact our *professionals*, which are ready to inform you,  \non demand *as promptly* as we all can.",
-    "needinfo_03":"Our *professionals* are joining efforts to inform you in the *best delays.*",
+    "needinfo_03":"Our *professionals* are joining efforts to inform you within the *best delays.*",
+    "needinfo_04":"Or plase email us at :",
+    
     
     "products":{
       "nano_exclusive_coater":{
         "name":"Nano Exclusive Coater",
         "surname":"$t(DKT__globals.machinery)",
-        "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
-        "instr": "Remove *protective film* on the *PET Base film*, use of *Gap coating system* through the Soft Mold and UV Curing.  \n After *UV Curing, laminating* and *rewinding.*",
-        "concl": "This asset is *quite detailed* and created with an eye towards current and next-generation needs  \n in the *modern industry* and innovative technologies.",
+        "desc":"This equipment makes possible the use of *exclusive nano control coating* by *1nm* unit.  \n Therefore this *NANO R2R SYSTEM* can only make the nano thin layer like *AR* (Anti-reflective thin film) \n and *IM* (Index matching film), thus this equipment is an ultra *extremely sensitive nano* coater.",
         "specs":{
           "Web Materials":"PET film",
           "Web Thickness":"100 ~ 250 micron",
@@ -190,9 +193,7 @@
       "nano_exclusive_agnw_coater":{
         "name":"Nano Exclusive AGnW Coater",
         "surname":"$t(DKT__globals.machinery)",
-        "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
-        "instr": "Remove *protective film* on the *PET Base film*, use of *Gap coating system* through the Soft Mold and UV Curing.  \n After *UV Curing, laminating* and *rewinding.*",
-        "concl": "This asset is *quite detailed* and created with an eye towards current and next-generation needs  \n in the *modern industry* and innovative technologies.",
+        "desc":"This equipment makes possible the use of *exclusive nano control coating* by *nano* unit.  \n Therefore this *NANO R2R SYSTEM* can only make the *AgNW* (Silver Nanowire coated film) \n and *IM* (Index matching film), thus this equipment is an ultra *extremely sensitive nano* coater.",
         "specs":{
           "Web Materials":"PET film",
           "Web Thickness":"100 ~ 250 micron",
@@ -210,9 +211,6 @@
       "release_film_coater_for_mlcc":{
         "name":"Release Film Coater for MLCC",
         "surname":"$t(DKT__globals.machinery)",
-        "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
-        "instr": "Remove *protective film* on the *PET Base film*, use of *Gap coating system* through the Soft Mold and UV Curing.  \n After *UV Curing, laminating* and *rewinding.*",
-        "concl": "This asset is *quite detailed* and created with an eye towards current and next-generation needs  \n in the *modern industry* and innovative technologies.",
         "specs":{
           "Web Materials":"PET film",
           "Web Thickness":"100 ~ 250 micron",
@@ -230,9 +228,6 @@
       "window_film":{
         "name":"Window Film",
         "surname":"$t(DKT__globals.machinery)",
-        "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
-        "instr": "Remove *protective film* on the *PET Base film*, use of *Gap coating system* through the Soft Mold and UV Curing.  \n After *UV Curing, laminating* and *rewinding.*",
-        "concl": "This asset is *quite detailed* and created with an eye towards current and next-generation needs  \n in the *modern industry* and innovative technologies.",
         "specs":{
           "Web Materials":"PET film",
           "Web Thickness":"100 ~ 250 micron",
@@ -250,9 +245,8 @@
       "ppf_coater":{
         "name":"PPF Coater",
         "surname":"$t(DKT__globals.machinery)",
-        "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
-        "instr": "Remove *protective film* on the *PET Base film*, use of *Gap coating system* through the Soft Mold and UV Curing.  \n After *UV Curing, laminating* and *rewinding.*",
-        "concl": "This asset is *quite detailed* and created with an eye towards current and next-generation needs  \n in the *modern industry* and innovative technologies.",
+        "desc":"This equipment is the machinery line *exclusively* dedicated to *PPF* (Paint Protection Film) production.  \n It focuses on *optimization of quality* and *precision control* for the best PPF output.",
+        "instr": "Our PPF-dedicated *R2R equipment* is a very special structure compared to other general R2R machinery.  \n This line contains all different *Guide Rolls, Out-feeds* and *In-feed Units, Coating Head,*  \n and of course, *driving* method is *unique* as well.",
         "specs":{
           "Web Materials":"PET film",
           "Web Thickness":"100 ~ 250 micron",
@@ -270,9 +264,8 @@
       "functional_coating_for_optical_film":{
         "name":"Functional Coating for Optical Film",
         "surname":"$t(DKT__globals.machinery)",
-        "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
-        "instr": "Remove *protective film* on the *PET Base film*, use of *Gap coating system* through the Soft Mold and UV Curing.  \n After *UV Curing, laminating* and *rewinding.*",
-        "concl": "This asset is *quite detailed* and created with an eye towards current and next-generation needs  \n in the *modern industry* and innovative technologies.",
+        "desc":"Our Optical Exclusive Coating Machine is an *ultra-precision* coating device. It offers possibilities such as *Hard Coating for Optics* , *AG coating* , and *Adhesive Coating for optics (P.S.A.)* .",
+        "instr": "The key feature of this coater is its potentially wide *multi-usage ability*, since a *variety of products* can be rendered by this *single coating line*, thus not as a unique role-dependant chain. In other words, it is an *universal* coating machine.  \n However, this equipment is *highly precise and stable*, showing the *best optical coating results*.",
         "specs":{
           "Web Materials":"PET film",
           "Web Thickness":"100 ~ 250 micron",
@@ -291,9 +284,6 @@
       "multiuse_coater_pop_dop_mop":{
         "name":"Multi-use Coater POP,DOP,MOP",
         "surname":"$t(DKT__globals.machinery)",
-        "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
-        "instr": "Remove *protective film* on the *PET Base film*, use of *Gap coating system* through the Soft Mold and UV Curing.  \n After *UV Curing, laminating* and *rewinding.*",
-        "concl": "This asset is *quite detailed* and created with an eye towards current and next-generation needs  \n in the *modern industry* and innovative technologies.",
         "specs":{
           "Web Materials":"PET film",
           "Web Thickness":"100 ~ 250 micron",
@@ -312,9 +302,6 @@
       "pattern_coater":{
         "name":"Pattern Coater",
         "surname":"Soft Mold Type",
-        "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
-        "instr": "Remove *protective film* on the *PET Base film*, use of *Gap coating system* through the Soft Mold and UV Curing.  \n After *UV Curing, laminating* and *rewinding.*",
-        "concl": "This asset is *quite detailed* and created with an eye towards current and next-generation needs  \n in the *modern industry* and innovative technologies.",
         "specs":{
           "Web Materials":"PET film",
           "Web Thickness":"100 ~ 250 micron",
@@ -333,9 +320,6 @@
       "qd_direct_pattern_coater":{
         "name":"QD Coater, Direct Pattern Coater",
         "surname":"Hard Mold Type",
-        "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
-        "instr": "Remove *protective film* on the *PET Base film*, use of *Gap coating system* through the Soft Mold and UV Curing.  \n After *UV Curing, laminating* and *rewinding.*",
-        "concl": "This asset is *quite detailed* and created with an eye towards current and next-generation needs  \n in the *modern industry* and innovative technologies.",
         "specs":{
           "Web Materials":"PET film",
           "Web Thickness":"100 ~ 250 micron",
@@ -354,9 +338,8 @@
       "cpi_film_equipment":{
         "name":"CPI Film Equipment",
         "surname":"CPT (Colorless Polyimide Film)",
-        "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
-        "instr": "Remove *protective film* on the *PET Base film*, use of *Gap coating system* through the Soft Mold and UV Curing.  \n After *UV Curing, laminating* and *rewinding.*",
-        "concl": "This asset is *quite detailed* and created with an eye towards current and next-generation needs  \n in the *modern industry* and innovative technologies.",
+        "desc":"This equipment is intended to produce *CPI films*. CPI film is produced based on the *synthesized CPI undiluted solution*.  \n This machine has *excellent quality outputs, production rates*, and *customized CPI film reproducibility*. We are proud to be, for you one of the very few *innovative providers* in *CPI technology*.",
+        "instr": "This machinery line outputs *optimal film properties* by *precisely controling* the CPI film's thickness to accurately fit your needs.  \n It also *entirely preserves* the *original characteristics* of the synthesized CPI undiluted solution.",
         "specs":{
           "Web Materials":"PET film",
           "Web Thickness":"100 ~ 250 micron",
@@ -375,43 +358,80 @@
       "polarized_film":{
         "name":"Polarized Film",
         "surname":"PVA Film Stretching for Polarizer",
-        "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
-        "instr": "Remove *protective film* on the *PET Base film*, use of *Gap coating system* through the Soft Mold and UV Curing.  \n After *UV Curing, laminating* and *rewinding.*",
-        "concl": "This asset is *quite detailed* and created with an eye towards current and next-generation needs  \n in the *modern industry* and innovative technologies.",
-        "specs":{
-          "Web Materials":"PET film",
-          "Web Thickness":"100 ~ 250 micron",
-          "Web Width":"500 ~ 1,570 mm",
-          "Machine Speed":"Max. 30m/min",
-          "Unwind Diameter":"Max. 800mm",
-          "Rewind Diameter":"Max. 800mm",
-          "Coating System":"(Double Top) Roller Gap Adjusting System",
-          "Dryer Diameter":"Low/Middle/High Pressure UV system",
-          "Inspection Room":"Top Roller Gap Adjusting System",
-          "Laminating System":"By Sight",
-          "Rewinding System":"Center (Surface Turret) Winding System"
+        "legend":[
+          {
+            "PVA Film Stretching Machine for Polarizer":"The Dyeing molecular of iodine into the PVA Film after swelling  \n Laminating the support Film(TAC Film) with PVA Film after stretching."
+          },
+          {
+            "TAC Film Treatment Machine for Polarizer":"The TAC Film Treated to improve the bonding force with PVA Film."
+          },
+          {
+            "PSA Adhesive Coating Machine":"The TAC Film Treated to improve the bonding force with PVA Film."
+          }
+        ],
+        "specs":[
+        {
+          "Machine Speed":"~50m/min",
+          "TAC Film":"745 ~ 2,250mm",
+          "PVA Film":"1,500 ~ 4,700mm",
+          "Roll Surface Length":"1,600 ~ 6,000mm"
+        },
+        {
+          "Machine Speed": "~100m/min",
+          "Roll Surface Length":"900mm[Film width 745mm]",
+          " ":"1,550mm[Film width 1,330mm]",
+          "  ":"1,700mm[Film width 1,490mm]",
+          "   ":"2,200mm[Film width 1,970mm]",
+          "    ":"2,500mm[Film width 2,250mm]"
+        },
+        {
+          "Machine Speed": "~500m/min",
+          "Roll Surface Length":"900mm[Film width 745mm]",
+          " ":"1,550mm[Film width 1,330mm]",
+          "  ":"1,700mm[Film width 1,490mm]",
+          "   ":"2,200mm[Film width 1,970mm]",
+          "    ":"2,500mm[Film width 2,250mm]"
         }
+        ]
       },
 
       "slitter":{
         "name":"Slitter",
         "surname":"Other Machine",
-        "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
-        "instr": "Remove *protective film* on the *PET Base film*, use of *Gap coating system* through the Soft Mold and UV Curing.  \n After *UV Curing, laminating* and *rewinding.*",
-        "concl": "This asset is *quite detailed* and created with an eye towards current and next-generation needs  \n in the *modern industry* and innovative technologies.",
-        "specs":{
-          "Web Materials":"PET film",
-          "Web Thickness":"100 ~ 250 micron",
-          "Web Width":"500 ~ 1,570 mm",
-          "Machine Speed":"Max. 30m/min",
-          "Unwind Diameter":"Max. 800mm",
-          "Rewind Diameter":"Max. 800mm",
-          "Coating System":"(Double Top) Roller Gap Adjusting System",
-          "Dryer Diameter":"Low/Middle/High Pressure UV system",
-          "Inspection Room":"Top Roller Gap Adjusting System",
-          "Laminating System":"By Sight",
-          "Rewinding System":"Center (Surface Turret) Winding System"
+        "legend":[
+          {
+            "High-Speed Slitter - Rewinder Machine":""
+          },
+          {
+            "Slitter-Rewinder Machine for F_PCB":""
+          },
+          {
+            "Slitter-Rewinder Machine for Capacitor":""
+          }
+        ],
+        "specs":[
+        {
+          "Web Materials":"OPP, PET, CPP, ALL Metallized Film",
+          "Web Thickness":"8 ~ 100㎛",
+          "Web Width":"500 ~ 3,000 mm",
+          "Slitting Width":"300 ~ 2,800mm",
+          "Machine Speed":"Max. 30m/min"
+        },
+        {
+          "Web Materials": "Copper Foil, FCCL",
+          "Web Thickness":"9 ~ 60㎛",
+          "Web Width":"Max. 540 mm",
+          "Slitting Width":"250, 500mm",
+          "Machine Speed":"250, 500mm"
+        },
+        {
+          "Web Materials":"BOPP, PET, Metallized Film",
+          "Web Thickness":"MF(OPP:3.0~15㎛ / PET:1.5~12㎛)",
+          "Web Width":"300 ~ 920mm",
+          "Slitting Width":"4.5~50mm",
+          "Machine Speed":"Max. 400m/min (wave slit max: 150m/min)"
         }
+        ]
       },
 
       "laminater":{

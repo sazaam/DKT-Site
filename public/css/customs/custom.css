@@ -687,7 +687,12 @@ a.parentlink {
 .rounded {
     border-radius: 6px;
 }
-
+.Lrounded {
+    border-radius: 4px 0 0 4px;
+}
+.Rrounded {
+    border-radius:0 4px 4px 0;
+}
 
 /* CSS TRANSITION EFFECTS */
 
@@ -950,7 +955,7 @@ hr {
 
 .greyhover .gowhite{background:#E8E8E8}
 
-
+.cat{border-bottom:1px solid #e3dcd5}
 
 
 .slidetxt{background:rgba(0,0,0,.4)}
@@ -991,7 +996,7 @@ hr {
 }
 
 .to_products {
-    height: 400px;
+    height: 300px;
     width: 400px;
 }
 

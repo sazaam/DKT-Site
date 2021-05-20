@@ -454,13 +454,13 @@ mixin product
 
 			.unit.lastUnit
 				.line.txtL(style="margin-top:2em")
-					.basics.unit.size1of3.txtL.Tpad.LpadXXXLg.BpadLg
+					//- .basics.unit.size1of3.txtL.Tpad.LpadXXXLg.BpadLg
 						- basics.category = child_section.category.name
 						+productbasics(basics)
 
 					.unit.lastUnit.txtR.context.sizeLg.dkt.pad.BpadXXLg
 						+pageheader(child_section.cleanname, child_section.surname)
-
+						+smallnextprev()
 				+productarticle
 		
 	.extra.flowvisible.rel(style='height:26em;')
@@ -561,6 +561,17 @@ mixin productbasics(basics)
 				a.dkt(href='/downloads/pdf/' + basics.file, target="_blank") #{basics.file}
 
 //- NEXT & PREV LINKS
+mixin smallnextprev()
+	- var ch = section.children ;
+	- var next = ch[ch.indexOf(child_section)+1] || ch[0] ;
+	- var prev = ch[ch.indexOf(child_section)-1] || ch[ch.length - 1] ;
+	ul.context.sizeSm
+		li.arrow.next.dktBG.floatR.Rrounded(style="width:40px;height:40px;z-index:1500")
+			a.block.fullW.fullH.white.rhdp.heavy.txtC.sizeXXXLg(href= next.cleanlink) &gt;
+		li.arrow.prev.dktBG.floatR.Lrounded(style="width:40px;height:40px;z-index:1500")
+			a.block.fullW.fullH.white.rhdp.heavy.txtC.sizeXXXLg(href= prev.cleanlink) &lt;
+
+
 mixin nextprev()
 	- var ch = section.children ;
 	- var next = ch[ch.indexOf(child_section)+1] || ch[0] ;
@@ -619,7 +630,7 @@ mixin article(art, p)
 	else
 		each jblock, jblockname in orijade
 			- basejade += jblock ;
-			script.
+			//- script.
 				console.log(!{JSON.stringify(jblockname)})
 				console.log(!{JSON.stringify(jblock)})
 	

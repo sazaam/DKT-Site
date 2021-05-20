@@ -56,6 +56,7 @@ var scroll ;
 var scrollEv ;
 var slideshow ;
 var smallslideshow ;
+var toproducts ;
 
 var langchange ;
 var parallax ;
@@ -74,11 +75,11 @@ var isAtTop = function(){
 	return !getScrolltop() ;
 }
 
-var scrollto = function(y){
+var scrollto = function(y, time){
 	BetweenJS.create({
 		target:document.documentElement,
 		to:{scrollTop:y},
-		time:.5,
+		time:time ?? .5,
 		ease:Expo.easeOut
 	}).play() ;
 
@@ -248,6 +249,39 @@ module.exports = {
 		
 
 	},
+	toproducts : toproducts = function(e, cond){
+		
+		var res = e.target ;
+		var id = res.id ;
+		var parentID = res.parentStep.id ;
+		var rt = $('#' + id ) ;
+		var tolinks = rt.find('.to_products') ;
+
+		var clk = function(e){
+			e.preventDefault() ;
+			e.stopPropagation() ;
+
+			var tg = $(e.currentTarget) ;
+			
+			if(tg.hasClass('next')){
+				window.location = tg.find('a.block').attr('href')
+			}else{
+				window.location = tg.find('a.block').attr('href')
+			}
+		}
+
+		if(cond){
+			tolinks.on('click', clk) ;
+			
+		}else{
+			
+			tolinks.off('click', clk) ;
+
+		}
+
+
+
+	},
 	////////////////////////// SLIDESHOW
 	smallslideshow : smallslideshow = function(e, cond){
 		
@@ -261,7 +295,7 @@ module.exports = {
 		
 		
 		var slides = rt.find('.pics li') ;
-		var arrow = rt.find('.arrow a') ;
+		var arrow = rt.find('.pics .arrow a') ;
 		
 		var launched = false ;
 		var cy ;
@@ -1080,19 +1114,26 @@ module.exports = {
 				
 		if(e.type == 'focusIn'){
 			
-			scrollto($('.products .slideshow').height() - 200) ;
-
-			res.focusReady() ;
 			
+			var ttop = $('.products .slideshow').height() - 200 ;
+			if(AddressHierarchy.instance.getPreviousStep().parentStep == res.parentStep){
+				$(document.documentElement).scrollTop(ttop)
+			}else{
+				scrollto(ttop) ;
+			}
 			smallslideshow(e, true) ;
+			
+			toproducts(e, true) ;
 			// small3D(e, true) ;
 			
-		}else{
+			res.focusReady() ;
 			
-			scrollto(0) ;
+			
+		}else{
+			// scrollto(0) ;
 
 			// small3D(e, false) ;
-
+			toproducts(e, false) ;
 			smallslideshow(e, false) ;
 			
 			res.focusReady() ;

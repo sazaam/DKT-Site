@@ -53,7 +53,7 @@
     "contactus": "Contact Us",
     "keepintouch": "Keep In Touch",
     "suffix":"@dktmc.com",
-    "sales":"sales",
+    "sales":"dkt5326",
     "email_addr":"$t(DKT__globals.sales)$t(DKT__globals.suffix)",
     "company": {
       "accroche_1": "Coating Machinery",

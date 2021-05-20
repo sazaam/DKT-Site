@@ -399,26 +399,29 @@ module.exports = {
 					}
 
 					// SPECS
-					var specs = productContents.specs[i] ;
-					var tables = res.userData.tables ;
-					
-					var trex = $(tables.find('tr')[0]).clone() ;
-					tables.find('tr').remove() ;
-
-					var fillSpec = function(trex, specs){
-
-						for(var ss in specs){
-							var sp = trex.clone().appendTo(tables)[0] ;
-							var spname = sp.firstChild ;
-							var spval = sp.lastChild ;
-							
-							$(spname).html(ss)
-							$(spval).html(specs[ss])
+					if(!!productContents.specs && productContents.varspecs == true){
+						var specs = productContents.specs[i] ;
+						var tables = res.userData.tables ;
+						
+						var trex = $(tables.find('tr')[0]).clone() ;
+						tables.find('tr').remove() ;
+	
+						var fillSpec = function(trex, specs){
+	
+							for(var ss in specs){
+								var sp = trex.clone().appendTo(tables)[0] ;
+								var spname = sp.firstChild ;
+								var spval = sp.lastChild ;
+								
+								$(spname).html(ss)
+								$(spval).html(specs[ss])
+							}
 						}
-					}
+	
+						
+						fillSpec(trex, specs) ;
 
-					
-					fillSpec(trex, specs) ;
+					}
 					
 					
 

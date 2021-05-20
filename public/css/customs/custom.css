@@ -958,6 +958,10 @@ hr {
 
 .adaptH{height:400px}
 
+
+.pics .arrow.next, .pics .arrow.next a {border-radius:4px 0 0 4px}
+.pics .arrow.prev, .pics .arrow.prev a {border-radius:0 4px 4px 0}
+
 .pics .arrow.next a {
     /* background: url(../skin/next-light.png) no-repeat 50% 50%; */
 }

@@ -483,10 +483,7 @@ mixin productarticle
 	- var medias = component.media ;
 	
 	- var contents = t(pointer, {returnObjects: true})
-	script.
-		window.productContents = !{JSON.stringify(contents)}
-		//- script.
-	//- - console.log(contents)
+
 	if(!!contents.desc)
 		.line.marked(style="margin-bottom:2em")
 			.unit.lastUnit.round.right.LpadLg(style="margin-top:0em")
@@ -522,7 +519,10 @@ mixin productarticle
 						table.tables.font-inc.dark(style="width:100%" row="4")
 							tbody.lh2
 								- var specs = t(pointer + '.specs', merge({returnObjects: true}, locals)) ;
-								- if(specs.length) specs = specs[0] ;
+								- if(specs instanceof Array) {
+									- specs = specs[0] ;
+									- contents.varspecs = true ;
+								- }
 								each spec, specname in specs
 									tr
 										td.dkt.size1of3.txtL.Lpad.uppercase= specname 
@@ -540,7 +540,8 @@ mixin productarticle
 			.pad.dkt.sizeXXXLg &bull;&nbsp;&bull;&nbsp;&bull;
 		.HmarXLg.txtL
 			+needinfo('DKT__contact.telephone_sales')
-		
+	script.
+		window.productContents = !{JSON.stringify(contents)}
 
 mixin productbasics(basics)
 	+dktlogosmall

@@ -176,17 +176,19 @@
         "surname":"$t(DKT__globals.machinery)",
         "desc":"This equipment makes possible the use of *exclusive nano control coating* by *1nm* unit.  \n Therefore this *NANO R2R SYSTEM* can only make the nano thin layer like *AR* (Anti-reflective thin film) \n and *IM* (Index matching film), thus this equipment is an ultra *extremely sensitive nano* coater.",
         "specs":{
-          "Web Materials":"PET film",
-          "Web Thickness":"100 ~ 250 micron",
-          "Web Width":"500 ~ 1,570 mm",
-          "Machine Speed":"Max. 30m/min",
-          "Unwind Diameter":"Max. 800mm",
-          "Rewind Diameter":"Max. 800mm",
-          "Coating System":"(Double Top) Roller Gap Adjusting System",
-          "Dryer Diameter":"Low/Middle/High Pressure UV system",
-          "Inspection Room":"Top Roller Gap Adjusting System",
-          "Laminating System":"By Sight",
-          "Rewinding System":"Center (Surface Turret) Winding System"
+          "Recommend":"Nano Thickness > 10nm ~ 1000nm",
+          "(After Drying)":"General Thickness > 1㎛ ~ 200㎛",
+          "Usage":"AR, LR, High Barrier... Optical nano-coating",
+          "Base Film Thickness":"Min 50㎛ ~ Max 250㎛",
+          "Base Film Width":"1,600 , 1,900mm or Order base",
+          "Roll Width":"1,700 , 2,100mm or Order base",
+          "Unwinder Diameter":"Max Φ800",
+          "Rewinder Diameter":"Max Φ1000",
+          "Machine Speed":"Max 80m/min",
+          "Working Speed":"Min 5m/min - Max 50m/min",
+          "Dryer System (Hot Air)":"Roll Supporting / Air Floating",
+          "UV Curing System":"High UV (MHL / HG)",
+          "Coating System":"DKT Nano Gravure Type Slot Die type"
         }
       },
 
@@ -195,51 +197,51 @@
         "surname":"$t(DKT__globals.machinery)",
         "desc":"This equipment makes possible the use of *exclusive nano control coating* by *nano* unit.  \n Therefore this *NANO R2R SYSTEM* can only make the *AgNW* (Silver Nanowire coated film) \n and *IM* (Index matching film), thus this equipment is an ultra *extremely sensitive nano* coater.",
         "specs":{
-          "Web Materials":"PET film",
-          "Web Thickness":"100 ~ 250 micron",
-          "Web Width":"500 ~ 1,570 mm",
-          "Machine Speed":"Max. 30m/min",
-          "Unwind Diameter":"Max. 800mm",
-          "Rewind Diameter":"Max. 800mm",
-          "Coating System":"(Double Top) Roller Gap Adjusting System",
-          "Dryer Diameter":"Low/Middle/High Pressure UV system",
-          "Inspection Room":"Top Roller Gap Adjusting System",
-          "Laminating System":"By Sight",
-          "Rewinding System":"Center (Surface Turret) Winding System"
+          "Recommend":"Nano Thickness > 10nm ~ 1000nm",
+          "(After Drying)":"General Thickness > 1㎛ ~ 200㎛",
+          "Usage":"AgNW, Overcoating, ...",
+          "Base Film Thickness":"Min 25㎛ ~ Max 250㎛",
+          "Base Film Width":"1,600 , 1,900mm or Order base",
+          "Roll Width":"1,700 , 2,100mm or Order base",
+          "Unwinder Diameter":"Max Φ800",
+          "Rewinder Diameter":"Max Φ1000",
+          "Machine Speed":"Max 80m/min",
+          "Working Speed":"Min 5m/min - Max 50m/min",
+          "Dryer System (Hot Air)":"Roll Supporting / Air Floating",
+          "UV Curing System":"High UV (MHL / HG)",
+          "Coating System":"DKT Nano Gravure Type Slot Die type"
         }
       },
       "release_film_coater_for_mlcc":{
         "name":"Release Film Coater for MLCC",
         "surname":"$t(DKT__globals.machinery)",
         "specs":{
-          "Web Materials":"PET film",
-          "Web Thickness":"100 ~ 250 micron",
-          "Web Width":"500 ~ 1,570 mm",
-          "Machine Speed":"Max. 30m/min",
-          "Unwind Diameter":"Max. 800mm",
-          "Rewind Diameter":"Max. 800mm",
-          "Coating System":"(Double Top) Roller Gap Adjusting System",
-          "Dryer Diameter":"Low/Middle/High Pressure UV system",
-          "Inspection Room":"Top Roller Gap Adjusting System",
-          "Laminating System":"By Sight",
-          "Rewinding System":"Center (Surface Turret) Winding System"
+          "Usage":"Liner Film for MLCC",
+          "Base Film Thickness":"Min 25㎛ ~ Max 100㎛",
+          "Base Film Width":"Max 2,000mm",
+          "Roll Width":"2,200mm",
+          "Unwinder Diameter":"Max Φ1000",
+          "Rewinder Diameter":"Max Φ1000",
+          "Machine Speed":"Max 150m/min",
+          "Working Speed":"Max 120m/min",
+          "Dryer System (Hot Air)":"Roll Supporting",
+          "Coating System":"Kiss Chamber Gravure Type"
         }
       },
       "window_film":{
         "name":"Window Film",
         "surname":"$t(DKT__globals.machinery)",
         "specs":{
-          "Web Materials":"PET film",
-          "Web Thickness":"100 ~ 250 micron",
-          "Web Width":"500 ~ 1,570 mm",
-          "Machine Speed":"Max. 30m/min",
-          "Unwind Diameter":"Max. 800mm",
-          "Rewind Diameter":"Max. 800mm",
-          "Coating System":"(Double Top) Roller Gap Adjusting System",
-          "Dryer Diameter":"Low/Middle/High Pressure UV system",
-          "Inspection Room":"Top Roller Gap Adjusting System",
-          "Laminating System":"By Sight",
-          "Rewinding System":"Center (Surface Turret) Winding System"
+          "Usage":"Window Film(60”, 72”)",
+          "Base Film Thickness":"Min 23㎛ ~ Max 100㎛",
+          "Base Film Width":"Max 1,560(1,860)mm",
+          "Roll Width":"1,700(2,000)mm",
+          "Unwinder Diameter":"Max Φ800",
+          "Rewinder Diameter":"Max Φ800",
+          "Machine Speed":"Max 50m/min",
+          "Working Speed":"Max 30m/min",
+          "Dryer System (Hot Air)":"Roll Supporting",
+          "Coating System":"Slot-die, Micro Gravure Coating"
         }
       },
       "ppf_coater":{
@@ -248,17 +250,17 @@
         "desc":"This equipment is the machinery line *exclusively* dedicated to *PPF* (Paint Protection Film) production.  \n It focuses on *optimization of quality* and *precision control* for the best PPF output.",
         "instr": "Our PPF-dedicated *R2R equipment* is a very special structure compared to other general R2R machinery.  \n This line contains all different *Guide Rolls, Out-feeds* and *In-feed Units, Coating Head,*  \n and of course, *driving* method is *unique* as well.",
         "specs":{
-          "Web Materials":"PET film",
-          "Web Thickness":"100 ~ 250 micron",
-          "Web Width":"500 ~ 1,570 mm",
-          "Machine Speed":"Max. 30m/min",
-          "Unwind Diameter":"Max. 800mm",
-          "Rewind Diameter":"Max. 800mm",
-          "Coating System":"(Double Top) Roller Gap Adjusting System",
-          "Dryer Diameter":"Low/Middle/High Pressure UV system",
-          "Inspection Room":"Top Roller Gap Adjusting System",
-          "Laminating System":"By Sight",
-          "Rewinding System":"Center (Surface Turret) Winding System"
+          "Usage":"PPF(Paint Protective Film)",
+          "Base Film Thickness":"Min 50㎛ ~ Max 250㎛",
+          "Base Film Width":"1,600 , 1,900mm or Order base",
+          "Roll Width":"1,700 , 2,100mm or Order base",
+          "Unwinder Diameter":"Max Φ800",
+          "Rewinder Diameter":"Max Φ1000",
+          "Machine Speed":"Max 80m/min",
+          "Working Speed":"Min 5m/min - Max 50m/min",
+          "Dryer System (Hot Air)":"Roll Supporting / Air Floating",
+          "UV Curing System":"High UV (MHL / HG)",
+          "Coating System":"Micro Gravure Type Slot Die type"
         }
       },
       "functional_coating_for_optical_film":{
@@ -267,17 +269,17 @@
         "desc":"Our Optical Exclusive Coating Machine is an *ultra-precision* coating device. It offers possibilities such as *Hard Coating for Optics* , *AG coating* , and *Adhesive Coating for optics (P.S.A.)* .",
         "instr": "The key feature of this coater is its potentially wide *multi-usage ability*, since a *variety of products* can be rendered by this *single coating line*, thus not as a unique role-dependant chain. In other words, it is an *universal* coating machine.  \n However, this equipment is *highly precise and stable*, showing the *best optical coating results*.",
         "specs":{
-          "Web Materials":"PET film",
-          "Web Thickness":"100 ~ 250 micron",
-          "Web Width":"500 ~ 1,570 mm",
-          "Machine Speed":"Max. 30m/min",
-          "Unwind Diameter":"Max. 800mm",
-          "Rewind Diameter":"Max. 800mm",
-          "Coating System":"(Double Top) Roller Gap Adjusting System",
-          "Dryer Diameter":"Low/Middle/High Pressure UV system",
-          "Inspection Room":"Top Roller Gap Adjusting System",
-          "Laminating System":"By Sight",
-          "Rewinding System":"Center (Surface Turret) Winding System"
+          "Usage":"Optical Film",
+          "Base Film Thickness":"Min 50㎛ ~ Max 250㎛",
+          "Base Film Width":"1,600 , 1,900mm or Order base",
+          "Roll Width":"1,700 , 2,100mm or Order base",
+          "Unwinder Diameter":"Max Φ800",
+          "Rewinder Diameter":"Max Φ1000",
+          "Machine Speed":"Max 80m/min",
+          "Working Speed":"Min 5m/min - Max 50m/min",
+          "Dryer System (Hot Air)":"Roll Supporting / Air Floating",
+          "UV Curing System":"High UV (MHL / HG)",
+          "Coating System":"Micro Gravure Type Slot Die type"
         }
       },
       
@@ -285,17 +287,17 @@
         "name":"Multi-use Coater POP,DOP,MOP",
         "surname":"$t(DKT__globals.machinery)",
         "specs":{
-          "Web Materials":"PET film",
-          "Web Thickness":"100 ~ 250 micron",
-          "Web Width":"500 ~ 1,570 mm",
-          "Machine Speed":"Max. 30m/min",
-          "Unwind Diameter":"Max. 800mm",
-          "Rewind Diameter":"Max. 800mm",
-          "Coating System":"(Double Top) Roller Gap Adjusting System",
-          "Dryer Diameter":"Low/Middle/High Pressure UV system",
-          "Inspection Room":"Top Roller Gap Adjusting System",
-          "Laminating System":"By Sight",
-          "Rewinding System":"Center (Surface Turret) Winding System"
+          "Usage":"POP, DOP, MOP",
+          "Base Film Thickness":"Min 50㎛ ~ Max 250㎛",
+          "Base Film Width":"1,600 , 1,900mm or Order base",
+          "Roll Width":"1,700 , 2,100mm or Order base",
+          "Unwinder Diameter":"Max Φ800",
+          "Rewinder Diameter":"Max Φ1000",
+          "Machine Speed":"Max 50m/min",
+          "Working Speed":"Min 5m/min - Max 30m/min",
+          "Dryer System (Hot Air)":"Roll Supporting / Air Floating",
+          "UV Curing System":"High UV (MHL / HG)",
+          "Coating System":"Micro Gravure Type Slot Die type"
         }
       },
 
@@ -303,17 +305,17 @@
         "name":"Pattern Coater",
         "surname":"Soft Mold Type",
         "specs":{
-          "Web Materials":"PET film",
-          "Web Thickness":"100 ~ 250 micron",
-          "Web Width":"500 ~ 1,570 mm",
-          "Machine Speed":"Max. 30m/min",
-          "Unwind Diameter":"Max. 800mm",
-          "Rewind Diameter":"Max. 800mm",
-          "Coating System":"(Double Top) Roller Gap Adjusting System",
-          "Dryer Diameter":"Low/Middle/High Pressure UV system",
-          "Inspection Room":"Top Roller Gap Adjusting System",
-          "Laminating System":"By Sight",
-          "Rewinding System":"Center (Surface Turret) Winding System"
+          "Usage":"Prism, Microlens...",
+          "Base Film Thickness":"Min 50㎛ ~ Max 250㎛",
+          "Base Film Width":"1,600 , 1,900mm or Order base",
+          "Roll Width":"1,700 , 2,100mm or Order base",
+          "Unwinder Diameter":"Max Φ800",
+          "Rewinder Diameter":"Max Φ800",
+          "Machine Speed":"Max 50m/min",
+          "Working Speed":"Min 5m/min - Max 25m/min",
+          "Coating System":"Roll Coating, Imprinting",
+          "Curing System":"Low/Mid/High-pressure UV",
+          "Laminating System":"Double-sided Protective Film"
         }
       },
       
@@ -321,17 +323,17 @@
         "name":"QD Coater, Direct Pattern Coater",
         "surname":"Hard Mold Type",
         "specs":{
-          "Web Materials":"PET film",
-          "Web Thickness":"100 ~ 250 micron",
-          "Web Width":"500 ~ 1,570 mm",
-          "Machine Speed":"Max. 30m/min",
-          "Unwind Diameter":"Max. 800mm",
-          "Rewind Diameter":"Max. 800mm",
-          "Coating System":"(Double Top) Roller Gap Adjusting System",
-          "Dryer Diameter":"Low/Middle/High Pressure UV system",
-          "Inspection Room":"Top Roller Gap Adjusting System",
-          "Laminating System":"By Sight",
-          "Rewinding System":"Center (Surface Turret) Winding System"
+          "Usage":"Imprinting of Pattern Roll",
+          "Base Film Thickness":"Min 25㎛ ~ Max 250㎛",
+          "Base Film Width":"1,600 , 1,900mm or Order base",
+          "Roll Width":"1,700 , 2,100mm or Order base",
+          "Unwinder Diameter":"Max Φ800",
+          "Rewinder Diameter":"Max Φ800",
+          "Machine Speed":"Max 30m/min",
+          "Working Speed":"Min 3m/min - Max 20m/min",
+          "Coating System":"Roll Coating, Imprinting",
+          "Curing System":"Low/Mid/High-pressure UV",
+          "Laminating System":"Double-sided Protective Film"
         }
       },
 
@@ -341,17 +343,18 @@
         "desc":"This equipment is intended to produce *CPI films*. CPI film is produced based on the *synthesized CPI undiluted solution*.  \n This machine has *excellent quality outputs, production rates*, and *customized CPI film reproducibility*. We are proud to be, for you one of the very few *innovative providers* in *CPI technology*.",
         "instr": "This machinery line outputs *optimal film properties* by *precisely controling* the CPI film's thickness to accurately fit your needs.  \n It also *entirely preserves* the *original characteristics* of the synthesized CPI undiluted solution.",
         "specs":{
-          "Web Materials":"PET film",
-          "Web Thickness":"100 ~ 250 micron",
-          "Web Width":"500 ~ 1,570 mm",
-          "Machine Speed":"Max. 30m/min",
-          "Unwind Diameter":"Max. 800mm",
-          "Rewind Diameter":"Max. 800mm",
-          "Coating System":"(Double Top) Roller Gap Adjusting System",
-          "Dryer Diameter":"Low/Middle/High Pressure UV system",
-          "Inspection Room":"Top Roller Gap Adjusting System",
-          "Laminating System":"By Sight",
-          "Rewinding System":"Center (Surface Turret) Winding System"
+          "-- Optical Properties --":"",
+          "Transmittance 550mm / 360mm ~ 740mm":"89±1% (Test ASTM D 1003 (JIS K7105))",
+          "Haze":"0.3% (Test ASTM D 1003 (JIS K7105)",
+          "Yellow index":"2.9△YI (Test ASTM E313)",
+          "-- Physical Properties --":"",
+          "Thickness":"50.0 ㎛",
+          "Tensile Strength":"300 gf/mm2",
+          "Elongation":"25 %",
+          "Modulus":"6.6 GPa",
+          "Pencil Hardness":"2 H",
+          "Water Aborption":"0.4 %",
+          "CTE":"10 ppm/°C"
         }
       },
 
@@ -372,9 +375,9 @@
         "specs":[
         {
           "Machine Speed":"~50m/min",
-          "TAC Film":"745 ~ 2,250mm",
-          "PVA Film":"1,500 ~ 4,700mm",
-          "Roll Surface Length":"1,600 ~ 6,000mm"
+          "TAC Film":"745mm ~ 2,250mm",
+          "PVA Film":"1,500mm ~ 4,700mm",
+          "Roll Surface Length":"1,600mm ~ 6,000mm"
         },
         {
           "Machine Speed": "~100m/min",
@@ -412,23 +415,23 @@
         "specs":[
         {
           "Web Materials":"OPP, PET, CPP, ALL Metallized Film",
-          "Web Thickness":"8 ~ 100㎛",
-          "Web Width":"500 ~ 3,000 mm",
-          "Slitting Width":"300 ~ 2,800mm",
-          "Machine Speed":"Max. 30m/min"
+          "Web Thickness":"8㎛ ~ 100㎛",
+          "Web Width":"500mm ~ 3,000 mm",
+          "Slitting Width":"300mm ~ 2,800mm",
+          "Machine Speed":"Max 30m/min"
         },
         {
           "Web Materials": "Copper Foil, FCCL",
-          "Web Thickness":"9 ~ 60㎛",
-          "Web Width":"Max. 540 mm",
-          "Slitting Width":"250, 500mm",
-          "Machine Speed":"250, 500mm"
+          "Web Thickness":"9㎛ ~ 60㎛",
+          "Web Width":"Max 540 mm",
+          "Slitting Width":"250mm ~ 500mm",
+          "Machine Speed":"250mm ~ 500mm"
         },
         {
           "Web Materials":"BOPP, PET, Metallized Film",
-          "Web Thickness":"MF(OPP:3.0~15㎛ / PET:1.5~12㎛)",
-          "Web Width":"300 ~ 920mm",
-          "Slitting Width":"4.5~50mm",
+          "Web Thickness":"MF (OPP: 3.0㎛ ~ 15㎛ / PET: 1.5㎛ ~ 12㎛)",
+          "Web Width":"300mm ~ 920mm",
+          "Slitting Width":"4.5mm ~ 50mm",
           "Machine Speed":"Max. 400m/min (wave slit max: 150m/min)"
         }
         ]
@@ -441,17 +444,16 @@
         "instr": "Remove *protective film* on the *PET Base film*, use of *Gap coating system* through the Soft Mold and UV Curing.  \n After *UV Curing, laminating* and *rewinding.*",
         "concl": "This asset is *quite detailed* and created with an eye towards current and next-generation needs  \n in the *modern industry* and innovative technologies.",
         "specs":{
-          "Web Materials":"PET film",
-          "Web Thickness":"100 ~ 250 micron",
-          "Web Width":"500 ~ 1,570 mm",
-          "Machine Speed":"Max. 30m/min",
-          "Unwind Diameter":"Max. 800mm",
-          "Rewind Diameter":"Max. 800mm",
-          "Coating System":"(Double Top) Roller Gap Adjusting System",
-          "Dryer Diameter":"Low/Middle/High Pressure UV system",
-          "Inspection Room":"Top Roller Gap Adjusting System",
-          "Laminating System":"By Sight",
-          "Rewinding System":"Center (Surface Turret) Winding System"
+          "Web Materials":"Coated PET Film, ITO Film",
+          "Web Thickness":"20㎛ ~ 200㎛",
+          "Web Width":"600mm ~ 1,540 mm",
+          "Slitting Width":"200mm ~ 1,500 mm",
+          "Machine Speed":"Max 20m/min",
+          "Unwinder Diameter":"Φ900",
+          "Rewinder Diameter":"Φ600 / Φ900(Lower Part)",
+          "Slitting System":"Shear Knife Slitting System (Option: Auto Knife)",
+          "Laminating System":"Top Roller Gap Adjusting System",
+          "Rewinding System":"Center Winding System (Option: Air Friction Shaft)"
         }
       }
 

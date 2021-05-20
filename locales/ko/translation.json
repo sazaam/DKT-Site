@@ -127,7 +127,7 @@
     "surname": "$t(DKT__globals.keepintouch)",
     "telephone": "전화를 통해",
     "telephone_txt": "귀하의 요구에 전 세계적으로 응답합니다.",
-    "telephone_sales": "1545 - 8989",
+    "telephone_sales": "+82 54 462 5326",
     "email": "이메일을 통해",
     "email_txt": "우리의 제품이나 기타 요청에 대한 이메일을 남겨주세요.",
     "form":{
@@ -154,6 +154,7 @@
 
   },
   "DKT__products": {
+
     "name": "$t(our_products)",
     "surname": "$t(DKT__globals.certified)",
 
@@ -168,275 +169,295 @@
     "needinfo_01":"*당사 제품* 에 대한 정보가  \n *필요 하십니까* ?",
     "needinfo_02":"알려 드릴 준비가되어있는 당사의 *전문가* 에게  \n *문의*하십시오.",
     "needinfo_03":"저희 *전문가들은* 최선의 지연에 대해 알려 드릴 준비가되어 있습니다.",
-    
+    "needinfo_04":"*또는* 다음 *주소*로 *이메일*을 보내주십시오.",
+
     "products":{
       
       "nano_exclusive_coater":{
         "name":"Nano Exclusive Coater",
         "surname":"$t(DKT__globals.machinery)",
-        "desc":"*{{ productname }}*는 일반적으로 다양한 * PET 대상 * 필름을 분리하고 최종 코팅하는 데 사용됩니다. ",
+        "desc":"이 장비는 *1nm* 단위의 나노전용 *컨트롤 코팅*을 사용할 수 있습니다. 따라서 이 R2R 시스템은 *AR* (Anti-Reflective Thin Film),  \n *IM* (Index Matching Film)과 같은 얇은 나노 박막을 만들 수 있으며, 이 장비는 *굉장히 정밀한 나노 전용 코터* 입니다.",
         "specs":{
-          "Web Materials":"PET film",
-          "Web Thickness":"100 ~ 250 micron",
-          "Web Width":"500 ~ 1,570 mm",
-          "Machine Speed":"Max. 30m/min",
-          "Unwind Diameter":"Max. 800mm",
-          "Rewind Diameter":"Max. 800mm",
-          "Coating System":"(Double Top) Roller Gap Adjusting System",
-          "Dryer Diameter":"Low/Middle/High Pressure UV system",
-          "Inspection Room":"Top Roller Gap Adjusting System",
-          "Laminating System":"By Sight",
-          "Rewinding System":"Center (Surface Turret) Winding System"
+          "Recommend":"Nano Thickness > 10nm ~ 1000nm",
+          "(After Drying)":"General Thickness > 1㎛ ~ 200㎛",
+          "Usage":"AR, LR, High Barrier... Optical nano-coating",
+          "Base Film Thickness":"Min 50㎛ ~ Max 250㎛",
+          "Base Film Width":"1,600 , 1,900mm or Order base",
+          "Roll Width":"1,700 , 2,100mm or Order base",
+          "Unwinder Diameter":"Max Φ800",
+          "Rewinder Diameter":"Max Φ1000",
+          "Machine Speed":"Max 80m/min",
+          "Working Speed":"Min 5m/min - Max 50m/min",
+          "Dryer System (Hot Air)":"Roll Supporting / Air Floating",
+          "UV Curing System":"High UV (MHL / HG)",
+          "Coating System":"DKT Nano Gravure Type Slot Die type"
         }
       },
 
       "nano_exclusive_agnw_coater":{
-        "name":"Nano Exclusive AGnW Coater",
+        "name":"Nano Exclusive AgNW Coater",
         "surname":"$t(DKT__globals.machinery)",
-        "desc":"*{{ productname }}*는 일반적으로 다양한 * PET 대상 * 필름을 분리하고 최종 코팅하는 데 사용됩니다. ",
-        "instr": "*PET Base 필름*의 보호 필름을 제거하고 Soft Mold 및 *UV Curing을 통해 Gap 코팅 시스템*을 사용합니다. *UV 경화 후 라미네이트* 처리 및 되감기 작업을 수행합니다.*",
-        "concl": "위 제품은 *현대 산업과 혁신적인 기술*에 대해 매우 *상세하며*,  \n 차세대 니즈를 염두해 두고 있습니다.",
+        "desc":"*나노 단위*를 컨트롤 할 수 있는 나노 전용 장비입니다.  \n 따라서 이 *NANO R2R* 시스템은 *AgNW* (은나노 와이어)를 만들 수 있는 전용 장비입니다.",
         "specs":{
-          "Web Materials":"PET film",
-          "Web Thickness":"100 ~ 250 micron",
-          "Web Width":"500 ~ 1,570 mm",
-          "Machine Speed":"Max. 30m/min",
-          "Unwind Diameter":"Max. 800mm",
-          "Rewind Diameter":"Max. 800mm",
-          "Coating System":"(Double Top) Roller Gap Adjusting System",
-          "Dryer Diameter":"Low/Middle/High Pressure UV system",
-          "Inspection Room":"Top Roller Gap Adjusting System",
-          "Laminating System":"By Sight",
-          "Rewinding System":"Center (Surface Turret) Winding System"
+          "Recommend":"Nano Thickness > 10nm ~ 1000nm",
+          "(After Drying)":"General Thickness > 1㎛ ~ 200㎛",
+          "Usage":"AgNW, Overcoating, ...",
+          "Base Film Thickness":"Min 25㎛ ~ Max 250㎛",
+          "Base Film Width":"1,600 , 1,900mm or Order base",
+          "Roll Width":"1,700 , 2,100mm or Order base",
+          "Unwinder Diameter":"Max Φ800",
+          "Rewinder Diameter":"Max Φ1000",
+          "Machine Speed":"Max 80m/min",
+          "Working Speed":"Min 5m/min - Max 50m/min",
+          "Dryer System (Hot Air)":"Roll Supporting / Air Floating",
+          "UV Curing System":"High UV (MHL / HG)",
+          "Coating System":"DKT Nano Gravure Type Slot Die type"
         }
       },
       "release_film_coater_for_mlcc":{
         "name":"Release Film Coater for MLCC",
         "surname":"$t(DKT__globals.machinery)",
-        "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
-        "instr": "Remove *protective film* on the *PET Base film*, use of *Gap coating system* through the Soft Mold and UV Curing.  \n After *UV Curing, laminating* and *rewinding.*",
-        "concl": "This asset is *quite detailed* and created with an eye towards current and next-generation needs  \n in the *modern industry* and innovative technologies.",
         "specs":{
-          "Web Materials":"PET film",
-          "Web Thickness":"100 ~ 250 micron",
-          "Web Width":"500 ~ 1,570 mm",
-          "Machine Speed":"Max. 30m/min",
-          "Unwind Diameter":"Max. 800mm",
-          "Rewind Diameter":"Max. 800mm",
-          "Coating System":"(Double Top) Roller Gap Adjusting System",
-          "Dryer Diameter":"Low/Middle/High Pressure UV system",
-          "Inspection Room":"Top Roller Gap Adjusting System",
-          "Laminating System":"By Sight",
-          "Rewinding System":"Center (Surface Turret) Winding System"
+          "Usage":"Liner Film for MLCC",
+          "Base Film Thickness":"Min 25㎛ ~ Max 100㎛",
+          "Base Film Width":"Max 2,000mm",
+          "Roll Width":"2,200mm",
+          "Unwinder Diameter":"Max Φ1000",
+          "Rewinder Diameter":"Max Φ1000",
+          "Machine Speed":"Max 150m/min",
+          "Working Speed":"Max 120m/min",
+          "Dryer System (Hot Air)":"Roll Supporting",
+          "Coating System":"Kiss Chamber Gravure Type"
         }
       },
       "window_film":{
         "name":"Window Film",
         "surname":"$t(DKT__globals.machinery)",
-        "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
-        "instr": "Remove *protective film* on the *PET Base film*, use of *Gap coating system* through the Soft Mold and UV Curing.  \n After *UV Curing, laminating* and *rewinding.*",
-        "concl": "This asset is *quite detailed* and created with an eye towards current and next-generation needs  \n in the *modern industry* and innovative technologies.",
         "specs":{
-          "Web Materials":"PET film",
-          "Web Thickness":"100 ~ 250 micron",
-          "Web Width":"500 ~ 1,570 mm",
-          "Machine Speed":"Max. 30m/min",
-          "Unwind Diameter":"Max. 800mm",
-          "Rewind Diameter":"Max. 800mm",
-          "Coating System":"(Double Top) Roller Gap Adjusting System",
-          "Dryer Diameter":"Low/Middle/High Pressure UV system",
-          "Inspection Room":"Top Roller Gap Adjusting System",
-          "Laminating System":"By Sight",
-          "Rewinding System":"Center (Surface Turret) Winding System"
+          "Usage":"Window Film(60”, 72”)",
+          "Base Film Thickness":"Min 23㎛ ~ Max 100㎛",
+          "Base Film Width":"Max 1,560(1,860)mm",
+          "Roll Width":"1,700(2,000)mm",
+          "Unwinder Diameter":"Max Φ800",
+          "Rewinder Diameter":"Max Φ800",
+          "Machine Speed":"Max 50m/min",
+          "Working Speed":"Max 30m/min",
+          "Dryer System (Hot Air)":"Roll Supporting",
+          "Coating System":"Slot-die, Micro Gravure Coating"
         }
       },
       "ppf_coater":{
         "name":"PPF Coater",
         "surname":"$t(DKT__globals.machinery)",
-        "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
-        "instr": "Remove *protective film* on the *PET Base film*, use of *Gap coating system* through the Soft Mold and UV Curing.  \n After *UV Curing, laminating* and *rewinding.*",
+        "desc":"이 장비는 *도장 보호 필름* 전용 장비이며, 이 장비는 다른 코팅 필름과 *다른 특성*을 가지고 있습니다.  \n 이 장비는 일반 롤투롤 장비에 비해 *가이드롤* 스타일, *아웃피드, 인피드, 코팅 헤드, 유닛*들이 특별한 구조를 갖고 있으며, 이 장비를 사용하시면 *최고의 PPF* (Paint Protective Film)을 만드실 수 있습니다.",
+        "instr": "DKT의 PPF R2R 장비는 일반 R2R 장비과 *다른 매우 특별한 구조*를 가지고 있습니다.  \n 이 기계는 다른 가이드롤, 아웃 피드, 인 피드 유닛, 코팅 헤드 그리고 PPF R2R의 *구동 방식*을 가지고 있는 장비입니다.",
         "specs":{
-          "Web Materials":"PET film",
-          "Web Thickness":"100 ~ 250 micron",
-          "Web Width":"500 ~ 1,570 mm",
-          "Machine Speed":"Max. 30m/min",
-          "Unwind Diameter":"Max. 800mm",
-          "Rewind Diameter":"Max. 800mm",
-          "Coating System":"(Double Top) Roller Gap Adjusting System",
-          "Dryer Diameter":"Low/Middle/High Pressure UV system",
-          "Inspection Room":"Top Roller Gap Adjusting System",
-          "Laminating System":"By Sight",
-          "Rewinding System":"Center (Surface Turret) Winding System"
+          "Usage":"PPF(Paint Protective Film)",
+          "Base Film Thickness":"Min 50㎛ ~ Max 250㎛",
+          "Base Film Width":"1,600 , 1,900mm or Order base",
+          "Roll Width":"1,700 , 2,100mm or Order base",
+          "Unwinder Diameter":"Max Φ800",
+          "Rewinder Diameter":"Max Φ1000",
+          "Machine Speed":"Max 80m/min",
+          "Working Speed":"Min 5m/min - Max 50m/min",
+          "Dryer System (Hot Air)":"Roll Supporting / Air Floating",
+          "UV Curing System":"High UV (MHL / HG)",
+          "Coating System":"Micro Gravure Type Slot Die type"
         }
       },
       "functional_coating_for_optical_film":{
         "name":"Functional Coating for Optical Film",
         "surname":"$t(DKT__globals.machinery)",
-        "desc":"*{{ productname }}*는 일반적으로 다양한 * PET 대상 * 필름을 분리하고 최종 코팅하는 데 사용됩니다. ",
-        "instr": "*PET Base 필름*의 보호 필름을 제거하고 Soft Mold 및 *UV Curing을 통해 Gap 코팅 시스템*을 사용합니다. *UV 경화 후 라미네이트* 처리 및 되감기 작업을 수행합니다.*",
-        "concl": "위 제품은 *현대 산업과 혁신적인 기술*에 대해 매우 *상세하며*,  \n 차세대 니즈를 염두해 두고 있습니다.",
+        "desc":"DKT의 광학 전용 코터는 *초 정밀 코팅 기계*입니다. 광학용 *하드코팅, AG 코팅, 광학용* 점착 코팅 등이 *가능한 설비*입니다.  \n또한 단 하나의 목적성을 가지는 코팅 장비가 아니라, *한 코팅 라인에서 다양한 제품*을 생산할 수 있습니다.",
+        "instr": "다시 말하면 범용성이 좋은 코팅기 입니다. 그러나 *DKT Functional Coating for Optical Film* 장비는 *굉장히 정밀*하고, *안정*적이기 때문에 *최고의 광학 코팅성*을 보여줍니다.",
         "specs":{
-          "Web Materials":"PET film",
-          "Web Thickness":"100 ~ 250 micron",
-          "Web Width":"500 ~ 1,570 mm",
-          "Machine Speed":"Max. 30m/min",
-          "Unwind Diameter":"Max. 800mm",
-          "Rewind Diameter":"Max. 800mm",
-          "Coating System":"(Double Top) Roller Gap Adjusting System",
-          "Dryer Diameter":"Low/Middle/High Pressure UV system",
-          "Inspection Room":"Top Roller Gap Adjusting System",
-          "Laminating System":"By Sight",
-          "Rewinding System":"Center (Surface Turret) Winding System"
+          "Usage":"Optical Film",
+          "Base Film Thickness":"Min 50㎛ ~ Max 250㎛",
+          "Base Film Width":"1,600 , 1,900mm or Order base",
+          "Roll Width":"1,700 , 2,100mm or Order base",
+          "Unwinder Diameter":"Max Φ800",
+          "Rewinder Diameter":"Max Φ1000",
+          "Machine Speed":"Max 80m/min",
+          "Working Speed":"Min 5m/min - Max 50m/min",
+          "Dryer System (Hot Air)":"Roll Supporting / Air Floating",
+          "UV Curing System":"High UV (MHL / HG)",
+          "Coating System":"Micro Gravure Type Slot Die type"
         }
       },
-
+      
       "multiuse_coater_pop_dop_mop":{
         "name":"Multi-use Coater POP,DOP,MOP",
         "surname":"$t(DKT__globals.machinery)",
-        "desc":"*{{ productname }}*는 일반적으로 다양한 * PET 대상 * 필름을 분리하고 최종 코팅하는 데 사용됩니다. ",
-        "instr": "*PET Base 필름*의 보호 필름을 제거하고 Soft Mold 및 *UV Curing을 통해 Gap 코팅 시스템*을 사용합니다. *UV 경화 후 라미네이트* 처리 및 되감기 작업을 수행합니다.*",
-        "concl": "위 제품은 *현대 산업과 혁신적인 기술*에 대해 매우 *상세하며*,  \n 차세대 니즈를 염두해 두고 있습니다.",
         "specs":{
-          "Web Materials":"PET film",
-          "Web Thickness":"100 ~ 250 micron",
-          "Web Width":"500 ~ 1,570 mm",
-          "Machine Speed":"Max. 30m/min",
-          "Unwind Diameter":"Max. 800mm",
-          "Rewind Diameter":"Max. 800mm",
-          "Coating System":"(Double Top) Roller Gap Adjusting System",
-          "Dryer Diameter":"Low/Middle/High Pressure UV system",
-          "Inspection Room":"Top Roller Gap Adjusting System",
-          "Laminating System":"By Sight",
-          "Rewinding System":"Center (Surface Turret) Winding System"
+          "Usage":"POP, DOP, MOP",
+          "Base Film Thickness":"Min 50㎛ ~ Max 250㎛",
+          "Base Film Width":"1,600 , 1,900mm or Order base",
+          "Roll Width":"1,700 , 2,100mm or Order base",
+          "Unwinder Diameter":"Max Φ800",
+          "Rewinder Diameter":"Max Φ1000",
+          "Machine Speed":"Max 50m/min",
+          "Working Speed":"Min 5m/min - Max 30m/min",
+          "Dryer System (Hot Air)":"Roll Supporting / Air Floating",
+          "UV Curing System":"High UV (MHL / HG)",
+          "Coating System":"Micro Gravure Type Slot Die type"
         }
       },
 
       "pattern_coater":{
         "name":"Pattern Coater",
         "surname":"Soft Mold Type",
-        "desc":"*{{ productname }}*는 일반적으로 다양한 * PET 대상 * 필름을 분리하고 최종 코팅하는 데 사용됩니다. ",
-        "instr": "*PET Base 필름*의 보호 필름을 제거하고 Soft Mold 및 *UV Curing을 통해 Gap 코팅 시스템*을 사용합니다. *UV 경화 후 라미네이트* 처리 및 되감기 작업을 수행합니다.*",
-        "concl": "위 제품은 *현대 산업과 혁신적인 기술*에 대해 매우 *상세하며*,  \n 차세대 니즈를 염두해 두고 있습니다.",
         "specs":{
-          "Web Materials":"PET film",
-          "Web Thickness":"100 ~ 250 micron",
-          "Web Width":"500 ~ 1,570 mm",
-          "Machine Speed":"Max. 30m/min",
-          "Unwind Diameter":"Max. 800mm",
-          "Rewind Diameter":"Max. 800mm",
-          "Coating System":"(Double Top) Roller Gap Adjusting System",
-          "Dryer Diameter":"Low/Middle/High Pressure UV system",
-          "Inspection Room":"Top Roller Gap Adjusting System",
-          "Laminating System":"By Sight",
-          "Rewinding System":"Center (Surface Turret) Winding System"
+          "Usage":"Prism, Microlens...",
+          "Base Film Thickness":"Min 50㎛ ~ Max 250㎛",
+          "Base Film Width":"1,600 , 1,900mm or Order base",
+          "Roll Width":"1,700 , 2,100mm or Order base",
+          "Unwinder Diameter":"Max Φ800",
+          "Rewinder Diameter":"Max Φ800",
+          "Machine Speed":"Max 50m/min",
+          "Working Speed":"Min 5m/min - Max 25m/min",
+          "Coating System":"Roll Coating, Imprinting",
+          "Curing System":"Low/Mid/High-pressure UV",
+          "Laminating System":"Double-sided Protective Film"
         }
       },
-
+      
       "qd_direct_pattern_coater":{
         "name":"QD Coater, Direct Pattern Coater",
         "surname":"Hard Mold Type",
-        "desc":"*{{ productname }}*는 일반적으로 다양한 * PET 대상 * 필름을 분리하고 최종 코팅하는 데 사용됩니다. ",
-        "instr": "*PET Base 필름*의 보호 필름을 제거하고 Soft Mold 및 *UV Curing을 통해 Gap 코팅 시스템*을 사용합니다. *UV 경화 후 라미네이트* 처리 및 되감기 작업을 수행합니다.*",
-        "concl": "위 제품은 *현대 산업과 혁신적인 기술*에 대해 매우 *상세하며*,  \n 차세대 니즈를 염두해 두고 있습니다.",
         "specs":{
-          "Web Materials":"PET film",
-          "Web Thickness":"100 ~ 250 micron",
-          "Web Width":"500 ~ 1,570 mm",
-          "Machine Speed":"Max. 30m/min",
-          "Unwind Diameter":"Max. 800mm",
-          "Rewind Diameter":"Max. 800mm",
-          "Coating System":"(Double Top) Roller Gap Adjusting System",
-          "Dryer Diameter":"Low/Middle/High Pressure UV system",
-          "Inspection Room":"Top Roller Gap Adjusting System",
-          "Laminating System":"By Sight",
-          "Rewinding System":"Center (Surface Turret) Winding System"
+          "Usage":"Imprinting of Pattern Roll",
+          "Base Film Thickness":"Min 25㎛ ~ Max 250㎛",
+          "Base Film Width":"1,600 , 1,900mm or Order base",
+          "Roll Width":"1,700 , 2,100mm or Order base",
+          "Unwinder Diameter":"Max Φ800",
+          "Rewinder Diameter":"Max Φ800",
+          "Machine Speed":"Max 30m/min",
+          "Working Speed":"Min 3m/min - Max 20m/min",
+          "Coating System":"Roll Coating, Imprinting",
+          "Curing System":"Low/Mid/High-pressure UV",
+          "Laminating System":"Double-sided Protective Film"
         }
       },
 
       "cpi_film_equipment":{
         "name":"CPI Film Equipment",
         "surname":"CPT (Colorless Polyimide Film)",
-        "desc":"*{{ productname }}*는 일반적으로 다양한 * PET 대상 * 필름을 분리하고 최종 코팅하는 데 사용됩니다. ",
-        "instr": "*PET Base 필름*의 보호 필름을 제거하고 Soft Mold 및 *UV Curing을 통해 Gap 코팅 시스템*을 사용합니다. *UV 경화 후 라미네이트* 처리 및 되감기 작업을 수행합니다.*",
-        "concl": "위 제품은 *현대 산업과 혁신적인 기술*에 대해 매우 *상세하며*,  \n 차세대 니즈를 염두해 두고 있습니다.",
+        "desc": "뛰어난 생산성과 *CPI 필름* 생산 재현성을 만들어 내는 *기계*이며, *귀사가 원하시면* DKT에서는 CPI *기술도 제공 가능*합니다.",
+        "instr":"본 장비는 *CPI 필름*을 생산하기 위한 장비입니다. 합성된 CPI *원액*을 기초로 CPI 필름을 생산하고 CPI의 물성을 *매우 뛰어나게* 만들 수 있습니다. 그리고 귀사가 원하는 CPI 필름 *두께를 최고로 정밀하게* 만들 수 있으며, 합성된 CPI 원액 *본래의 물성*을 *완벽히* 재현할 수 있습니다. ",
         "specs":{
-          "Web Materials":"PET film",
-          "Web Thickness":"100 ~ 250 micron",
-          "Web Width":"500 ~ 1,570 mm",
-          "Machine Speed":"Max. 30m/min",
-          "Unwind Diameter":"Max. 800mm",
-          "Rewind Diameter":"Max. 800mm",
-          "Coating System":"(Double Top) Roller Gap Adjusting System",
-          "Dryer Diameter":"Low/Middle/High Pressure UV system",
-          "Inspection Room":"Top Roller Gap Adjusting System",
-          "Laminating System":"By Sight",
-          "Rewinding System":"Center (Surface Turret) Winding System"
+          "-- Optical Properties --":"",
+          "Transmittance 550mm / 360mm ~ 740mm":"89±1% (Test ASTM D 1003 (JIS K7105))",
+          "Haze":"0.3% (Test ASTM D 1003 (JIS K7105)",
+          "Yellow index":"2.9△YI (Test ASTM E313)",
+          "-- Physical Properties --":"",
+          "Thickness":"50.0 ㎛",
+          "Tensile Strength":"300 gf/mm2",
+          "Elongation":"25 %",
+          "Modulus":"6.6 GPa",
+          "Pencil Hardness":"2 H",
+          "Water Aborption":"0.4 %",
+          "CTE":"10 ppm/°C"
         }
       },
 
       "polarized_film":{
         "name":"Polarized Film",
         "surname":"PVA Film Stretching for Polarizer",
-        "desc":"*{{ productname }}*는 일반적으로 다양한 * PET 대상 * 필름을 분리하고 최종 코팅하는 데 사용됩니다. ",
-        "instr": "*PET Base 필름*의 보호 필름을 제거하고 Soft Mold 및 *UV Curing을 통해 Gap 코팅 시스템*을 사용합니다. *UV 경화 후 라미네이트* 처리 및 되감기 작업을 수행합니다.*",
-        "concl": "위 제품은 *현대 산업과 혁신적인 기술*에 대해 매우 *상세하며*,  \n 차세대 니즈를 염두해 두고 있습니다.",
-        "specs":{
-          "Web Materials":"PET film",
-          "Web Thickness":"100 ~ 250 micron",
-          "Web Width":"500 ~ 1,570 mm",
-          "Machine Speed":"Max. 30m/min",
-          "Unwind Diameter":"Max. 800mm",
-          "Rewind Diameter":"Max. 800mm",
-          "Coating System":"(Double Top) Roller Gap Adjusting System",
-          "Dryer Diameter":"Low/Middle/High Pressure UV system",
-          "Inspection Room":"Top Roller Gap Adjusting System",
-          "Laminating System":"By Sight",
-          "Rewinding System":"Center (Surface Turret) Winding System"
+        "legend":[
+          {
+            "PVA Film Stretching Machine for Polarizer":"The Dyeing molecular of iodine into the PVA Film after swelling  \n Laminating the support Film(TAC Film) with PVA Film after stretching."
+          },
+          {
+            "TAC Film Treatment Machine for Polarizer":"The TAC Film Treated to improve the bonding force with PVA Film."
+          },
+          {
+            "PSA Adhesive Coating Machine":"The TAC Film Treated to improve the bonding force with PVA Film."
+          }
+        ],
+        "specs":[
+        {
+          "Machine Speed":"~50m/min",
+          "TAC Film":"745mm ~ 2,250mm",
+          "PVA Film":"1,500mm ~ 4,700mm",
+          "Roll Surface Length":"1,600mm ~ 6,000mm"
+        },
+        {
+          "Machine Speed": "~100m/min",
+          "Roll Surface Length":"900mm[Film width 745mm]",
+          " ":"1,550mm[Film width 1,330mm]",
+          "  ":"1,700mm[Film width 1,490mm]",
+          "   ":"2,200mm[Film width 1,970mm]",
+          "    ":"2,500mm[Film width 2,250mm]"
+        },
+        {
+          "Machine Speed": "~500m/min",
+          "Roll Surface Length":"900mm[Film width 745mm]",
+          " ":"1,550mm[Film width 1,330mm]",
+          "  ":"1,700mm[Film width 1,490mm]",
+          "   ":"2,200mm[Film width 1,970mm]",
+          "    ":"2,500mm[Film width 2,250mm]"
         }
+        ]
       },
 
       "slitter":{
         "name":"Slitter",
         "surname":"Other Machine",
-        "desc":"*{{ productname }}*는 일반적으로 다양한 * PET 대상 * 필름을 분리하고 최종 코팅하는 데 사용됩니다. ",
-        "instr": "*PET Base 필름*의 보호 필름을 제거하고 Soft Mold 및 *UV Curing을 통해 Gap 코팅 시스템*을 사용합니다. *UV 경화 후 라미네이트* 처리 및 되감기 작업을 수행합니다.*",
-        "concl": "위 제품은 *현대 산업과 혁신적인 기술*에 대해 매우 *상세하며*,  \n 차세대 니즈를 염두해 두고 있습니다.",
-        "specs":{
-          "Web Materials":"PET film",
-          "Web Thickness":"100 ~ 250 micron",
-          "Web Width":"500 ~ 1,570 mm",
-          "Machine Speed":"Max. 30m/min",
-          "Unwind Diameter":"Max. 800mm",
-          "Rewind Diameter":"Max. 800mm",
-          "Coating System":"(Double Top) Roller Gap Adjusting System",
-          "Dryer Diameter":"Low/Middle/High Pressure UV system",
-          "Inspection Room":"Top Roller Gap Adjusting System",
-          "Laminating System":"By Sight",
-          "Rewinding System":"Center (Surface Turret) Winding System"
+        "legend":[
+          {
+            "High-Speed Slitter - Rewinder Machine":""
+          },
+          {
+            "Slitter-Rewinder Machine for F_PCB":""
+          },
+          {
+            "Slitter-Rewinder Machine for Capacitor":""
+          }
+        ],
+        "specs":[
+        {
+          "Web Materials":"OPP, PET, CPP, ALL Metallized Film",
+          "Web Thickness":"8㎛ ~ 100㎛",
+          "Web Width":"500mm ~ 3,000 mm",
+          "Slitting Width":"300mm ~ 2,800mm",
+          "Machine Speed":"Max 30m/min"
+        },
+        {
+          "Web Materials": "Copper Foil, FCCL",
+          "Web Thickness":"9㎛ ~ 60㎛",
+          "Web Width":"Max 540 mm",
+          "Slitting Width":"250mm ~ 500mm",
+          "Machine Speed":"250mm ~ 500mm"
+        },
+        {
+          "Web Materials":"BOPP, PET, Metallized Film",
+          "Web Thickness":"MF (OPP: 3.0㎛ ~ 15㎛ / PET: 1.5㎛ ~ 12㎛)",
+          "Web Width":"300mm ~ 920mm",
+          "Slitting Width":"4.5mm ~ 50mm",
+          "Machine Speed":"Max. 400m/min (wave slit max: 150m/min)"
         }
+        ]
       },
 
       "laminater":{
         "name":"Laminater",
         "surname":"Other Machine",
-        "desc":"*{{ productname }}*는 일반적으로 다양한 * PET 대상 * 필름을 분리하고 최종 코팅하는 데 사용됩니다. ",
-        "instr": "*PET Base 필름*의 보호 필름을 제거하고 Soft Mold 및 *UV Curing을 통해 Gap 코팅 시스템*을 사용합니다. *UV 경화 후 라미네이트* 처리 및 되감기 작업을 수행합니다.*",
-        "concl": "위 제품은 *현대 산업과 혁신적인 기술*에 대해 매우 *상세하며*,  \n 차세대 니즈를 염두해 두고 있습니다.",
+        "desc":"The *{{ productname }}* is generally used  \n to separate and final-coat various *PET-destinated* films.",
+        "instr": "Remove *protective film* on the *PET Base film*, use of *Gap coating system* through the Soft Mold and UV Curing.  \n After *UV Curing, laminating* and *rewinding.*",
+        "concl": "This asset is *quite detailed* and created with an eye towards current and next-generation needs  \n in the *modern industry* and innovative technologies.",
         "specs":{
-          "Web Materials":"PET film",
-          "Web Thickness":"100 ~ 250 micron",
-          "Web Width":"500 ~ 1,570 mm",
-          "Machine Speed":"Max. 30m/min",
-          "Unwind Diameter":"Max. 800mm",
-          "Rewind Diameter":"Max. 800mm",
-          "Coating System":"(Double Top) Roller Gap Adjusting System",
-          "Dryer Diameter":"Low/Middle/High Pressure UV system",
-          "Inspection Room":"Top Roller Gap Adjusting System",
-          "Laminating System":"By Sight",
-          "Rewinding System":"Center (Surface Turret) Winding System"
+          "Web Materials":"Coated PET Film, ITO Film",
+          "Web Thickness":"20㎛ ~ 200㎛",
+          "Web Width":"600mm ~ 1,540 mm",
+          "Slitting Width":"200mm ~ 1,500 mm",
+          "Machine Speed":"Max 20m/min",
+          "Unwinder Diameter":"Φ900",
+          "Rewinder Diameter":"Φ600 / Φ900(Lower Part)",
+          "Slitting System":"Shear Knife Slitting System (Option: Auto Knife)",
+          "Laminating System":"Top Roller Gap Adjusting System",
+          "Rewinding System":"Center Winding System (Option: Air Friction Shaft)"
         }
       }
-      
 
     }
     

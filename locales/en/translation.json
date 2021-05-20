@@ -193,7 +193,7 @@
       },
 
       "nano_exclusive_agnw_coater":{
-        "name":"Nano Exclusive AGnW Coater",
+        "name":"Nano Exclusive AgNW Coater",
         "surname":"$t(DKT__globals.machinery)",
         "desc":"This equipment makes possible the use of *exclusive nano control coating* by *nano* unit.  \n Therefore this *NANO R2R SYSTEM* can only make the *AgNW* (Silver Nanowire coated film) \n and *IM* (Index matching film), thus this equipment is an ultra *extremely sensitive nano* coater.",
         "specs":{

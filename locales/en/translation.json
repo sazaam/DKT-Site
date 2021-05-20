@@ -284,7 +284,7 @@
       },
       
       "multiuse_coater_pop_dop_mop":{
-        "name":"Multi-use Coater POP,DOP,MOP",
+        "name":"Multi-use Coater POP, DOP, MOP",
         "surname":"$t(DKT__globals.machinery)",
         "specs":{
           "Usage":"POP, DOP, MOP",

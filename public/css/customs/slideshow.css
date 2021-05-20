@@ -40,7 +40,7 @@ Slideshow control
 
 .flex-control-nav {
 	position: absolute;
-	width: auto;
+	width: 100%;
 	left: 50%;
 	bottom: 10px;
 	z-index: 11;

@@ -83,17 +83,23 @@ let login = async(app) => {
     console.log('\t LOGIN SUCCESSFULL');
 }
 
+let sitejade ;
+
 // DB OR FIXTURES
 let fetchdata = async(req, res, part, noreturn) => {
     let data;
     if (isLive) {
         data = await CONSTANTS.DKTClient.request(queries.sections[part], queries.sections.variables || {});
+        // console.log(data)
+        if(!!data.site){
+            sitejade = data.site ;
+        }
         data = data.sections;
     } else {
         data = await fs.promises.readFile(CONSTANTS.fixtures[part], 'utf8');
         data = UTILS.formatHashes(JSON.parse(data));
     }
-
+    // console.log(data)
     if (noreturn) res.json(data);
     else return data;
 }
@@ -229,9 +235,17 @@ let content = async(req, res) => {
             topsections: topsections,
             params: req.params
         }));
+        
+
+        // var tpl = jade.compile(sitejade.templates[0].jade, {});
+
+        
+        // res.send(tpl());
+
+
     } else {
         db_sections = await fetchdata(req, res, 'datas').catch(err => { console.log(err) });
-
+        // console.log(db_sections)
         res.render(path.join(__dirname, 'public/jade/content.jade'), merge(params, {
             lang: req.i18n.language,
             t: req.t,
@@ -250,7 +264,6 @@ let root = async(req, res) => {
 
     // topsections = topsections || await fetchdata(req, res, 'navdatas').catch( err => {console.log(err)}) ;
     topsections = await fetchdata(req, res, 'navdatas').catch(err => { console.log(err) });
-    
     let loadedLangs = await Object.keys(i18next.services.resourceStore.data);
 
     res.render(path.join(__dirname, 'public/jade/index'), merge(params, {

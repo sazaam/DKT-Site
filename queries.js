@@ -204,6 +204,12 @@ let datas = `query {
 
 
 let navdatas = `query {
+  site{
+    templates{
+      name
+      jade
+    }
+  }
   sections(where:{level:1, position_lt:10}, sort:"position:asc"){
     id
     name

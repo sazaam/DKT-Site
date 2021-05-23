@@ -27,7 +27,7 @@ mixin callus(number, cl)
 
 //- BACK BUTTON
 mixin back(obj)
-	+link({prename:t('back_to'), name:t('products'), cl:"dkt greyhover", url:obj.link})
+	+link({prename:t('back_to'), name:t('main'), cl:"dkt greyhover", url:obj.link})
 	//- .linker.marXXXLg.round.both.dkt.dktBG.inlineblock
 		a.block.sizeSm.font-inc.white.padXXLg.VpadSm(href=obj.link)= t('back_to', obj)
 
@@ -485,6 +485,8 @@ mixin productarticle
 	- var contents = t(pointer, {returnObjects: true})
 
 	if(!!contents.desc)
+		//- +testarticle('SAZAAM')
+		//- +testyoo('COUCOU')
 		.line.marked(style="margin-bottom:2em")
 			.unit.lastUnit.round.right.LpadLg(style="margin-top:0em")
 				.Tmar.txtR.sizeLg
@@ -531,7 +533,7 @@ mixin productarticle
 						.padXLg.txtR.white
 							+link({prename:'Load', name:'3D Model'})
 						.canvascontainer.context.fullW.ocreBG.none(style="height:450px")
-
+		
 	.line.marked(style="margin-top:5em;margin-bottom:5em")
 		if(!!contents.concl)
 			.BmarginXXXLg.txtL.sizeLg.HmarXLg
@@ -639,7 +641,8 @@ mixin article(art, p)
 		- basejade = template.jade + basejade ;
 	- }
 
-
+	//- script.
+	//- 	console.log(!{JSON.stringify(basejade)})
 	| !{ render(basejade, p2)}
 	
 //- //////////////// CONTACTS

@@ -16,22 +16,17 @@ block content
     
     +slideshow()
 
-
-
-
-  block flow
-    
-    //- HOME ARTICLE BLOCKS
-    each article in getComponentsByTypename(section.post.bracket, 'ComponentModularArticle')
-      if(article.name != 'home_intro' && article.name != 'home_why')
-        +article(article, params)
-        
-    
-    
-    //- PATCHWORK
-    - var target_sections = [].concat(db_sections[1].children) ;
-    +patchwork()
-    
-    +footer()
+  //- HOME ARTICLE BLOCKS
+  each article in getComponentsByTypename(section.post.bracket, 'ComponentModularArticle')
+    if(article.name != 'home_intro' && article.name != 'home_why')
+      +article(article, params)
+      
+  
+  
+  //- PATCHWORK
+  - var target_sections = [].concat(db_sections[1].children) ;
+  +patchwork()
+  
+  +footer()
 
     

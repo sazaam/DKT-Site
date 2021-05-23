@@ -1154,6 +1154,7 @@ module.exports = {
 		
 		var all 						= $('.all') ;
 		var parent 						= $('.' + res.parentStep.id + '_section_container') ;
+		var parentnavlink 						= $('.global_' + res.parentStep.id) ;
 		var continent 					= $('.continent') ;
 		
 		var target_section ;
@@ -1169,6 +1170,9 @@ module.exports = {
 		var why = $('.' + res.parentStep.id + '_why') ;
 		var certif = $('.' + res.parentStep.id + '_certif') ;
 
+
+		parentnavlink.removeClass("over") ;
+
 		if(res.opening){
 			
 			patchwork.addClass('none') ;
@@ -1177,8 +1181,11 @@ module.exports = {
 			
 			
 
-			$('.global_' + res.parentStep.id + ' ol .navmenu_' + id).addClass('active')
+			parentnavlink.find('ol .navmenu_' + id).addClass('active') ;
 			
+
+
+
 
 			target_section.appendTo(parent) ;
 			
@@ -1305,19 +1312,29 @@ module.exports = {
 		
 		var all 									= $('.all') ;
 		var continent 						= $('.continent') ;
+		// trace(target_section)
+		// trace(continent)
+		var target_navlinks 		= $('.sectionsnav li') ;
+		var target_navlink 			= $('#global_' + id) ;
 		
 		
-		
+		target_navlink.removeClass("over") ;
+
+
+
 		if(res.opening){
 			trace('OPENING', res.id)
-			var target_navlinks 		= $('.sectionsnav li') ;
-			var target_navlink 			= $('#global_' + id) ;
+			
 			
 			if(res.parentStep.ancestor == res.parentStep){
 				target_navlinks.removeClass('active') ;
 				target_navlink.addClass('active') ;
 			}
 			
+			
+
+
+
 			if(res.id == '404'){
 				target_section.appendTo(all) ;
 				if(!res.userData.lazyLoaded){
@@ -1334,7 +1351,7 @@ module.exports = {
 				navmenus(e, true) ;
 				return res.ready() ;
 			}
-
+			
 
 			
 			target_section.appendTo(all) ;

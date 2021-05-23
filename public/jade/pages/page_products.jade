@@ -4,38 +4,33 @@ extends ./page
 
 //- ----------------------- END : Extends
 
+
 block content  
 	//-  EMPTY
 
-	block flow
-		//- DO NOT REMOVE, IN USE FOR CHILDREN LOADING, THEN SLIDESHOW AND PATCHWORK
-		- var target_sections = section.children ;
+	//- DO NOT REMOVE, IN USE FOR CHILDREN LOADING, THEN SLIDESHOW AND PATCHWORK
+	- var target_sections = section.children ;
+
+	//- SLIDESHOW GOES FIRST, BUT WITH A HEIGHT OF 50%
+	.extra.rel.context(style='height:50%;')
+		+slideshow()
+	
+
+	
+	
+
+	//- THEN COMES PATCHWORK
+	+patchwork()
+	
+	//- THEN THE CHILDREN LOADING BLOCK
+	.products_section_container
+		//- HERE WILL STAND THE FUTURE PRODUCTS -- DO NOT REMOVE !!
+
+	
+	//- AND EVENTUALLY THE PRODUCTS PAGE RELATED BLOCKS 
+	each products_article in getComponentsByTypename(section.post.bracket, 'ComponentModularArticle')
+		+article(products_article, params)
 
 
-
-		
-			
-
-		//- SLIDESHOW GOES FIRST, BUT WITH A HEIGHT OF 50%
-		.extra.rel.context(style='height:50%;')
-			+slideshow()
-		
-
-		
-		
-
-		//- THEN COMES PATCHWORK
-		+patchwork()
-		
-		//- THEN THE CHILDREN LOADING BLOCK
-		.products_section_container
-			//- HERE WILL STAND THE FUTURE PRODUCTS -- DO NOT REMOVE !!
-
-		
-		//- AND EVENTUALLY THE PRODUCTS PAGE RELATED BLOCKS 
-		each products_article in getComponentsByTypename(section.post.bracket, 'ComponentModularArticle')
-			+article(products_article, params)
-
-
-		+footer()
+	+footer()
 	

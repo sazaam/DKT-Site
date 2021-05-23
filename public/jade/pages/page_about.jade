@@ -5,7 +5,7 @@ extends ./page
 
 //- ----------------------- END : Extends
 
-block flow
+block content
   
   - var main_media = getComponentsByTypename(section.post.bracket, 'ComponentModularMedia')[0].media ;
   +topimage(main_media[1], color, section.cleanname, section.surname)

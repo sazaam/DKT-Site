@@ -438,7 +438,7 @@ Responsive Media Querries
         margin-bottom: 0;
     }
     .navbar-custom li a:hover {
-        background: #f5f5f5 !important;
+        /* background: #f5f5f5 !important; */
     }
     .navbar-custom .navbar-nav .open .dropdown-menu .dropdown-header,
     .navbar-custom .navbar-nav .open .dropdown-menu>li>a {

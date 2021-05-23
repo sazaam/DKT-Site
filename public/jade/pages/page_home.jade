@@ -4,8 +4,12 @@ extends ./page
 
 //- ----------------------- END : Extends
 
+
 block content
-  - var target_sections = [].concat([db_sections[0]]).concat([db_sections[2]]).concat([db_sections[1]]).concat(db_sections[1].children) ;
+  - var hidden = {"cpi_film_equipment":1, "polarized_film":1} ;
+  - function filterSections(section){return !(section.name in hidden)}
+  - var filtered = db_sections[1].children.filter(filterSections) ;
+  - var target_sections = [].concat([db_sections[0]]).concat([db_sections[2]]).concat([db_sections[1]]).concat(filtered) ;
   
   //- script. 
     console.log(!{JSON.stringify(locals.__dirname)})
@@ -24,7 +28,7 @@ block content
   
   
   //- PATCHWORK
-  - var target_sections = [].concat(db_sections[1].children) ;
+  - var target_sections = filtered ;
   +patchwork()
   
   +footer()

@@ -9,8 +9,10 @@ block content
 	//-  EMPTY
 
 	//- DO NOT REMOVE, IN USE FOR CHILDREN LOADING, THEN SLIDESHOW AND PATCHWORK
-	- var target_sections = section.children ;
-
+	- var hidden = {"cpi_film_equipment":1, "polarized_film":1} ;	
+	- function filterSections(section){return !(section.name in hidden)}
+	- var filtered = section.children.filter(filterSections) ;
+	- var target_sections = filtered ;
 	//- SLIDESHOW GOES FIRST, BUT WITH A HEIGHT OF 50%
 	.extra.rel.context(style='height:50%;')
 		+slideshow()
